@@ -1,0 +1,2334 @@
+==> 2026-06-24T11:05:05-04:00 Processing MOD02_NB01_Data_Loading_Profiling.ipynb
+[NbConvertApp] Converting notebook MOD02_NB01_Data_Loading_Profiling.ipynb to html
+Traceback (most recent call last):
+  File "/home/zia207/.local/bin/jupyter-nbconvert", line 6, in <module>
+    sys.exit(main())
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/application.py", line 284, in launch_instance
+    super().launch_instance(argv=argv, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/traitlets/config/application.py", line 1075, in launch_instance
+    app.start()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 420, in start
+    self.convert_notebooks()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 597, in convert_notebooks
+    self.convert_single_notebook(notebook_filename)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 563, in convert_single_notebook
+    output, resources = self.export_single_notebook(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 487, in export_single_notebook
+    output, resources = self.exporter.from_filename(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 390, in from_filename
+    return super().from_filename(filename, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 201, in from_filename
+    return self.from_file(f, resources=resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 396, in from_file
+    return super().from_file(file_stream, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 220, in from_file
+    return self.from_notebook_node(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/html.py", line 286, in from_notebook_node
+    html, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 412, in from_notebook_node
+    nb_copy, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 154, in from_notebook_node
+    nb_copy, resources = self._preprocess(nb_copy, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 353, in _preprocess
+    nbc, resc = preprocessor(nbc, resc)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/base.py", line 48, in __call__
+    return self.preprocess(nb, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 103, in preprocess
+    self.preprocess_cell(cell, resources, index)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 124, in preprocess_cell
+    cell = self.execute_cell(cell, index, store_history=True)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# --- Extract key stats programmatically from the profile object ---
+desc = profile.get_description()
+
+print("=== Profile Overview ===")
+overview = desc.analysis
+print(f"  Dataset: {overview.n} rows, {overview.n_var} variables")
+print(f"  Missing cells: {overview.n_cells_missing} ({overview.p_cells_missing*100:.1f}%)")
+print(f"  Duplicate rows: {overview.n_duplicates}")
+
+print("\n=== Variable-level warnings ===")
+for warn in desc.alerts:
+    print(f"  [{warn.alert_type.name:20s}] {warn.column_name}")
+
+------------------
+
+----- stdout -----
+=== Profile Overview ===
+------------------
+
+[31m---------------------------------------------------------------------------[39m
+[31mAttributeError[39m                            Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[8][39m[32m, line 6[39m
+[32m      4[39m [38;5;28mprint[39m([33m"[39m[33m=== Profile Overview ===[39m[33m"[39m)
+[32m      5[39m overview = desc.analysis
+[32m----> [39m[32m6[39m [38;5;28mprint[39m([33mf[39m[33m"[39m[33m  Dataset: [39m[38;5;132;01m{[39;00m[43moverview[49m[43m.[49m[43mn[49m[38;5;132;01m}[39;00m[33m rows, [39m[38;5;132;01m{[39;00moverview.n_var[38;5;132;01m}[39;00m[33m variables[39m[33m"[39m)
+[32m      7[39m [38;5;28mprint[39m([33mf[39m[33m"[39m[33m  Missing cells: [39m[38;5;132;01m{[39;00moverview.n_cells_missing[38;5;132;01m}[39;00m[33m ([39m[38;5;132;01m{[39;00moverview.p_cells_missing*[32m100[39m[38;5;132;01m:[39;00m[33m.1f[39m[38;5;132;01m}[39;00m[33m%)[39m[33m"[39m)
+[32m      8[39m [38;5;28mprint[39m([33mf[39m[33m"[39m[33m  Duplicate rows: [39m[38;5;132;01m{[39;00moverview.n_duplicates[38;5;132;01m}[39;00m[33m"[39m)
+
+[31mAttributeError[39m: 'BaseAnalysis' object has no attribute 'n'
+
+FAIL: MOD02_NB01_Data_Loading_Profiling.ipynb
+==> 2026-06-24T11:05:21-04:00 Processing MOD02_NB04_TimeSeries_Admissions.ipynb
+[NbConvertApp] Converting notebook MOD02_NB04_TimeSeries_Admissions.ipynb to html
+Traceback (most recent call last):
+  File "/home/zia207/.local/bin/jupyter-nbconvert", line 6, in <module>
+    sys.exit(main())
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/application.py", line 284, in launch_instance
+    super().launch_instance(argv=argv, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/traitlets/config/application.py", line 1075, in launch_instance
+    app.start()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 420, in start
+    self.convert_notebooks()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 597, in convert_notebooks
+    self.convert_single_notebook(notebook_filename)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 563, in convert_single_notebook
+    output, resources = self.export_single_notebook(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 487, in export_single_notebook
+    output, resources = self.exporter.from_filename(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 390, in from_filename
+    return super().from_filename(filename, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 201, in from_filename
+    return self.from_file(f, resources=resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 396, in from_file
+    return super().from_file(file_stream, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 220, in from_file
+    return self.from_notebook_node(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/html.py", line 286, in from_notebook_node
+    html, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 412, in from_notebook_node
+    nb_copy, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 154, in from_notebook_node
+    nb_copy, resources = self._preprocess(nb_copy, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 353, in _preprocess
+    nbc, resc = preprocessor(nbc, resc)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/base.py", line 48, in __call__
+    return self.preprocess(nb, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 103, in preprocess
+    self.preprocess_cell(cell, resources, index)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 124, in preprocess_cell
+    cell = self.execute_cell(cell, index, store_history=True)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+try:
+    import plotly.graph_objects as go
+    from plotly.subplots import make_subplots
+
+    fig_p = go.Figure()
+    fig_p.add_trace(go.Scatter(
+        x=daily.index, y=daily.values,
+        mode='lines', name='Daily', opacity=0.4,
+        line=dict(color='#AEC6CF', width=1)
+    ))
+    fig_p.add_trace(go.Scatter(
+        x=roll_mean.index, y=roll_mean.values,
+        mode='lines', name='7-day mean',
+        line=dict(color='#1F4E79', width=2)
+    ))
+    fig_p.add_trace(go.Scatter(
+        x=upper_cl.index.tolist() + lower_cl.index.tolist()[::-1],
+        y=upper_cl.values.tolist() + lower_cl.values.tolist()[::-1],
+        fill='toself', fillcolor='rgba(31,78,121,0.1)',
+        line=dict(color='rgba(255,255,255,0)'),
+        name='±2 SD band', showlegend=True
+    ))
+    for dt, label, color in events:
+        fig_p.add_vline(x=dt, line_dash='dash', line_color=color,
+                        annotation_text=label.replace('\n',' '),
+                        annotation_position='top left',
+                        annotation_font_size=10)
+
+    fig_p.update_layout(
+        title='Interactive daily admissions (zoom / hover to explore)',
+        xaxis_title='Date', yaxis_title='Admissions',
+        height=420, template='plotly_white',
+        legend=dict(orientation='h', y=1.08)
+    )
+    fig_p.show()
+except ImportError:
+    print("Install plotly: pip install plotly")
+
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mTypeError[39m                                 Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[7][39m[32m, line 24[39m
+[32m     16[39m fig_p.add_trace(go.Scatter(
+[32m     17[39m     x=upper_cl.index.tolist() + lower_cl.index.tolist()[::-[32m1[39m],
+[32m     18[39m     y=upper_cl.values.tolist() + lower_cl.values.tolist()[::-[32m1[39m],
+[32m   (...)[39m[32m     21[39m     name=[33m'[39m[33m±2 SD band[39m[33m'[39m, showlegend=[38;5;28;01mTrue[39;00m
+[32m     22[39m ))
+[32m     23[39m [38;5;28;01mfor[39;00m dt, label, color [38;5;129;01min[39;00m events:
+[32m---> [39m[32m24[39m     [43mfig_p[49m[43m.[49m[43madd_vline[49m[43m([49m[43mx[49m[43m=[49m[43mdt[49m[43m,[49m[43m [49m[43mline_dash[49m[43m=[49m[33;43m'[39;49m[33;43mdash[39;49m[33;43m'[39;49m[43m,[49m[43m [49m[43mline_color[49m[43m=[49m[43mcolor[49m[43m,[49m
+[32m     25[39m [43m                    [49m[43mannotation_text[49m[43m=[49m[43mlabel[49m[43m.[49m[43mreplace[49m[43m([49m[33;43m'[39;49m[38;5;130;43;01m\n[39;49;00m[33;43m'[39;49m[43m,[49m[33;43m'[39;49m[33;43m [39;49m[33;43m'[39;49m[43m)[49m[43m,[49m
+[32m     26[39m [43m                    [49m[43mannotation_position[49m[43m=[49m[33;43m'[39;49m[33;43mtop left[39;49m[33;43m'[39;49m[43m,[49m
+[32m     27[39m [43m                    [49m[43mannotation_font_size[49m[43m=[49m[32;43m10[39;49m[43m)[49m
+[32m     29[39m fig_p.update_layout(
+[32m     30[39m     title=[33m'[39m[33mInteractive daily admissions (zoom / hover to explore)[39m[33m'[39m,
+[32m     31[39m     xaxis_title=[33m'[39m[33mDate[39m[33m'[39m, yaxis_title=[33m'[39m[33mAdmissions[39m[33m'[39m,
+[32m     32[39m     height=[32m420[39m, template=[33m'[39m[33mplotly_white[39m[33m'[39m,
+[32m     33[39m     legend=[38;5;28mdict[39m(orientation=[33m'[39m[33mh[39m[33m'[39m, y=[32m1.08[39m)
+[32m     34[39m )
+[32m     35[39m fig_p.show()
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/plotly/graph_objs/_figure.py:473[39m, in [36mFigure.add_vline[39m[34m(self, x, row, col, exclude_empty_subplots, annotation, **kwargs)[39m
+[32m    425[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34madd_vline[39m(
+[32m    426[39m     [38;5;28mself[39m,
+[32m    427[39m     x,
+[32m   (...)[39m[32m    432[39m     **kwargs,
+[32m    433[39m ) -> [33m"[39m[33mFigure[39m[33m"[39m:
+[32m    434[39m [38;5;250m    [39m[33;03m"""[39;00m
+[32m    435[39m 
+[32m    436[39m [33;03m    Add a vertical line to a plot or subplot that extends infinitely in the[39;00m
+[32m   (...)[39m[32m    471[39m [33;03m        except for x0, x1, y0, y1 or type.[39;00m
+[32m    472[39m [33;03m    """[39;00m
+[32m--> [39m[32m473[39m     [38;5;28;01mreturn[39;00m [38;5;28;43msuper[39;49m[43m([49m[43m)[49m[43m.[49m[43madd_vline[49m[43m([49m
+[32m    474[39m [43m        [49m[43mx[49m[43m,[49m[43m [49m[43mrow[49m[43m,[49m[43m [49m[43mcol[49m[43m,[49m[43m [49m[43mexclude_empty_subplots[49m[43m,[49m[43m [49m[43mannotation[49m[43m,[49m[43m [49m[43m*[49m[43m*[49m[43mkwargs[49m
+[32m    475[39m [43m    [49m[43m)[49m
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/plotly/basedatatypes.py:4152[39m, in [36mBaseFigure.add_vline[39m[34m(self, x, row, col, exclude_empty_subplots, annotation, **kwargs)[39m
+[32m   4143[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34madd_vline[39m(
+[32m   4144[39m     [38;5;28mself[39m,
+[32m   4145[39m     x,
+[32m   (...)[39m[32m   4150[39m     **kwargs,
+[32m   4151[39m ):
+[32m-> [39m[32m4152[39m     [38;5;28;43mself[39;49m[43m.[49m[43m_process_multiple_axis_spanning_shapes[49m[43m([49m
+[32m   4153[39m [43m        [49m[38;5;28;43mdict[39;49m[43m([49m[38;5;28;43mtype[39;49m[43m=[49m[33;43m"[39;49m[33;43mline[39;49m[33;43m"[39;49m[43m,[49m[43m [49m[43mx0[49m[43m=[49m[43mx[49m[43m,[49m[43m [49m[43mx1[49m[43m=[49m[43mx[49m[43m,[49m[43m [49m[43my0[49m[43m=[49m[32;43m0[39;49m[43m,[49m[43m [49m[43my1[49m[43m=[49m[32;43m1[39;49m[43m)[49m[43m,[49m
+[32m   4154[39m [43m        [49m[43mrow[49m[43m,[49m
+[32m   4155[39m [43m        [49m[43mcol[49m[43m,[49m
+[32m   4156[39m [43m        [49m[33;43m"[39;49m[33;43mvline[39;49m[33;43m"[39;49m[43m,[49m
+[32m   4157[39m [43m        [49m[43mexclude_empty_subplots[49m[43m=[49m[43mexclude_empty_subplots[49m[43m,[49m
+[32m   4158[39m [43m        [49m[43mannotation[49m[43m=[49m[43mannotation[49m[43m,[49m
+[32m   4159[39m [43m        [49m[43m*[49m[43m*[49m[43mkwargs[49m[43m,[49m
+[32m   4160[39m [43m    [49m[43m)[49m
+[32m   4161[39m     [38;5;28;01mreturn[39;00m [38;5;28mself[39m
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/plotly/basedatatypes.py:4093[39m, in [36mBaseFigure._process_multiple_axis_spanning_shapes[39m[34m(self, shape_args, row, col, shape_type, exclude_empty_subplots, annotation, **kwargs)[39m
+[32m   4084[39m [38;5;66;03m# shapes are always added at the end of the tuple of shapes, so we see[39;00m
+[32m   4085[39m [38;5;66;03m# how long the tuple is before the call and after the call, and adjust[39;00m
+[32m   4086[39m [38;5;66;03m# the new shapes that were added at the end[39;00m
+[32m   4087[39m [38;5;66;03m# extract annotation prefixed kwargs[39;00m
+[32m   4088[39m [38;5;66;03m# annotation with extra parameters based on the annotation_position[39;00m
+[32m   4089[39m [38;5;66;03m# argument and other annotation_ prefixed kwargs[39;00m
+[32m   4090[39m shape_kwargs, annotation_kwargs = shapeannotation.split_dict_by_key_prefix(
+[32m   4091[39m     kwargs, [33m"[39m[33mannotation_[39m[33m"[39m
+[32m   4092[39m )
+[32m-> [39m[32m4093[39m augmented_annotation = [43mshapeannotation[49m[43m.[49m[43maxis_spanning_shape_annotation[49m[43m([49m
+[32m   4094[39m [43m    [49m[43mannotation[49m[43m,[49m[43m [49m[43mshape_type[49m[43m,[49m[43m [49m[43mshape_args[49m[43m,[49m[43m [49m[43mannotation_kwargs[49m
+[32m   4095[39m [43m[49m[43m)[49m
+[32m   4096[39m [38;5;28mself[39m.add_shape(
+[32m   4097[39m     row=row,
+[32m   4098[39m     col=col,
+[32m   4099[39m     exclude_empty_subplots=exclude_empty_subplots,
+[32m   4100[39m     **_combine_dicts([shape_args, shape_kwargs]),
+[32m   4101[39m )
+[32m   4102[39m [38;5;28;01mif[39;00m augmented_annotation [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/plotly/shapeannotation.py:216[39m, in [36maxis_spanning_shape_annotation[39m[34m(annotation, shape_type, shape_args, kwargs)[39m
+[32m    214[39m     annotation_position = kwargs[[33m"[39m[33mannotation_position[39m[33m"[39m]
+[32m    215[39m [38;5;28;01mif[39;00m shape_type.endswith([33m"[39m[33mline[39m[33m"[39m):
+[32m--> [39m[32m216[39m     shape_dict = [43mannotation_params_for_line[49m[43m([49m
+[32m    217[39m [43m        [49m[43mshape_type[49m[43m,[49m[43m [49m[43mshape_args[49m[43m,[49m[43m [49m[43mannotation_position[49m
+[32m    218[39m [43m    [49m[43m)[49m
+[32m    219[39m [38;5;28;01melif[39;00m shape_type.endswith([33m"[39m[33mrect[39m[33m"[39m):
+[32m    220[39m     shape_dict = annotation_params_for_rect(
+[32m    221[39m         shape_type, shape_args, annotation_position
+[32m    222[39m     )
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/plotly/shapeannotation.py:63[39m, in [36mannotation_params_for_line[39m[34m(shape_type, shape_args, position)[39m
+[32m     61[39m aX = [38;5;28mmax[39m(X)
+[32m     62[39m iX = [38;5;28mmin[39m(X)
+[32m---> [39m[32m63[39m eX = [43m_mean[49m[43m([49m[43mX[49m[43m)[49m
+[32m     64[39m aaX = _argmax(X)
+[32m     65[39m aiX = _argmin(X)
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/plotly/shapeannotation.py:7[39m, in [36m_mean[39m[34m(x)[39m
+[32m      5[39m [38;5;28;01mif[39;00m [38;5;28mlen[39m(x) == [32m0[39m:
+[32m      6[39m     [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m([33m"[39m[33mx must have positive length[39m[33m"[39m)
+[32m----> [39m[32m7[39m [38;5;28;01mreturn[39;00m [38;5;28mfloat[39m([38;5;28;43msum[39;49m[43m([49m[43mx[49m[43m)[49m) / [38;5;28mlen[39m(x)
+
+[36mFile [39m[32mpandas/_libs/tslibs/timestamps.pyx:483[39m, in [36mpandas._libs.tslibs.timestamps._Timestamp.__radd__[39m[34m()[39m
+
+[36mFile [39m[32mpandas/_libs/tslibs/timestamps.pyx:465[39m, in [36mpandas._libs.tslibs.timestamps._Timestamp.__add__[39m[34m()[39m
+
+[31mTypeError[39m: Addition/subtraction of integers and integer-arrays with Timestamp is no longer supported.  Instead of adding/subtracting `n`, use `n * obj.freq`
+
+FAIL: MOD02_NB04_TimeSeries_Admissions.ipynb
+==> 2026-06-24T11:05:32-04:00 Processing MOD02_NB05_Missingness_Imputation.ipynb
+[NbConvertApp] Converting notebook MOD02_NB05_Missingness_Imputation.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 4 image(s).
+[NbConvertApp] Writing 745700 bytes to docs/MOD02_NB05_Missingness_Imputation.html
+OK: MOD02_NB05_Missingness_Imputation.ipynb
+==> 2026-06-24T11:05:40-04:00 Processing MOD02_NB08_Capstone_Readmission_EDA.ipynb
+[NbConvertApp] Converting notebook MOD02_NB08_Capstone_Readmission_EDA.ipynb to html
+Traceback (most recent call last):
+  File "/home/zia207/.local/bin/jupyter-nbconvert", line 6, in <module>
+    sys.exit(main())
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/application.py", line 284, in launch_instance
+    super().launch_instance(argv=argv, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/traitlets/config/application.py", line 1075, in launch_instance
+    app.start()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 420, in start
+    self.convert_notebooks()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 597, in convert_notebooks
+    self.convert_single_notebook(notebook_filename)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 563, in convert_single_notebook
+    output, resources = self.export_single_notebook(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 487, in export_single_notebook
+    output, resources = self.exporter.from_filename(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 390, in from_filename
+    return super().from_filename(filename, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 201, in from_filename
+    return self.from_file(f, resources=resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 396, in from_file
+    return super().from_file(file_stream, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 220, in from_file
+    return self.from_notebook_node(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/html.py", line 286, in from_notebook_node
+    html, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 412, in from_notebook_node
+    nb_copy, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 154, in from_notebook_node
+    nb_copy, resources = self._preprocess(nb_copy, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 353, in _preprocess
+    nbc, resc = preprocessor(nbc, resc)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/base.py", line 48, in __call__
+    return self.preprocess(nb, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 103, in preprocess
+    self.preprocess_cell(cell, resources, index)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 124, in preprocess_cell
+    cell = self.execute_cell(cell, index, store_history=True)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+print("MISSINGNESS AUDIT\n" + "="*50)
+miss_cols = ['glucose','creatinine','hba1c','total_charge']
+for col in miss_cols:
+    pct = df[col].isnull().mean()*100
+    # Test association of missingness with payer (MAR check)
+    df[f'{col}_miss'] = df[col].isnull().astype(int)
+    ct = pd.crosstab(df['payer'], df[f'{col}_miss'])
+    if ct.shape[1]==2:
+        chi2,p,_,_ = chi2_contingency(ct)
+    else:
+        p = 1.0
+    mechanism = 'Likely MAR (payer)' if p<0.05 else 'Possibly MCAR'
+    print(f"{col:20s}: {pct:5.1f}% missing | χ²-payer p={p:.3f} → {mechanism}")
+
+from sklearn.impute import IterativeImputer
+from sklearn.experimental import enable_iterative_imputer  # noqa
+num_cols=['age','los_days','glucose','creatinine','hba1c','total_charge','n_comorbidities']
+mice = IterativeImputer(random_state=SEED,max_iter=10)
+df_imp = df.copy()
+df_imp[num_cols] = mice.fit_transform(df[num_cols])
+remaining_miss = df_imp[num_cols].isnull().sum().sum()
+print(f"\nAfter MICE imputation — remaining missing: {remaining_miss}")
+
+------------------
+
+----- stdout -----
+MISSINGNESS AUDIT
+==================================================
+glucose             :   8.4% missing | χ²-payer p=0.354 → Possibly MCAR
+creatinine          :  11.3% missing | χ²-payer p=0.000 → Likely MAR (payer)
+hba1c               :   0.0% missing | χ²-payer p=1.000 → Possibly MCAR
+total_charge        :   6.9% missing | χ²-payer p=0.993 → Possibly MCAR
+------------------
+
+[31m---------------------------------------------------------------------------[39m
+[31mImportError[39m                               Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[6][39m[32m, line 15[39m
+[32m     12[39m     mechanism = [33m'[39m[33mLikely MAR (payer)[39m[33m'[39m [38;5;28;01mif[39;00m p<[32m0.05[39m [38;5;28;01melse[39;00m [33m'[39m[33mPossibly MCAR[39m[33m'[39m
+[32m     13[39m     [38;5;28mprint[39m([33mf[39m[33m"[39m[38;5;132;01m{[39;00mcol[38;5;132;01m:[39;00m[33m20s[39m[38;5;132;01m}[39;00m[33m: [39m[38;5;132;01m{[39;00mpct[38;5;132;01m:[39;00m[33m5.1f[39m[38;5;132;01m}[39;00m[33m% missing | χ²-payer p=[39m[38;5;132;01m{[39;00mp[38;5;132;01m:[39;00m[33m.3f[39m[38;5;132;01m}[39;00m[33m → [39m[38;5;132;01m{[39;00mmechanism[38;5;132;01m}[39;00m[33m"[39m)
+[32m---> [39m[32m15[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01msklearn[39;00m[34;01m.[39;00m[34;01mimpute[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m IterativeImputer
+[32m     16[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01msklearn[39;00m[34;01m.[39;00m[34;01mexperimental[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m enable_iterative_imputer  [38;5;66;03m# noqa[39;00m
+[32m     17[39m num_cols=[[33m'[39m[33mage[39m[33m'[39m,[33m'[39m[33mlos_days[39m[33m'[39m,[33m'[39m[33mglucose[39m[33m'[39m,[33m'[39m[33mcreatinine[39m[33m'[39m,[33m'[39m[33mhba1c[39m[33m'[39m,[33m'[39m[33mtotal_charge[39m[33m'[39m,[33m'[39m[33mn_comorbidities[39m[33m'[39m]
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/sklearn/impute/__init__.py:22[39m, in [36m__getattr__[39m[34m(name)[39m
+[32m     20[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34m__getattr__[39m(name):
+[32m     21[39m     [38;5;28;01mif[39;00m name == [33m"[39m[33mIterativeImputer[39m[33m"[39m:
+[32m---> [39m[32m22[39m         [38;5;28;01mraise[39;00m [38;5;167;01mImportError[39;00m(
+[32m     23[39m             [33mf[39m[33m"[39m[38;5;132;01m{[39;00mname[38;5;132;01m}[39;00m[33m is experimental and the API might change without any [39m[33m"[39m
+[32m     24[39m             [33m"[39m[33mdeprecation cycle. To use it, you need to explicitly import [39m[33m"[39m
+[32m     25[39m             [33m"[39m[33menable_iterative_imputer:[39m[38;5;130;01m\n[39;00m[33m"[39m
+[32m     26[39m             [33m"[39m[33mfrom sklearn.experimental import enable_iterative_imputer[39m[33m"[39m
+[32m     27[39m         )
+[32m     28[39m     [38;5;28;01mraise[39;00m [38;5;167;01mAttributeError[39;00m([33mf[39m[33m"[39m[33mmodule [39m[38;5;132;01m{[39;00m[34m__name__[39m[38;5;132;01m}[39;00m[33m has no attribute [39m[38;5;132;01m{[39;00mname[38;5;132;01m}[39;00m[33m"[39m)
+
+[31mImportError[39m: IterativeImputer is experimental and the API might change without any deprecation cycle. To use it, you need to explicitly import enable_iterative_imputer:
+from sklearn.experimental import enable_iterative_imputer
+
+FAIL: MOD02_NB08_Capstone_Readmission_EDA.ipynb
+==> 2026-06-24T11:05:58-04:00 Processing MOD03_NB01_Hypothesis_Testing.ipynb
+[NbConvertApp] Converting notebook MOD03_NB01_Hypothesis_Testing.ipynb to html
+Traceback (most recent call last):
+  File "/home/zia207/.local/bin/jupyter-nbconvert", line 6, in <module>
+    sys.exit(main())
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/application.py", line 284, in launch_instance
+    super().launch_instance(argv=argv, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/traitlets/config/application.py", line 1075, in launch_instance
+    app.start()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 420, in start
+    self.convert_notebooks()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 597, in convert_notebooks
+    self.convert_single_notebook(notebook_filename)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 563, in convert_single_notebook
+    output, resources = self.export_single_notebook(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 487, in export_single_notebook
+    output, resources = self.exporter.from_filename(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 390, in from_filename
+    return super().from_filename(filename, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 201, in from_filename
+    return self.from_file(f, resources=resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 396, in from_file
+    return super().from_file(file_stream, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 220, in from_file
+    return self.from_notebook_node(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/html.py", line 286, in from_notebook_node
+    html, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 412, in from_notebook_node
+    nb_copy, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 154, in from_notebook_node
+    nb_copy, resources = self._preprocess(nb_copy, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 353, in _preprocess
+    nbc, resc = preprocessor(nbc, resc)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/base.py", line 48, in __call__
+    return self.preprocess(nb, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 103, in preprocess
+    self.preprocess_cell(cell, resources, index)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 124, in preprocess_cell
+    cell = self.execute_cell(cell, index, store_history=True)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+def normality_report(series, name):
+    s = series.dropna()
+    skewness = stats.skew(s)
+    if len(s) < 50:
+        stat, p = shapiro(s)
+        test_name = "Shapiro-Wilk"
+    else:
+        stat, p = normaltest(s)   # D'Agostino-Pearson
+        test_name = "D'Agostino" normal = p > 0.05 print(f"  {name:20s}: skew={skewness:+.2f} | {test_name} p={p:.4f} " f"→ {'NORMAL' if normal else 'NON-NORMAL'}") return normal  print("Normality assessment:") norm_results = {} for col, label in [('age','Age'),('los_days','LOS'),('total_charge','Charge'), ('glucose','Glucose'),('creatinine','Creatinine'),('sbp','SBP')]: norm_results[col] = normality_report(df[col], label)  print() print("Decision summary:") for col, is_normal in norm_results.items(): rec = "→ Use t-test / ANOVA" if is_normal else "→ Use Mann-Whitney / Kruskal-Wallis" print(f"  {col:15s}: {rec}")
+
+------------------
+
+
+  [36mCell[39m[36m [39m[32mIn[2][39m[32m, line 9[39m
+[31m    [39m[31mtest_name = "D'Agostino" normal = p > 0.05 print(f"  {name:20s}: skew={skewness:+.2f} | {test_name} p={p:.4f} " f"→ {'NORMAL' if normal else 'NON-NORMAL'}") return normal  print("Normality assessment:") norm_results = {} for col, label in [('age','Age'),('los_days','LOS'),('total_charge','Charge'), ('glucose','Glucose'),('creatinine','Creatinine'),('sbp','SBP')]: norm_results[col] = normality_report(df[col], label)  print() print("Decision summary:") for col, is_normal in norm_results.items(): rec = "→ Use t-test / ANOVA" if is_normal else "→ Use Mann-Whitney / Kruskal-Wallis" print(f"  {col:15s}: {rec}")[39m
+                             ^
+[31mSyntaxError[39m[31m:[39m invalid syntax
+
+
+FAIL: MOD03_NB01_Hypothesis_Testing.ipynb
+==> 2026-06-24T11:06:03-04:00 Processing MOD03_NB02_RR_OR_CI.ipynb
+[NbConvertApp] Converting notebook MOD03_NB02_RR_OR_CI.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 2 image(s).
+[NbConvertApp] Writing 525415 bytes to docs/MOD03_NB02_RR_OR_CI.html
+OK: MOD03_NB02_RR_OR_CI.ipynb
+==> 2026-06-24T11:06:11-04:00 Processing MOD03_NB03_Survival_Analysis.ipynb
+[NbConvertApp] Converting notebook MOD03_NB03_Survival_Analysis.ipynb to html
+Traceback (most recent call last):
+  File "/home/zia207/.local/bin/jupyter-nbconvert", line 6, in <module>
+    sys.exit(main())
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/application.py", line 284, in launch_instance
+    super().launch_instance(argv=argv, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/traitlets/config/application.py", line 1075, in launch_instance
+    app.start()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 420, in start
+    self.convert_notebooks()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 597, in convert_notebooks
+    self.convert_single_notebook(notebook_filename)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 563, in convert_single_notebook
+    output, resources = self.export_single_notebook(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 487, in export_single_notebook
+    output, resources = self.exporter.from_filename(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 390, in from_filename
+    return super().from_filename(filename, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 201, in from_filename
+    return self.from_file(f, resources=resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 396, in from_file
+    return super().from_file(file_stream, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 220, in from_file
+    return self.from_notebook_node(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/html.py", line 286, in from_notebook_node
+    html, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 412, in from_notebook_node
+    nb_copy, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 154, in from_notebook_node
+    nb_copy, resources = self._preprocess(nb_copy, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 353, in _preprocess
+    nbc, resc = preprocessor(nbc, resc)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/base.py", line 48, in __call__
+    return self.preprocess(nb, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 103, in preprocess
+    self.preprocess_cell(cell, resources, index)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 124, in preprocess_cell
+    cell = self.execute_cell(cell, index, store_history=True)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+fig,axes = plt.subplots(1,2,figsize=(14,5))
+colors_hf = {'0 - No HF':'#4878CF','1 - Heart failure':'#D65F5F'}
+colors_dm = {'0 - No DM':'#6ACC65','1 - Diabetes':'#B47CC7'}
+
+for (ax, col, labels_map, title, test_label) in [
+    (axes[0], 'heart_failure', {0:'0 - No HF',1:'1 - Heart failure'}, 
+     'Time to readmission by Heart Failure status','Heart failure'),
+    (axes[1], 'diabetes',      {0:'0 - No DM',1:'1 - Diabetes'},
+     'Time to readmission by Diabetes status','Diabetes'),
+]:
+    colors_used = list(colors_hf.values()) if 'HF' in title else list(colors_dm.values())
+    kmfs = {}
+    for val, label in labels_map.items():
+        mask = df[col]==val
+        kmf_ = KaplanMeierFitter()
+        kmf_.fit(df.loc[mask,'duration_days'],
+                 event_observed=df.loc[mask,'event_observed'],
+                 label=label)
+        kmf_.plot_survival_function(ax=ax, ci_show=True, ci_alpha=0.12,
+                                     color=colors_used[val], linewidth=2)
+        kmfs[val] = kmf_
+
+    # Log-rank test
+    g0 = df[df[col]==0]; g1 = df[df[col]==1]
+    lr = logrank_test(g0['duration_days'], g1['duration_days'],
+                      event_observed_A=g0['event_observed'],
+                      event_observed_B=g1['event_observed'])
+    ax.text(0.05,0.15,f'Log-rank p = {lr.p_value:.4f}',
+            transform=ax.transAxes,fontsize=10,
+            bbox=dict(facecolor='white',alpha=0.8,edgecolor='gray',pad=3))
+    ax.set_xlabel('Days post-discharge'); ax.set_ylabel('Readmission-free S(t)')
+    ax.set_title(title); ax.legend(fontsize=9); ax.set_ylim(0,1.05)
+
+plt.tight_layout()
+plt.savefig('/tmp/mod03/km_stratified.png',bbox_inches='tight'); plt.show()
+
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mNameError[39m                                 Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[4][39m[32m, line 25[39m
+[32m     23[39m [38;5;66;03m# Log-rank test[39;00m
+[32m     24[39m g0 = df[df[col]==[32m0[39m]; g1 = df[df[col]==[32m1[39m]
+[32m---> [39m[32m25[39m lr = [43mlogrank_test[49m(g0[[33m'[39m[33mduration_days[39m[33m'[39m], g1[[33m'[39m[33mduration_days[39m[33m'[39m],
+[32m     26[39m                   event_observed_A=g0[[33m'[39m[33mevent_observed[39m[33m'[39m],
+[32m     27[39m                   event_observed_B=g1[[33m'[39m[33mevent_observed[39m[33m'[39m])
+[32m     28[39m ax.text([32m0.05[39m,[32m0.15[39m,[33mf[39m[33m'[39m[33mLog-rank p = [39m[38;5;132;01m{[39;00mlr.p_value[38;5;132;01m:[39;00m[33m.4f[39m[38;5;132;01m}[39;00m[33m'[39m,
+[32m     29[39m         transform=ax.transAxes,fontsize=[32m10[39m,
+[32m     30[39m         bbox=[38;5;28mdict[39m(facecolor=[33m'[39m[33mwhite[39m[33m'[39m,alpha=[32m0.8[39m,edgecolor=[33m'[39m[33mgray[39m[33m'[39m,pad=[32m3[39m))
+[32m     31[39m ax.set_xlabel([33m'[39m[33mDays post-discharge[39m[33m'[39m); ax.set_ylabel([33m'[39m[33mReadmission-free S(t)[39m[33m'[39m)
+
+[31mNameError[39m: name 'logrank_test' is not defined
+
+FAIL: MOD03_NB03_Survival_Analysis.ipynb
+==> 2026-06-24T11:06:19-04:00 Processing MOD03_NB04_Linear_Regression.ipynb
+[NbConvertApp] Converting notebook MOD03_NB04_Linear_Regression.ipynb to html
+Traceback (most recent call last):
+  File "/home/zia207/.local/bin/jupyter-nbconvert", line 6, in <module>
+    sys.exit(main())
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/application.py", line 284, in launch_instance
+    super().launch_instance(argv=argv, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/traitlets/config/application.py", line 1075, in launch_instance
+    app.start()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 420, in start
+    self.convert_notebooks()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 597, in convert_notebooks
+    self.convert_single_notebook(notebook_filename)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 563, in convert_single_notebook
+    output, resources = self.export_single_notebook(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 487, in export_single_notebook
+    output, resources = self.exporter.from_filename(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 390, in from_filename
+    return super().from_filename(filename, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 201, in from_filename
+    return self.from_file(f, resources=resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 396, in from_file
+    return super().from_file(file_stream, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 220, in from_file
+    return self.from_notebook_node(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/html.py", line 286, in from_notebook_node
+    html, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 412, in from_notebook_node
+    nb_copy, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 154, in from_notebook_node
+    nb_copy, resources = self._preprocess(nb_copy, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 353, in _preprocess
+    nbc, resc = preprocessor(nbc, resc)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/base.py", line 48, in __call__
+    return self.preprocess(nb, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 103, in preprocess
+    self.preprocess_cell(cell, resources, index)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 124, in preprocess_cell
+    cell = self.execute_cell(cell, index, store_history=True)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+fig, axes = plt.subplots(2,2,figsize=(13,10))
+fig.suptitle('Regression diagnostics — LOS multivariable model', fontsize=13)
+
+residuals = model_multi.resid
+fitted    = model_multi.fittedvalues
+influence = model_multi.get_influence()
+cooks_d   = influence.cooks_distance[0]
+std_resid = influence.resid_studentized_internal
+
+# ── A: Residuals vs Fitted ────────────────────────────────────────────────────
+ax = axes[0,0]
+ax.scatter(fitted,residuals,alpha=0.2,s=12,color='#4878CF')
+ax.axhline(0,color='red',ls='--',lw=1.2)
+lowess_sm = sm.nonparametric.lowess(residuals,fitted,frac=0.3)
+ax.plot(lowess_sm[:,0],lowess_sm[:,1],color='orange',lw=2,label='LOWESS trend')
+ax.set_xlabel('Fitted values'); ax.set_ylabel('Residuals')
+ax.set_title('A  Residuals vs Fitted (should be random scatter around 0)'); ax.legend(fontsize=8)
+
+# ── B: QQ plot ────────────────────────────────────────────────────────────────
+ax = axes[0,1]
+(osm, osr), (slope,intercept,r) = stats.probplot(residuals, dist='norm')
+ax.plot(osm,osr,'o',ms=3,alpha=0.4,color='#4878CF')
+ax.plot(osm,slope*np.array(osm)+intercept,color='red',lw=1.5)
+ax.set_xlabel('Theoretical quantiles'); ax.set_ylabel('Sample quantiles')
+ax.set_title(f'B  QQ Plot of Residuals (R²={r**2:.3f}, should be ≈1)')
+
+# ── C: Scale-Location (√|residuals| vs fitted) ────────────────────────────────
+ax = axes[1,0]
+sqrt_std_resid = np.sqrt(np.abs(std_resid))
+ax.scatter(fitted,sqrt_std_resid,alpha=0.2,s=12,color='#6ACC65')
+lowess_sl = sm.nonparametric.lowess(sqrt_std_resid,fitted,frac=0.3)
+ax.plot(lowess_sl[:,0],lowess_sl[:,1],color='orange',lw=2)
+ax.set_xlabel('Fitted values'); ax.set_ylabel('√|Standardised residuals|')
+ax.set_title('C  Scale-Location (homoscedasticity) (should be a flat line)')
+
+# ── D: Cook's Distance ────────────────────────────────────────────────────────
+ax = axes[1,1]
+ax.stem(range(len(cooks_d)),cooks_d,markerfmt=',',linefmt='#B0C4DE',basefmt='k-')
+threshold = 4/len(df)
+ax.axhline(threshold,color='red',ls='--',lw=1.2,label=f'Threshold (4/N = {threshold:.4f})')
+n_inf = (cooks_d > threshold).sum()
+ax.set_xlabel('Observation index'); ax.set_ylabel("Cook's distance") ax.set_title(f'D  Cook's Distance — Influential Points ({n_inf} observations above threshold)')
+ax.legend(fontsize=8)
+
+plt.tight_layout()
+plt.savefig('/tmp/mod03/regression_diagnostics.png',bbox_inches='tight'); plt.show()
+
+------------------
+
+
+  [36mCell[39m[36m [39m[32mIn[6][39m[32m, line 42[39m
+[31m    [39m[31max.set_xlabel('Observation index'); ax.set_ylabel("Cook's distance") ax.set_title(f'D  Cook's Distance — Influential Points ({n_inf} observations above threshold)')[39m
+                                                                                                           ^
+[31mSyntaxError[39m[31m:[39m invalid character '—' (U+2014)
+
+
+FAIL: MOD03_NB04_Linear_Regression.ipynb
+==> 2026-06-24T11:06:26-04:00 Processing MOD03_NB05_Logistic_Regression.ipynb
+[NbConvertApp] Converting notebook MOD03_NB05_Logistic_Regression.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 1 image(s).
+[NbConvertApp] Writing 524987 bytes to docs/MOD03_NB05_Logistic_Regression.html
+OK: MOD03_NB05_Logistic_Regression.ipynb
+==> 2026-06-24T11:06:33-04:00 Processing MOD03_NB06_Count_Regression.ipynb
+[NbConvertApp] Converting notebook MOD03_NB06_Count_Regression.ipynb to html
+Traceback (most recent call last):
+  File "/home/zia207/.local/bin/jupyter-nbconvert", line 6, in <module>
+    sys.exit(main())
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/application.py", line 284, in launch_instance
+    super().launch_instance(argv=argv, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/traitlets/config/application.py", line 1075, in launch_instance
+    app.start()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 420, in start
+    self.convert_notebooks()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 597, in convert_notebooks
+    self.convert_single_notebook(notebook_filename)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 563, in convert_single_notebook
+    output, resources = self.export_single_notebook(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 487, in export_single_notebook
+    output, resources = self.exporter.from_filename(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 390, in from_filename
+    return super().from_filename(filename, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 201, in from_filename
+    return self.from_file(f, resources=resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 396, in from_file
+    return super().from_file(file_stream, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 220, in from_file
+    return self.from_notebook_node(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/html.py", line 286, in from_notebook_node
+    html, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 412, in from_notebook_node
+    nb_copy, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 154, in from_notebook_node
+    nb_copy, resources = self._preprocess(nb_copy, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 353, in _preprocess
+    nbc, resc = preprocessor(nbc, resc)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/base.py", line 48, in __call__
+    return self.preprocess(nb, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 103, in preprocess
+    self.preprocess_cell(cell, resources, index)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 124, in preprocess_cell
+    cell = self.execute_cell(cell, index, store_history=True)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# Offset = log(follow_up_yrs) → models RATE (visits per person-year)
+model_pois = smf.poisson(
+    'ed_visits ~ age_std + C(sex) + diabetes + heart_failure + copd + mental_health '
+    '+ C(payer, Treatment("Private")) + offset(log_follow_up)',
+    data=df
+).fit(disp=0)
+
+print(model_pois.summary())
+
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mNameError[39m                                 Traceback (most recent call last)
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/compat.py:40[39m, in [36mcall_and_wrap_exc[39m[34m(msg, origin, f, *args, **kwargs)[39m
+[32m     39[39m [38;5;28;01mtry[39;00m:
+[32m---> [39m[32m40[39m     [38;5;28;01mreturn[39;00m [43mf[49m[43m([49m[43m*[49m[43margs[49m[43m,[49m[43m [49m[43m*[49m[43m*[49m[43mkwargs[49m[43m)[49m
+[32m     41[39m [38;5;28;01mexcept[39;00m [38;5;167;01mException[39;00m [38;5;28;01mas[39;00m e:
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/eval.py:179[39m, in [36mEvalEnvironment.eval[39m[34m(self, expr, source_name, inner_namespace)[39m
+[32m    178[39m code = [38;5;28mcompile[39m(expr, source_name, [33m"[39m[33meval[39m[33m"[39m, [38;5;28mself[39m.flags, [38;5;28;01mFalse[39;00m)
+[32m--> [39m[32m179[39m [38;5;28;01mreturn[39;00m [38;5;28;43meval[39;49m[43m([49m[43mcode[49m[43m,[49m[43m [49m[43m{[49m[43m}[49m[43m,[49m[43m [49m[43mVarLookupDict[49m[43m([49m[43m[[49m[43minner_namespace[49m[43m][49m[43m [49m[43m+[49m[43m [49m[38;5;28;43mself[39;49m[43m.[49m[43m_namespaces[49m[43m)[49m[43m)[49m
+
+[36mFile [39m[32m<string>:1[39m
+
+[31mNameError[39m: name 'offset' is not defined
+
+The above exception was the direct cause of the following exception:
+
+[31mPatsyError[39m                                Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[3][39m[32m, line 2[39m
+[32m      1[39m [38;5;66;03m# Offset = log(follow_up_yrs) → models RATE (visits per person-year)[39;00m
+[32m----> [39m[32m2[39m model_pois = [43msmf[49m[43m.[49m[43mpoisson[49m[43m([49m
+[32m      3[39m [43m    [49m[33;43m'[39;49m[33;43med_visits ~ age_std + C(sex) + diabetes + heart_failure + copd + mental_health [39;49m[33;43m'[39;49m
+[32m      4[39m [43m    [49m[33;43m'[39;49m[33;43m+ C(payer, Treatment([39;49m[33;43m"[39;49m[33;43mPrivate[39;49m[33;43m"[39;49m[33;43m)) + offset(log_follow_up)[39;49m[33;43m'[39;49m[43m,[49m
+[32m      5[39m [43m    [49m[43mdata[49m[43m=[49m[43mdf[49m
+[32m      6[39m [43m)[49m.fit(disp=[32m0[39m)
+[32m      8[39m [38;5;28mprint[39m(model_pois.summary())
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/statsmodels/base/model.py:203[39m, in [36mModel.from_formula[39m[34m(cls, formula, data, subset, drop_cols, *args, **kwargs)[39m
+[32m    200[39m [38;5;28;01mif[39;00m missing == [33m'[39m[33mnone[39m[33m'[39m:  [38;5;66;03m# with patsy it's drop or raise. let's raise.[39;00m
+[32m    201[39m     missing = [33m'[39m[33mraise[39m[33m'[39m
+[32m--> [39m[32m203[39m tmp = [43mhandle_formula_data[49m[43m([49m[43mdata[49m[43m,[49m[43m [49m[38;5;28;43;01mNone[39;49;00m[43m,[49m[43m [49m[43mformula[49m[43m,[49m[43m [49m[43mdepth[49m[43m=[49m[43meval_env[49m[43m,[49m
+[32m    204[39m [43m                          [49m[43mmissing[49m[43m=[49m[43mmissing[49m[43m)[49m
+[32m    205[39m ((endog, exog), missing_idx, design_info) = tmp
+[32m    206[39m max_endog = [38;5;28mcls[39m._formula_max_endog
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/statsmodels/formula/formulatools.py:68[39m, in [36mhandle_formula_data[39m[34m(Y, X, formula, depth, missing)[39m
+[32m     66[39m [38;5;28;01melse[39;00m:
+[32m     67[39m     [38;5;28;01mif[39;00m data_util._is_using_pandas(Y, [38;5;28;01mNone[39;00m):
+[32m---> [39m[32m68[39m         result = [43mdmatrices[49m[43m([49m
+[32m     69[39m [43m            [49m[43mformula[49m[43m,[49m[43m [49m[43mY[49m[43m,[49m[43m [49m[43mdepth[49m[43m,[49m[43m [49m[43mreturn_type[49m[43m=[49m[33;43m"[39;49m[33;43mdataframe[39;49m[33;43m"[39;49m[43m,[49m[43m [49m[43mNA_action[49m[43m=[49m[43mna_action[49m
+[32m     70[39m [43m        [49m[43m)[49m
+[32m     71[39m     [38;5;28;01melse[39;00m:
+[32m     72[39m         result = dmatrices(
+[32m     73[39m             formula, Y, depth, return_type=[33m"[39m[33mdataframe[39m[33m"[39m, NA_action=na_action
+[32m     74[39m         )
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/highlevel.py:317[39m, in [36mdmatrices[39m[34m(formula_like, data, eval_env, NA_action, return_type)[39m
+[32m    307[39m [38;5;250m[39m[33;03m"""Construct two design matrices given a formula_like and data.[39;00m
+[32m    308[39m 
+[32m    309[39m [33;03mThis function is identical to :func:`dmatrix`, except that it requires[39;00m
+[32m   (...)[39m[32m    314[39m [33;03mSee :func:`dmatrix` for details.[39;00m
+[32m    315[39m [33;03m"""[39;00m
+[32m    316[39m eval_env = EvalEnvironment.capture(eval_env, reference=[32m1[39m)
+[32m--> [39m[32m317[39m (lhs, rhs) = [43m_do_highlevel_design[49m[43m([49m
+[32m    318[39m [43m    [49m[43mformula_like[49m[43m,[49m[43m [49m[43mdata[49m[43m,[49m[43m [49m[43meval_env[49m[43m,[49m[43m [49m[43mNA_action[49m[43m,[49m[43m [49m[43mreturn_type[49m
+[32m    319[39m [43m[49m[43m)[49m
+[32m    320[39m [38;5;28;01mif[39;00m lhs.shape[[32m1[39m] == [32m0[39m:
+[32m    321[39m     [38;5;28;01mraise[39;00m PatsyError([33m"[39m[33mmodel is missing required outcome variables[39m[33m"[39m)
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/highlevel.py:162[39m, in [36m_do_highlevel_design[39m[34m(formula_like, data, eval_env, NA_action, return_type)[39m
+[32m    159[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34mdata_iter_maker[39m():
+[32m    160[39m     [38;5;28;01mreturn[39;00m [38;5;28miter[39m([data])
+[32m--> [39m[32m162[39m design_infos = [43m_try_incr_builders[49m[43m([49m
+[32m    163[39m [43m    [49m[43mformula_like[49m[43m,[49m[43m [49m[43mdata_iter_maker[49m[43m,[49m[43m [49m[43meval_env[49m[43m,[49m[43m [49m[43mNA_action[49m
+[32m    164[39m [43m[49m[43m)[49m
+[32m    165[39m [38;5;28;01mif[39;00m design_infos [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
+[32m    166[39m     [38;5;28;01mreturn[39;00m build_design_matrices(
+[32m    167[39m         design_infos, data, NA_action=NA_action, return_type=return_type
+[32m    168[39m     )
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/highlevel.py:56[39m, in [36m_try_incr_builders[39m[34m(formula_like, data_iter_maker, eval_env, NA_action)[39m
+[32m     54[39m [38;5;28;01mif[39;00m [38;5;28misinstance[39m(formula_like, ModelDesc):
+[32m     55[39m     [38;5;28;01massert[39;00m [38;5;28misinstance[39m(eval_env, EvalEnvironment)
+[32m---> [39m[32m56[39m     [38;5;28;01mreturn[39;00m [43mdesign_matrix_builders[49m[43m([49m
+[32m     57[39m [43m        [49m[43m[[49m[43mformula_like[49m[43m.[49m[43mlhs_termlist[49m[43m,[49m[43m [49m[43mformula_like[49m[43m.[49m[43mrhs_termlist[49m[43m][49m[43m,[49m
+[32m     58[39m [43m        [49m[43mdata_iter_maker[49m[43m,[49m
+[32m     59[39m [43m        [49m[43meval_env[49m[43m,[49m
+[32m     60[39m [43m        [49m[43mNA_action[49m[43m,[49m
+[32m     61[39m [43m    [49m[43m)[49m
+[32m     62[39m [38;5;28;01melse[39;00m:
+[32m     63[39m     [38;5;28;01mreturn[39;00m [38;5;28;01mNone[39;00m
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/build.py:746[39m, in [36mdesign_matrix_builders[39m[34m(termlists, data_iter_maker, eval_env, NA_action)[39m
+[32m    743[39m factor_states = _factors_memorize(all_factors, data_iter_maker, eval_env)
+[32m    744[39m [38;5;66;03m# Now all the factors have working eval methods, so we can evaluate them[39;00m
+[32m    745[39m [38;5;66;03m# on some data to find out what type of data they return.[39;00m
+[32m--> [39m[32m746[39m (num_column_counts, cat_levels_contrasts) = [43m_examine_factor_types[49m[43m([49m
+[32m    747[39m [43m    [49m[43mall_factors[49m[43m,[49m[43m [49m[43mfactor_states[49m[43m,[49m[43m [49m[43mdata_iter_maker[49m[43m,[49m[43m [49m[43mNA_action[49m
+[32m    748[39m [43m[49m[43m)[49m
+[32m    749[39m [38;5;66;03m# Now we need the factor infos, which encapsulate the knowledge of[39;00m
+[32m    750[39m [38;5;66;03m# how to turn any given factor into a chunk of data:[39;00m
+[32m    751[39m factor_infos = {}
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/build.py:491[39m, in [36m_examine_factor_types[39m[34m(factors, factor_states, data_iter_maker, NA_action)[39m
+[32m    489[39m [38;5;28;01mfor[39;00m data [38;5;129;01min[39;00m data_iter_maker():
+[32m    490[39m     [38;5;28;01mfor[39;00m factor [38;5;129;01min[39;00m [38;5;28mlist[39m(examine_needed):
+[32m--> [39m[32m491[39m         value = [43mfactor[49m[43m.[49m[43meval[49m[43m([49m[43mfactor_states[49m[43m[[49m[43mfactor[49m[43m][49m[43m,[49m[43m [49m[43mdata[49m[43m)[49m
+[32m    492[39m         [38;5;28;01mif[39;00m factor [38;5;129;01min[39;00m cat_sniffers [38;5;129;01mor[39;00m guess_categorical(value):
+[32m    493[39m             [38;5;28;01mif[39;00m factor [38;5;129;01mnot[39;00m [38;5;129;01min[39;00m cat_sniffers:
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/eval.py:599[39m, in [36mEvalFactor.eval[39m[34m(self, memorize_state, data)[39m
+[32m    598[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34meval[39m([38;5;28mself[39m, memorize_state, data):
+[32m--> [39m[32m599[39m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[43m.[49m[43m_eval[49m[43m([49m[43mmemorize_state[49m[43m[[49m[33;43m"[39;49m[33;43meval_code[39;49m[33;43m"[39;49m[43m][49m[43m,[49m[43m [49m[43mmemorize_state[49m[43m,[49m[43m [49m[43mdata[49m[43m)[49m
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/eval.py:582[39m, in [36mEvalFactor._eval[39m[34m(self, code, memorize_state, data)[39m
+[32m    580[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34m_eval[39m([38;5;28mself[39m, code, memorize_state, data):
+[32m    581[39m     inner_namespace = VarLookupDict([data, memorize_state[[33m"[39m[33mtransforms[39m[33m"[39m]])
+[32m--> [39m[32m582[39m     [38;5;28;01mreturn[39;00m [43mcall_and_wrap_exc[49m[43m([49m
+[32m    583[39m [43m        [49m[33;43m"[39;49m[33;43mError evaluating factor[39;49m[33;43m"[39;49m[43m,[49m
+[32m    584[39m [43m        [49m[38;5;28;43mself[39;49m[43m,[49m
+[32m    585[39m [43m        [49m[43mmemorize_state[49m[43m[[49m[33;43m"[39;49m[33;43meval_env[39;49m[33;43m"[39;49m[43m][49m[43m.[49m[43meval[49m[43m,[49m
+[32m    586[39m [43m        [49m[43mcode[49m[43m,[49m
+[32m    587[39m [43m        [49m[43minner_namespace[49m[43m=[49m[43minner_namespace[49m[43m,[49m
+[32m    588[39m [43m    [49m[43m)[49m
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/compat.py:43[39m, in [36mcall_and_wrap_exc[39m[34m(msg, origin, f, *args, **kwargs)[39m
+[32m     41[39m [38;5;28;01mexcept[39;00m [38;5;167;01mException[39;00m [38;5;28;01mas[39;00m e:
+[32m     42[39m     new_exc = PatsyError([33m"[39m[38;5;132;01m%s[39;00m[33m: [39m[38;5;132;01m%s[39;00m[33m: [39m[38;5;132;01m%s[39;00m[33m"[39m % (msg, e.[34m__class__[39m.[34m__name__[39m, e), origin)
+[32m---> [39m[32m43[39m     [38;5;28;01mraise[39;00m new_exc [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01me[39;00m
+
+[31mPatsyError[39m: Error evaluating factor: NameError: name 'offset' is not defined
+    ed_visits ~ age_std + C(sex) + diabetes + heart_failure + copd + mental_health + C(payer, Treatment("Private")) + offset(log_follow_up)
+                                                                                                                      ^^^^^^^^^^^^^^^^^^^^^
+
+FAIL: MOD03_NB06_Count_Regression.ipynb
+==> 2026-06-24T11:06:41-04:00 Processing MOD03_NB07_Confounding_EffectModification.ipynb
+[NbConvertApp] Converting notebook MOD03_NB07_Confounding_EffectModification.ipynb to html
+Traceback (most recent call last):
+  File "/home/zia207/.local/bin/jupyter-nbconvert", line 6, in <module>
+    sys.exit(main())
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/application.py", line 284, in launch_instance
+    super().launch_instance(argv=argv, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/traitlets/config/application.py", line 1075, in launch_instance
+    app.start()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 420, in start
+    self.convert_notebooks()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 597, in convert_notebooks
+    self.convert_single_notebook(notebook_filename)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 563, in convert_single_notebook
+    output, resources = self.export_single_notebook(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 487, in export_single_notebook
+    output, resources = self.exporter.from_filename(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 390, in from_filename
+    return super().from_filename(filename, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 201, in from_filename
+    return self.from_file(f, resources=resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 396, in from_file
+    return super().from_file(file_stream, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 220, in from_file
+    return self.from_notebook_node(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/html.py", line 286, in from_notebook_node
+    html, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 412, in from_notebook_node
+    nb_copy, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 154, in from_notebook_node
+    nb_copy, resources = self._preprocess(nb_copy, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 353, in _preprocess
+    nbc, resc = preprocessor(nbc, resc)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/base.py", line 48, in __call__
+    return self.preprocess(nb, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 103, in preprocess
+    self.preprocess_cell(cell, resources, index)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 124, in preprocess_cell
+    cell = self.execute_cell(cell, index, store_history=True)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# ── Demonstrate confounding: crude vs adjusted estimate ──────────────────────
+from scipy.stats import chi2_contingency
+
+def crude_or(exposed, outcome):
+    a = ((exposed==1)&(outcome==1)).sum()
+    b = ((exposed==1)&(outcome==0)).sum()
+    c = ((exposed==0)&(outcome==1)).sum()
+    d = ((exposed==0)&(outcome==0)).sum()
+    OR = (a*d)/(b*c) if b*c>0 else np.nan
+    se = np.sqrt(1/a+1/b+1/c+1/d)
+    return OR, np.exp(np.log(OR)-1.96*se), np.exp(np.log(OR)+1.96*se)
+
+# Crude
+cr_or, cr_lo, cr_hi = crude_or(df.diabetes, df.readmitted)
+
+# Adjusted (logistic regression)
+model_adj = smf.logit(
+    'readmitted ~ diabetes + age_std + C(sex) + C(payer,"Private") + hf + los_days',
+    data=df
+).fit(disp=0)
+adj_or_val = np.exp(model_adj.params['diabetes'])
+adj_ci = np.exp(model_adj.conf_int().loc['diabetes'])
+
+print("Diabetes → 30-day readmission")
+print(f"  Crude OR (unadjusted): {cr_or:.3f}  (95% CI: {cr_lo:.3f}–{cr_hi:.3f})")
+print(f"  Adjusted OR           : {adj_or_val:.3f}  (95% CI: {adj_ci[0]:.3f}–{adj_ci[1]:.3f})")
+print()
+pct_change = (adj_or_val - cr_or)/cr_or * 100
+print(f"  % change after adjustment: {pct_change:+.1f}%")
+print()
+if abs(pct_change) > 10:
+    print("  ✗ Meaningful confounding detected (>10% change rule)")
+else:
+    print("  ✓ Little confounding (< 10% change)")
+
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mAttributeError[39m                            Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[2][39m[32m, line 17[39m
+[32m     14[39m cr_or, cr_lo, cr_hi = crude_or(df.diabetes, df.readmitted)
+[32m     16[39m [38;5;66;03m# Adjusted (logistic regression)[39;00m
+[32m---> [39m[32m17[39m model_adj = [43msmf[49m[43m.[49m[43mlogit[49m[43m([49m
+[32m     18[39m [43m    [49m[33;43m'[39;49m[33;43mreadmitted ~ diabetes + age_std + C(sex) + C(payer,[39;49m[33;43m"[39;49m[33;43mPrivate[39;49m[33;43m"[39;49m[33;43m) + hf + los_days[39;49m[33;43m'[39;49m[43m,[49m
+[32m     19[39m [43m    [49m[43mdata[49m[43m=[49m[43mdf[49m
+[32m     20[39m [43m)[49m.fit(disp=[32m0[39m)
+[32m     21[39m adj_or_val = np.exp(model_adj.params[[33m'[39m[33mdiabetes[39m[33m'[39m])
+[32m     22[39m adj_ci = np.exp(model_adj.conf_int().loc[[33m'[39m[33mdiabetes[39m[33m'[39m])
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/statsmodels/base/model.py:203[39m, in [36mModel.from_formula[39m[34m(cls, formula, data, subset, drop_cols, *args, **kwargs)[39m
+[32m    200[39m [38;5;28;01mif[39;00m missing == [33m'[39m[33mnone[39m[33m'[39m:  [38;5;66;03m# with patsy it's drop or raise. let's raise.[39;00m
+[32m    201[39m     missing = [33m'[39m[33mraise[39m[33m'[39m
+[32m--> [39m[32m203[39m tmp = [43mhandle_formula_data[49m[43m([49m[43mdata[49m[43m,[49m[43m [49m[38;5;28;43;01mNone[39;49;00m[43m,[49m[43m [49m[43mformula[49m[43m,[49m[43m [49m[43mdepth[49m[43m=[49m[43meval_env[49m[43m,[49m
+[32m    204[39m [43m                          [49m[43mmissing[49m[43m=[49m[43mmissing[49m[43m)[49m
+[32m    205[39m ((endog, exog), missing_idx, design_info) = tmp
+[32m    206[39m max_endog = [38;5;28mcls[39m._formula_max_endog
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/statsmodels/formula/formulatools.py:68[39m, in [36mhandle_formula_data[39m[34m(Y, X, formula, depth, missing)[39m
+[32m     66[39m [38;5;28;01melse[39;00m:
+[32m     67[39m     [38;5;28;01mif[39;00m data_util._is_using_pandas(Y, [38;5;28;01mNone[39;00m):
+[32m---> [39m[32m68[39m         result = [43mdmatrices[49m[43m([49m
+[32m     69[39m [43m            [49m[43mformula[49m[43m,[49m[43m [49m[43mY[49m[43m,[49m[43m [49m[43mdepth[49m[43m,[49m[43m [49m[43mreturn_type[49m[43m=[49m[33;43m"[39;49m[33;43mdataframe[39;49m[33;43m"[39;49m[43m,[49m[43m [49m[43mNA_action[49m[43m=[49m[43mna_action[49m
+[32m     70[39m [43m        [49m[43m)[49m
+[32m     71[39m     [38;5;28;01melse[39;00m:
+[32m     72[39m         result = dmatrices(
+[32m     73[39m             formula, Y, depth, return_type=[33m"[39m[33mdataframe[39m[33m"[39m, NA_action=na_action
+[32m     74[39m         )
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/highlevel.py:317[39m, in [36mdmatrices[39m[34m(formula_like, data, eval_env, NA_action, return_type)[39m
+[32m    307[39m [38;5;250m[39m[33;03m"""Construct two design matrices given a formula_like and data.[39;00m
+[32m    308[39m 
+[32m    309[39m [33;03mThis function is identical to :func:`dmatrix`, except that it requires[39;00m
+[32m   (...)[39m[32m    314[39m [33;03mSee :func:`dmatrix` for details.[39;00m
+[32m    315[39m [33;03m"""[39;00m
+[32m    316[39m eval_env = EvalEnvironment.capture(eval_env, reference=[32m1[39m)
+[32m--> [39m[32m317[39m (lhs, rhs) = [43m_do_highlevel_design[49m[43m([49m
+[32m    318[39m [43m    [49m[43mformula_like[49m[43m,[49m[43m [49m[43mdata[49m[43m,[49m[43m [49m[43meval_env[49m[43m,[49m[43m [49m[43mNA_action[49m[43m,[49m[43m [49m[43mreturn_type[49m
+[32m    319[39m [43m[49m[43m)[49m
+[32m    320[39m [38;5;28;01mif[39;00m lhs.shape[[32m1[39m] == [32m0[39m:
+[32m    321[39m     [38;5;28;01mraise[39;00m PatsyError([33m"[39m[33mmodel is missing required outcome variables[39m[33m"[39m)
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/highlevel.py:162[39m, in [36m_do_highlevel_design[39m[34m(formula_like, data, eval_env, NA_action, return_type)[39m
+[32m    159[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34mdata_iter_maker[39m():
+[32m    160[39m     [38;5;28;01mreturn[39;00m [38;5;28miter[39m([data])
+[32m--> [39m[32m162[39m design_infos = [43m_try_incr_builders[49m[43m([49m
+[32m    163[39m [43m    [49m[43mformula_like[49m[43m,[49m[43m [49m[43mdata_iter_maker[49m[43m,[49m[43m [49m[43meval_env[49m[43m,[49m[43m [49m[43mNA_action[49m
+[32m    164[39m [43m[49m[43m)[49m
+[32m    165[39m [38;5;28;01mif[39;00m design_infos [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
+[32m    166[39m     [38;5;28;01mreturn[39;00m build_design_matrices(
+[32m    167[39m         design_infos, data, NA_action=NA_action, return_type=return_type
+[32m    168[39m     )
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/highlevel.py:56[39m, in [36m_try_incr_builders[39m[34m(formula_like, data_iter_maker, eval_env, NA_action)[39m
+[32m     54[39m [38;5;28;01mif[39;00m [38;5;28misinstance[39m(formula_like, ModelDesc):
+[32m     55[39m     [38;5;28;01massert[39;00m [38;5;28misinstance[39m(eval_env, EvalEnvironment)
+[32m---> [39m[32m56[39m     [38;5;28;01mreturn[39;00m [43mdesign_matrix_builders[49m[43m([49m
+[32m     57[39m [43m        [49m[43m[[49m[43mformula_like[49m[43m.[49m[43mlhs_termlist[49m[43m,[49m[43m [49m[43mformula_like[49m[43m.[49m[43mrhs_termlist[49m[43m][49m[43m,[49m
+[32m     58[39m [43m        [49m[43mdata_iter_maker[49m[43m,[49m
+[32m     59[39m [43m        [49m[43meval_env[49m[43m,[49m
+[32m     60[39m [43m        [49m[43mNA_action[49m[43m,[49m
+[32m     61[39m [43m    [49m[43m)[49m
+[32m     62[39m [38;5;28;01melse[39;00m:
+[32m     63[39m     [38;5;28;01mreturn[39;00m [38;5;28;01mNone[39;00m
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/build.py:775[39m, in [36mdesign_matrix_builders[39m[34m(termlists, data_iter_maker, eval_env, NA_action)[39m
+[32m    773[39m design_infos = []
+[32m    774[39m [38;5;28;01mfor[39;00m termlist [38;5;129;01min[39;00m termlists:
+[32m--> [39m[32m775[39m     term_to_subterm_infos = [43m_make_subterm_infos[49m[43m([49m
+[32m    776[39m [43m        [49m[43mtermlist[49m[43m,[49m[43m [49m[43mnum_column_counts[49m[43m,[49m[43m [49m[43mcat_levels_contrasts[49m
+[32m    777[39m [43m    [49m[43m)[49m
+[32m    778[39m     [38;5;28;01massert[39;00m [38;5;28misinstance[39m(term_to_subterm_infos, OrderedDict)
+[32m    779[39m     [38;5;28;01massert[39;00m [38;5;28mfrozenset[39m(term_to_subterm_infos) == [38;5;28mfrozenset[39m(termlist)
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/build.py:680[39m, in [36m_make_subterm_infos[39m[34m(terms, num_column_counts, cat_levels_contrasts)[39m
+[32m    677[39m levels, contrast = cat_levels_contrasts[factor]
+[32m    678[39m [38;5;66;03m# This is where the default coding is set to[39;00m
+[32m    679[39m [38;5;66;03m# Treatment:[39;00m
+[32m--> [39m[32m680[39m coded = [43mcode_contrast_matrix[49m[43m([49m
+[32m    681[39m [43m    [49m[43mfactor_coding[49m[43m[[49m[43mfactor[49m[43m][49m[43m,[49m[43m [49m[43mlevels[49m[43m,[49m[43m [49m[43mcontrast[49m[43m,[49m[43m [49m[43mdefault[49m[43m=[49m[43mTreatment[49m
+[32m    682[39m [43m[49m[43m)[49m
+[32m    683[39m contrast_matrices[factor] = coded
+[32m    684[39m subterm_columns *= coded.matrix.shape[[32m1[39m]
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/contrasts.py:642[39m, in [36mcode_contrast_matrix[39m[34m(intercept, levels, contrast, default)[39m
+[32m    640[39m     [38;5;28;01mreturn[39;00m contrast.code_with_intercept(levels)
+[32m    641[39m [38;5;28;01melse[39;00m:
+[32m--> [39m[32m642[39m     [38;5;28;01mreturn[39;00m [43mcontrast[49m[43m.[49m[43mcode_without_intercept[49m(levels)
+
+[31mAttributeError[39m: 'str' object has no attribute 'code_without_intercept'
+
+FAIL: MOD03_NB07_Confounding_EffectModification.ipynb
+==> 2026-06-24T11:06:47-04:00 Processing MOD03_NB08_Capstone_Inference.ipynb
+[NbConvertApp] Converting notebook MOD03_NB08_Capstone_Inference.ipynb to html
+Traceback (most recent call last):
+  File "/home/zia207/.local/bin/jupyter-nbconvert", line 6, in <module>
+    sys.exit(main())
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/application.py", line 284, in launch_instance
+    super().launch_instance(argv=argv, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/traitlets/config/application.py", line 1075, in launch_instance
+    app.start()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 420, in start
+    self.convert_notebooks()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 597, in convert_notebooks
+    self.convert_single_notebook(notebook_filename)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 563, in convert_single_notebook
+    output, resources = self.export_single_notebook(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 487, in export_single_notebook
+    output, resources = self.exporter.from_filename(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 390, in from_filename
+    return super().from_filename(filename, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 201, in from_filename
+    return self.from_file(f, resources=resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 396, in from_file
+    return super().from_file(file_stream, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 220, in from_file
+    return self.from_notebook_node(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/html.py", line 286, in from_notebook_node
+    html, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 412, in from_notebook_node
+    nb_copy, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 154, in from_notebook_node
+    nb_copy, resources = self._preprocess(nb_copy, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 353, in _preprocess
+    nbc, resc = preprocessor(nbc, resc)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/base.py", line 48, in __call__
+    return self.preprocess(nb, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 103, in preprocess
+    self.preprocess_cell(cell, resources, index)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 124, in preprocess_cell
+    cell = self.execute_cell(cell, index, store_history=True)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# Main effects model
+model_main = smf.logit(
+    'readmitted ~ diabetes + hf + copd + hypertension + los_gt7 '
+    '+ age_std + C(sex) + C(payer,"Private") + C(admit_type,"Elective")',
+    data=df
+).fit(disp=0)
+
+# Model with diabetes × HF interaction
+model_int = smf.logit(
+    'readmitted ~ diabetes * hf + copd + hypertension + los_gt7 '
+    '+ age_std + C(sex) + C(payer,"Private") + C(admit_type,"Elective")',
+    data=df
+).fit(disp=0)
+
+from scipy.stats import chi2 as chi2_dist
+lr_stat = -2*(model_main.llf - model_int.llf)
+lr_p    = 1 - chi2_dist.cdf(lr_stat, df=1)
+
+print("Likelihood ratio test — diabetes × HF interaction:")
+print(f"  LR = {lr_stat:.3f}, df=1, p = {lr_p:.4f}")
+print()
+
+# Report adjusted ORs from best model
+best_model = model_int if lr_p < 0.05 else model_main
+OR_table = pd.DataFrame({
+    'adj_OR': np.exp(best_model.params),
+    'CI_lo' : np.exp(best_model.conf_int()[0]),
+    'CI_hi' : np.exp(best_model.conf_int()[1]),
+    'p'     : best_model.pvalues,
+}).query("index != 'Intercept'").round(3)
+print("Adjusted ORs from best model:")
+display(OR_table.sort_values('adj_OR',ascending=False))
+
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mAttributeError[39m                            Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[5][39m[32m, line 2[39m
+[32m      1[39m [38;5;66;03m# Main effects model[39;00m
+[32m----> [39m[32m2[39m model_main = [43msmf[49m[43m.[49m[43mlogit[49m[43m([49m
+[32m      3[39m [43m    [49m[33;43m'[39;49m[33;43mreadmitted ~ diabetes + hf + copd + hypertension + los_gt7 [39;49m[33;43m'[39;49m
+[32m      4[39m [43m    [49m[33;43m'[39;49m[33;43m+ age_std + C(sex) + C(payer,[39;49m[33;43m"[39;49m[33;43mPrivate[39;49m[33;43m"[39;49m[33;43m) + C(admit_type,[39;49m[33;43m"[39;49m[33;43mElective[39;49m[33;43m"[39;49m[33;43m)[39;49m[33;43m'[39;49m[43m,[49m
+[32m      5[39m [43m    [49m[43mdata[49m[43m=[49m[43mdf[49m
+[32m      6[39m [43m)[49m.fit(disp=[32m0[39m)
+[32m      8[39m [38;5;66;03m# Model with diabetes × HF interaction[39;00m
+[32m      9[39m model_int = smf.logit(
+[32m     10[39m     [33m'[39m[33mreadmitted ~ diabetes * hf + copd + hypertension + los_gt7 [39m[33m'[39m
+[32m     11[39m     [33m'[39m[33m+ age_std + C(sex) + C(payer,[39m[33m"[39m[33mPrivate[39m[33m"[39m[33m) + C(admit_type,[39m[33m"[39m[33mElective[39m[33m"[39m[33m)[39m[33m'[39m,
+[32m     12[39m     data=df
+[32m     13[39m ).fit(disp=[32m0[39m)
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/statsmodels/base/model.py:203[39m, in [36mModel.from_formula[39m[34m(cls, formula, data, subset, drop_cols, *args, **kwargs)[39m
+[32m    200[39m [38;5;28;01mif[39;00m missing == [33m'[39m[33mnone[39m[33m'[39m:  [38;5;66;03m# with patsy it's drop or raise. let's raise.[39;00m
+[32m    201[39m     missing = [33m'[39m[33mraise[39m[33m'[39m
+[32m--> [39m[32m203[39m tmp = [43mhandle_formula_data[49m[43m([49m[43mdata[49m[43m,[49m[43m [49m[38;5;28;43;01mNone[39;49;00m[43m,[49m[43m [49m[43mformula[49m[43m,[49m[43m [49m[43mdepth[49m[43m=[49m[43meval_env[49m[43m,[49m
+[32m    204[39m [43m                          [49m[43mmissing[49m[43m=[49m[43mmissing[49m[43m)[49m
+[32m    205[39m ((endog, exog), missing_idx, design_info) = tmp
+[32m    206[39m max_endog = [38;5;28mcls[39m._formula_max_endog
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/statsmodels/formula/formulatools.py:68[39m, in [36mhandle_formula_data[39m[34m(Y, X, formula, depth, missing)[39m
+[32m     66[39m [38;5;28;01melse[39;00m:
+[32m     67[39m     [38;5;28;01mif[39;00m data_util._is_using_pandas(Y, [38;5;28;01mNone[39;00m):
+[32m---> [39m[32m68[39m         result = [43mdmatrices[49m[43m([49m
+[32m     69[39m [43m            [49m[43mformula[49m[43m,[49m[43m [49m[43mY[49m[43m,[49m[43m [49m[43mdepth[49m[43m,[49m[43m [49m[43mreturn_type[49m[43m=[49m[33;43m"[39;49m[33;43mdataframe[39;49m[33;43m"[39;49m[43m,[49m[43m [49m[43mNA_action[49m[43m=[49m[43mna_action[49m
+[32m     70[39m [43m        [49m[43m)[49m
+[32m     71[39m     [38;5;28;01melse[39;00m:
+[32m     72[39m         result = dmatrices(
+[32m     73[39m             formula, Y, depth, return_type=[33m"[39m[33mdataframe[39m[33m"[39m, NA_action=na_action
+[32m     74[39m         )
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/highlevel.py:317[39m, in [36mdmatrices[39m[34m(formula_like, data, eval_env, NA_action, return_type)[39m
+[32m    307[39m [38;5;250m[39m[33;03m"""Construct two design matrices given a formula_like and data.[39;00m
+[32m    308[39m 
+[32m    309[39m [33;03mThis function is identical to :func:`dmatrix`, except that it requires[39;00m
+[32m   (...)[39m[32m    314[39m [33;03mSee :func:`dmatrix` for details.[39;00m
+[32m    315[39m [33;03m"""[39;00m
+[32m    316[39m eval_env = EvalEnvironment.capture(eval_env, reference=[32m1[39m)
+[32m--> [39m[32m317[39m (lhs, rhs) = [43m_do_highlevel_design[49m[43m([49m
+[32m    318[39m [43m    [49m[43mformula_like[49m[43m,[49m[43m [49m[43mdata[49m[43m,[49m[43m [49m[43meval_env[49m[43m,[49m[43m [49m[43mNA_action[49m[43m,[49m[43m [49m[43mreturn_type[49m
+[32m    319[39m [43m[49m[43m)[49m
+[32m    320[39m [38;5;28;01mif[39;00m lhs.shape[[32m1[39m] == [32m0[39m:
+[32m    321[39m     [38;5;28;01mraise[39;00m PatsyError([33m"[39m[33mmodel is missing required outcome variables[39m[33m"[39m)
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/highlevel.py:162[39m, in [36m_do_highlevel_design[39m[34m(formula_like, data, eval_env, NA_action, return_type)[39m
+[32m    159[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34mdata_iter_maker[39m():
+[32m    160[39m     [38;5;28;01mreturn[39;00m [38;5;28miter[39m([data])
+[32m--> [39m[32m162[39m design_infos = [43m_try_incr_builders[49m[43m([49m
+[32m    163[39m [43m    [49m[43mformula_like[49m[43m,[49m[43m [49m[43mdata_iter_maker[49m[43m,[49m[43m [49m[43meval_env[49m[43m,[49m[43m [49m[43mNA_action[49m
+[32m    164[39m [43m[49m[43m)[49m
+[32m    165[39m [38;5;28;01mif[39;00m design_infos [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
+[32m    166[39m     [38;5;28;01mreturn[39;00m build_design_matrices(
+[32m    167[39m         design_infos, data, NA_action=NA_action, return_type=return_type
+[32m    168[39m     )
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/highlevel.py:56[39m, in [36m_try_incr_builders[39m[34m(formula_like, data_iter_maker, eval_env, NA_action)[39m
+[32m     54[39m [38;5;28;01mif[39;00m [38;5;28misinstance[39m(formula_like, ModelDesc):
+[32m     55[39m     [38;5;28;01massert[39;00m [38;5;28misinstance[39m(eval_env, EvalEnvironment)
+[32m---> [39m[32m56[39m     [38;5;28;01mreturn[39;00m [43mdesign_matrix_builders[49m[43m([49m
+[32m     57[39m [43m        [49m[43m[[49m[43mformula_like[49m[43m.[49m[43mlhs_termlist[49m[43m,[49m[43m [49m[43mformula_like[49m[43m.[49m[43mrhs_termlist[49m[43m][49m[43m,[49m
+[32m     58[39m [43m        [49m[43mdata_iter_maker[49m[43m,[49m
+[32m     59[39m [43m        [49m[43meval_env[49m[43m,[49m
+[32m     60[39m [43m        [49m[43mNA_action[49m[43m,[49m
+[32m     61[39m [43m    [49m[43m)[49m
+[32m     62[39m [38;5;28;01melse[39;00m:
+[32m     63[39m     [38;5;28;01mreturn[39;00m [38;5;28;01mNone[39;00m
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/build.py:775[39m, in [36mdesign_matrix_builders[39m[34m(termlists, data_iter_maker, eval_env, NA_action)[39m
+[32m    773[39m design_infos = []
+[32m    774[39m [38;5;28;01mfor[39;00m termlist [38;5;129;01min[39;00m termlists:
+[32m--> [39m[32m775[39m     term_to_subterm_infos = [43m_make_subterm_infos[49m[43m([49m
+[32m    776[39m [43m        [49m[43mtermlist[49m[43m,[49m[43m [49m[43mnum_column_counts[49m[43m,[49m[43m [49m[43mcat_levels_contrasts[49m
+[32m    777[39m [43m    [49m[43m)[49m
+[32m    778[39m     [38;5;28;01massert[39;00m [38;5;28misinstance[39m(term_to_subterm_infos, OrderedDict)
+[32m    779[39m     [38;5;28;01massert[39;00m [38;5;28mfrozenset[39m(term_to_subterm_infos) == [38;5;28mfrozenset[39m(termlist)
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/build.py:680[39m, in [36m_make_subterm_infos[39m[34m(terms, num_column_counts, cat_levels_contrasts)[39m
+[32m    677[39m levels, contrast = cat_levels_contrasts[factor]
+[32m    678[39m [38;5;66;03m# This is where the default coding is set to[39;00m
+[32m    679[39m [38;5;66;03m# Treatment:[39;00m
+[32m--> [39m[32m680[39m coded = [43mcode_contrast_matrix[49m[43m([49m
+[32m    681[39m [43m    [49m[43mfactor_coding[49m[43m[[49m[43mfactor[49m[43m][49m[43m,[49m[43m [49m[43mlevels[49m[43m,[49m[43m [49m[43mcontrast[49m[43m,[49m[43m [49m[43mdefault[49m[43m=[49m[43mTreatment[49m
+[32m    682[39m [43m[49m[43m)[49m
+[32m    683[39m contrast_matrices[factor] = coded
+[32m    684[39m subterm_columns *= coded.matrix.shape[[32m1[39m]
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/contrasts.py:642[39m, in [36mcode_contrast_matrix[39m[34m(intercept, levels, contrast, default)[39m
+[32m    640[39m     [38;5;28;01mreturn[39;00m contrast.code_with_intercept(levels)
+[32m    641[39m [38;5;28;01melse[39;00m:
+[32m--> [39m[32m642[39m     [38;5;28;01mreturn[39;00m [43mcontrast[49m[43m.[49m[43mcode_without_intercept[49m(levels)
+
+[31mAttributeError[39m: 'str' object has no attribute 'code_without_intercept'
+
+FAIL: MOD03_NB08_Capstone_Inference.ipynb
+==> 2026-06-24T11:06:54-04:00 Processing MOD04_NB01_Pipeline_Splits.ipynb
+[NbConvertApp] Converting notebook MOD04_NB01_Pipeline_Splits.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 3 image(s).
+[NbConvertApp] Writing 549215 bytes to docs/MOD04_NB01_Pipeline_Splits.html
+OK: MOD04_NB01_Pipeline_Splits.ipynb
+==> 2026-06-24T11:07:03-04:00 Processing MOD04_NB02_DecisionTree_RandomForest.ipynb
+[NbConvertApp] Converting notebook MOD04_NB02_DecisionTree_RandomForest.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 4 image(s).
+[NbConvertApp] Writing 1162855 bytes to docs/MOD04_NB02_DecisionTree_RandomForest.html
+OK: MOD04_NB02_DecisionTree_RandomForest.ipynb
+==> 2026-06-24T11:08:35-04:00 Processing MOD04_NB03_XGBoost_LightGBM.ipynb
+[NbConvertApp] Converting notebook MOD04_NB03_XGBoost_LightGBM.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 3 image(s).
+[NbConvertApp] Writing 628598 bytes to docs/MOD04_NB03_XGBoost_LightGBM.html
+OK: MOD04_NB03_XGBoost_LightGBM.ipynb
+==> 2026-06-24T11:09:48-04:00 Processing MOD04_NB04_Clinical_Model_Evaluation.ipynb
+[NbConvertApp] Converting notebook MOD04_NB04_Clinical_Model_Evaluation.ipynb to html
+Traceback (most recent call last):
+  File "/home/zia207/.local/bin/jupyter-nbconvert", line 6, in <module>
+    sys.exit(main())
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/application.py", line 284, in launch_instance
+    super().launch_instance(argv=argv, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/traitlets/config/application.py", line 1075, in launch_instance
+    app.start()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 420, in start
+    self.convert_notebooks()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 597, in convert_notebooks
+    self.convert_single_notebook(notebook_filename)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 563, in convert_single_notebook
+    output, resources = self.export_single_notebook(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 487, in export_single_notebook
+    output, resources = self.exporter.from_filename(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 390, in from_filename
+    return super().from_filename(filename, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 201, in from_filename
+    return self.from_file(f, resources=resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 396, in from_file
+    return super().from_file(file_stream, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 220, in from_file
+    return self.from_notebook_node(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/html.py", line 286, in from_notebook_node
+    html, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 412, in from_notebook_node
+    nb_copy, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 154, in from_notebook_node
+    nb_copy, resources = self._preprocess(nb_copy, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 353, in _preprocess
+    nbc, resc = preprocessor(nbc, resc)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/base.py", line 48, in __call__
+    return self.preprocess(nb, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 103, in preprocess
+    self.preprocess_cell(cell, resources, index)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 124, in preprocess_cell
+    cell = self.execute_cell(cell, index, store_history=True)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+best_prob = probs["Grad Boosting"]
+fpr,tpr,thrs=roc_curve(y_te,best_prob)
+precision_v,recall_v,thrs_pr=precision_recall_curve(y_te,best_prob)
+
+# Three threshold strategies
+thresholds_clinical={
+    "Youden's J (balanced)": thrs[np.argmax(tpr-fpr)], "Sensitivity≥0.80"      : thrs[np.where(tpr>=0.80)[0][0]] if any(tpr>=0.80) else 0.5, "Precision≥0.40"        : thrs_pr[np.where(precision_v>=0.40)[0][0]] if any(precision_v>=0.40) else 0.5, } print(f"{'Strategy':30s} {'Threshold':>10s} {'Sens':>8s} {'Spec':>8s} {'PPV':>8s} {'NPV':>8s}") print("-"*70) for strategy, thr in thresholds_clinical.items(): y_pred=(best_prob>=thr).astype(int) tn,fp,fn,tp=confusion_matrix(y_te,y_pred).ravel() sens=tp/(tp+fn); spec=tn/(tn+fp) ppv =tp/(tp+fp) if tp+fp>0 else 0 npv =tn/(tn+fn) if tn+fn>0 else 0 print(f"{strategy:30s} {thr:>10.3f} {sens:>8.3f} {spec:>8.3f} {ppv:>8.3f} {npv:>8.3f}")  print() print("Clinical guidance:") print("  High sensitivity = fewer missed readmissions (prefer when intervention is cheap/safe)") print("  High precision   = fewer unnecessary interventions (prefer when intervention is costly/harmful)")
+
+------------------
+
+
+  [36mCell[39m[36m [39m[32mIn[5][39m[32m, line 7[39m
+[31m    [39m[31m"Youden's J (balanced)": thrs[np.argmax(tpr-fpr)], "Sensitivity≥0.80"      : thrs[np.where(tpr>=0.80)[0][0]] if any(tpr>=0.80) else 0.5, "Precision≥0.40"        : thrs_pr[np.where(precision_v>=0.40)[0][0]] if any(precision_v>=0.40) else 0.5, } print(f"{'Strategy':30s} {'Threshold':>10s} {'Sens':>8s} {'Spec':>8s} {'PPV':>8s} {'NPV':>8s}") print("-"*70) for strategy, thr in thresholds_clinical.items(): y_pred=(best_prob>=thr).astype(int) tn,fp,fn,tp=confusion_matrix(y_te,y_pred).ravel() sens=tp/(tp+fn); spec=tn/(tn+fp) ppv =tp/(tp+fp) if tp+fp>0 else 0 npv =tn/(tn+fn) if tn+fn>0 else 0 print(f"{strategy:30s} {thr:>10.3f} {sens:>8.3f} {spec:>8.3f} {ppv:>8.3f} {npv:>8.3f}")  print() print("Clinical guidance:") print("  High sensitivity = fewer missed readmissions (prefer when intervention is cheap/safe)") print("  High precision   = fewer unnecessary interventions (prefer when intervention is costly/harmful)")[39m
+                                                                                                                                                                                                                                                        ^
+[31mSyntaxError[39m[31m:[39m invalid syntax
+
+
+FAIL: MOD04_NB04_Clinical_Model_Evaluation.ipynb
+==> 2026-06-24T11:10:03-04:00 Processing MOD04_NB05_Hyperparameter_Tuning.ipynb
+[NbConvertApp] Converting notebook MOD04_NB05_Hyperparameter_Tuning.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 2 image(s).
+[NbConvertApp] Writing 499022 bytes to docs/MOD04_NB05_Hyperparameter_Tuning.html
+OK: MOD04_NB05_Hyperparameter_Tuning.ipynb
+==> 2026-06-24T11:10:44-04:00 Processing MOD04_NB06_SHAP_Explainability.ipynb
+[NbConvertApp] Converting notebook MOD04_NB06_SHAP_Explainability.ipynb to html
+[NbConvertApp] Writing 349353 bytes to docs/MOD04_NB06_SHAP_Explainability.html
+OK: MOD04_NB06_SHAP_Explainability.ipynb
+==> 2026-06-24T11:10:51-04:00 Processing MOD04_NB07_Clinical_Prediction_Models.ipynb
+[NbConvertApp] Converting notebook MOD04_NB07_Clinical_Prediction_Models.ipynb to html
+Traceback (most recent call last):
+  File "/home/zia207/.local/bin/jupyter-nbconvert", line 6, in <module>
+    sys.exit(main())
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/application.py", line 284, in launch_instance
+    super().launch_instance(argv=argv, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/traitlets/config/application.py", line 1075, in launch_instance
+    app.start()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 420, in start
+    self.convert_notebooks()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 597, in convert_notebooks
+    self.convert_single_notebook(notebook_filename)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 563, in convert_single_notebook
+    output, resources = self.export_single_notebook(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 487, in export_single_notebook
+    output, resources = self.exporter.from_filename(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 390, in from_filename
+    return super().from_filename(filename, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 201, in from_filename
+    return self.from_file(f, resources=resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 396, in from_file
+    return super().from_file(file_stream, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 220, in from_file
+    return self.from_notebook_node(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/html.py", line 286, in from_notebook_node
+    html, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 412, in from_notebook_node
+    nb_copy, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 154, in from_notebook_node
+    nb_copy, resources = self._preprocess(nb_copy, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 353, in _preprocess
+    nbc, resc = preprocessor(nbc, resc)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/base.py", line 48, in __call__
+    return self.preprocess(nb, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 103, in preprocess
+    self.preprocess_cell(cell, resources, index)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 124, in preprocess_cell
+    cell = self.execute_cell(cell, index, store_history=True)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+fig=plt.figure(figsize=(18,6))
+fig.suptitle("Three Clinical Prediction Models — Deployment Summary",fontsize=14)
+gs=fig.add_gridspec(1,3,wspace=0.35)
+
+# Model 1: Sepsis alert
+ax=fig.add_subplot(gs[0])
+prec_s,rec_s,_=precision_recall_curve(ys_te,prob_sepsis)
+ax.plot(rec_s,prec_s,color="#D65F5F",lw=2,label=f"AP={ap_s:.3f}")
+ax.axhline(ys_te.mean(),color="gray",ls="--",lw=1,label=f"Baseline ({ys_te.mean():.2f})")
+ax.axvline(0.90,color="green",ls=":",lw=1.5,label="Target recall=0.90")
+ax.set_xlabel("Recall"); ax.set_ylabel("Precision"); ax.set_title("Model 1: Sepsis (Precision-Recall)")
+ax.legend(fontsize=8)
+
+# Model 2: LOS regression - actual vs predicted
+ax=fig.add_subplot(gs[1])
+los_bins=pd.cut(yl_te,[0,3,7,14,30],labels=["1-3d","4-7d","8-14d",">14d"])
+mae_by_bin={}
+for b_,sub in yl_te.groupby(los_bins,observed=True):
+    preds_b=pred_los[sub.index-yl_te.index[0]]
+    mae_by_bin[b_]=mean_absolute_error(sub,preds_b)
+colors_b=["#4878CF","#6ACC65","#D4A017","#D65F5F"]
+ax.bar(mae_by_bin.keys(),mae_by_bin.values(),color=colors_b,alpha=0.85)
+for k,v in mae_by_bin.items(): ax.text(list(mae_by_bin.keys()).index(k),v+0.05,f"{v:.1f}d",ha="center",fontsize=9)
+ax.set_ylabel("MAE (days)"); ax.set_title(f"Model 2: ICU LOS MAE by LOS stratum (overall={mae:.2f}d)")
+
+# Model 3: calibration
+ax=fig.add_subplot(gs[2])
+fp_r,mp_r=calibration_curve(yr_te,prob_re_raw,n_bins=10)
+fp_rc,mp_rc=calibration_curve(yr_te,prob_re_cal,n_bins=10)
+ax.plot(mp_r, fp_r, "o-",color="#B0C4DE",lw=1.5,ms=5,label="Uncalibrated")
+ax.plot(mp_rc,fp_rc,"o-",color="#1F4E79",lw=2,ms=6,label=f"Platt calibrated (Brier={brier_re:.3f})")
+ax.plot([0,1],[0,1],"k--",lw=1,label="Perfect")
+ax.set_xlabel("Mean predicted"); ax.set_ylabel("Fraction positives")
+ax.set_title("Model 3: Readmission Calibration (before/after Platt)"); ax.legend(fontsize=8)
+
+plt.savefig("/tmp/mod04/three_models.png",bbox_inches="tight"); plt.show()
+
+print(" Deployment checklist:")
+for model,note in [
+    ("Sepsis","High-sensitivity alert — threshold=0.15 for 90% recall; NNAlert≈8"),
+    ("ICU LOS","Regression MAE≈2.1d — useful for bed planning; overestimates short stays"),
+    ("Readmission","Calibrated probability — use 20% threshold for intervention programme"),
+]:
+    print(f"  {model:12s}: {note}")
+
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mIndexError[39m                                Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[6][39m[32m, line 19[39m
+[32m     17[39m mae_by_bin={}
+[32m     18[39m [38;5;28;01mfor[39;00m b_,sub [38;5;129;01min[39;00m yl_te.groupby(los_bins,observed=[38;5;28;01mTrue[39;00m):
+[32m---> [39m[32m19[39m     preds_b=[43mpred_los[49m[43m[[49m[43msub[49m[43m.[49m[43mindex[49m[43m-[49m[43myl_te[49m[43m.[49m[43mindex[49m[43m[[49m[32;43m0[39;49m[43m][49m[43m][49m
+[32m     20[39m     mae_by_bin[b_]=mean_absolute_error(sub,preds_b)
+[32m     21[39m colors_b=[[33m"[39m[33m#4878CF[39m[33m"[39m,[33m"[39m[33m#6ACC65[39m[33m"[39m,[33m"[39m[33m#D4A017[39m[33m"[39m,[33m"[39m[33m#D65F5F[39m[33m"[39m]
+
+[31mIndexError[39m: index 2434 is out of bounds for axis 0 with size 800
+
+FAIL: MOD04_NB07_Clinical_Prediction_Models.ipynb
+==> 2026-06-24T11:11:02-04:00 Processing MOD04_NB08_Capstone_ML_Pipeline.ipynb
+[NbConvertApp] Converting notebook MOD04_NB08_Capstone_ML_Pipeline.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 1 image(s).
+[NbConvertApp] Writing 732010 bytes to docs/MOD04_NB08_Capstone_ML_Pipeline.html
+OK: MOD04_NB08_Capstone_ML_Pipeline.ipynb
+==> 2026-06-24T11:13:00-04:00 Processing MOD05_NB07_Summarisation_ZeroShot.ipynb
+[NbConvertApp] Converting notebook MOD05_NB07_Summarisation_ZeroShot.ipynb to html
+[NbConvertApp] Writing 356204 bytes to docs/MOD05_NB07_Summarisation_ZeroShot.html
+OK: MOD05_NB07_Summarisation_ZeroShot.ipynb
+==> 2026-06-24T11:13:07-04:00 Processing MOD06_NB03_DiD_EventStudy.ipynb
+[NbConvertApp] Converting notebook MOD06_NB03_DiD_EventStudy.ipynb to html
+Traceback (most recent call last):
+  File "/home/zia207/.local/bin/jupyter-nbconvert", line 6, in <module>
+    sys.exit(main())
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/application.py", line 284, in launch_instance
+    super().launch_instance(argv=argv, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/traitlets/config/application.py", line 1075, in launch_instance
+    app.start()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 420, in start
+    self.convert_notebooks()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 597, in convert_notebooks
+    self.convert_single_notebook(notebook_filename)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 563, in convert_single_notebook
+    output, resources = self.export_single_notebook(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 487, in export_single_notebook
+    output, resources = self.exporter.from_filename(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 390, in from_filename
+    return super().from_filename(filename, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 201, in from_filename
+    return self.from_file(f, resources=resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 396, in from_file
+    return super().from_file(file_stream, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 220, in from_file
+    return self.from_notebook_node(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/html.py", line 286, in from_notebook_node
+    html, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 412, in from_notebook_node
+    nb_copy, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 154, in from_notebook_node
+    nb_copy, resources = self._preprocess(nb_copy, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 353, in _preprocess
+    nbc, resc = preprocessor(nbc, resc)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/base.py", line 48, in __call__
+    return self.preprocess(nb, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 103, in preprocess
+    self.preprocess_cell(cell, resources, index)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 124, in preprocess_cell
+    cell = self.execute_cell(cell, index, store_history=True)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# Event study: estimate treatment effect at each time relative to policy
+# Yi,t = alpha_i + lambda_t + sum_k(beta_k * D_i * 1[t=k]) + e
+# k = time relative to treatment (k=-1 is reference period)
+
+df_did["rel_year"] = df_did["year"] - POLICY_YEAR
+df_did["rel_cat"]  = df_did["rel_year"].clip(-3, 3)  # bin at edges
+# Create interaction terms for each relative year
+for k in range(-3, 4):
+    if k != -1:  # omit k=-1 as reference
+        df_did[f"D_k{k}"] = (df_did["expanded"] * (df_did["rel_cat"]==k)).astype(int)
+
+# Build formula
+interaction_terms = [f"D_k{k}" for k in range(-3, 4) if k != -1]
+formula = "uninsured_pct ~ " + " + ".join(interaction_terms) + " + C(state) + C(year)"
+model_es = smf.ols(formula, data=df_did).fit(cov_type="cluster",
+                                               cov_kwds={"groups":df_did["state"]})
+
+# Extract event study coefficients
+event_coefs = {}
+for k in range(-3, 4):
+    if k == -1:
+        event_coefs[k] = {"coef":0, "ci_lo":0, "ci_hi":0}
+    else:
+        param = f"D_k{k}"
+        coef  = model_es.params[param]
+        ci    = model_es.conf_int().loc[param]
+        event_coefs[k] = {"coef":coef, "ci_lo":ci[0], "ci_hi":ci[1]}
+
+ks   = sorted(event_coefs.keys())
+coefs = [event_coefs[k]["coef"] for k in ks]
+ci_lo = [event_coefs[k]["ci_lo"] for k in ks]
+ci_hi = [event_coefs[k]["ci_hi"] for k in ks]
+
+fig, ax = plt.subplots(figsize=(10,5))
+ax.plot(ks, coefs, "o-", color="#D65F5F", lw=2, ms=8, zorder=3)
+ax.fill_between(ks, ci_lo, ci_hi, alpha=0.2, color="#D65F5F")
+ax.axhline(0, color="black", lw=0.8, ls="--")
+ax.axvline(-0.5, color="gray", ls="--", lw=1.2, label="Policy implementation")
+ax.set_xlabel("Years relative to Medicaid expansion"); ax.set_ylabel("Effect on uninsured rate (pp)")
+ax.set_title("Event Study: Dynamic Treatment Effects (pre-treatment coefficients should be ~0 if parallel trends hold)")
+ax.legend(fontsize=9)
+plt.tight_layout(); plt.savefig("/tmp/mod06/event_study.png",bbox_inches="tight"); plt.show()
+
+pre_trend_test = [(k, event_coefs[k]["coef"]) for k in ks if k < -1]
+print("Pre-treatment event study coefficients (should be near 0):")
+for k, coef in pre_trend_test:
+    print(f"  k={k}: {coef:.3f}  {'OK' if abs(coef)<1 else 'CONCERNING'}")
+
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mPatsyError[39m                                Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[4][39m[32m, line 15[39m
+[32m     13[39m interaction_terms = [[33mf[39m[33m"[39m[33mD_k[39m[38;5;132;01m{[39;00mk[38;5;132;01m}[39;00m[33m"[39m [38;5;28;01mfor[39;00m k [38;5;129;01min[39;00m [38;5;28mrange[39m(-[32m3[39m, [32m4[39m) [38;5;28;01mif[39;00m k != -[32m1[39m]
+[32m     14[39m formula = [33m"[39m[33muninsured_pct ~ [39m[33m"[39m + [33m"[39m[33m + [39m[33m"[39m.join(interaction_terms) + [33m"[39m[33m + C(state) + C(year)[39m[33m"[39m
+[32m---> [39m[32m15[39m model_es = [43msmf[49m[43m.[49m[43mols[49m[43m([49m[43mformula[49m[43m,[49m[43m [49m[43mdata[49m[43m=[49m[43mdf_did[49m[43m)[49m.fit(cov_type=[33m"[39m[33mcluster[39m[33m"[39m,
+[32m     16[39m                                                cov_kwds={[33m"[39m[33mgroups[39m[33m"[39m:df_did[[33m"[39m[33mstate[39m[33m"[39m]})
+[32m     18[39m [38;5;66;03m# Extract event study coefficients[39;00m
+[32m     19[39m event_coefs = {}
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/statsmodels/base/model.py:203[39m, in [36mModel.from_formula[39m[34m(cls, formula, data, subset, drop_cols, *args, **kwargs)[39m
+[32m    200[39m [38;5;28;01mif[39;00m missing == [33m'[39m[33mnone[39m[33m'[39m:  [38;5;66;03m# with patsy it's drop or raise. let's raise.[39;00m
+[32m    201[39m     missing = [33m'[39m[33mraise[39m[33m'[39m
+[32m--> [39m[32m203[39m tmp = [43mhandle_formula_data[49m[43m([49m[43mdata[49m[43m,[49m[43m [49m[38;5;28;43;01mNone[39;49;00m[43m,[49m[43m [49m[43mformula[49m[43m,[49m[43m [49m[43mdepth[49m[43m=[49m[43meval_env[49m[43m,[49m
+[32m    204[39m [43m                          [49m[43mmissing[49m[43m=[49m[43mmissing[49m[43m)[49m
+[32m    205[39m ((endog, exog), missing_idx, design_info) = tmp
+[32m    206[39m max_endog = [38;5;28mcls[39m._formula_max_endog
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/statsmodels/formula/formulatools.py:68[39m, in [36mhandle_formula_data[39m[34m(Y, X, formula, depth, missing)[39m
+[32m     66[39m [38;5;28;01melse[39;00m:
+[32m     67[39m     [38;5;28;01mif[39;00m data_util._is_using_pandas(Y, [38;5;28;01mNone[39;00m):
+[32m---> [39m[32m68[39m         result = [43mdmatrices[49m[43m([49m
+[32m     69[39m [43m            [49m[43mformula[49m[43m,[49m[43m [49m[43mY[49m[43m,[49m[43m [49m[43mdepth[49m[43m,[49m[43m [49m[43mreturn_type[49m[43m=[49m[33;43m"[39;49m[33;43mdataframe[39;49m[33;43m"[39;49m[43m,[49m[43m [49m[43mNA_action[49m[43m=[49m[43mna_action[49m
+[32m     70[39m [43m        [49m[43m)[49m
+[32m     71[39m     [38;5;28;01melse[39;00m:
+[32m     72[39m         result = dmatrices(
+[32m     73[39m             formula, Y, depth, return_type=[33m"[39m[33mdataframe[39m[33m"[39m, NA_action=na_action
+[32m     74[39m         )
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/highlevel.py:317[39m, in [36mdmatrices[39m[34m(formula_like, data, eval_env, NA_action, return_type)[39m
+[32m    307[39m [38;5;250m[39m[33;03m"""Construct two design matrices given a formula_like and data.[39;00m
+[32m    308[39m 
+[32m    309[39m [33;03mThis function is identical to :func:`dmatrix`, except that it requires[39;00m
+[32m   (...)[39m[32m    314[39m [33;03mSee :func:`dmatrix` for details.[39;00m
+[32m    315[39m [33;03m"""[39;00m
+[32m    316[39m eval_env = EvalEnvironment.capture(eval_env, reference=[32m1[39m)
+[32m--> [39m[32m317[39m (lhs, rhs) = [43m_do_highlevel_design[49m[43m([49m
+[32m    318[39m [43m    [49m[43mformula_like[49m[43m,[49m[43m [49m[43mdata[49m[43m,[49m[43m [49m[43meval_env[49m[43m,[49m[43m [49m[43mNA_action[49m[43m,[49m[43m [49m[43mreturn_type[49m
+[32m    319[39m [43m[49m[43m)[49m
+[32m    320[39m [38;5;28;01mif[39;00m lhs.shape[[32m1[39m] == [32m0[39m:
+[32m    321[39m     [38;5;28;01mraise[39;00m PatsyError([33m"[39m[33mmodel is missing required outcome variables[39m[33m"[39m)
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/highlevel.py:162[39m, in [36m_do_highlevel_design[39m[34m(formula_like, data, eval_env, NA_action, return_type)[39m
+[32m    159[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34mdata_iter_maker[39m():
+[32m    160[39m     [38;5;28;01mreturn[39;00m [38;5;28miter[39m([data])
+[32m--> [39m[32m162[39m design_infos = [43m_try_incr_builders[49m[43m([49m
+[32m    163[39m [43m    [49m[43mformula_like[49m[43m,[49m[43m [49m[43mdata_iter_maker[49m[43m,[49m[43m [49m[43meval_env[49m[43m,[49m[43m [49m[43mNA_action[49m
+[32m    164[39m [43m[49m[43m)[49m
+[32m    165[39m [38;5;28;01mif[39;00m design_infos [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
+[32m    166[39m     [38;5;28;01mreturn[39;00m build_design_matrices(
+[32m    167[39m         design_infos, data, NA_action=NA_action, return_type=return_type
+[32m    168[39m     )
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/highlevel.py:52[39m, in [36m_try_incr_builders[39m[34m(formula_like, data_iter_maker, eval_env, NA_action)[39m
+[32m     50[39m     [38;5;66;03m# fallthrough[39;00m
+[32m     51[39m [38;5;28;01mif[39;00m [38;5;28misinstance[39m(formula_like, [38;5;28mstr[39m):
+[32m---> [39m[32m52[39m     formula_like = [43mModelDesc[49m[43m.[49m[43mfrom_formula[49m[43m([49m[43mformula_like[49m[43m)[49m
+[32m     53[39m     [38;5;66;03m# fallthrough[39;00m
+[32m     54[39m [38;5;28;01mif[39;00m [38;5;28misinstance[39m(formula_like, ModelDesc):
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/desc.py:177[39m, in [36mModelDesc.from_formula[39m[34m(cls, tree_or_string)[39m
+[32m    175[39m [38;5;28;01melse[39;00m:
+[32m    176[39m     tree = parse_formula(tree_or_string)
+[32m--> [39m[32m177[39m value = [43mEvaluator[49m[43m([49m[43m)[49m[43m.[49m[43meval[49m[43m([49m[43mtree[49m[43m,[49m[43m [49m[43mrequire_evalexpr[49m[43m=[49m[38;5;28;43;01mFalse[39;49;00m[43m)[49m
+[32m    178[39m [38;5;28;01massert[39;00m [38;5;28misinstance[39m(value, [38;5;28mcls[39m)
+[32m    179[39m [38;5;28;01mreturn[39;00m value
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/desc.py:443[39m, in [36mEvaluator.eval[39m[34m(self, tree, require_evalexpr)[39m
+[32m    438[39m [38;5;28;01mif[39;00m key [38;5;129;01mnot[39;00m [38;5;129;01min[39;00m [38;5;28mself[39m._evaluators:
+[32m    439[39m     [38;5;28;01mraise[39;00m PatsyError(
+[32m    440[39m         [33m"[39m[33mI don[39m[33m'[39m[33mt know how to evaluate this [39m[33m'[39m[38;5;132;01m%s[39;00m[33m'[39m[33m operator[39m[33m"[39m % (tree.type,),
+[32m    441[39m         tree.token,
+[32m    442[39m     )
+[32m--> [39m[32m443[39m result = [38;5;28;43mself[39;49m[43m.[49m[43m_evaluators[49m[43m[[49m[43mkey[49m[43m][49m[43m([49m[38;5;28;43mself[39;49m[43m,[49m[43m [49m[43mtree[49m[43m)[49m
+[32m    444[39m [38;5;28;01mif[39;00m require_evalexpr [38;5;129;01mand[39;00m [38;5;129;01mnot[39;00m [38;5;28misinstance[39m(result, IntermediateExpr):
+[32m    445[39m     [38;5;28;01mif[39;00m [38;5;28misinstance[39m(result, ModelDesc):
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/desc.py:243[39m, in [36m_eval_any_tilde[39m[34m(evaluator, tree)[39m
+[32m    242[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34m_eval_any_tilde[39m(evaluator, tree):
+[32m--> [39m[32m243[39m     exprs = [43m[[49m[43mevaluator[49m[43m.[49m[43meval[49m[43m([49m[43marg[49m[43m)[49m[43m [49m[38;5;28;43;01mfor[39;49;00m[43m [49m[43marg[49m[43m [49m[38;5;129;43;01min[39;49;00m[43m [49m[43mtree[49m[43m.[49m[43margs[49m[43m][49m
+[32m    244[39m     [38;5;28;01mif[39;00m [38;5;28mlen[39m(exprs) == [32m1[39m:
+[32m    245[39m         [38;5;66;03m# Formula was like: "~ foo"[39;00m
+[32m    246[39m         [38;5;66;03m# We pretend that instead it was like: "0 ~ foo"[39;00m
+[32m    247[39m         exprs.insert([32m0[39m, IntermediateExpr([38;5;28;01mFalse[39;00m, [38;5;28;01mNone[39;00m, [38;5;28;01mTrue[39;00m, []))
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/desc.py:243[39m, in [36m<listcomp>[39m[34m(.0)[39m
+[32m    242[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34m_eval_any_tilde[39m(evaluator, tree):
+[32m--> [39m[32m243[39m     exprs = [[43mevaluator[49m[43m.[49m[43meval[49m[43m([49m[43marg[49m[43m)[49m [38;5;28;01mfor[39;00m arg [38;5;129;01min[39;00m tree.args]
+[32m    244[39m     [38;5;28;01mif[39;00m [38;5;28mlen[39m(exprs) == [32m1[39m:
+[32m    245[39m         [38;5;66;03m# Formula was like: "~ foo"[39;00m
+[32m    246[39m         [38;5;66;03m# We pretend that instead it was like: "0 ~ foo"[39;00m
+[32m    247[39m         exprs.insert([32m0[39m, IntermediateExpr([38;5;28;01mFalse[39;00m, [38;5;28;01mNone[39;00m, [38;5;28;01mTrue[39;00m, []))
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/desc.py:443[39m, in [36mEvaluator.eval[39m[34m(self, tree, require_evalexpr)[39m
+[32m    438[39m [38;5;28;01mif[39;00m key [38;5;129;01mnot[39;00m [38;5;129;01min[39;00m [38;5;28mself[39m._evaluators:
+[32m    439[39m     [38;5;28;01mraise[39;00m PatsyError(
+[32m    440[39m         [33m"[39m[33mI don[39m[33m'[39m[33mt know how to evaluate this [39m[33m'[39m[38;5;132;01m%s[39;00m[33m'[39m[33m operator[39m[33m"[39m % (tree.type,),
+[32m    441[39m         tree.token,
+[32m    442[39m     )
+[32m--> [39m[32m443[39m result = [38;5;28;43mself[39;49m[43m.[49m[43m_evaluators[49m[43m[[49m[43mkey[49m[43m][49m[43m([49m[38;5;28;43mself[39;49m[43m,[49m[43m [49m[43mtree[49m[43m)[49m
+[32m    444[39m [38;5;28;01mif[39;00m require_evalexpr [38;5;129;01mand[39;00m [38;5;129;01mnot[39;00m [38;5;28misinstance[39m(result, IntermediateExpr):
+[32m    445[39m     [38;5;28;01mif[39;00m [38;5;28misinstance[39m(result, ModelDesc):
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/desc.py:257[39m, in [36m_eval_binary_plus[39m[34m(evaluator, tree)[39m
+[32m    256[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34m_eval_binary_plus[39m(evaluator, tree):
+[32m--> [39m[32m257[39m     left_expr = [43mevaluator[49m[43m.[49m[43meval[49m[43m([49m[43mtree[49m[43m.[49m[43margs[49m[43m[[49m[32;43m0[39;49m[43m][49m[43m)[49m
+[32m    258[39m     [38;5;28;01mif[39;00m tree.args[[32m1[39m].type == [33m"[39m[33mZERO[39m[33m"[39m:
+[32m    259[39m         [38;5;28;01mreturn[39;00m IntermediateExpr([38;5;28;01mFalse[39;00m, [38;5;28;01mNone[39;00m, [38;5;28;01mTrue[39;00m, left_expr.terms)
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/desc.py:443[39m, in [36mEvaluator.eval[39m[34m(self, tree, require_evalexpr)[39m
+[32m    438[39m [38;5;28;01mif[39;00m key [38;5;129;01mnot[39;00m [38;5;129;01min[39;00m [38;5;28mself[39m._evaluators:
+[32m    439[39m     [38;5;28;01mraise[39;00m PatsyError(
+[32m    440[39m         [33m"[39m[33mI don[39m[33m'[39m[33mt know how to evaluate this [39m[33m'[39m[38;5;132;01m%s[39;00m[33m'[39m[33m operator[39m[33m"[39m % (tree.type,),
+[32m    441[39m         tree.token,
+[32m    442[39m     )
+[32m--> [39m[32m443[39m result = [38;5;28;43mself[39;49m[43m.[49m[43m_evaluators[49m[43m[[49m[43mkey[49m[43m][49m[43m([49m[38;5;28;43mself[39;49m[43m,[49m[43m [49m[43mtree[49m[43m)[49m
+[32m    444[39m [38;5;28;01mif[39;00m require_evalexpr [38;5;129;01mand[39;00m [38;5;129;01mnot[39;00m [38;5;28misinstance[39m(result, IntermediateExpr):
+[32m    445[39m     [38;5;28;01mif[39;00m [38;5;28misinstance[39m(result, ModelDesc):
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/desc.py:257[39m, in [36m_eval_binary_plus[39m[34m(evaluator, tree)[39m
+[32m    256[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34m_eval_binary_plus[39m(evaluator, tree):
+[32m--> [39m[32m257[39m     left_expr = [43mevaluator[49m[43m.[49m[43meval[49m[43m([49m[43mtree[49m[43m.[49m[43margs[49m[43m[[49m[32;43m0[39;49m[43m][49m[43m)[49m
+[32m    258[39m     [38;5;28;01mif[39;00m tree.args[[32m1[39m].type == [33m"[39m[33mZERO[39m[33m"[39m:
+[32m    259[39m         [38;5;28;01mreturn[39;00m IntermediateExpr([38;5;28;01mFalse[39;00m, [38;5;28;01mNone[39;00m, [38;5;28;01mTrue[39;00m, left_expr.terms)
+
+    [31m[... skipping similar frames: Evaluator.eval at line 443 (4 times), _eval_binary_plus at line 257 (3 times)][39m
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/desc.py:257[39m, in [36m_eval_binary_plus[39m[34m(evaluator, tree)[39m
+[32m    256[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34m_eval_binary_plus[39m(evaluator, tree):
+[32m--> [39m[32m257[39m     left_expr = [43mevaluator[49m[43m.[49m[43meval[49m[43m([49m[43mtree[49m[43m.[49m[43margs[49m[43m[[49m[32;43m0[39;49m[43m][49m[43m)[49m
+[32m    258[39m     [38;5;28;01mif[39;00m tree.args[[32m1[39m].type == [33m"[39m[33mZERO[39m[33m"[39m:
+[32m    259[39m         [38;5;28;01mreturn[39;00m IntermediateExpr([38;5;28;01mFalse[39;00m, [38;5;28;01mNone[39;00m, [38;5;28;01mTrue[39;00m, left_expr.terms)
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/desc.py:443[39m, in [36mEvaluator.eval[39m[34m(self, tree, require_evalexpr)[39m
+[32m    438[39m [38;5;28;01mif[39;00m key [38;5;129;01mnot[39;00m [38;5;129;01min[39;00m [38;5;28mself[39m._evaluators:
+[32m    439[39m     [38;5;28;01mraise[39;00m PatsyError(
+[32m    440[39m         [33m"[39m[33mI don[39m[33m'[39m[33mt know how to evaluate this [39m[33m'[39m[38;5;132;01m%s[39;00m[33m'[39m[33m operator[39m[33m"[39m % (tree.type,),
+[32m    441[39m         tree.token,
+[32m    442[39m     )
+[32m--> [39m[32m443[39m result = [38;5;28;43mself[39;49m[43m.[49m[43m_evaluators[49m[43m[[49m[43mkey[49m[43m][49m[43m([49m[38;5;28;43mself[39;49m[43m,[49m[43m [49m[43mtree[49m[43m)[49m
+[32m    444[39m [38;5;28;01mif[39;00m require_evalexpr [38;5;129;01mand[39;00m [38;5;129;01mnot[39;00m [38;5;28misinstance[39m(result, IntermediateExpr):
+[32m    445[39m     [38;5;28;01mif[39;00m [38;5;28misinstance[39m(result, ModelDesc):
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/desc.py:279[39m, in [36m_eval_binary_minus[39m[34m(evaluator, tree)[39m
+[32m    278[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34m_eval_binary_minus[39m(evaluator, tree):
+[32m--> [39m[32m279[39m     left_expr = [43mevaluator[49m[43m.[49m[43meval[49m[43m([49m[43mtree[49m[43m.[49m[43margs[49m[43m[[49m[32;43m0[39;49m[43m][49m[43m)[49m
+[32m    280[39m     [38;5;28;01mif[39;00m tree.args[[32m1[39m].type == [33m"[39m[33mZERO[39m[33m"[39m:
+[32m    281[39m         [38;5;28;01mreturn[39;00m IntermediateExpr([38;5;28;01mTrue[39;00m, tree.args[[32m1[39m], [38;5;28;01mFalse[39;00m, left_expr.terms)
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/desc.py:443[39m, in [36mEvaluator.eval[39m[34m(self, tree, require_evalexpr)[39m
+[32m    438[39m [38;5;28;01mif[39;00m key [38;5;129;01mnot[39;00m [38;5;129;01min[39;00m [38;5;28mself[39m._evaluators:
+[32m    439[39m     [38;5;28;01mraise[39;00m PatsyError(
+[32m    440[39m         [33m"[39m[33mI don[39m[33m'[39m[33mt know how to evaluate this [39m[33m'[39m[38;5;132;01m%s[39;00m[33m'[39m[33m operator[39m[33m"[39m % (tree.type,),
+[32m    441[39m         tree.token,
+[32m    442[39m     )
+[32m--> [39m[32m443[39m result = [38;5;28;43mself[39;49m[43m.[49m[43m_evaluators[49m[43m[[49m[43mkey[49m[43m][49m[43m([49m[38;5;28;43mself[39;49m[43m,[49m[43m [49m[43mtree[49m[43m)[49m
+[32m    444[39m [38;5;28;01mif[39;00m require_evalexpr [38;5;129;01mand[39;00m [38;5;129;01mnot[39;00m [38;5;28misinstance[39m(result, IntermediateExpr):
+[32m    445[39m     [38;5;28;01mif[39;00m [38;5;28misinstance[39m(result, ModelDesc):
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/desc.py:257[39m, in [36m_eval_binary_plus[39m[34m(evaluator, tree)[39m
+[32m    256[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34m_eval_binary_plus[39m(evaluator, tree):
+[32m--> [39m[32m257[39m     left_expr = [43mevaluator[49m[43m.[49m[43meval[49m[43m([49m[43mtree[49m[43m.[49m[43margs[49m[43m[[49m[32;43m0[39;49m[43m][49m[43m)[49m
+[32m    258[39m     [38;5;28;01mif[39;00m tree.args[[32m1[39m].type == [33m"[39m[33mZERO[39m[33m"[39m:
+[32m    259[39m         [38;5;28;01mreturn[39;00m IntermediateExpr([38;5;28;01mFalse[39;00m, [38;5;28;01mNone[39;00m, [38;5;28;01mTrue[39;00m, left_expr.terms)
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/desc.py:443[39m, in [36mEvaluator.eval[39m[34m(self, tree, require_evalexpr)[39m
+[32m    438[39m [38;5;28;01mif[39;00m key [38;5;129;01mnot[39;00m [38;5;129;01min[39;00m [38;5;28mself[39m._evaluators:
+[32m    439[39m     [38;5;28;01mraise[39;00m PatsyError(
+[32m    440[39m         [33m"[39m[33mI don[39m[33m'[39m[33mt know how to evaluate this [39m[33m'[39m[38;5;132;01m%s[39;00m[33m'[39m[33m operator[39m[33m"[39m % (tree.type,),
+[32m    441[39m         tree.token,
+[32m    442[39m     )
+[32m--> [39m[32m443[39m result = [38;5;28;43mself[39;49m[43m.[49m[43m_evaluators[49m[43m[[49m[43mkey[49m[43m][49m[43m([49m[38;5;28;43mself[39;49m[43m,[49m[43m [49m[43mtree[49m[43m)[49m
+[32m    444[39m [38;5;28;01mif[39;00m require_evalexpr [38;5;129;01mand[39;00m [38;5;129;01mnot[39;00m [38;5;28misinstance[39m(result, IntermediateExpr):
+[32m    445[39m     [38;5;28;01mif[39;00m [38;5;28misinstance[39m(result, ModelDesc):
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/desc.py:285[39m, in [36m_eval_binary_minus[39m[34m(evaluator, tree)[39m
+[32m    283[39m     [38;5;28;01mreturn[39;00m IntermediateExpr([38;5;28;01mFalse[39;00m, [38;5;28;01mNone[39;00m, [38;5;28;01mTrue[39;00m, left_expr.terms)
+[32m    284[39m [38;5;28;01melse[39;00m:
+[32m--> [39m[32m285[39m     right_expr = [43mevaluator[49m[43m.[49m[43meval[49m[43m([49m[43mtree[49m[43m.[49m[43margs[49m[43m[[49m[32;43m1[39;49m[43m][49m[43m)[49m
+[32m    286[39m     terms = [term [38;5;28;01mfor[39;00m term [38;5;129;01min[39;00m left_expr.terms [38;5;28;01mif[39;00m term [38;5;129;01mnot[39;00m [38;5;129;01min[39;00m right_expr.terms]
+[32m    287[39m     [38;5;28;01mif[39;00m right_expr.intercept:
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/desc.py:443[39m, in [36mEvaluator.eval[39m[34m(self, tree, require_evalexpr)[39m
+[32m    438[39m [38;5;28;01mif[39;00m key [38;5;129;01mnot[39;00m [38;5;129;01min[39;00m [38;5;28mself[39m._evaluators:
+[32m    439[39m     [38;5;28;01mraise[39;00m PatsyError(
+[32m    440[39m         [33m"[39m[33mI don[39m[33m'[39m[33mt know how to evaluate this [39m[33m'[39m[38;5;132;01m%s[39;00m[33m'[39m[33m operator[39m[33m"[39m % (tree.type,),
+[32m    441[39m         tree.token,
+[32m    442[39m     )
+[32m--> [39m[32m443[39m result = [38;5;28;43mself[39;49m[43m.[49m[43m_evaluators[49m[43m[[49m[43mkey[49m[43m][49m[43m([49m[38;5;28;43mself[39;49m[43m,[49m[43m [49m[43mtree[49m[43m)[49m
+[32m    444[39m [38;5;28;01mif[39;00m require_evalexpr [38;5;129;01mand[39;00m [38;5;129;01mnot[39;00m [38;5;28misinstance[39m(result, IntermediateExpr):
+[32m    445[39m     [38;5;28;01mif[39;00m [38;5;28misinstance[39m(result, ModelDesc):
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/desc.py:395[39m, in [36m_eval_number[39m[34m(evaluator, tree)[39m
+[32m    394[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34m_eval_number[39m(evaluator, tree):
+[32m--> [39m[32m395[39m     [38;5;28;01mraise[39;00m PatsyError([33m"[39m[33mnumbers besides [39m[33m'[39m[33m0[39m[33m'[39m[33m and [39m[33m'[39m[33m1[39m[33m'[39m[33m are only allowed with **[39m[33m"[39m, tree)
+
+[31mPatsyError[39m: numbers besides '0' and '1' are only allowed with **
+    uninsured_pct ~ D_k-3 + D_k-2 + D_k0 + D_k1 + D_k2 + D_k3 + C(state) + C(year)
+                        ^
+
+FAIL: MOD06_NB03_DiD_EventStudy.ipynb
+==> 2026-06-24T11:13:14-04:00 Processing MOD06_NB06_GComp_TMLE.ipynb
+[NbConvertApp] Converting notebook MOD06_NB06_GComp_TMLE.ipynb to html
+Traceback (most recent call last):
+  File "/home/zia207/.local/bin/jupyter-nbconvert", line 6, in <module>
+    sys.exit(main())
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/application.py", line 284, in launch_instance
+    super().launch_instance(argv=argv, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/traitlets/config/application.py", line 1075, in launch_instance
+    app.start()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 420, in start
+    self.convert_notebooks()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 597, in convert_notebooks
+    self.convert_single_notebook(notebook_filename)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 563, in convert_single_notebook
+    output, resources = self.export_single_notebook(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 487, in export_single_notebook
+    output, resources = self.exporter.from_filename(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 390, in from_filename
+    return super().from_filename(filename, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 201, in from_filename
+    return self.from_file(f, resources=resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 396, in from_file
+    return super().from_file(file_stream, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 220, in from_file
+    return self.from_notebook_node(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/html.py", line 286, in from_notebook_node
+    html, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 412, in from_notebook_node
+    nb_copy, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 154, in from_notebook_node
+    nb_copy, resources = self._preprocess(nb_copy, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 353, in _preprocess
+    nbc, resc = preprocessor(nbc, resc)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/base.py", line 48, in __call__
+    return self.preprocess(nb, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 103, in preprocess
+    self.preprocess_cell(cell, resources, index)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 124, in preprocess_cell
+    cell = self.execute_cell(cell, index, store_history=True)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# Research question: Statin -> LDL -> MI (mediated path) vs
+#                   Statin -> MI directly (direct path)
+# Generate mediator: LDL post-statin
+np.random.seed(99)
+ldl_post = df["ldl_baseline"] - 40*df["statin"] + np.random.normal(0, 10, N)
+df["ldl_post"] = ldl_post.clip(40, 280)
+
+# Re-fit outcome model including mediator
+from sklearn.linear_model import LogisticRegression
+
+def mediation_analysis(df, treatment, mediator, outcome, covariates, n_boot=500):
+    """ G-computation based mediation analysis. Decomposes total effect into natural direct (NDE) and indirect (NIE) effects. """
+    X_base = df[covariates].fillna(df[covariates].median(numeric_only=True))
+
+    # Step 1: Mediator model M ~ A, X
+    m_model = LogisticRegression(C=1, max_iter=500) if df[mediator].nunique()==2 else None
+    from sklearn.linear_model import LinearRegression
+    m_reg = LinearRegression()
+    m_reg.fit(pd.concat([X_base, df[[treatment]]], axis=1), df[mediator])
+
+    # Step 2: Outcome model Y ~ A, M, X
+    X_out = pd.concat([X_base, df[[treatment, mediator]]], axis=1)
+    q_model = LogisticRegression(C=1, max_iter=500, random_state=42)
+    q_model.fit(X_out, df[outcome])
+
+    def predict_outcome(A_val, M_vals, X):
+        X_pred = pd.DataFrame(X.values, columns=X.columns)
+        X_pred[treatment] = A_val
+        X_pred[mediator]  = M_vals
+        return q_model.predict_proba(X_pred)[:,1]
+
+    # Natural mediator values under A=1 and A=0
+    X1 = pd.concat([X_base, pd.DataFrame({treatment:[1]*N})], axis=1)
+    X0 = pd.concat([X_base, pd.DataFrame({treatment:[0]*N})], axis=1)
+    M_a1 = m_reg.predict(X1)
+    M_a0 = m_reg.predict(X0)
+
+    # E[Y(1, M(1))], E[Y(0, M(0))], E[Y(1, M(0))], E[Y(0, M(1))]
+    EY11 = predict_outcome(1, M_a1, X_base).mean()  # Y when A=1, M=M(1)
+    EY00 = predict_outcome(0, M_a0, X_base).mean()  # Y when A=0, M=M(0)
+    EY10 = predict_outcome(1, M_a0, X_base).mean()  # Y when A=1, M=M(0)  <- controlled direct
+    EY01 = predict_outcome(0, M_a1, X_base).mean()  # Y when A=0, M=M(1)
+
+    TE  = EY11 - EY00   # Total effect
+    NDE = EY10 - EY00   # Natural direct effect
+    NIE = EY11 - EY10   # Natural indirect effect (through M)
+
+    return {"TE":TE,"NDE":NDE,"NIE":NIE,"prop_mediated":NIE/TE if TE!=0 else 0}
+
+med_res = mediation_analysis(df, "statin", "ldl_post", "mi", COVARIATES)
+print("Mediation Analysis: Statin -> LDL_post -> MI")
+print(f"  Total Effect (TE)    : {med_res['TE']:.4f} (RD)")
+print(f"  Natural Direct (NDE) : {med_res['NDE']:.4f} (Statin -> MI, not through LDL)")
+print(f"  Natural Indirect (NIE): {med_res['NIE']:.4f} (Statin -> LDL -> MI)")
+print(f"  Proportion mediated  : {med_res['prop_mediated']*100:.1f}%")
+print()
+print("Interpretation: Statin's effect on MI is partially mediated through LDL reduction.") print(f"  ~{med_res['prop_mediated']*100:.0f}% of total statin benefit operates through LDL lowering.") print(f"  ~{(1-med_res['prop_mediated'])*100:.0f}% is a direct pleiotropic effect.")
+
+------------------
+
+
+  [36mCell[39m[36m [39m[32mIn[4][39m[32m, line 57[39m
+[31m    [39m[31mprint("Interpretation: Statin's effect on MI is partially mediated through LDL reduction.") print(f"  ~{med_res['prop_mediated']*100:.0f}% of total statin benefit operates through LDL lowering.") print(f"  ~{(1-med_res['prop_mediated'])*100:.0f}% is a direct pleiotropic effect.")[39m
+                                                                                                ^
+[31mSyntaxError[39m[31m:[39m invalid syntax
+
+
+FAIL: MOD06_NB06_GComp_TMLE.ipynb
+==> 2026-06-24T11:13:22-04:00 Processing MOD07_NB02_Spatial_Autocorrelation.ipynb
+[NbConvertApp] Converting notebook MOD07_NB02_Spatial_Autocorrelation.ipynb to html
+Traceback (most recent call last):
+  File "/home/zia207/.local/bin/jupyter-nbconvert", line 6, in <module>
+    sys.exit(main())
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/application.py", line 284, in launch_instance
+    super().launch_instance(argv=argv, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/traitlets/config/application.py", line 1075, in launch_instance
+    app.start()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 420, in start
+    self.convert_notebooks()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 597, in convert_notebooks
+    self.convert_single_notebook(notebook_filename)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 563, in convert_single_notebook
+    output, resources = self.export_single_notebook(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 487, in export_single_notebook
+    output, resources = self.exporter.from_filename(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 390, in from_filename
+    return super().from_filename(filename, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 201, in from_filename
+    return self.from_file(f, resources=resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 396, in from_file
+    return super().from_file(file_stream, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 220, in from_file
+    return self.from_notebook_node(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/html.py", line 286, in from_notebook_node
+    html, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 412, in from_notebook_node
+    nb_copy, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 154, in from_notebook_node
+    nb_copy, resources = self._preprocess(nb_copy, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 353, in _preprocess
+    nbc, resc = preprocessor(nbc, resc)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/base.py", line 48, in __call__
+    return self.preprocess(nb, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 103, in preprocess
+    self.preprocess_cell(cell, resources, index)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 124, in preprocess_cell
+    cell = self.execute_cell(cell, index, store_history=True)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+def morans_i(y, W, n_perm=999, seed=42):
+    """ Compute Global Moran's I with permutation inference. I = (N / sum(W)) * (z'Wz) / (z'z) where z = y - mean(y) """ n = len(y) z = y - y.mean() S0 = W.sum() Wz = W @ z I_obs = (n / S0) * (z @ Wz) / (z @ z) # Permutation test rng = np.random.default_rng(seed) I_perm = np.zeros(n_perm) for b in range(n_perm): z_perm = rng.permutation(z) Wz_p = W @ z_perm I_perm[b] = (n / S0) * (z_perm @ Wz_p) / (z_perm @ z_perm) p_value = (np.abs(I_perm) >= np.abs(I_obs)).mean() e_i = -1 / (n - 1) return {"I":I_obs, "E[I]":e_i, "p_value":p_value, "I_perm":I_perm, "z_score":(I_obs-e_i)/I_perm.std()}  print("Global Moran's I Results:\n") print(f"{'Variable':20s} {'Moran I':>10s} {'E[I]':>8s} {'z-score':>10s} {'p-value':>10s}") print("-"*62) for var, values in [("CVD rate",df.cvd_rate),("Poverty (%)",df.pct_poverty), ("SMR",df.smr),("PM2.5",df.pm25)]: res = morans_i(values.values, W_queen) sig = "***" if res["p_value"]<0.001 else "**" if res["p_value"]<0.01 else "*" if res["p_value"]<0.05 else "" print(f"  {var:18s} {res['I']:>10.4f} {res['E[I]']:>8.4f} {res['z_score']:>10.2f} {res['p_value']:>8.4f} {sig}")  # Moran I for CVD rate (main analysis) res_cvd = morans_i(df.cvd_rate.values, W_queen)
+
+------------------
+
+
+  [36mCell[39m[36m [39m[32mIn[3][39m[32m, line 2[39m
+[31m    [39m[31m""" Compute Global Moran's I with permutation inference. I = (N / sum(W)) * (z'Wz) / (z'z) where z = y - mean(y) """ n = len(y) z = y - y.mean() S0 = W.sum() Wz = W @ z I_obs = (n / S0) * (z @ Wz) / (z @ z) # Permutation test rng = np.random.default_rng(seed) I_perm = np.zeros(n_perm) for b in range(n_perm): z_perm = rng.permutation(z) Wz_p = W @ z_perm I_perm[b] = (n / S0) * (z_perm @ Wz_p) / (z_perm @ z_perm) p_value = (np.abs(I_perm) >= np.abs(I_obs)).mean() e_i = -1 / (n - 1) return {"I":I_obs, "E[I]":e_i, "p_value":p_value, "I_perm":I_perm, "z_score":(I_obs-e_i)/I_perm.std()}  print("Global Moran's I Results:\n") print(f"{'Variable':20s} {'Moran I':>10s} {'E[I]':>8s} {'z-score':>10s} {'p-value':>10s}") print("-"*62) for var, values in [("CVD rate",df.cvd_rate),("Poverty (%)",df.pct_poverty), ("SMR",df.smr),("PM2.5",df.pm25)]: res = morans_i(values.values, W_queen) sig = "***" if res["p_value"]<0.001 else "**" if res["p_value"]<0.01 else "*" if res["p_value"]<0.05 else "" print(f"  {var:18s} {res['I']:>10.4f} {res['E[I]']:>8.4f} {res['z_score']:>10.2f} {res['p_value']:>8.4f} {sig}")  # Moran I for CVD rate (main analysis) res_cvd = morans_i(df.cvd_rate.values, W_queen)[39m
+                                                                                                                         ^
+[31mSyntaxError[39m[31m:[39m invalid syntax
+
+
+FAIL: MOD07_NB02_Spatial_Autocorrelation.ipynb
+==> 2026-06-24T11:13:27-04:00 Processing MOD07_NB03_Spatial_Regression_GWR.ipynb
+[NbConvertApp] Converting notebook MOD07_NB03_Spatial_Regression_GWR.ipynb to html
+Traceback (most recent call last):
+  File "/home/zia207/.local/bin/jupyter-nbconvert", line 6, in <module>
+    sys.exit(main())
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/application.py", line 284, in launch_instance
+    super().launch_instance(argv=argv, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/traitlets/config/application.py", line 1075, in launch_instance
+    app.start()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 420, in start
+    self.convert_notebooks()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 597, in convert_notebooks
+    self.convert_single_notebook(notebook_filename)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 563, in convert_single_notebook
+    output, resources = self.export_single_notebook(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 487, in export_single_notebook
+    output, resources = self.exporter.from_filename(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 390, in from_filename
+    return super().from_filename(filename, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 201, in from_filename
+    return self.from_file(f, resources=resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 396, in from_file
+    return super().from_file(file_stream, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 220, in from_file
+    return self.from_notebook_node(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/html.py", line 286, in from_notebook_node
+    html, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 412, in from_notebook_node
+    nb_copy, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 154, in from_notebook_node
+    nb_copy, resources = self._preprocess(nb_copy, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 353, in _preprocess
+    nbc, resc = preprocessor(nbc, resc)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/base.py", line 48, in __call__
+    return self.preprocess(nb, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 103, in preprocess
+    self.preprocess_cell(cell, resources, index)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 124, in preprocess_cell
+    cell = self.execute_cell(cell, index, store_history=True)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# Moran's I on residuals
+def morans_i_resid(resid, W, n_perm=499, seed=42):
+    n=len(resid); z=resid-resid.mean(); S0=W.sum()
+    I_obs=(n/S0)*(z@(W@z))/(z@z)
+    rng=np.random.default_rng(seed)
+    I_perm=np.array([(n/S0)*(rng.permutation(z)@(W@rng.permutation(z)))/(z@z) for _ in range(n_perm)])
+    p=(np.abs(I_perm)>=np.abs(I_obs)).mean()
+    return I_obs, p
+
+I_ols, p_ols = morans_i_resid(resid, W)
+print(f"Moran's I (OLS residuals): {I_ols:.4f}, p={p_ols:.4f}") if p_ols < 0.05: print("-> Significant residual spatial autocorrelation: spatial model needed")  # LM tests (simplified) Wy = W @ y.values e = resid We = W @ e n = len(y) S1 = 0.5 * np.sum((W + W.T)**2) S2 = np.sum((W.sum(axis=1) + W.T.sum(axis=1))**2) sigma2 = (e@e)/n J = (1/sigma2) * (Wy @ Wy - 2*(Wy @ e)/(sigma2) * (e @ e))  # LM lag b1 = X.values.T @ X.values WX = W @ X.values T_val = (X.values.T @ Wy) / (X.values.T @ X.values) LM_lag = (e @ Wy)**2 / (sigma2**2 * (Wy @ Wy - Wy @ X.values @ np.linalg.lstsq(b1, X.values.T @ Wy, rcond=None)[0])) # LM error (simplified) LM_err = (e @ We)**2 / (sigma2**2 * np.trace(W.T @ W + W @ W)) LM_lag = max(0, abs(LM_lag)); LM_err = max(0, abs(LM_err))  print(f"LM Lag test: {LM_lag:.4f} (p={1-stats.chi2.cdf(LM_lag,1):.4f})") print(f"LM Err test: {LM_err:.4f} (p={1-stats.chi2.cdf(LM_err,1):.4f})") print() print("Decision rule: If both significant, choose the one with larger test statistic") if LM_lag > LM_err: print("  -> Spatial Lag Model preferred") else: print("  -> Spatial Error Model preferred")
+
+------------------
+
+
+  [36mCell[39m[36m [39m[32mIn[3][39m[32m, line 11[39m
+[31m    [39m[31mprint(f"Moran's I (OLS residuals): {I_ols:.4f}, p={p_ols:.4f}") if p_ols < 0.05: print("-> Significant residual spatial autocorrelation: spatial model needed")  # LM tests (simplified) Wy = W @ y.values e = resid We = W @ e n = len(y) S1 = 0.5 * np.sum((W + W.T)**2) S2 = np.sum((W.sum(axis=1) + W.T.sum(axis=1))**2) sigma2 = (e@e)/n J = (1/sigma2) * (Wy @ Wy - 2*(Wy @ e)/(sigma2) * (e @ e))  # LM lag b1 = X.values.T @ X.values WX = W @ X.values T_val = (X.values.T @ Wy) / (X.values.T @ X.values) LM_lag = (e @ Wy)**2 / (sigma2**2 * (Wy @ Wy - Wy @ X.values @ np.linalg.lstsq(b1, X.values.T @ Wy, rcond=None)[0])) # LM error (simplified) LM_err = (e @ We)**2 / (sigma2**2 * np.trace(W.T @ W + W @ W)) LM_lag = max(0, abs(LM_lag)); LM_err = max(0, abs(LM_err))  print(f"LM Lag test: {LM_lag:.4f} (p={1-stats.chi2.cdf(LM_lag,1):.4f})") print(f"LM Err test: {LM_err:.4f} (p={1-stats.chi2.cdf(LM_err,1):.4f})") print() print("Decision rule: If both significant, choose the one with larger test statistic") if LM_lag > LM_err: print("  -> Spatial Lag Model preferred") else: print("  -> Spatial Error Model preferred")[39m
+                                                                                   ^
+[31mSyntaxError[39m[31m:[39m invalid syntax
+
+
+FAIL: MOD07_NB03_Spatial_Regression_GWR.ipynb
+==> 2026-06-24T11:13:33-04:00 Processing MOD07_NB06_Environmental_Epidemiology.ipynb
+[NbConvertApp] Converting notebook MOD07_NB06_Environmental_Epidemiology.ipynb to html
+Traceback (most recent call last):
+  File "/home/zia207/.local/bin/jupyter-nbconvert", line 6, in <module>
+    sys.exit(main())
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/application.py", line 284, in launch_instance
+    super().launch_instance(argv=argv, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/traitlets/config/application.py", line 1075, in launch_instance
+    app.start()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 420, in start
+    self.convert_notebooks()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 597, in convert_notebooks
+    self.convert_single_notebook(notebook_filename)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 563, in convert_single_notebook
+    output, resources = self.export_single_notebook(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 487, in export_single_notebook
+    output, resources = self.exporter.from_filename(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 390, in from_filename
+    return super().from_filename(filename, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 201, in from_filename
+    return self.from_file(f, resources=resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 396, in from_file
+    return super().from_file(file_stream, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 220, in from_file
+    return self.from_notebook_node(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/html.py", line 286, in from_notebook_node
+    html, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 412, in from_notebook_node
+    nb_copy, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 154, in from_notebook_node
+    nb_copy, resources = self._preprocess(nb_copy, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 353, in _preprocess
+    nbc, resc = preprocessor(nbc, resc)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/base.py", line 48, in __call__
+    return self.preprocess(nb, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 103, in preprocess
+    self.preprocess_cell(cell, resources, index)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 124, in preprocess_cell
+    cell = self.execute_cell(cell, index, store_history=True)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import statsmodels.api as sm
+
+# Ecological regression: county CVD rate ~ county PM2.5
+X = sm.add_constant(df[["pm25","pct_poverty"]])
+model_eco = sm.OLS(df.cvd_rate, X).fit()
+print("Ecological regression: CVD ~ PM2.5 + Poverty")
+print(model_eco.summary().tables[1])
+pm25_coef = model_eco.params["pm25"]
+print(f"\nTrue PM2.5 coefficient: {TRUE_PM25:.1f} CVD deaths/100k per µg/m³")
+print(f"Estimated coefficient : {pm25_coef:.1f}")
+print(f"Bias                  : {pm25_coef - TRUE_PM25:+.2f}")
+
+# Exposure-response curve (non-parametric)
+fig, axes = plt.subplots(1, 2, figsize=(14, 5))
+axes[0].scatter(df.pm25, df.cvd_rate, alpha=0.4, s=20, color="#4878CF")
+x_line = np.linspace(df.pm25.min(), df.pm25.max(), 100)
+y_pred = model_eco.params["Intercept"] + model_eco.params["pm25"]*x_line + model_eco.params["pct_poverty"]*df.pct_poverty.mean()
+axes[0].plot(x_line, y_pred, "r-", lw=2, label=f"β={pm25_coef:.2f} (True: {TRUE_PM25})")
+axes[0].set_xlabel("County PM2.5 (µg/m³)"); axes[0].set_ylabel("CVD rate per 100k")
+axes[0].set_title("Exposure-Response: PM2.5 → CVD Mortality"); axes[0].legend(fontsize=9)
+
+# Using different interpolation methods
+for col, color, label in [("pm25_nearest","#D65F5F","Nearest"),
+                            ("pm25_idw","#4878CF","IDW"),
+                            ("pm25_rbf","#6ACC65","RBF")]:
+    Xm = sm.add_constant(df[[col,"pct_poverty"]])
+    m  = sm.OLS(df.cvd_rate, Xm).fit()
+    coef = m.params[col]
+    axes[1].bar(label, coef, color=color, alpha=0.85, width=0.6)
+axes[1].axhline(TRUE_PM25, color="black", ls="--", lw=2, label=f"True β={TRUE_PM25}")
+axes[1].set_ylabel("PM2.5 coefficient"); axes[1].set_title("Coefficient by Exposure Method (exposure measurement error matters!)")
+axes[1].legend(fontsize=9)
+plt.tight_layout(); plt.savefig("/tmp/mod07/exposure_response.png", bbox_inches="tight"); plt.show()
+
+------------------
+
+----- stdout -----
+Ecological regression: CVD ~ PM2.5 + Poverty
+===============================================================================
+                  coef    std err          t      P>|t|      [0.025      0.975]
+-------------------------------------------------------------------------------
+const         153.4334      8.705     17.627      0.000     136.267     170.599
+pm25            3.3676      0.473      7.122      0.000       2.435       4.300
+pct_poverty     1.0725      0.529      2.029      0.044       0.030       2.115
+===============================================================================
+
+True PM2.5 coefficient: 2.5 CVD deaths/100k per µg/m³
+Estimated coefficient : 3.4
+Bias                  : +0.87
+------------------
+
+[31m---------------------------------------------------------------------------[39m
+[31mKeyError[39m                                  Traceback (most recent call last)
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/pandas/core/indexes/base.py:3812[39m, in [36mIndex.get_loc[39m[34m(self, key)[39m
+[32m   3811[39m [38;5;28;01mtry[39;00m:
+[32m-> [39m[32m3812[39m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[43m.[49m[43m_engine[49m[43m.[49m[43mget_loc[49m[43m([49m[43mcasted_key[49m[43m)[49m
+[32m   3813[39m [38;5;28;01mexcept[39;00m [38;5;167;01mKeyError[39;00m [38;5;28;01mas[39;00m err:
+
+[36mFile [39m[32mpandas/_libs/index.pyx:167[39m, in [36mpandas._libs.index.IndexEngine.get_loc[39m[34m()[39m
+
+[36mFile [39m[32mpandas/_libs/index.pyx:196[39m, in [36mpandas._libs.index.IndexEngine.get_loc[39m[34m()[39m
+
+[36mFile [39m[32mpandas/_libs/hashtable_class_helper.pxi:7088[39m, in [36mpandas._libs.hashtable.PyObjectHashTable.get_item[39m[34m()[39m
+
+[36mFile [39m[32mpandas/_libs/hashtable_class_helper.pxi:7096[39m, in [36mpandas._libs.hashtable.PyObjectHashTable.get_item[39m[34m()[39m
+
+[31mKeyError[39m: 'Intercept'
+
+The above exception was the direct cause of the following exception:
+
+[31mKeyError[39m                                  Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[3][39m[32m, line 17[39m
+[32m     15[39m axes[[32m0[39m].scatter(df.pm25, df.cvd_rate, alpha=[32m0.4[39m, s=[32m20[39m, color=[33m"[39m[33m#4878CF[39m[33m"[39m)
+[32m     16[39m x_line = np.linspace(df.pm25.min(), df.pm25.max(), [32m100[39m)
+[32m---> [39m[32m17[39m y_pred = [43mmodel_eco[49m[43m.[49m[43mparams[49m[43m[[49m[33;43m"[39;49m[33;43mIntercept[39;49m[33;43m"[39;49m[43m][49m + model_eco.params[[33m"[39m[33mpm25[39m[33m"[39m]*x_line + model_eco.params[[33m"[39m[33mpct_poverty[39m[33m"[39m]*df.pct_poverty.mean()
+[32m     18[39m axes[[32m0[39m].plot(x_line, y_pred, [33m"[39m[33mr-[39m[33m"[39m, lw=[32m2[39m, label=[33mf[39m[33m"[39m[33mβ=[39m[38;5;132;01m{[39;00mpm25_coef[38;5;132;01m:[39;00m[33m.2f[39m[38;5;132;01m}[39;00m[33m (True: [39m[38;5;132;01m{[39;00mTRUE_PM25[38;5;132;01m}[39;00m[33m)[39m[33m"[39m)
+[32m     19[39m axes[[32m0[39m].set_xlabel([33m"[39m[33mCounty PM2.5 (µg/m³)[39m[33m"[39m); axes[[32m0[39m].set_ylabel([33m"[39m[33mCVD rate per 100k[39m[33m"[39m)
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/pandas/core/series.py:1133[39m, in [36mSeries.__getitem__[39m[34m(self, key)[39m
+[32m   1130[39m     [38;5;28;01mreturn[39;00m [38;5;28mself[39m._values[key]
+[32m   1132[39m [38;5;28;01melif[39;00m key_is_scalar:
+[32m-> [39m[32m1133[39m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[43m.[49m[43m_get_value[49m[43m([49m[43mkey[49m[43m)[49m
+[32m   1135[39m [38;5;66;03m# Convert generator to list before going through hashable part[39;00m
+[32m   1136[39m [38;5;66;03m# (We will iterate through the generator there to check for slices)[39;00m
+[32m   1137[39m [38;5;28;01mif[39;00m is_iterator(key):
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/pandas/core/series.py:1249[39m, in [36mSeries._get_value[39m[34m(self, label, takeable)[39m
+[32m   1246[39m     [38;5;28;01mreturn[39;00m [38;5;28mself[39m._values[label]
+[32m   1248[39m [38;5;66;03m# Similar to Index.get_value, but we do not fall back to positional[39;00m
+[32m-> [39m[32m1249[39m loc = [38;5;28;43mself[39;49m[43m.[49m[43mindex[49m[43m.[49m[43mget_loc[49m[43m([49m[43mlabel[49m[43m)[49m
+[32m   1251[39m [38;5;28;01mif[39;00m is_integer(loc):
+[32m   1252[39m     [38;5;28;01mreturn[39;00m [38;5;28mself[39m._values[loc]
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/pandas/core/indexes/base.py:3819[39m, in [36mIndex.get_loc[39m[34m(self, key)[39m
+[32m   3814[39m     [38;5;28;01mif[39;00m [38;5;28misinstance[39m(casted_key, [38;5;28mslice[39m) [38;5;129;01mor[39;00m (
+[32m   3815[39m         [38;5;28misinstance[39m(casted_key, abc.Iterable)
+[32m   3816[39m         [38;5;129;01mand[39;00m [38;5;28many[39m([38;5;28misinstance[39m(x, [38;5;28mslice[39m) [38;5;28;01mfor[39;00m x [38;5;129;01min[39;00m casted_key)
+[32m   3817[39m     ):
+[32m   3818[39m         [38;5;28;01mraise[39;00m InvalidIndexError(key)
+[32m-> [39m[32m3819[39m     [38;5;28;01mraise[39;00m [38;5;167;01mKeyError[39;00m(key) [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01merr[39;00m
+[32m   3820[39m [38;5;28;01mexcept[39;00m [38;5;167;01mTypeError[39;00m:
+[32m   3821[39m     [38;5;66;03m# If we have a listlike key, _check_indexing_error will raise[39;00m
+[32m   3822[39m     [38;5;66;03m#  InvalidIndexError. Otherwise we fall through and re-raise[39;00m
+[32m   3823[39m     [38;5;66;03m#  the TypeError.[39;00m
+[32m   3824[39m     [38;5;28mself[39m._check_indexing_error(key)
+
+[31mKeyError[39m: 'Intercept'
+
+FAIL: MOD07_NB06_Environmental_Epidemiology.ipynb
+==> 2026-06-24T11:13:41-04:00 Processing MOD07_NB08_Capstone_Spatial_Atlas.ipynb
+[NbConvertApp] Converting notebook MOD07_NB08_Capstone_Spatial_Atlas.ipynb to html
+Traceback (most recent call last):
+  File "/home/zia207/.local/bin/jupyter-nbconvert", line 6, in <module>
+    sys.exit(main())
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/application.py", line 284, in launch_instance
+    super().launch_instance(argv=argv, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/traitlets/config/application.py", line 1075, in launch_instance
+    app.start()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 420, in start
+    self.convert_notebooks()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 597, in convert_notebooks
+    self.convert_single_notebook(notebook_filename)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 563, in convert_single_notebook
+    output, resources = self.export_single_notebook(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 487, in export_single_notebook
+    output, resources = self.exporter.from_filename(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 390, in from_filename
+    return super().from_filename(filename, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 201, in from_filename
+    return self.from_file(f, resources=resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 396, in from_file
+    return super().from_file(file_stream, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 220, in from_file
+    return self.from_notebook_node(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/html.py", line 286, in from_notebook_node
+    html, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 412, in from_notebook_node
+    nb_copy, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 154, in from_notebook_node
+    nb_copy, resources = self._preprocess(nb_copy, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 353, in _preprocess
+    nbc, resc = preprocessor(nbc, resc)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/base.py", line 48, in __call__
+    return self.preprocess(nb, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 103, in preprocess
+    self.preprocess_cell(cell, resources, index)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 124, in preprocess_cell
+    cell = self.execute_cell(cell, index, store_history=True)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+def morans_i(y,W,n_perm=499,seed=42):
+    n=len(y); z=y-y.mean(); S0=W.sum()
+    I=(n/S0)*(z@(W@z))/(z@z)
+    rng=np.random.default_rng(seed)
+    Ip=[(n/S0)*(rng.permutation(z)@(W@rng.permutation(z)))/(z@z) for _ in range(n_perm)]
+    p=(np.abs(Ip)>=abs(I)).mean()
+    return I,p
+
+def local_morans(y,W,n_perm=499,seed=42):
+    n=len(y); z=y-y.mean(); vz=z.var()
+    Wz=W@z; Il=z*Wz/vz
+    rng=np.random.default_rng(seed)
+    Ip=np.array([(rng.permutation(z)*(W@rng.permutation(z))/vz) for _ in range(n_perm)])
+    pv=(np.abs(Ip)>=np.abs(Il)).mean(axis=0)
+    zstd=z/z.std(); zlag=Wz/z.std()
+    quad=np.where((zstd>0)&(zlag>0),"HH",np.where((zstd<0)&(zlag<0),"LL","Other"))
+    return np.where(pv<0.05,quad,"NS"), Il, pv
+
+I_cvd,p_cvd   = morans_i(df.cvd_rate.values,W)
+I_pov,p_pov   = morans_i(df.pct_poverty.values,W)
+I_pm25,p_pm25 = morans_i(df.pm25.values,W)
+print(f"Global Moran's I:") print(f"  CVD rate : {I_cvd:.4f} (p={p_cvd:.4f})") print(f"  Poverty  : {I_pov:.4f} (p={p_pov:.4f})") print(f"  PM2.5    : {I_pm25:.4f} (p={p_pm25:.4f})")  lisa_cvd, _, p_lisa = local_morans(df.cvd_rate.values,W) df["lisa_cvd"]  = lisa_cvd df["lisa_p_cvd"]= p_lisa print(f"\nLISA CVD: HH={sum(lisa_cvd=='HH')} LL={sum(lisa_cvd=='LL')} NS={sum(lisa_cvd=='NS')}")
+
+------------------
+
+
+  [36mCell[39m[36m [39m[32mIn[3][39m[32m, line 22[39m
+[31m    [39m[31mprint(f"Global Moran's I:") print(f"  CVD rate : {I_cvd:.4f} (p={p_cvd:.4f})") print(f"  Poverty  : {I_pov:.4f} (p={p_pov:.4f})") print(f"  PM2.5    : {I_pm25:.4f} (p={p_pm25:.4f})")  lisa_cvd, _, p_lisa = local_morans(df.cvd_rate.values,W) df["lisa_cvd"]  = lisa_cvd df["lisa_p_cvd"]= p_lisa print(f"\nLISA CVD: HH={sum(lisa_cvd=='HH')} LL={sum(lisa_cvd=='LL')} NS={sum(lisa_cvd=='NS')}")[39m
+                                ^
+[31mSyntaxError[39m[31m:[39m invalid syntax
+
+
+FAIL: MOD07_NB08_Capstone_Spatial_Atlas.ipynb
+==> 2026-06-24T11:13:47-04:00 Processing MOD08_NB03_Streamlit_Dashboards.ipynb
+[NbConvertApp] Converting notebook MOD08_NB03_Streamlit_Dashboards.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 2 image(s).
+[NbConvertApp] Writing 544504 bytes to docs/MOD08_NB03_Streamlit_Dashboards.html
+OK: MOD08_NB03_Streamlit_Dashboards.ipynb
+==> 2026-06-24T11:13:54-04:00 Processing MOD08_NB04_MLflow_Tracking.ipynb
+[NbConvertApp] Converting notebook MOD08_NB04_MLflow_Tracking.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 2 image(s).
+[NbConvertApp] Writing 532423 bytes to docs/MOD08_NB04_MLflow_Tracking.html
+OK: MOD08_NB04_MLflow_Tracking.ipynb
+==> 2026-06-24T11:14:04-04:00 Processing MOD08_NB08_Capstone_Deployment.ipynb
+[NbConvertApp] Converting notebook MOD08_NB08_Capstone_Deployment.ipynb to html
+Traceback (most recent call last):
+  File "/home/zia207/.local/bin/jupyter-nbconvert", line 6, in <module>
+    sys.exit(main())
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/application.py", line 284, in launch_instance
+    super().launch_instance(argv=argv, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/traitlets/config/application.py", line 1075, in launch_instance
+    app.start()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 420, in start
+    self.convert_notebooks()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 597, in convert_notebooks
+    self.convert_single_notebook(notebook_filename)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 563, in convert_single_notebook
+    output, resources = self.export_single_notebook(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 487, in export_single_notebook
+    output, resources = self.exporter.from_filename(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 390, in from_filename
+    return super().from_filename(filename, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 201, in from_filename
+    return self.from_file(f, resources=resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 396, in from_file
+    return super().from_file(file_stream, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 220, in from_file
+    return self.from_notebook_node(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/html.py", line 286, in from_notebook_node
+    html, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 412, in from_notebook_node
+    nb_copy, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 154, in from_notebook_node
+    nb_copy, resources = self._preprocess(nb_copy, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 353, in _preprocess
+    nbc, resc = preprocessor(nbc, resc)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/base.py", line 48, in __call__
+    return self.preprocess(nb, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 103, in preprocess
+    self.preprocess_cell(cell, resources, index)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 124, in preprocess_cell
+    cell = self.execute_cell(cell, index, store_history=True)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import os, json, time, pickle
+from pathlib import Path
+from datetime import datetime
+import numpy as np, pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib.gridspec as gridspec
+from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import GradientBoostingClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import roc_auc_score, average_precision_score,
+                              brier_score_loss, roc_curve
+from sklearn.calibration import calibration_curve
+import warnings; warnings.filterwarnings("ignore")
+os.makedirs("/tmp/mod08/capstone", exist_ok=True)
+plt.rcParams.update({"figure.dpi":120,"savefig.dpi":300,"figure.facecolor":"white",
+                     "axes.spines.top":False,"axes.spines.right":False})
+SEED = 42; np.random.seed(SEED)
+
+def sigmoid(x): return 1/(1+np.exp(-x))
+N = 3000
+age   = np.random.normal(60,15,N).clip(18,90).astype(int)
+sex   = np.random.choice(["M","F"],N,p=[0.48,0.52])
+race  = np.random.choice(["White","Black","Hispanic","Asian","Other"],N,p=[0.60,0.18,0.12,0.06,0.04])
+payer = np.random.choice(["Medicare","Medicaid","Private","Self-pay"],N,p=[0.40,0.22,0.28,0.10])
+los   = np.random.gamma(2.5,1.8,N).clip(1,30).astype(int)
+dm    = np.random.binomial(1,0.35,N); hf = np.random.binomial(1,0.22,N)
+copd  = np.random.binomial(1,0.18,N); smoking = np.random.binomial(1,0.25,N)
+n_com = dm+hf+copd
+logit = -3.2+0.6*hf+0.5*dm+0.3*copd+0.02*(age-60)+0.2*(los>7).astype(int)+np.random.normal(0,0.3,N)
+readmitted = np.random.binomial(1,sigmoid(logit),N)
+df = pd.DataFrame({"age":age,"sex":sex,"race":race,"payer":payer,
+                   "los_days":los,"diabetes":dm,"hf":hf,"copd":copd,
+                   "smoking":smoking,"n_comorb":n_com,"readmitted":readmitted})
+FEATURES = ["age","los_days","diabetes","hf","copd","n_comorb"]
+X_tr,X_te,y_tr,y_te = train_test_split(df[FEATURES],df["readmitted"],test_size=0.2,stratify=df["readmitted"],random_state=SEED)
+df_tr = df.iloc[X_tr.index].reset_index(drop=True)
+df_te = df.iloc[X_te.index].reset_index(drop=True)
+print(f"Capstone dataset: N={N} | Readmission: {readmitted.mean()*100:.1f}% | Features: {len(FEATURES)}")
+
+------------------
+
+
+  [36mCell[39m[36m [39m[32mIn[1][39m[32m, line 10[39m
+[31m    [39m[31mfrom sklearn.metrics import roc_auc_score, average_precision_score,[39m
+                                                                       ^
+[31mSyntaxError[39m[31m:[39m trailing comma not allowed without surrounding parentheses
+
+
+FAIL: MOD08_NB08_Capstone_Deployment.ipynb
+==> Retry done: 12 succeeded, 18 failed

@@ -1,0 +1,399 @@
+==> 2026-06-24T15:02:06-04:00 Processing MOD00_NTRO_HealthPy_Tutorial_Series.ipynb
+[NbConvertApp] Converting notebook MOD00_NTRO_HealthPy_Tutorial_Series.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 2 image(s).
+[NbConvertApp] Writing 846456 bytes to docs/MOD00_NTRO_HealthPy_Tutorial_Series.html
+OK: MOD00_NTRO_HealthPy_Tutorial_Series.ipynb
+==> 2026-06-24T15:02:22-04:00 Processing MOD01_NB01_Python_Foundations_Health_Data.ipynb
+[NbConvertApp] Converting notebook MOD01_NB01_Python_Foundations_Health_Data.ipynb to html
+[NbConvertApp] Writing 356328 bytes to docs/MOD01_NB01_Python_Foundations_Health_Data.html
+OK: MOD01_NB01_Python_Foundations_Health_Data.ipynb
+==> 2026-06-24T15:02:28-04:00 Processing MOD01_NB02_Descriptive_Statistics_Health_Metrics.ipynb
+[NbConvertApp] Converting notebook MOD01_NB02_Descriptive_Statistics_Health_Metrics.ipynb to html
+[NbConvertApp] Writing 367759 bytes to docs/MOD01_NB02_Descriptive_Statistics_Health_Metrics.html
+OK: MOD01_NB02_Descriptive_Statistics_Health_Metrics.ipynb
+==> 2026-06-24T15:02:34-04:00 Processing MOD01_NB03_Health_Data_Ecosystem_Codes.ipynb
+[NbConvertApp] Converting notebook MOD01_NB03_Health_Data_Ecosystem_Codes.ipynb to html
+[NbConvertApp] Writing 412079 bytes to docs/MOD01_NB03_Health_Data_Ecosystem_Codes.html
+OK: MOD01_NB03_Health_Data_Ecosystem_Codes.ipynb
+==> 2026-06-24T15:02:40-04:00 Processing MOD02_NB01_Data_Loading_Profiling.ipynb
+[NbConvertApp] Converting notebook MOD02_NB01_Data_Loading_Profiling.ipynb to html
+[NbConvertApp] Writing 6242233 bytes to docs/MOD02_NB01_Data_Loading_Profiling.html
+OK: MOD02_NB01_Data_Loading_Profiling.ipynb
+==> 2026-06-24T15:03:07-04:00 Processing MOD02_NB02_Descriptive_Statistics.ipynb
+[NbConvertApp] Converting notebook MOD02_NB02_Descriptive_Statistics.ipynb to html
+[NbConvertApp] Writing 353378 bytes to docs/MOD02_NB02_Descriptive_Statistics.html
+OK: MOD02_NB02_Descriptive_Statistics.ipynb
+==> 2026-06-24T15:03:13-04:00 Processing MOD02_NB03_Clinical_Visualisation.ipynb
+[NbConvertApp] Converting notebook MOD02_NB03_Clinical_Visualisation.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 6 image(s).
+[NbConvertApp] Writing 1226139 bytes to docs/MOD02_NB03_Clinical_Visualisation.html
+OK: MOD02_NB03_Clinical_Visualisation.ipynb
+==> 2026-06-24T15:03:27-04:00 Processing MOD02_NB04_TimeSeries_Admissions.ipynb
+[NbConvertApp] Converting notebook MOD02_NB04_TimeSeries_Admissions.ipynb to html
+/home/zia207/.local/share/jupyter/nbconvert/templates/base/display_priority.j2:32: UserWarning: Your element with mimetype(s) dict_keys(['application/vnd.plotly.v1+json']) is not able to be represented.
+  {%- elif type == 'text/vnd.mermaid' -%}
+[NbConvertApp] WARNING | Alternative text is missing on 6 image(s).
+[NbConvertApp] Writing 1722461 bytes to docs/MOD02_NB04_TimeSeries_Admissions.html
+OK: MOD02_NB04_TimeSeries_Admissions.ipynb
+==> 2026-06-24T15:03:39-04:00 Processing MOD02_NB05_Missingness_Imputation.ipynb
+[NbConvertApp] Converting notebook MOD02_NB05_Missingness_Imputation.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 4 image(s).
+[NbConvertApp] Writing 746575 bytes to docs/MOD02_NB05_Missingness_Imputation.html
+OK: MOD02_NB05_Missingness_Imputation.ipynb
+==> 2026-06-24T15:03:48-04:00 Processing MOD02_NB06_Comorbidity_Heatmap.ipynb
+[NbConvertApp] Converting notebook MOD02_NB06_Comorbidity_Heatmap.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 4 image(s).
+[NbConvertApp] Writing 836024 bytes to docs/MOD02_NB06_Comorbidity_Heatmap.html
+OK: MOD02_NB06_Comorbidity_Heatmap.ipynb
+==> 2026-06-24T15:03:58-04:00 Processing MOD02_NB07_Geospatial_Disparities.ipynb
+[NbConvertApp] Converting notebook MOD02_NB07_Geospatial_Disparities.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 3 image(s).
+[NbConvertApp] Writing 772182 bytes to docs/MOD02_NB07_Geospatial_Disparities.html
+OK: MOD02_NB07_Geospatial_Disparities.ipynb
+==> 2026-06-24T15:04:07-04:00 Processing MOD02_NB08_Capstone_Readmission_EDA.ipynb
+[NbConvertApp] Converting notebook MOD02_NB08_Capstone_Readmission_EDA.ipynb to html
+[NbConvertApp] Writing 476182 bytes to docs/MOD02_NB08_Capstone_Readmission_EDA.html
+OK: MOD02_NB08_Capstone_Readmission_EDA.ipynb
+==> 2026-06-24T15:04:29-04:00 Processing MOD03_NB01_Hypothesis_Testing.ipynb
+[NbConvertApp] Converting notebook MOD03_NB01_Hypothesis_Testing.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 1 image(s).
+[NbConvertApp] Writing 507849 bytes to docs/MOD03_NB01_Hypothesis_Testing.html
+OK: MOD03_NB01_Hypothesis_Testing.ipynb
+==> 2026-06-24T15:04:37-04:00 Processing MOD03_NB02_RR_OR_CI.ipynb
+[NbConvertApp] Converting notebook MOD03_NB02_RR_OR_CI.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 2 image(s).
+[NbConvertApp] Writing 526106 bytes to docs/MOD03_NB02_RR_OR_CI.html
+OK: MOD03_NB02_RR_OR_CI.ipynb
+==> 2026-06-24T15:04:45-04:00 Processing MOD03_NB03_Survival_Analysis.ipynb
+[NbConvertApp] Converting notebook MOD03_NB03_Survival_Analysis.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 7 image(s).
+[NbConvertApp] Writing 921414 bytes to docs/MOD03_NB03_Survival_Analysis.html
+OK: MOD03_NB03_Survival_Analysis.ipynb
+==> 2026-06-24T15:04:55-04:00 Processing MOD03_NB04_Linear_Regression.ipynb
+[NbConvertApp] Converting notebook MOD03_NB04_Linear_Regression.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 2 image(s).
+[NbConvertApp] Writing 846350 bytes to docs/MOD03_NB04_Linear_Regression.html
+OK: MOD03_NB04_Linear_Regression.ipynb
+==> 2026-06-24T15:05:04-04:00 Processing MOD03_NB05_Logistic_Regression.ipynb
+[NbConvertApp] Converting notebook MOD03_NB05_Logistic_Regression.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 1 image(s).
+[NbConvertApp] Writing 525793 bytes to docs/MOD03_NB05_Logistic_Regression.html
+OK: MOD03_NB05_Logistic_Regression.ipynb
+==> 2026-06-24T15:05:12-04:00 Processing MOD03_NB06_Count_Regression.ipynb
+[NbConvertApp] Converting notebook MOD03_NB06_Count_Regression.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 2 image(s).
+[NbConvertApp] Writing 529192 bytes to docs/MOD03_NB06_Count_Regression.html
+OK: MOD03_NB06_Count_Regression.ipynb
+==> 2026-06-24T15:05:20-04:00 Processing MOD03_NB07_Confounding_EffectModification.ipynb
+[NbConvertApp] Converting notebook MOD03_NB07_Confounding_EffectModification.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 2 image(s).
+[NbConvertApp] Writing 539925 bytes to docs/MOD03_NB07_Confounding_EffectModification.html
+OK: MOD03_NB07_Confounding_EffectModification.ipynb
+==> 2026-06-24T15:05:28-04:00 Processing MOD03_NB08_Capstone_Inference.ipynb
+[NbConvertApp] Converting notebook MOD03_NB08_Capstone_Inference.ipynb to html
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbconvert/__main__.py", line 5, in <module>
+    main()
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/jupyter_core/application.py", line 284, in launch_instance
+    super().launch_instance(argv=argv, **kwargs)
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/traitlets/config/application.py", line 1075, in launch_instance
+    app.start()
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbconvert/nbconvertapp.py", line 420, in start
+    self.convert_notebooks()
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbconvert/nbconvertapp.py", line 597, in convert_notebooks
+    self.convert_single_notebook(notebook_filename)
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbconvert/nbconvertapp.py", line 563, in convert_single_notebook
+    output, resources = self.export_single_notebook(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbconvert/nbconvertapp.py", line 487, in export_single_notebook
+    output, resources = self.exporter.from_filename(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbconvert/exporters/templateexporter.py", line 390, in from_filename
+    return super().from_filename(filename, resources, **kw)  # type:ignore[return-value]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbconvert/exporters/exporter.py", line 201, in from_filename
+    return self.from_file(f, resources=resources, **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbconvert/exporters/templateexporter.py", line 396, in from_file
+    return super().from_file(file_stream, resources, **kw)  # type:ignore[return-value]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbconvert/exporters/exporter.py", line 220, in from_file
+    return self.from_notebook_node(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbconvert/exporters/html.py", line 286, in from_notebook_node
+    html, resources = super().from_notebook_node(nb, resources, **kw)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbconvert/exporters/templateexporter.py", line 412, in from_notebook_node
+    nb_copy, resources = super().from_notebook_node(nb, resources, **kw)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbconvert/exporters/exporter.py", line 154, in from_notebook_node
+    nb_copy, resources = self._preprocess(nb_copy, resources)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbconvert/exporters/exporter.py", line 353, in _preprocess
+    nbc, resc = preprocessor(nbc, resc)
+                ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbconvert/preprocessors/base.py", line 48, in __call__
+    return self.preprocess(nb, resources)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbconvert/preprocessors/execute.py", line 103, in preprocess
+    self.preprocess_cell(cell, resources, index)
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbconvert/preprocessors/execute.py", line 124, in preprocess_cell
+    cell = self.execute_cell(cell, index, store_history=True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+from scipy.stats import ttest_ind, mannwhitneyu, chi2_contingency, skew
+
+def wilson_ci(k,n):
+    z=norm_dist.ppf(0.975); p=k/n; den=1+z**2/n
+    mid=(p+z**2/(2*n))/den; hw=(z*np.sqrt(p*(1-p)/n+z**2/(4*n**2)))/den
+    return round((mid-hw)*100,1),round((mid+hw)*100,1)
+
+g0=df[df.readmitted==0]; g1=df[df.readmitted==1]
+print(f"TABLE 1 — Baseline characteristics by 30-day readmission (N={N})")
+print(f"{'Variable':30s} {'Not readmitted':>20s} {'Readmitted':>20s} {'p':>8s}")
+print("="*82)
+print(f"{'N':30s} {len(g0):>20,} {len(g1):>20,}")
+
+for col,label in [('age','Age (years)'),('los_days','LOS (days)'),('n_comorb','N comorbidities')]:
+    sk=skew(df[col].dropna())
+    if abs(sk)>0.8:
+        s0=f"{g0[col].median():.1f} [{g0[col].quantile(.25):.1f}–{g0[col].quantile(.75):.1f}]"
+        s1=f"{g1[col].median():.1f} [{g1[col].quantile(.25):.1f}–{g1[col].quantile(.75):.1f}]"
+        _,p=mannwhitneyu(g0[col].dropna(),g1[col].dropna(),alternative='two-sided')
+    else:
+        s0=f"{g0[col].mean():.1f} ± {g0[col].std():.1f}"
+        s1=f"{g1[col].mean():.1f} ± {g1[col].std():.1f}"
+        _,p=ttest_ind(g0[col].dropna(),g1[col].dropna())
+    print(f"{label:30s} {s0:>20s} {s1:>20s} {p:>8.4f}")
+
+for col,label in [('sex','Female sex'),('payer','Payer'),('admit_type','Admit type'),
+                   ('diabetes','Diabetes'),('hf','Heart failure'),('copd','COPD')]:
+    ct=pd.crosstab(df[col],df['readmitted'])
+    _,p,_,_=chi2_contingency(ct) if ct.shape==(2,2) or ct.shape[0]>1 else (None,1,None,None)
+    print(f"
+{label:30s}{'':20s}{'':20s} {p:>8.4f}")
+    cats = sorted(df[col].dropna().unique())[:4]
+    for cat in cats:
+        n0=(g0[col]==cat).sum(); p0=n0/len(g0)*100
+        n1=(g1[col]==cat).sum(); p1=n1/len(g1)*100
+        print(f"  {str(cat):28s} {n0:>5} ({p0:4.1f}%)       {n1:>5} ({p1:4.1f}%)")
+
+------------------
+
+
+  [36mCell[39m[36m [39m[32mIn[2][39m[32m, line 30[39m
+[31m    [39m[31mprint(f"[39m
+          ^
+[31mSyntaxError[39m[31m:[39m unterminated string literal (detected at line 30)
+
+
+FAIL: MOD03_NB08_Capstone_Inference.ipynb
+==> 2026-06-24T15:05:34-04:00 Processing MOD04_NB01_Pipeline_Splits.ipynb
+[NbConvertApp] Converting notebook MOD04_NB01_Pipeline_Splits.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 3 image(s).
+[NbConvertApp] Writing 550435 bytes to docs/MOD04_NB01_Pipeline_Splits.html
+OK: MOD04_NB01_Pipeline_Splits.ipynb
+==> 2026-06-24T15:05:42-04:00 Processing MOD04_NB02_DecisionTree_RandomForest.ipynb
+[NbConvertApp] Converting notebook MOD04_NB02_DecisionTree_RandomForest.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 4 image(s).
+[NbConvertApp] Writing 1163799 bytes to docs/MOD04_NB02_DecisionTree_RandomForest.html
+OK: MOD04_NB02_DecisionTree_RandomForest.ipynb
+==> 2026-06-24T15:07:15-04:00 Processing MOD04_NB03_XGBoost_LightGBM.ipynb
+[NbConvertApp] Converting notebook MOD04_NB03_XGBoost_LightGBM.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 3 image(s).
+[NbConvertApp] Writing 629680 bytes to docs/MOD04_NB03_XGBoost_LightGBM.html
+OK: MOD04_NB03_XGBoost_LightGBM.ipynb
+==> 2026-06-24T15:08:23-04:00 Processing MOD04_NB04_Clinical_Model_Evaluation.ipynb
+[NbConvertApp] Converting notebook MOD04_NB04_Clinical_Model_Evaluation.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 3 image(s).
+[NbConvertApp] Writing 787276 bytes to docs/MOD04_NB04_Clinical_Model_Evaluation.html
+OK: MOD04_NB04_Clinical_Model_Evaluation.ipynb
+==> 2026-06-24T15:08:40-04:00 Processing MOD04_NB05_Hyperparameter_Tuning.ipynb
+[NbConvertApp] Converting notebook MOD04_NB05_Hyperparameter_Tuning.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 2 image(s).
+[NbConvertApp] Writing 500012 bytes to docs/MOD04_NB05_Hyperparameter_Tuning.html
+OK: MOD04_NB05_Hyperparameter_Tuning.ipynb
+==> 2026-06-24T15:09:21-04:00 Processing MOD04_NB06_SHAP_Explainability.ipynb
+[NbConvertApp] Converting notebook MOD04_NB06_SHAP_Explainability.ipynb to html
+[NbConvertApp] Writing 350228 bytes to docs/MOD04_NB06_SHAP_Explainability.html
+OK: MOD04_NB06_SHAP_Explainability.ipynb
+==> 2026-06-24T15:09:30-04:00 Processing MOD04_NB07_Clinical_Prediction_Models.ipynb
+[NbConvertApp] Converting notebook MOD04_NB07_Clinical_Prediction_Models.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 3 image(s).
+[NbConvertApp] Writing 781637 bytes to docs/MOD04_NB07_Clinical_Prediction_Models.html
+OK: MOD04_NB07_Clinical_Prediction_Models.ipynb
+==> 2026-06-24T15:09:43-04:00 Processing MOD04_NB08_Capstone_ML_Pipeline.ipynb
+[NbConvertApp] Converting notebook MOD04_NB08_Capstone_ML_Pipeline.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 1 image(s).
+[NbConvertApp] Writing 733368 bytes to docs/MOD04_NB08_Capstone_ML_Pipeline.html
+OK: MOD04_NB08_Capstone_ML_Pipeline.ipynb
+==> 2026-06-24T15:11:40-04:00 Processing MOD05_NB01_Clinical_Text_Preprocessing.ipynb
+[NbConvertApp] Converting notebook MOD05_NB01_Clinical_Text_Preprocessing.ipynb to html
+[NbConvertApp] Writing 347168 bytes to docs/MOD05_NB01_Clinical_Text_Preprocessing.html
+OK: MOD05_NB01_Clinical_Text_Preprocessing.ipynb
+==> 2026-06-24T15:11:46-04:00 Processing MOD05_NB02_Clinical_NER.ipynb
+[NbConvertApp] Converting notebook MOD05_NB02_Clinical_NER.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 1 image(s).
+[NbConvertApp] Writing 404018 bytes to docs/MOD05_NB02_Clinical_NER.html
+OK: MOD05_NB02_Clinical_NER.ipynb
+==> 2026-06-24T15:11:52-04:00 Processing MOD05_NB03_TF_IDF_Classification.ipynb
+[NbConvertApp] Converting notebook MOD05_NB03_TF_IDF_Classification.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 2 image(s).
+[NbConvertApp] Writing 695265 bytes to docs/MOD05_NB03_TF_IDF_Classification.html
+OK: MOD05_NB03_TF_IDF_Classification.ipynb
+==> 2026-06-24T15:12:07-04:00 Processing MOD05_NB04_Word_Embeddings.ipynb
+[NbConvertApp] Converting notebook MOD05_NB04_Word_Embeddings.ipynb to html
+[NbConvertApp] Writing 336665 bytes to docs/MOD05_NB04_Word_Embeddings.html
+OK: MOD05_NB04_Word_Embeddings.ipynb
+==> 2026-06-24T15:12:14-04:00 Processing MOD05_NB05_Clinical_BERT.ipynb
+[NbConvertApp] Converting notebook MOD05_NB05_Clinical_BERT.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 2 image(s).
+[NbConvertApp] Writing 509381 bytes to docs/MOD05_NB05_Clinical_BERT.html
+OK: MOD05_NB05_Clinical_BERT.ipynb
+==> 2026-06-24T15:12:23-04:00 Processing MOD05_NB06_ICD_Coding_Medications.ipynb
+[NbConvertApp] Converting notebook MOD05_NB06_ICD_Coding_Medications.ipynb to html
+[NbConvertApp] Writing 361632 bytes to docs/MOD05_NB06_ICD_Coding_Medications.html
+OK: MOD05_NB06_ICD_Coding_Medications.ipynb
+==> 2026-06-24T15:12:30-04:00 Processing MOD05_NB07_Summarisation_ZeroShot.ipynb
+[NbConvertApp] Converting notebook MOD05_NB07_Summarisation_ZeroShot.ipynb to html
+[NbConvertApp] Writing 357033 bytes to docs/MOD05_NB07_Summarisation_ZeroShot.html
+OK: MOD05_NB07_Summarisation_ZeroShot.ipynb
+==> 2026-06-24T15:12:37-04:00 Processing MOD05_NB08_Capstone_Clinical_NLP.ipynb
+[NbConvertApp] Converting notebook MOD05_NB08_Capstone_Clinical_NLP.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 1 image(s).
+[NbConvertApp] Writing 635321 bytes to docs/MOD05_NB08_Capstone_Clinical_NLP.html
+OK: MOD05_NB08_Capstone_Clinical_NLP.ipynb
+==> 2026-06-24T15:12:47-04:00 Processing MOD06_NB01_DAGs_Confounding.ipynb
+[NbConvertApp] Converting notebook MOD06_NB01_DAGs_Confounding.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 2 image(s).
+[NbConvertApp] Writing 674623 bytes to docs/MOD06_NB01_DAGs_Confounding.html
+OK: MOD06_NB01_DAGs_Confounding.ipynb
+==> 2026-06-24T15:12:55-04:00 Processing MOD06_NB02_Propensity_Scores.ipynb
+[NbConvertApp] Converting notebook MOD06_NB02_Propensity_Scores.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 3 image(s).
+[NbConvertApp] Writing 561150 bytes to docs/MOD06_NB02_Propensity_Scores.html
+OK: MOD06_NB02_Propensity_Scores.ipynb
+==> 2026-06-24T15:13:35-04:00 Processing MOD06_NB03_DiD_EventStudy.ipynb
+[NbConvertApp] Converting notebook MOD06_NB03_DiD_EventStudy.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 3 image(s).
+[NbConvertApp] Writing 656624 bytes to docs/MOD06_NB03_DiD_EventStudy.html
+OK: MOD06_NB03_DiD_EventStudy.ipynb
+==> 2026-06-24T15:13:43-04:00 Processing MOD06_NB04_ITS_SyntheticControl.ipynb
+[NbConvertApp] Converting notebook MOD06_NB04_ITS_SyntheticControl.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 3 image(s).
+[NbConvertApp] Writing 712384 bytes to docs/MOD06_NB04_ITS_SyntheticControl.html
+OK: MOD06_NB04_ITS_SyntheticControl.ipynb
+==> 2026-06-24T15:13:51-04:00 Processing MOD06_NB05_IV_RDD.ipynb
+[NbConvertApp] Converting notebook MOD06_NB05_IV_RDD.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 3 image(s).
+[NbConvertApp] Writing 644582 bytes to docs/MOD06_NB05_IV_RDD.html
+OK: MOD06_NB05_IV_RDD.ipynb
+==> 2026-06-24T15:13:59-04:00 Processing MOD06_NB06_GComp_TMLE.ipynb
+[NbConvertApp] Converting notebook MOD06_NB06_GComp_TMLE.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 1 image(s).
+[NbConvertApp] Writing 423492 bytes to docs/MOD06_NB06_GComp_TMLE.html
+OK: MOD06_NB06_GComp_TMLE.ipynb
+==> 2026-06-24T15:20:32-04:00 Processing MOD06_NB07_Sensitivity_Reporting.ipynb
+[NbConvertApp] Converting notebook MOD06_NB07_Sensitivity_Reporting.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 3 image(s).
+[NbConvertApp] Writing 621110 bytes to docs/MOD06_NB07_Sensitivity_Reporting.html
+OK: MOD06_NB07_Sensitivity_Reporting.ipynb
+==> 2026-06-24T15:20:48-04:00 Processing MOD06_NB08_Capstone_Causal_Pipeline.ipynb
+[NbConvertApp] Converting notebook MOD06_NB08_Capstone_Causal_Pipeline.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 2 image(s).
+[NbConvertApp] Writing 814648 bytes to docs/MOD06_NB08_Capstone_Causal_Pipeline.html
+OK: MOD06_NB08_Capstone_Causal_Pipeline.ipynb
+==> 2026-06-24T15:21:07-04:00 Processing MOD07_NB01_Spatial_Data_Choropleth.ipynb
+[NbConvertApp] Converting notebook MOD07_NB01_Spatial_Data_Choropleth.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 5 image(s).
+[NbConvertApp] Writing 1799867 bytes to docs/MOD07_NB01_Spatial_Data_Choropleth.html
+OK: MOD07_NB01_Spatial_Data_Choropleth.ipynb
+==> 2026-06-24T15:21:17-04:00 Processing MOD07_NB02_Spatial_Autocorrelation.ipynb
+[NbConvertApp] Converting notebook MOD07_NB02_Spatial_Autocorrelation.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 3 image(s).
+[NbConvertApp] Writing 866249 bytes to docs/MOD07_NB02_Spatial_Autocorrelation.html
+OK: MOD07_NB02_Spatial_Autocorrelation.ipynb
+==> 2026-06-24T15:21:26-04:00 Processing MOD07_NB03_Spatial_Regression_GWR.ipynb
+[NbConvertApp] Converting notebook MOD07_NB03_Spatial_Regression_GWR.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 1 image(s).
+[NbConvertApp] Writing 816250 bytes to docs/MOD07_NB03_Spatial_Regression_GWR.html
+OK: MOD07_NB03_Spatial_Regression_GWR.ipynb
+==> 2026-06-24T15:21:34-04:00 Processing MOD07_NB04_Disease_Mapping_Bayes.ipynb
+[NbConvertApp] Converting notebook MOD07_NB04_Disease_Mapping_Bayes.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 4 image(s).
+[NbConvertApp] Writing 1795088 bytes to docs/MOD07_NB04_Disease_Mapping_Bayes.html
+OK: MOD07_NB04_Disease_Mapping_Bayes.ipynb
+==> 2026-06-24T15:21:44-04:00 Processing MOD07_NB05_Cluster_Detection.ipynb
+[NbConvertApp] Converting notebook MOD07_NB05_Cluster_Detection.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 3 image(s).
+[NbConvertApp] Writing 792530 bytes to docs/MOD07_NB05_Cluster_Detection.html
+OK: MOD07_NB05_Cluster_Detection.ipynb
+==> 2026-06-24T15:22:59-04:00 Processing MOD07_NB06_Environmental_Epidemiology.ipynb
+[NbConvertApp] Converting notebook MOD07_NB06_Environmental_Epidemiology.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 3 image(s).
+[NbConvertApp] Writing 1118649 bytes to docs/MOD07_NB06_Environmental_Epidemiology.html
+OK: MOD07_NB06_Environmental_Epidemiology.ipynb
+==> 2026-06-24T15:23:08-04:00 Processing MOD07_NB07_Health_Service_Access.ipynb
+[NbConvertApp] Converting notebook MOD07_NB07_Health_Service_Access.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 3 image(s).
+[NbConvertApp] Writing 1252561 bytes to docs/MOD07_NB07_Health_Service_Access.html
+OK: MOD07_NB07_Health_Service_Access.ipynb
+==> 2026-06-24T15:23:17-04:00 Processing MOD07_NB08_Capstone_Spatial_Atlas.ipynb
+[NbConvertApp] Converting notebook MOD07_NB08_Capstone_Spatial_Atlas.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 1 image(s).
+[NbConvertApp] Writing 1233430 bytes to docs/MOD07_NB08_Capstone_Spatial_Atlas.html
+OK: MOD07_NB08_Capstone_Spatial_Atlas.ipynb
+==> 2026-06-24T15:23:50-04:00 Processing MOD08_NB01_Reproducible_Foundations.ipynb
+[NbConvertApp] Converting notebook MOD08_NB01_Reproducible_Foundations.ipynb to html
+[NbConvertApp] Writing 340788 bytes to docs/MOD08_NB01_Reproducible_Foundations.html
+OK: MOD08_NB01_Reproducible_Foundations.ipynb
+==> 2026-06-24T15:23:55-04:00 Processing MOD08_NB02_Quarto_Reports.ipynb
+[NbConvertApp] Converting notebook MOD08_NB02_Quarto_Reports.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 1 image(s).
+[NbConvertApp] Writing 568197 bytes to docs/MOD08_NB02_Quarto_Reports.html
+OK: MOD08_NB02_Quarto_Reports.ipynb
+==> 2026-06-24T15:24:04-04:00 Processing MOD08_NB03_Streamlit_Dashboards.ipynb
+[NbConvertApp] Converting notebook MOD08_NB03_Streamlit_Dashboards.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 2 image(s).
+[NbConvertApp] Writing 545333 bytes to docs/MOD08_NB03_Streamlit_Dashboards.html
+OK: MOD08_NB03_Streamlit_Dashboards.ipynb
+==> 2026-06-24T15:24:12-04:00 Processing MOD08_NB04_MLflow_Tracking.ipynb
+[NbConvertApp] Converting notebook MOD08_NB04_MLflow_Tracking.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 2 image(s).
+[NbConvertApp] Writing 533322 bytes to docs/MOD08_NB04_MLflow_Tracking.html
+OK: MOD08_NB04_MLflow_Tracking.ipynb
+==> 2026-06-24T15:24:21-04:00 Processing MOD08_NB05_FastAPI_Serving.ipynb
+[NbConvertApp] Converting notebook MOD08_NB05_FastAPI_Serving.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 1 image(s).
+[NbConvertApp] Writing 451098 bytes to docs/MOD08_NB05_FastAPI_Serving.html
+OK: MOD08_NB05_FastAPI_Serving.ipynb
+==> 2026-06-24T15:24:29-04:00 Processing MOD08_NB06_Testing_CICD.ipynb
+[NbConvertApp] Converting notebook MOD08_NB06_Testing_CICD.ipynb to html
+[NbConvertApp] Writing 379376 bytes to docs/MOD08_NB06_Testing_CICD.html
+OK: MOD08_NB06_Testing_CICD.ipynb
+==> 2026-06-24T15:24:36-04:00 Processing MOD08_NB07_ModelCards_Governance.ipynb
+[NbConvertApp] Converting notebook MOD08_NB07_ModelCards_Governance.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 2 image(s).
+[NbConvertApp] Writing 597383 bytes to docs/MOD08_NB07_ModelCards_Governance.html
+OK: MOD08_NB07_ModelCards_Governance.ipynb
+==> 2026-06-24T15:24:44-04:00 Processing MOD08_NB08_Capstone_Deployment.ipynb
+[NbConvertApp] Converting notebook MOD08_NB08_Capstone_Deployment.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 1 image(s).
+[NbConvertApp] Writing 779703 bytes to docs/MOD08_NB08_Capstone_Deployment.html
+OK: MOD08_NB08_Capstone_Deployment.ipynb
+==> Done: 59 succeeded, 1 failed
+Failed notebooks:
+  MOD03_NB08_Capstone_Inference.ipynb

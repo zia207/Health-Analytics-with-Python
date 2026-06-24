@@ -1,0 +1,61 @@
+==> 2026-06-24T11:05:05-04:00 Processing MOD02_NB01_Data_Loading_Profiling.ipynb
+FAIL: MOD02_NB01_Data_Loading_Profiling.ipynb
+==> 2026-06-24T11:05:21-04:00 Processing MOD02_NB04_TimeSeries_Admissions.ipynb
+FAIL: MOD02_NB04_TimeSeries_Admissions.ipynb
+==> 2026-06-24T11:05:32-04:00 Processing MOD02_NB05_Missingness_Imputation.ipynb
+OK: MOD02_NB05_Missingness_Imputation.ipynb
+==> 2026-06-24T11:05:40-04:00 Processing MOD02_NB08_Capstone_Readmission_EDA.ipynb
+FAIL: MOD02_NB08_Capstone_Readmission_EDA.ipynb
+==> 2026-06-24T11:05:58-04:00 Processing MOD03_NB01_Hypothesis_Testing.ipynb
+FAIL: MOD03_NB01_Hypothesis_Testing.ipynb
+==> 2026-06-24T11:06:03-04:00 Processing MOD03_NB02_RR_OR_CI.ipynb
+OK: MOD03_NB02_RR_OR_CI.ipynb
+==> 2026-06-24T11:06:11-04:00 Processing MOD03_NB03_Survival_Analysis.ipynb
+FAIL: MOD03_NB03_Survival_Analysis.ipynb
+==> 2026-06-24T11:06:19-04:00 Processing MOD03_NB04_Linear_Regression.ipynb
+FAIL: MOD03_NB04_Linear_Regression.ipynb
+==> 2026-06-24T11:06:26-04:00 Processing MOD03_NB05_Logistic_Regression.ipynb
+OK: MOD03_NB05_Logistic_Regression.ipynb
+==> 2026-06-24T11:06:33-04:00 Processing MOD03_NB06_Count_Regression.ipynb
+FAIL: MOD03_NB06_Count_Regression.ipynb
+==> 2026-06-24T11:06:41-04:00 Processing MOD03_NB07_Confounding_EffectModification.ipynb
+FAIL: MOD03_NB07_Confounding_EffectModification.ipynb
+==> 2026-06-24T11:06:47-04:00 Processing MOD03_NB08_Capstone_Inference.ipynb
+FAIL: MOD03_NB08_Capstone_Inference.ipynb
+==> 2026-06-24T11:06:54-04:00 Processing MOD04_NB01_Pipeline_Splits.ipynb
+OK: MOD04_NB01_Pipeline_Splits.ipynb
+==> 2026-06-24T11:07:03-04:00 Processing MOD04_NB02_DecisionTree_RandomForest.ipynb
+OK: MOD04_NB02_DecisionTree_RandomForest.ipynb
+==> 2026-06-24T11:08:35-04:00 Processing MOD04_NB03_XGBoost_LightGBM.ipynb
+OK: MOD04_NB03_XGBoost_LightGBM.ipynb
+==> 2026-06-24T11:09:48-04:00 Processing MOD04_NB04_Clinical_Model_Evaluation.ipynb
+FAIL: MOD04_NB04_Clinical_Model_Evaluation.ipynb
+==> 2026-06-24T11:10:03-04:00 Processing MOD04_NB05_Hyperparameter_Tuning.ipynb
+OK: MOD04_NB05_Hyperparameter_Tuning.ipynb
+==> 2026-06-24T11:10:44-04:00 Processing MOD04_NB06_SHAP_Explainability.ipynb
+OK: MOD04_NB06_SHAP_Explainability.ipynb
+==> 2026-06-24T11:10:51-04:00 Processing MOD04_NB07_Clinical_Prediction_Models.ipynb
+FAIL: MOD04_NB07_Clinical_Prediction_Models.ipynb
+==> 2026-06-24T11:11:02-04:00 Processing MOD04_NB08_Capstone_ML_Pipeline.ipynb
+OK: MOD04_NB08_Capstone_ML_Pipeline.ipynb
+==> 2026-06-24T11:13:00-04:00 Processing MOD05_NB07_Summarisation_ZeroShot.ipynb
+OK: MOD05_NB07_Summarisation_ZeroShot.ipynb
+==> 2026-06-24T11:13:07-04:00 Processing MOD06_NB03_DiD_EventStudy.ipynb
+FAIL: MOD06_NB03_DiD_EventStudy.ipynb
+==> 2026-06-24T11:13:14-04:00 Processing MOD06_NB06_GComp_TMLE.ipynb
+FAIL: MOD06_NB06_GComp_TMLE.ipynb
+==> 2026-06-24T11:13:22-04:00 Processing MOD07_NB02_Spatial_Autocorrelation.ipynb
+FAIL: MOD07_NB02_Spatial_Autocorrelation.ipynb
+==> 2026-06-24T11:13:27-04:00 Processing MOD07_NB03_Spatial_Regression_GWR.ipynb
+FAIL: MOD07_NB03_Spatial_Regression_GWR.ipynb
+==> 2026-06-24T11:13:33-04:00 Processing MOD07_NB06_Environmental_Epidemiology.ipynb
+FAIL: MOD07_NB06_Environmental_Epidemiology.ipynb
+==> 2026-06-24T11:13:41-04:00 Processing MOD07_NB08_Capstone_Spatial_Atlas.ipynb
+FAIL: MOD07_NB08_Capstone_Spatial_Atlas.ipynb
+==> 2026-06-24T11:13:47-04:00 Processing MOD08_NB03_Streamlit_Dashboards.ipynb
+OK: MOD08_NB03_Streamlit_Dashboards.ipynb
+==> 2026-06-24T11:13:54-04:00 Processing MOD08_NB04_MLflow_Tracking.ipynb
+OK: MOD08_NB04_MLflow_Tracking.ipynb
+==> 2026-06-24T11:14:04-04:00 Processing MOD08_NB08_Capstone_Deployment.ipynb
+FAIL: MOD08_NB08_Capstone_Deployment.ipynb
+==> Retry done: 12 succeeded, 18 failed

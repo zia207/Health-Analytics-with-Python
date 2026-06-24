@@ -1,0 +1,2174 @@
+==> 2026-06-24T13:06:04-04:00 Processing MOD03_NB01_Hypothesis_Testing.ipynb
+[NbConvertApp] Converting notebook MOD03_NB01_Hypothesis_Testing.ipynb to html
+[NbConvertApp] ERROR | [Errno 13] Permission denied
+Traceback (most recent call last):
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 88, in wrapper
+    out = await method(self, *args, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 548, in _async_shutdown_kernel
+    await self._async_interrupt_kernel()
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 667, in _async_interrupt_kernel
+    await self._async_signal_kernel(signal.SIGINT)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 689, in _async_signal_kernel
+    await self.provisioner.send_signal(signum)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/provisioning/local_provisioner.py", line 95, in send_signal
+    self.process.send_signal(signum)
+  File "/usr/lib/python3.10/subprocess.py", line 2109, in send_signal
+    os.kill(self.pid, sig)
+PermissionError: [Errno 13] Permission denied
+Traceback (most recent call last):
+  File "/home/zia207/.local/bin/jupyter-nbconvert", line 6, in <module>
+    sys.exit(main())
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/application.py", line 284, in launch_instance
+    super().launch_instance(argv=argv, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/traitlets/config/application.py", line 1075, in launch_instance
+    app.start()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 420, in start
+    self.convert_notebooks()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 597, in convert_notebooks
+    self.convert_single_notebook(notebook_filename)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 563, in convert_single_notebook
+    output, resources = self.export_single_notebook(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 487, in export_single_notebook
+    output, resources = self.exporter.from_filename(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 390, in from_filename
+    return super().from_filename(filename, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 201, in from_filename
+    return self.from_file(f, resources=resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 396, in from_file
+    return super().from_file(file_stream, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 220, in from_file
+    return self.from_notebook_node(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/html.py", line 286, in from_notebook_node
+    html, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 412, in from_notebook_node
+    nb_copy, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 154, in from_notebook_node
+    nb_copy, resources = self._preprocess(nb_copy, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 353, in _preprocess
+    nbc, resc = preprocessor(nbc, resc)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/base.py", line 48, in __call__
+    return self.preprocess(nb, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 97, in preprocess
+    with self.setup_kernel():
+  File "/usr/lib/python3.10/contextlib.py", line 142, in __exit__
+    next(self.gen)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 609, in setup_kernel
+    self._cleanup_kernel()
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 509, in _async_cleanup_kernel
+    await ensure_async(self.km.shutdown_kernel(now=now))
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 214, in ensure_async
+    result = await obj
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 97, in wrapper
+    raise e
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 88, in wrapper
+    out = await method(self, *args, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 548, in _async_shutdown_kernel
+    await self._async_interrupt_kernel()
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 667, in _async_interrupt_kernel
+    await self._async_signal_kernel(signal.SIGINT)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 689, in _async_signal_kernel
+    await self.provisioner.send_signal(signum)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/provisioning/local_provisioner.py", line 95, in send_signal
+    self.process.send_signal(signum)
+  File "/usr/lib/python3.10/subprocess.py", line 2109, in send_signal
+    os.kill(self.pid, sig)
+PermissionError: [Errno 13] Permission denied
+FAIL: MOD03_NB01_Hypothesis_Testing.ipynb
+==> 2026-06-24T13:06:10-04:00 Processing MOD03_NB03_Survival_Analysis.ipynb
+[IPKernelApp] WARNING | Parent appears to have exited, shutting down.
+[NbConvertApp] Converting notebook MOD03_NB03_Survival_Analysis.ipynb to html
+[NbConvertApp] ERROR | [Errno 13] Permission denied
+Traceback (most recent call last):
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 88, in wrapper
+    out = await method(self, *args, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 548, in _async_shutdown_kernel
+    await self._async_interrupt_kernel()
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 667, in _async_interrupt_kernel
+    await self._async_signal_kernel(signal.SIGINT)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 689, in _async_signal_kernel
+    await self.provisioner.send_signal(signum)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/provisioning/local_provisioner.py", line 95, in send_signal
+    self.process.send_signal(signum)
+  File "/usr/lib/python3.10/subprocess.py", line 2109, in send_signal
+    os.kill(self.pid, sig)
+PermissionError: [Errno 13] Permission denied
+Traceback (most recent call last):
+  File "/home/zia207/.local/bin/jupyter-nbconvert", line 6, in <module>
+    sys.exit(main())
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/application.py", line 284, in launch_instance
+    super().launch_instance(argv=argv, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/traitlets/config/application.py", line 1075, in launch_instance
+    app.start()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 420, in start
+    self.convert_notebooks()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 597, in convert_notebooks
+    self.convert_single_notebook(notebook_filename)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 563, in convert_single_notebook
+    output, resources = self.export_single_notebook(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 487, in export_single_notebook
+    output, resources = self.exporter.from_filename(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 390, in from_filename
+    return super().from_filename(filename, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 201, in from_filename
+    return self.from_file(f, resources=resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 396, in from_file
+    return super().from_file(file_stream, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 220, in from_file
+    return self.from_notebook_node(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/html.py", line 286, in from_notebook_node
+    html, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 412, in from_notebook_node
+    nb_copy, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 154, in from_notebook_node
+    nb_copy, resources = self._preprocess(nb_copy, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 353, in _preprocess
+    nbc, resc = preprocessor(nbc, resc)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/base.py", line 48, in __call__
+    return self.preprocess(nb, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 97, in preprocess
+    with self.setup_kernel():
+  File "/usr/lib/python3.10/contextlib.py", line 142, in __exit__
+    next(self.gen)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 609, in setup_kernel
+    self._cleanup_kernel()
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 509, in _async_cleanup_kernel
+    await ensure_async(self.km.shutdown_kernel(now=now))
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 214, in ensure_async
+    result = await obj
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 97, in wrapper
+    raise e
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 88, in wrapper
+    out = await method(self, *args, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 548, in _async_shutdown_kernel
+    await self._async_interrupt_kernel()
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 667, in _async_interrupt_kernel
+    await self._async_signal_kernel(signal.SIGINT)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 689, in _async_signal_kernel
+    await self.provisioner.send_signal(signum)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/provisioning/local_provisioner.py", line 95, in send_signal
+    self.process.send_signal(signum)
+  File "/usr/lib/python3.10/subprocess.py", line 2109, in send_signal
+    os.kill(self.pid, sig)
+PermissionError: [Errno 13] Permission denied
+FAIL: MOD03_NB03_Survival_Analysis.ipynb
+==> 2026-06-24T13:06:19-04:00 Processing MOD03_NB04_Linear_Regression.ipynb
+[IPKernelApp] WARNING | Parent appears to have exited, shutting down.
+[NbConvertApp] Converting notebook MOD03_NB04_Linear_Regression.ipynb to html
+[NbConvertApp] ERROR | [Errno 13] Permission denied
+Traceback (most recent call last):
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 88, in wrapper
+    out = await method(self, *args, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 548, in _async_shutdown_kernel
+    await self._async_interrupt_kernel()
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 667, in _async_interrupt_kernel
+    await self._async_signal_kernel(signal.SIGINT)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 689, in _async_signal_kernel
+    await self.provisioner.send_signal(signum)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/provisioning/local_provisioner.py", line 95, in send_signal
+    self.process.send_signal(signum)
+  File "/usr/lib/python3.10/subprocess.py", line 2109, in send_signal
+    os.kill(self.pid, sig)
+PermissionError: [Errno 13] Permission denied
+Traceback (most recent call last):
+  File "/home/zia207/.local/bin/jupyter-nbconvert", line 6, in <module>
+    sys.exit(main())
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/application.py", line 284, in launch_instance
+    super().launch_instance(argv=argv, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/traitlets/config/application.py", line 1075, in launch_instance
+    app.start()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 420, in start
+    self.convert_notebooks()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 597, in convert_notebooks
+    self.convert_single_notebook(notebook_filename)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 563, in convert_single_notebook
+    output, resources = self.export_single_notebook(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 487, in export_single_notebook
+    output, resources = self.exporter.from_filename(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 390, in from_filename
+    return super().from_filename(filename, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 201, in from_filename
+    return self.from_file(f, resources=resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 396, in from_file
+    return super().from_file(file_stream, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 220, in from_file
+    return self.from_notebook_node(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/html.py", line 286, in from_notebook_node
+    html, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 412, in from_notebook_node
+    nb_copy, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 154, in from_notebook_node
+    nb_copy, resources = self._preprocess(nb_copy, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 353, in _preprocess
+    nbc, resc = preprocessor(nbc, resc)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/base.py", line 48, in __call__
+    return self.preprocess(nb, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 97, in preprocess
+    with self.setup_kernel():
+  File "/usr/lib/python3.10/contextlib.py", line 142, in __exit__
+    next(self.gen)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 609, in setup_kernel
+    self._cleanup_kernel()
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 509, in _async_cleanup_kernel
+    await ensure_async(self.km.shutdown_kernel(now=now))
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 214, in ensure_async
+    result = await obj
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 97, in wrapper
+    raise e
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 88, in wrapper
+    out = await method(self, *args, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 548, in _async_shutdown_kernel
+    await self._async_interrupt_kernel()
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 667, in _async_interrupt_kernel
+    await self._async_signal_kernel(signal.SIGINT)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 689, in _async_signal_kernel
+    await self.provisioner.send_signal(signum)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/provisioning/local_provisioner.py", line 95, in send_signal
+    self.process.send_signal(signum)
+  File "/usr/lib/python3.10/subprocess.py", line 2109, in send_signal
+    os.kill(self.pid, sig)
+PermissionError: [Errno 13] Permission denied
+FAIL: MOD03_NB04_Linear_Regression.ipynb
+==> 2026-06-24T13:06:26-04:00 Processing MOD03_NB06_Count_Regression.ipynb
+[IPKernelApp] WARNING | Parent appears to have exited, shutting down.
+[NbConvertApp] Converting notebook MOD03_NB06_Count_Regression.ipynb to html
+[NbConvertApp] ERROR | [Errno 13] Permission denied
+Traceback (most recent call last):
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 606, in setup_kernel
+    yield
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 103, in preprocess
+    self.preprocess_cell(cell, resources, index)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 124, in preprocess_cell
+    cell = self.execute_cell(cell, index, store_history=True)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# Compare Poisson vs NB coefficients
+irr_nb = pd.DataFrame({
+    'Predictor': model_nb.params.index,
+    'IRR_NB'   : np.exp(model_nb.params.values),
+    'IRR_Pois' : np.exp(model_pois.params.values[:len(model_nb.params)]),
+    'p_NB'     : model_nb.pvalues.values,
+}).query("Predictor not in ['Intercept','alpha']").round(3)
+
+print("Poisson vs Negative Binomial — IRR comparison:")
+display(irr_nb)
+print(f"\nNB dispersion parameter (alpha): {np.exp(model_nb.params.get('alpha',0)):.3f}")
+print(f"  (alpha >> 0 confirms overdispersion)")
+print(f"\nAIC comparison:")
+print(f"  Poisson AIC : {model_pois.aic:.1f}")
+print(f"  NB AIC      : {model_nb.aic:.1f}")
+print(f"  → Model with lower AIC is preferred")
+
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mValueError[39m                                Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[7][39m[32m, line 2[39m
+[32m      1[39m [38;5;66;03m# Compare Poisson vs NB coefficients[39;00m
+[32m----> [39m[32m2[39m irr_nb = [43mpd[49m[43m.[49m[43mDataFrame[49m[43m([49m[43m{[49m
+[32m      3[39m [43m    [49m[33;43m'[39;49m[33;43mPredictor[39;49m[33;43m'[39;49m[43m:[49m[43m [49m[43mmodel_nb[49m[43m.[49m[43mparams[49m[43m.[49m[43mindex[49m[43m,[49m
+[32m      4[39m [43m    [49m[33;43m'[39;49m[33;43mIRR_NB[39;49m[33;43m'[39;49m[43m   [49m[43m:[49m[43m [49m[43mnp[49m[43m.[49m[43mexp[49m[43m([49m[43mmodel_nb[49m[43m.[49m[43mparams[49m[43m.[49m[43mvalues[49m[43m)[49m[43m,[49m
+[32m      5[39m [43m    [49m[33;43m'[39;49m[33;43mIRR_Pois[39;49m[33;43m'[39;49m[43m [49m[43m:[49m[43m [49m[43mnp[49m[43m.[49m[43mexp[49m[43m([49m[43mmodel_pois[49m[43m.[49m[43mparams[49m[43m.[49m[43mvalues[49m[43m[[49m[43m:[49m[38;5;28;43mlen[39;49m[43m([49m[43mmodel_nb[49m[43m.[49m[43mparams[49m[43m)[49m[43m][49m[43m)[49m[43m,[49m
+[32m      6[39m [43m    [49m[33;43m'[39;49m[33;43mp_NB[39;49m[33;43m'[39;49m[43m     [49m[43m:[49m[43m [49m[43mmodel_nb[49m[43m.[49m[43mpvalues[49m[43m.[49m[43mvalues[49m[43m,[49m
+[32m      7[39m [43m}[49m[43m)[49m.query([33m"[39m[33mPredictor not in [[39m[33m'[39m[33mIntercept[39m[33m'[39m[33m,[39m[33m'[39m[33malpha[39m[33m'[39m[33m][39m[33m"[39m).round([32m3[39m)
+[32m      9[39m [38;5;28mprint[39m([33m"[39m[33mPoisson vs Negative Binomial — IRR comparison:[39m[33m"[39m)
+[32m     10[39m display(irr_nb)
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/pandas/core/frame.py:782[39m, in [36mDataFrame.__init__[39m[34m(self, data, index, columns, dtype, copy)[39m
+[32m    776[39m     mgr = [38;5;28mself[39m._init_mgr(
+[32m    777[39m         data, axes={[33m"[39m[33mindex[39m[33m"[39m: index, [33m"[39m[33mcolumns[39m[33m"[39m: columns}, dtype=dtype, copy=copy
+[32m    778[39m     )
+[32m    780[39m [38;5;28;01melif[39;00m [38;5;28misinstance[39m(data, [38;5;28mdict[39m):
+[32m    781[39m     [38;5;66;03m# GH#38939 de facto copy defaults to False only in non-dict cases[39;00m
+[32m--> [39m[32m782[39m     mgr = [43mdict_to_mgr[49m[43m([49m[43mdata[49m[43m,[49m[43m [49m[43mindex[49m[43m,[49m[43m [49m[43mcolumns[49m[43m,[49m[43m [49m[43mdtype[49m[43m=[49m[43mdtype[49m[43m,[49m[43m [49m[43mcopy[49m[43m=[49m[43mcopy[49m[43m,[49m[43m [49m[43mtyp[49m[43m=[49m[43mmanager[49m[43m)[49m
+[32m    783[39m [38;5;28;01melif[39;00m [38;5;28misinstance[39m(data, ma.MaskedArray):
+[32m    784[39m     [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mnumpy[39;00m[34;01m.[39;00m[34;01mma[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m mrecords
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/pandas/core/internals/construction.py:503[39m, in [36mdict_to_mgr[39m[34m(data, index, columns, dtype, typ, copy)[39m
+[32m    499[39m     [38;5;28;01melse[39;00m:
+[32m    500[39m         [38;5;66;03m# dtype check to exclude e.g. range objects, scalars[39;00m
+[32m    501[39m         arrays = [x.copy() [38;5;28;01mif[39;00m [38;5;28mhasattr[39m(x, [33m"[39m[33mdtype[39m[33m"[39m) [38;5;28;01melse[39;00m x [38;5;28;01mfor[39;00m x [38;5;129;01min[39;00m arrays]
+[32m--> [39m[32m503[39m [38;5;28;01mreturn[39;00m [43marrays_to_mgr[49m[43m([49m[43marrays[49m[43m,[49m[43m [49m[43mcolumns[49m[43m,[49m[43m [49m[43mindex[49m[43m,[49m[43m [49m[43mdtype[49m[43m=[49m[43mdtype[49m[43m,[49m[43m [49m[43mtyp[49m[43m=[49m[43mtyp[49m[43m,[49m[43m [49m[43mconsolidate[49m[43m=[49m[43mcopy[49m[43m)[49m
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/pandas/core/internals/construction.py:114[39m, in [36marrays_to_mgr[39m[34m(arrays, columns, index, dtype, verify_integrity, typ, consolidate)[39m
+[32m    111[39m [38;5;28;01mif[39;00m verify_integrity:
+[32m    112[39m     [38;5;66;03m# figure out the index, if necessary[39;00m
+[32m    113[39m     [38;5;28;01mif[39;00m index [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+[32m--> [39m[32m114[39m         index = [43m_extract_index[49m[43m([49m[43marrays[49m[43m)[49m
+[32m    115[39m     [38;5;28;01melse[39;00m:
+[32m    116[39m         index = ensure_index(index)
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/pandas/core/internals/construction.py:677[39m, in [36m_extract_index[39m[34m(data)[39m
+[32m    675[39m lengths = [38;5;28mlist[39m([38;5;28mset[39m(raw_lengths))
+[32m    676[39m [38;5;28;01mif[39;00m [38;5;28mlen[39m(lengths) > [32m1[39m:
+[32m--> [39m[32m677[39m     [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m([33m"[39m[33mAll arrays must be of the same length[39m[33m"[39m)
+[32m    679[39m [38;5;28;01mif[39;00m have_dicts:
+[32m    680[39m     [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(
+[32m    681[39m         [33m"[39m[33mMixing dicts with non-Series may lead to ambiguous ordering.[39m[33m"[39m
+[32m    682[39m     )
+
+[31mValueError[39m: All arrays must be of the same length
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 88, in wrapper
+    out = await method(self, *args, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 548, in _async_shutdown_kernel
+    await self._async_interrupt_kernel()
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 667, in _async_interrupt_kernel
+    await self._async_signal_kernel(signal.SIGINT)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 689, in _async_signal_kernel
+    await self.provisioner.send_signal(signum)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/provisioning/local_provisioner.py", line 95, in send_signal
+    self.process.send_signal(signum)
+  File "/usr/lib/python3.10/subprocess.py", line 2109, in send_signal
+    os.kill(self.pid, sig)
+PermissionError: [Errno 13] Permission denied
+Traceback (most recent call last):
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 606, in setup_kernel
+    yield
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 103, in preprocess
+    self.preprocess_cell(cell, resources, index)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 124, in preprocess_cell
+    cell = self.execute_cell(cell, index, store_history=True)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# Compare Poisson vs NB coefficients
+irr_nb = pd.DataFrame({
+    'Predictor': model_nb.params.index,
+    'IRR_NB'   : np.exp(model_nb.params.values),
+    'IRR_Pois' : np.exp(model_pois.params.values[:len(model_nb.params)]),
+    'p_NB'     : model_nb.pvalues.values,
+}).query("Predictor not in ['Intercept','alpha']").round(3)
+
+print("Poisson vs Negative Binomial — IRR comparison:")
+display(irr_nb)
+print(f"\nNB dispersion parameter (alpha): {np.exp(model_nb.params.get('alpha',0)):.3f}")
+print(f"  (alpha >> 0 confirms overdispersion)")
+print(f"\nAIC comparison:")
+print(f"  Poisson AIC : {model_pois.aic:.1f}")
+print(f"  NB AIC      : {model_nb.aic:.1f}")
+print(f"  → Model with lower AIC is preferred")
+
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mValueError[39m                                Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[7][39m[32m, line 2[39m
+[32m      1[39m [38;5;66;03m# Compare Poisson vs NB coefficients[39;00m
+[32m----> [39m[32m2[39m irr_nb = [43mpd[49m[43m.[49m[43mDataFrame[49m[43m([49m[43m{[49m
+[32m      3[39m [43m    [49m[33;43m'[39;49m[33;43mPredictor[39;49m[33;43m'[39;49m[43m:[49m[43m [49m[43mmodel_nb[49m[43m.[49m[43mparams[49m[43m.[49m[43mindex[49m[43m,[49m
+[32m      4[39m [43m    [49m[33;43m'[39;49m[33;43mIRR_NB[39;49m[33;43m'[39;49m[43m   [49m[43m:[49m[43m [49m[43mnp[49m[43m.[49m[43mexp[49m[43m([49m[43mmodel_nb[49m[43m.[49m[43mparams[49m[43m.[49m[43mvalues[49m[43m)[49m[43m,[49m
+[32m      5[39m [43m    [49m[33;43m'[39;49m[33;43mIRR_Pois[39;49m[33;43m'[39;49m[43m [49m[43m:[49m[43m [49m[43mnp[49m[43m.[49m[43mexp[49m[43m([49m[43mmodel_pois[49m[43m.[49m[43mparams[49m[43m.[49m[43mvalues[49m[43m[[49m[43m:[49m[38;5;28;43mlen[39;49m[43m([49m[43mmodel_nb[49m[43m.[49m[43mparams[49m[43m)[49m[43m][49m[43m)[49m[43m,[49m
+[32m      6[39m [43m    [49m[33;43m'[39;49m[33;43mp_NB[39;49m[33;43m'[39;49m[43m     [49m[43m:[49m[43m [49m[43mmodel_nb[49m[43m.[49m[43mpvalues[49m[43m.[49m[43mvalues[49m[43m,[49m
+[32m      7[39m [43m}[49m[43m)[49m.query([33m"[39m[33mPredictor not in [[39m[33m'[39m[33mIntercept[39m[33m'[39m[33m,[39m[33m'[39m[33malpha[39m[33m'[39m[33m][39m[33m"[39m).round([32m3[39m)
+[32m      9[39m [38;5;28mprint[39m([33m"[39m[33mPoisson vs Negative Binomial — IRR comparison:[39m[33m"[39m)
+[32m     10[39m display(irr_nb)
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/pandas/core/frame.py:782[39m, in [36mDataFrame.__init__[39m[34m(self, data, index, columns, dtype, copy)[39m
+[32m    776[39m     mgr = [38;5;28mself[39m._init_mgr(
+[32m    777[39m         data, axes={[33m"[39m[33mindex[39m[33m"[39m: index, [33m"[39m[33mcolumns[39m[33m"[39m: columns}, dtype=dtype, copy=copy
+[32m    778[39m     )
+[32m    780[39m [38;5;28;01melif[39;00m [38;5;28misinstance[39m(data, [38;5;28mdict[39m):
+[32m    781[39m     [38;5;66;03m# GH#38939 de facto copy defaults to False only in non-dict cases[39;00m
+[32m--> [39m[32m782[39m     mgr = [43mdict_to_mgr[49m[43m([49m[43mdata[49m[43m,[49m[43m [49m[43mindex[49m[43m,[49m[43m [49m[43mcolumns[49m[43m,[49m[43m [49m[43mdtype[49m[43m=[49m[43mdtype[49m[43m,[49m[43m [49m[43mcopy[49m[43m=[49m[43mcopy[49m[43m,[49m[43m [49m[43mtyp[49m[43m=[49m[43mmanager[49m[43m)[49m
+[32m    783[39m [38;5;28;01melif[39;00m [38;5;28misinstance[39m(data, ma.MaskedArray):
+[32m    784[39m     [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mnumpy[39;00m[34;01m.[39;00m[34;01mma[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m mrecords
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/pandas/core/internals/construction.py:503[39m, in [36mdict_to_mgr[39m[34m(data, index, columns, dtype, typ, copy)[39m
+[32m    499[39m     [38;5;28;01melse[39;00m:
+[32m    500[39m         [38;5;66;03m# dtype check to exclude e.g. range objects, scalars[39;00m
+[32m    501[39m         arrays = [x.copy() [38;5;28;01mif[39;00m [38;5;28mhasattr[39m(x, [33m"[39m[33mdtype[39m[33m"[39m) [38;5;28;01melse[39;00m x [38;5;28;01mfor[39;00m x [38;5;129;01min[39;00m arrays]
+[32m--> [39m[32m503[39m [38;5;28;01mreturn[39;00m [43marrays_to_mgr[49m[43m([49m[43marrays[49m[43m,[49m[43m [49m[43mcolumns[49m[43m,[49m[43m [49m[43mindex[49m[43m,[49m[43m [49m[43mdtype[49m[43m=[49m[43mdtype[49m[43m,[49m[43m [49m[43mtyp[49m[43m=[49m[43mtyp[49m[43m,[49m[43m [49m[43mconsolidate[49m[43m=[49m[43mcopy[49m[43m)[49m
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/pandas/core/internals/construction.py:114[39m, in [36marrays_to_mgr[39m[34m(arrays, columns, index, dtype, verify_integrity, typ, consolidate)[39m
+[32m    111[39m [38;5;28;01mif[39;00m verify_integrity:
+[32m    112[39m     [38;5;66;03m# figure out the index, if necessary[39;00m
+[32m    113[39m     [38;5;28;01mif[39;00m index [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+[32m--> [39m[32m114[39m         index = [43m_extract_index[49m[43m([49m[43marrays[49m[43m)[49m
+[32m    115[39m     [38;5;28;01melse[39;00m:
+[32m    116[39m         index = ensure_index(index)
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/pandas/core/internals/construction.py:677[39m, in [36m_extract_index[39m[34m(data)[39m
+[32m    675[39m lengths = [38;5;28mlist[39m([38;5;28mset[39m(raw_lengths))
+[32m    676[39m [38;5;28;01mif[39;00m [38;5;28mlen[39m(lengths) > [32m1[39m:
+[32m--> [39m[32m677[39m     [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m([33m"[39m[33mAll arrays must be of the same length[39m[33m"[39m)
+[32m    679[39m [38;5;28;01mif[39;00m have_dicts:
+[32m    680[39m     [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(
+[32m    681[39m         [33m"[39m[33mMixing dicts with non-Series may lead to ambiguous ordering.[39m[33m"[39m
+[32m    682[39m     )
+
+[31mValueError[39m: All arrays must be of the same length
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/zia207/.local/bin/jupyter-nbconvert", line 6, in <module>
+    sys.exit(main())
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/application.py", line 284, in launch_instance
+    super().launch_instance(argv=argv, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/traitlets/config/application.py", line 1075, in launch_instance
+    app.start()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 420, in start
+    self.convert_notebooks()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 597, in convert_notebooks
+    self.convert_single_notebook(notebook_filename)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 563, in convert_single_notebook
+    output, resources = self.export_single_notebook(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 487, in export_single_notebook
+    output, resources = self.exporter.from_filename(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 390, in from_filename
+    return super().from_filename(filename, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 201, in from_filename
+    return self.from_file(f, resources=resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 396, in from_file
+    return super().from_file(file_stream, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 220, in from_file
+    return self.from_notebook_node(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/html.py", line 286, in from_notebook_node
+    html, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 412, in from_notebook_node
+    nb_copy, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 154, in from_notebook_node
+    nb_copy, resources = self._preprocess(nb_copy, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 353, in _preprocess
+    nbc, resc = preprocessor(nbc, resc)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/base.py", line 48, in __call__
+    return self.preprocess(nb, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 97, in preprocess
+    with self.setup_kernel():
+  File "/usr/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 609, in setup_kernel
+    self._cleanup_kernel()
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 509, in _async_cleanup_kernel
+    await ensure_async(self.km.shutdown_kernel(now=now))
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 214, in ensure_async
+    result = await obj
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 97, in wrapper
+    raise e
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 88, in wrapper
+    out = await method(self, *args, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 548, in _async_shutdown_kernel
+    await self._async_interrupt_kernel()
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 667, in _async_interrupt_kernel
+    await self._async_signal_kernel(signal.SIGINT)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 689, in _async_signal_kernel
+    await self.provisioner.send_signal(signum)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/provisioning/local_provisioner.py", line 95, in send_signal
+    self.process.send_signal(signum)
+  File "/usr/lib/python3.10/subprocess.py", line 2109, in send_signal
+    os.kill(self.pid, sig)
+PermissionError: [Errno 13] Permission denied
+FAIL: MOD03_NB06_Count_Regression.ipynb
+==> 2026-06-24T13:06:33-04:00 Processing MOD03_NB07_Confounding_EffectModification.ipynb
+[IPKernelApp] WARNING | Parent appears to have exited, shutting down.
+[NbConvertApp] Converting notebook MOD03_NB07_Confounding_EffectModification.ipynb to html
+[NbConvertApp] ERROR | [Errno 13] Permission denied
+Traceback (most recent call last):
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 88, in wrapper
+    out = await method(self, *args, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 548, in _async_shutdown_kernel
+    await self._async_interrupt_kernel()
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 667, in _async_interrupt_kernel
+    await self._async_signal_kernel(signal.SIGINT)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 689, in _async_signal_kernel
+    await self.provisioner.send_signal(signum)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/provisioning/local_provisioner.py", line 95, in send_signal
+    self.process.send_signal(signum)
+  File "/usr/lib/python3.10/subprocess.py", line 2109, in send_signal
+    os.kill(self.pid, sig)
+PermissionError: [Errno 13] Permission denied
+Traceback (most recent call last):
+  File "/home/zia207/.local/bin/jupyter-nbconvert", line 6, in <module>
+    sys.exit(main())
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/application.py", line 284, in launch_instance
+    super().launch_instance(argv=argv, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/traitlets/config/application.py", line 1075, in launch_instance
+    app.start()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 420, in start
+    self.convert_notebooks()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 597, in convert_notebooks
+    self.convert_single_notebook(notebook_filename)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 563, in convert_single_notebook
+    output, resources = self.export_single_notebook(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 487, in export_single_notebook
+    output, resources = self.exporter.from_filename(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 390, in from_filename
+    return super().from_filename(filename, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 201, in from_filename
+    return self.from_file(f, resources=resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 396, in from_file
+    return super().from_file(file_stream, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 220, in from_file
+    return self.from_notebook_node(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/html.py", line 286, in from_notebook_node
+    html, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 412, in from_notebook_node
+    nb_copy, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 154, in from_notebook_node
+    nb_copy, resources = self._preprocess(nb_copy, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 353, in _preprocess
+    nbc, resc = preprocessor(nbc, resc)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/base.py", line 48, in __call__
+    return self.preprocess(nb, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 97, in preprocess
+    with self.setup_kernel():
+  File "/usr/lib/python3.10/contextlib.py", line 142, in __exit__
+    next(self.gen)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 609, in setup_kernel
+    self._cleanup_kernel()
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 509, in _async_cleanup_kernel
+    await ensure_async(self.km.shutdown_kernel(now=now))
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 214, in ensure_async
+    result = await obj
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 97, in wrapper
+    raise e
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 88, in wrapper
+    out = await method(self, *args, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 548, in _async_shutdown_kernel
+    await self._async_interrupt_kernel()
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 667, in _async_interrupt_kernel
+    await self._async_signal_kernel(signal.SIGINT)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 689, in _async_signal_kernel
+    await self.provisioner.send_signal(signum)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/provisioning/local_provisioner.py", line 95, in send_signal
+    self.process.send_signal(signum)
+  File "/usr/lib/python3.10/subprocess.py", line 2109, in send_signal
+    os.kill(self.pid, sig)
+PermissionError: [Errno 13] Permission denied
+FAIL: MOD03_NB07_Confounding_EffectModification.ipynb
+==> 2026-06-24T13:06:40-04:00 Processing MOD04_NB04_Clinical_Model_Evaluation.ipynb
+[IPKernelApp] WARNING | Parent appears to have exited, shutting down.
+[NbConvertApp] Converting notebook MOD04_NB04_Clinical_Model_Evaluation.ipynb to html
+[NbConvertApp] ERROR | [Errno 13] Permission denied
+Traceback (most recent call last):
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 88, in wrapper
+    out = await method(self, *args, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 548, in _async_shutdown_kernel
+    await self._async_interrupt_kernel()
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 667, in _async_interrupt_kernel
+    await self._async_signal_kernel(signal.SIGINT)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 689, in _async_signal_kernel
+    await self.provisioner.send_signal(signum)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/provisioning/local_provisioner.py", line 95, in send_signal
+    self.process.send_signal(signum)
+  File "/usr/lib/python3.10/subprocess.py", line 2109, in send_signal
+    os.kill(self.pid, sig)
+PermissionError: [Errno 13] Permission denied
+Traceback (most recent call last):
+  File "/home/zia207/.local/bin/jupyter-nbconvert", line 6, in <module>
+    sys.exit(main())
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/application.py", line 284, in launch_instance
+    super().launch_instance(argv=argv, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/traitlets/config/application.py", line 1075, in launch_instance
+    app.start()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 420, in start
+    self.convert_notebooks()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 597, in convert_notebooks
+    self.convert_single_notebook(notebook_filename)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 563, in convert_single_notebook
+    output, resources = self.export_single_notebook(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 487, in export_single_notebook
+    output, resources = self.exporter.from_filename(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 390, in from_filename
+    return super().from_filename(filename, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 201, in from_filename
+    return self.from_file(f, resources=resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 396, in from_file
+    return super().from_file(file_stream, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 220, in from_file
+    return self.from_notebook_node(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/html.py", line 286, in from_notebook_node
+    html, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 412, in from_notebook_node
+    nb_copy, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 154, in from_notebook_node
+    nb_copy, resources = self._preprocess(nb_copy, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 353, in _preprocess
+    nbc, resc = preprocessor(nbc, resc)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/base.py", line 48, in __call__
+    return self.preprocess(nb, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 97, in preprocess
+    with self.setup_kernel():
+  File "/usr/lib/python3.10/contextlib.py", line 142, in __exit__
+    next(self.gen)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 609, in setup_kernel
+    self._cleanup_kernel()
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 509, in _async_cleanup_kernel
+    await ensure_async(self.km.shutdown_kernel(now=now))
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 214, in ensure_async
+    result = await obj
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 97, in wrapper
+    raise e
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 88, in wrapper
+    out = await method(self, *args, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 548, in _async_shutdown_kernel
+    await self._async_interrupt_kernel()
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 667, in _async_interrupt_kernel
+    await self._async_signal_kernel(signal.SIGINT)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 689, in _async_signal_kernel
+    await self.provisioner.send_signal(signum)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/provisioning/local_provisioner.py", line 95, in send_signal
+    self.process.send_signal(signum)
+  File "/usr/lib/python3.10/subprocess.py", line 2109, in send_signal
+    os.kill(self.pid, sig)
+PermissionError: [Errno 13] Permission denied
+FAIL: MOD04_NB04_Clinical_Model_Evaluation.ipynb
+==> 2026-06-24T13:06:54-04:00 Processing MOD04_NB07_Clinical_Prediction_Models.ipynb
+[IPKernelApp] WARNING | Parent appears to have exited, shutting down.
+[NbConvertApp] Converting notebook MOD04_NB07_Clinical_Prediction_Models.ipynb to html
+[NbConvertApp] ERROR | [Errno 13] Permission denied
+Traceback (most recent call last):
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 606, in setup_kernel
+    yield
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 103, in preprocess
+    self.preprocess_cell(cell, resources, index)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 124, in preprocess_cell
+    cell = self.execute_cell(cell, index, store_history=True)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+fig=plt.figure(figsize=(18,6))
+fig.suptitle("Three Clinical Prediction Models — Deployment Summary",fontsize=14)
+gs=fig.add_gridspec(1,3,wspace=0.35)
+
+# Model 1: Sepsis alert
+ax=fig.add_subplot(gs[0])
+prec_s,rec_s,_=precision_recall_curve(ys_te,prob_sepsis)
+ax.plot(rec_s,prec_s,color="#D65F5F",lw=2,label=f"AP={ap_s:.3f}")
+ax.axhline(ys_te.mean(),color="gray",ls="--",lw=1,label=f"Baseline ({ys_te.mean():.2f})")
+ax.axvline(0.90,color="green",ls=":",lw=1.5,label="Target recall=0.90")
+ax.set_xlabel("Recall"); ax.set_ylabel("Precision"); ax.set_title("Model 1: Sepsis\n(Precision-Recall)")
+ax.legend(fontsize=8)
+
+# Model 2: LOS regression - actual vs predicted
+ax=fig.add_subplot(gs[1])
+los_bins=pd.cut(yl_te,[0,3,7,14,30],labels=["1-3d","4-7d","8-14d",">14d"])
+mae_by_bin={}
+for b_,sub in yl_te.groupby(los_bins,observed=True):
+    preds_b=pred_los[sub.index-yl_te.index[0]]
+    mae_by_bin[b_]=mean_absolute_error(sub,preds_b)
+colors_b=["#4878CF","#6ACC65","#D4A017","#D65F5F"]
+ax.bar(mae_by_bin.keys(),mae_by_bin.values(),color=colors_b,alpha=0.85)
+for k,v in mae_by_bin.items(): ax.text(list(mae_by_bin.keys()).index(k),v+0.05,f"{v:.1f}d",ha="center",fontsize=9)
+ax.set_ylabel("MAE (days)"); ax.set_title(f"Model 2: ICU LOS\nMAE by LOS stratum (overall={mae:.2f}d)")
+
+# Model 3: calibration
+ax=fig.add_subplot(gs[2])
+fp_r,mp_r=calibration_curve(yr_te,prob_re_raw,n_bins=10)
+fp_rc,mp_rc=calibration_curve(yr_te,prob_re_cal,n_bins=10)
+ax.plot(mp_r, fp_r, "o-",color="#B0C4DE",lw=1.5,ms=5,label="Uncalibrated")
+ax.plot(mp_rc,fp_rc,"o-",color="#1F4E79",lw=2,ms=6,label=f"Platt calibrated (Brier={brier_re:.3f})")
+ax.plot([0,1],[0,1],"k--",lw=1,label="Perfect")
+ax.set_xlabel("Mean predicted"); ax.set_ylabel("Fraction positives")
+ax.set_title("Model 3: Readmission\nCalibration (before/after Platt)"); ax.legend(fontsize=8)
+
+plt.savefig("/tmp/mod04/three_models.png",bbox_inches="tight"); plt.show()
+
+print("\nDeployment checklist:")
+for model,note in [
+    ("Sepsis","High-sensitivity alert — threshold=0.15 for 90% recall; NNAlert≈8"),
+    ("ICU LOS","Regression MAE≈2.1d — useful for bed planning; overestimates short stays"),
+    ("Readmission","Calibrated probability — use 20% threshold for intervention programme"),
+]:
+    print(f"  {model:12s}: {note}")
+
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mIndexError[39m                                Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[6][39m[32m, line 19[39m
+[32m     17[39m mae_by_bin={}
+[32m     18[39m [38;5;28;01mfor[39;00m b_,sub [38;5;129;01min[39;00m yl_te.groupby(los_bins,observed=[38;5;28;01mTrue[39;00m):
+[32m---> [39m[32m19[39m     preds_b=[43mpred_los[49m[43m[[49m[43msub[49m[43m.[49m[43mindex[49m[43m-[49m[43myl_te[49m[43m.[49m[43mindex[49m[43m[[49m[32;43m0[39;49m[43m][49m[43m][49m
+[32m     20[39m     mae_by_bin[b_]=mean_absolute_error(sub,preds_b)
+[32m     21[39m colors_b=[[33m"[39m[33m#4878CF[39m[33m"[39m,[33m"[39m[33m#6ACC65[39m[33m"[39m,[33m"[39m[33m#D4A017[39m[33m"[39m,[33m"[39m[33m#D65F5F[39m[33m"[39m]
+
+[31mIndexError[39m: index 2434 is out of bounds for axis 0 with size 800
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 88, in wrapper
+    out = await method(self, *args, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 548, in _async_shutdown_kernel
+    await self._async_interrupt_kernel()
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 667, in _async_interrupt_kernel
+    await self._async_signal_kernel(signal.SIGINT)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 689, in _async_signal_kernel
+    await self.provisioner.send_signal(signum)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/provisioning/local_provisioner.py", line 95, in send_signal
+    self.process.send_signal(signum)
+  File "/usr/lib/python3.10/subprocess.py", line 2109, in send_signal
+    os.kill(self.pid, sig)
+PermissionError: [Errno 13] Permission denied
+Traceback (most recent call last):
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 606, in setup_kernel
+    yield
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 103, in preprocess
+    self.preprocess_cell(cell, resources, index)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 124, in preprocess_cell
+    cell = self.execute_cell(cell, index, store_history=True)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+fig=plt.figure(figsize=(18,6))
+fig.suptitle("Three Clinical Prediction Models — Deployment Summary",fontsize=14)
+gs=fig.add_gridspec(1,3,wspace=0.35)
+
+# Model 1: Sepsis alert
+ax=fig.add_subplot(gs[0])
+prec_s,rec_s,_=precision_recall_curve(ys_te,prob_sepsis)
+ax.plot(rec_s,prec_s,color="#D65F5F",lw=2,label=f"AP={ap_s:.3f}")
+ax.axhline(ys_te.mean(),color="gray",ls="--",lw=1,label=f"Baseline ({ys_te.mean():.2f})")
+ax.axvline(0.90,color="green",ls=":",lw=1.5,label="Target recall=0.90")
+ax.set_xlabel("Recall"); ax.set_ylabel("Precision"); ax.set_title("Model 1: Sepsis\n(Precision-Recall)")
+ax.legend(fontsize=8)
+
+# Model 2: LOS regression - actual vs predicted
+ax=fig.add_subplot(gs[1])
+los_bins=pd.cut(yl_te,[0,3,7,14,30],labels=["1-3d","4-7d","8-14d",">14d"])
+mae_by_bin={}
+for b_,sub in yl_te.groupby(los_bins,observed=True):
+    preds_b=pred_los[sub.index-yl_te.index[0]]
+    mae_by_bin[b_]=mean_absolute_error(sub,preds_b)
+colors_b=["#4878CF","#6ACC65","#D4A017","#D65F5F"]
+ax.bar(mae_by_bin.keys(),mae_by_bin.values(),color=colors_b,alpha=0.85)
+for k,v in mae_by_bin.items(): ax.text(list(mae_by_bin.keys()).index(k),v+0.05,f"{v:.1f}d",ha="center",fontsize=9)
+ax.set_ylabel("MAE (days)"); ax.set_title(f"Model 2: ICU LOS\nMAE by LOS stratum (overall={mae:.2f}d)")
+
+# Model 3: calibration
+ax=fig.add_subplot(gs[2])
+fp_r,mp_r=calibration_curve(yr_te,prob_re_raw,n_bins=10)
+fp_rc,mp_rc=calibration_curve(yr_te,prob_re_cal,n_bins=10)
+ax.plot(mp_r, fp_r, "o-",color="#B0C4DE",lw=1.5,ms=5,label="Uncalibrated")
+ax.plot(mp_rc,fp_rc,"o-",color="#1F4E79",lw=2,ms=6,label=f"Platt calibrated (Brier={brier_re:.3f})")
+ax.plot([0,1],[0,1],"k--",lw=1,label="Perfect")
+ax.set_xlabel("Mean predicted"); ax.set_ylabel("Fraction positives")
+ax.set_title("Model 3: Readmission\nCalibration (before/after Platt)"); ax.legend(fontsize=8)
+
+plt.savefig("/tmp/mod04/three_models.png",bbox_inches="tight"); plt.show()
+
+print("\nDeployment checklist:")
+for model,note in [
+    ("Sepsis","High-sensitivity alert — threshold=0.15 for 90% recall; NNAlert≈8"),
+    ("ICU LOS","Regression MAE≈2.1d — useful for bed planning; overestimates short stays"),
+    ("Readmission","Calibrated probability — use 20% threshold for intervention programme"),
+]:
+    print(f"  {model:12s}: {note}")
+
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mIndexError[39m                                Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[6][39m[32m, line 19[39m
+[32m     17[39m mae_by_bin={}
+[32m     18[39m [38;5;28;01mfor[39;00m b_,sub [38;5;129;01min[39;00m yl_te.groupby(los_bins,observed=[38;5;28;01mTrue[39;00m):
+[32m---> [39m[32m19[39m     preds_b=[43mpred_los[49m[43m[[49m[43msub[49m[43m.[49m[43mindex[49m[43m-[49m[43myl_te[49m[43m.[49m[43mindex[49m[43m[[49m[32;43m0[39;49m[43m][49m[43m][49m
+[32m     20[39m     mae_by_bin[b_]=mean_absolute_error(sub,preds_b)
+[32m     21[39m colors_b=[[33m"[39m[33m#4878CF[39m[33m"[39m,[33m"[39m[33m#6ACC65[39m[33m"[39m,[33m"[39m[33m#D4A017[39m[33m"[39m,[33m"[39m[33m#D65F5F[39m[33m"[39m]
+
+[31mIndexError[39m: index 2434 is out of bounds for axis 0 with size 800
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/zia207/.local/bin/jupyter-nbconvert", line 6, in <module>
+    sys.exit(main())
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/application.py", line 284, in launch_instance
+    super().launch_instance(argv=argv, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/traitlets/config/application.py", line 1075, in launch_instance
+    app.start()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 420, in start
+    self.convert_notebooks()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 597, in convert_notebooks
+    self.convert_single_notebook(notebook_filename)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 563, in convert_single_notebook
+    output, resources = self.export_single_notebook(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 487, in export_single_notebook
+    output, resources = self.exporter.from_filename(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 390, in from_filename
+    return super().from_filename(filename, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 201, in from_filename
+    return self.from_file(f, resources=resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 396, in from_file
+    return super().from_file(file_stream, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 220, in from_file
+    return self.from_notebook_node(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/html.py", line 286, in from_notebook_node
+    html, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 412, in from_notebook_node
+    nb_copy, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 154, in from_notebook_node
+    nb_copy, resources = self._preprocess(nb_copy, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 353, in _preprocess
+    nbc, resc = preprocessor(nbc, resc)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/base.py", line 48, in __call__
+    return self.preprocess(nb, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 97, in preprocess
+    with self.setup_kernel():
+  File "/usr/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 609, in setup_kernel
+    self._cleanup_kernel()
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 509, in _async_cleanup_kernel
+    await ensure_async(self.km.shutdown_kernel(now=now))
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 214, in ensure_async
+    result = await obj
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 97, in wrapper
+    raise e
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 88, in wrapper
+    out = await method(self, *args, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 548, in _async_shutdown_kernel
+    await self._async_interrupt_kernel()
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 667, in _async_interrupt_kernel
+    await self._async_signal_kernel(signal.SIGINT)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 689, in _async_signal_kernel
+    await self.provisioner.send_signal(signum)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/provisioning/local_provisioner.py", line 95, in send_signal
+    self.process.send_signal(signum)
+  File "/usr/lib/python3.10/subprocess.py", line 2109, in send_signal
+    os.kill(self.pid, sig)
+PermissionError: [Errno 13] Permission denied
+FAIL: MOD04_NB07_Clinical_Prediction_Models.ipynb
+==> 2026-06-24T13:07:05-04:00 Processing MOD05_NB08_Capstone_Clinical_NLP.ipynb
+[IPKernelApp] WARNING | Parent appears to have exited, shutting down.
+[NbConvertApp] Converting notebook MOD05_NB08_Capstone_Clinical_NLP.ipynb to html
+[NbConvertApp] ERROR | [Errno 13] Permission denied
+Traceback (most recent call last):
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 88, in wrapper
+    out = await method(self, *args, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 548, in _async_shutdown_kernel
+    await self._async_interrupt_kernel()
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 667, in _async_interrupt_kernel
+    await self._async_signal_kernel(signal.SIGINT)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 689, in _async_signal_kernel
+    await self.provisioner.send_signal(signum)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/provisioning/local_provisioner.py", line 95, in send_signal
+    self.process.send_signal(signum)
+  File "/usr/lib/python3.10/subprocess.py", line 2109, in send_signal
+    os.kill(self.pid, sig)
+PermissionError: [Errno 13] Permission denied
+Traceback (most recent call last):
+  File "/home/zia207/.local/bin/jupyter-nbconvert", line 6, in <module>
+    sys.exit(main())
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/application.py", line 284, in launch_instance
+    super().launch_instance(argv=argv, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/traitlets/config/application.py", line 1075, in launch_instance
+    app.start()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 420, in start
+    self.convert_notebooks()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 597, in convert_notebooks
+    self.convert_single_notebook(notebook_filename)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 563, in convert_single_notebook
+    output, resources = self.export_single_notebook(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 487, in export_single_notebook
+    output, resources = self.exporter.from_filename(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 390, in from_filename
+    return super().from_filename(filename, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 201, in from_filename
+    return self.from_file(f, resources=resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 396, in from_file
+    return super().from_file(file_stream, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 220, in from_file
+    return self.from_notebook_node(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/html.py", line 286, in from_notebook_node
+    html, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 412, in from_notebook_node
+    nb_copy, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 154, in from_notebook_node
+    nb_copy, resources = self._preprocess(nb_copy, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 353, in _preprocess
+    nbc, resc = preprocessor(nbc, resc)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/base.py", line 48, in __call__
+    return self.preprocess(nb, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 97, in preprocess
+    with self.setup_kernel():
+  File "/usr/lib/python3.10/contextlib.py", line 142, in __exit__
+    next(self.gen)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 609, in setup_kernel
+    self._cleanup_kernel()
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 509, in _async_cleanup_kernel
+    await ensure_async(self.km.shutdown_kernel(now=now))
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 214, in ensure_async
+    result = await obj
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 97, in wrapper
+    raise e
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 88, in wrapper
+    out = await method(self, *args, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 548, in _async_shutdown_kernel
+    await self._async_interrupt_kernel()
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 667, in _async_interrupt_kernel
+    await self._async_signal_kernel(signal.SIGINT)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 689, in _async_signal_kernel
+    await self.provisioner.send_signal(signum)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/provisioning/local_provisioner.py", line 95, in send_signal
+    self.process.send_signal(signum)
+  File "/usr/lib/python3.10/subprocess.py", line 2109, in send_signal
+    os.kill(self.pid, sig)
+PermissionError: [Errno 13] Permission denied
+FAIL: MOD05_NB08_Capstone_Clinical_NLP.ipynb
+==> 2026-06-24T13:07:14-04:00 Processing MOD06_NB03_DiD_EventStudy.ipynb
+[IPKernelApp] WARNING | Parent appears to have exited, shutting down.
+[NbConvertApp] Converting notebook MOD06_NB03_DiD_EventStudy.ipynb to html
+[NbConvertApp] ERROR | [Errno 13] Permission denied
+Traceback (most recent call last):
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 606, in setup_kernel
+    yield
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 103, in preprocess
+    self.preprocess_cell(cell, resources, index)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 124, in preprocess_cell
+    cell = self.execute_cell(cell, index, store_history=True)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# Event study: estimate treatment effect at each time relative to policy
+# Yi,t = alpha_i + lambda_t + sum_k(beta_k * D_i * 1[t=k]) + e
+# k = time relative to treatment (k=-1 is reference period)
+
+df_did["rel_year"] = df_did["year"] - POLICY_YEAR
+df_did["rel_cat"]  = df_did["rel_year"].clip(-3, 3)  # bin at edges
+# Create interaction terms for each relative year
+for k in range(-3, 4):
+    if k != -1:  # omit k=-1 as reference
+        col = f"D_km{k}" if k < 0 else f"D_k{k}"
+        df_did[col] = (df_did["expanded"] * (df_did["rel_cat"]==k)).astype(int)
+
+# Build formula
+def _dk_name(k):
+    return f"D_km{abs(k)}" if k < 0 else f"D_k{k}"
+interaction_terms = [_dk_name(k) for k in range(-3, 4) if k != -1]
+formula = "uninsured_pct ~ " + " + ".join(interaction_terms) + " + C(state) + C(year)"
+model_es = smf.ols(formula, data=df_did).fit(cov_type="cluster",
+                                               cov_kwds={"groups":df_did["state"]})
+
+# Extract event study coefficients
+event_coefs = {}
+for k in range(-3, 4):
+    if k == -1:
+        event_coefs[k] = {"coef":0, "ci_lo":0, "ci_hi":0}
+    else:
+        param = _dk_name(k)
+        coef  = model_es.params[param]
+        ci    = model_es.conf_int().loc[param]
+        event_coefs[k] = {"coef":coef, "ci_lo":ci[0], "ci_hi":ci[1]}
+
+ks   = sorted(event_coefs.keys())
+coefs = [event_coefs[k]["coef"] for k in ks]
+ci_lo = [event_coefs[k]["ci_lo"] for k in ks]
+ci_hi = [event_coefs[k]["ci_hi"] for k in ks]
+
+fig, ax = plt.subplots(figsize=(10,5))
+ax.plot(ks, coefs, "o-", color="#D65F5F", lw=2, ms=8, zorder=3)
+ax.fill_between(ks, ci_lo, ci_hi, alpha=0.2, color="#D65F5F")
+ax.axhline(0, color="black", lw=0.8, ls="--")
+ax.axvline(-0.5, color="gray", ls="--", lw=1.2, label="Policy implementation")
+ax.set_xlabel("Years relative to Medicaid expansion"); ax.set_ylabel("Effect on uninsured rate (pp)")
+ax.set_title("Event Study: Dynamic Treatment Effects (pre-treatment coefficients should be ~0 if parallel trends hold)")
+ax.legend(fontsize=9)
+plt.tight_layout(); plt.savefig("/tmp/mod06/event_study.png",bbox_inches="tight"); plt.show()
+
+pre_trend_test = [(k, event_coefs[k]["coef"]) for k in ks if k < -1]
+print("Pre-treatment event study coefficients (should be near 0):")
+for k, coef in pre_trend_test:
+    print(f"  k={k}: {coef:.3f}  {'OK' if abs(coef)<1 else 'CONCERNING'}")
+
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mNameError[39m                                 Traceback (most recent call last)
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/compat.py:40[39m, in [36mcall_and_wrap_exc[39m[34m(msg, origin, f, *args, **kwargs)[39m
+[32m     39[39m [38;5;28;01mtry[39;00m:
+[32m---> [39m[32m40[39m     [38;5;28;01mreturn[39;00m [43mf[49m[43m([49m[43m*[49m[43margs[49m[43m,[49m[43m [49m[43m*[49m[43m*[49m[43mkwargs[49m[43m)[49m
+[32m     41[39m [38;5;28;01mexcept[39;00m [38;5;167;01mException[39;00m [38;5;28;01mas[39;00m e:
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/eval.py:179[39m, in [36mEvalEnvironment.eval[39m[34m(self, expr, source_name, inner_namespace)[39m
+[32m    178[39m code = [38;5;28mcompile[39m(expr, source_name, [33m"[39m[33meval[39m[33m"[39m, [38;5;28mself[39m.flags, [38;5;28;01mFalse[39;00m)
+[32m--> [39m[32m179[39m [38;5;28;01mreturn[39;00m [38;5;28meval[39m(code, {}, VarLookupDict([inner_namespace] + [38;5;28mself[39m._namespaces))
+
+[36mFile [39m[32m<string>:1[39m
+
+[31mNameError[39m: name 'D_km2' is not defined
+
+The above exception was the direct cause of the following exception:
+
+[31mPatsyError[39m                                Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[4][39m[32m, line 18[39m
+[32m     16[39m interaction_terms = [_dk_name(k) [38;5;28;01mfor[39;00m k [38;5;129;01min[39;00m [38;5;28mrange[39m(-[32m3[39m, [32m4[39m) [38;5;28;01mif[39;00m k != -[32m1[39m]
+[32m     17[39m formula = [33m"[39m[33muninsured_pct ~ [39m[33m"[39m + [33m"[39m[33m + [39m[33m"[39m.join(interaction_terms) + [33m"[39m[33m + C(state) + C(year)[39m[33m"[39m
+[32m---> [39m[32m18[39m model_es = [43msmf[49m[43m.[49m[43mols[49m[43m([49m[43mformula[49m[43m,[49m[43m [49m[43mdata[49m[43m=[49m[43mdf_did[49m[43m)[49m.fit(cov_type=[33m"[39m[33mcluster[39m[33m"[39m,
+[32m     19[39m                                                cov_kwds={[33m"[39m[33mgroups[39m[33m"[39m:df_did[[33m"[39m[33mstate[39m[33m"[39m]})
+[32m     21[39m [38;5;66;03m# Extract event study coefficients[39;00m
+[32m     22[39m event_coefs = {}
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/statsmodels/base/model.py:203[39m, in [36mModel.from_formula[39m[34m(cls, formula, data, subset, drop_cols, *args, **kwargs)[39m
+[32m    200[39m [38;5;28;01mif[39;00m missing == [33m'[39m[33mnone[39m[33m'[39m:  [38;5;66;03m# with patsy it's drop or raise. let's raise.[39;00m
+[32m    201[39m     missing = [33m'[39m[33mraise[39m[33m'[39m
+[32m--> [39m[32m203[39m tmp = [43mhandle_formula_data[49m[43m([49m[43mdata[49m[43m,[49m[43m [49m[38;5;28;43;01mNone[39;49;00m[43m,[49m[43m [49m[43mformula[49m[43m,[49m[43m [49m[43mdepth[49m[43m=[49m[43meval_env[49m[43m,[49m
+[32m    204[39m [43m                          [49m[43mmissing[49m[43m=[49m[43mmissing[49m[43m)[49m
+[32m    205[39m ((endog, exog), missing_idx, design_info) = tmp
+[32m    206[39m max_endog = [38;5;28mcls[39m._formula_max_endog
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/statsmodels/formula/formulatools.py:68[39m, in [36mhandle_formula_data[39m[34m(Y, X, formula, depth, missing)[39m
+[32m     66[39m [38;5;28;01melse[39;00m:
+[32m     67[39m     [38;5;28;01mif[39;00m data_util._is_using_pandas(Y, [38;5;28;01mNone[39;00m):
+[32m---> [39m[32m68[39m         result = [43mdmatrices[49m[43m([49m
+[32m     69[39m [43m            [49m[43mformula[49m[43m,[49m[43m [49m[43mY[49m[43m,[49m[43m [49m[43mdepth[49m[43m,[49m[43m [49m[43mreturn_type[49m[43m=[49m[33;43m"[39;49m[33;43mdataframe[39;49m[33;43m"[39;49m[43m,[49m[43m [49m[43mNA_action[49m[43m=[49m[43mna_action[49m
+[32m     70[39m [43m        [49m[43m)[49m
+[32m     71[39m     [38;5;28;01melse[39;00m:
+[32m     72[39m         result = dmatrices(
+[32m     73[39m             formula, Y, depth, return_type=[33m"[39m[33mdataframe[39m[33m"[39m, NA_action=na_action
+[32m     74[39m         )
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/highlevel.py:317[39m, in [36mdmatrices[39m[34m(formula_like, data, eval_env, NA_action, return_type)[39m
+[32m    307[39m [38;5;250m[39m[33;03m"""Construct two design matrices given a formula_like and data.[39;00m
+[32m    308[39m 
+[32m    309[39m [33;03mThis function is identical to :func:`dmatrix`, except that it requires[39;00m
+[32m   (...)[39m[32m    314[39m [33;03mSee :func:`dmatrix` for details.[39;00m
+[32m    315[39m [33;03m"""[39;00m
+[32m    316[39m eval_env = EvalEnvironment.capture(eval_env, reference=[32m1[39m)
+[32m--> [39m[32m317[39m (lhs, rhs) = [43m_do_highlevel_design[49m[43m([49m
+[32m    318[39m [43m    [49m[43mformula_like[49m[43m,[49m[43m [49m[43mdata[49m[43m,[49m[43m [49m[43meval_env[49m[43m,[49m[43m [49m[43mNA_action[49m[43m,[49m[43m [49m[43mreturn_type[49m
+[32m    319[39m [43m[49m[43m)[49m
+[32m    320[39m [38;5;28;01mif[39;00m lhs.shape[[32m1[39m] == [32m0[39m:
+[32m    321[39m     [38;5;28;01mraise[39;00m PatsyError([33m"[39m[33mmodel is missing required outcome variables[39m[33m"[39m)
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/highlevel.py:162[39m, in [36m_do_highlevel_design[39m[34m(formula_like, data, eval_env, NA_action, return_type)[39m
+[32m    159[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34mdata_iter_maker[39m():
+[32m    160[39m     [38;5;28;01mreturn[39;00m [38;5;28miter[39m([data])
+[32m--> [39m[32m162[39m design_infos = [43m_try_incr_builders[49m[43m([49m
+[32m    163[39m [43m    [49m[43mformula_like[49m[43m,[49m[43m [49m[43mdata_iter_maker[49m[43m,[49m[43m [49m[43meval_env[49m[43m,[49m[43m [49m[43mNA_action[49m
+[32m    164[39m [43m[49m[43m)[49m
+[32m    165[39m [38;5;28;01mif[39;00m design_infos [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
+[32m    166[39m     [38;5;28;01mreturn[39;00m build_design_matrices(
+[32m    167[39m         design_infos, data, NA_action=NA_action, return_type=return_type
+[32m    168[39m     )
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/highlevel.py:56[39m, in [36m_try_incr_builders[39m[34m(formula_like, data_iter_maker, eval_env, NA_action)[39m
+[32m     54[39m [38;5;28;01mif[39;00m [38;5;28misinstance[39m(formula_like, ModelDesc):
+[32m     55[39m     [38;5;28;01massert[39;00m [38;5;28misinstance[39m(eval_env, EvalEnvironment)
+[32m---> [39m[32m56[39m     [38;5;28;01mreturn[39;00m [43mdesign_matrix_builders[49m[43m([49m
+[32m     57[39m [43m        [49m[43m[[49m[43mformula_like[49m[43m.[49m[43mlhs_termlist[49m[43m,[49m[43m [49m[43mformula_like[49m[43m.[49m[43mrhs_termlist[49m[43m][49m[43m,[49m
+[32m     58[39m [43m        [49m[43mdata_iter_maker[49m[43m,[49m
+[32m     59[39m [43m        [49m[43meval_env[49m[43m,[49m
+[32m     60[39m [43m        [49m[43mNA_action[49m[43m,[49m
+[32m     61[39m [43m    [49m[43m)[49m
+[32m     62[39m [38;5;28;01melse[39;00m:
+[32m     63[39m     [38;5;28;01mreturn[39;00m [38;5;28;01mNone[39;00m
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/build.py:746[39m, in [36mdesign_matrix_builders[39m[34m(termlists, data_iter_maker, eval_env, NA_action)[39m
+[32m    743[39m factor_states = _factors_memorize(all_factors, data_iter_maker, eval_env)
+[32m    744[39m [38;5;66;03m# Now all the factors have working eval methods, so we can evaluate them[39;00m
+[32m    745[39m [38;5;66;03m# on some data to find out what type of data they return.[39;00m
+[32m--> [39m[32m746[39m (num_column_counts, cat_levels_contrasts) = [43m_examine_factor_types[49m[43m([49m
+[32m    747[39m [43m    [49m[43mall_factors[49m[43m,[49m[43m [49m[43mfactor_states[49m[43m,[49m[43m [49m[43mdata_iter_maker[49m[43m,[49m[43m [49m[43mNA_action[49m
+[32m    748[39m [43m[49m[43m)[49m
+[32m    749[39m [38;5;66;03m# Now we need the factor infos, which encapsulate the knowledge of[39;00m
+[32m    750[39m [38;5;66;03m# how to turn any given factor into a chunk of data:[39;00m
+[32m    751[39m factor_infos = {}
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/build.py:491[39m, in [36m_examine_factor_types[39m[34m(factors, factor_states, data_iter_maker, NA_action)[39m
+[32m    489[39m [38;5;28;01mfor[39;00m data [38;5;129;01min[39;00m data_iter_maker():
+[32m    490[39m     [38;5;28;01mfor[39;00m factor [38;5;129;01min[39;00m [38;5;28mlist[39m(examine_needed):
+[32m--> [39m[32m491[39m         value = [43mfactor[49m[43m.[49m[43meval[49m[43m([49m[43mfactor_states[49m[43m[[49m[43mfactor[49m[43m][49m[43m,[49m[43m [49m[43mdata[49m[43m)[49m
+[32m    492[39m         [38;5;28;01mif[39;00m factor [38;5;129;01min[39;00m cat_sniffers [38;5;129;01mor[39;00m guess_categorical(value):
+[32m    493[39m             [38;5;28;01mif[39;00m factor [38;5;129;01mnot[39;00m [38;5;129;01min[39;00m cat_sniffers:
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/eval.py:599[39m, in [36mEvalFactor.eval[39m[34m(self, memorize_state, data)[39m
+[32m    598[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34meval[39m([38;5;28mself[39m, memorize_state, data):
+[32m--> [39m[32m599[39m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[43m.[49m[43m_eval[49m[43m([49m[43mmemorize_state[49m[43m[[49m[33;43m"[39;49m[33;43meval_code[39;49m[33;43m"[39;49m[43m][49m[43m,[49m[43m [49m[43mmemorize_state[49m[43m,[49m[43m [49m[43mdata[49m[43m)[49m
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/eval.py:582[39m, in [36mEvalFactor._eval[39m[34m(self, code, memorize_state, data)[39m
+[32m    580[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34m_eval[39m([38;5;28mself[39m, code, memorize_state, data):
+[32m    581[39m     inner_namespace = VarLookupDict([data, memorize_state[[33m"[39m[33mtransforms[39m[33m"[39m]])
+[32m--> [39m[32m582[39m     [38;5;28;01mreturn[39;00m [43mcall_and_wrap_exc[49m[43m([49m
+[32m    583[39m [43m        [49m[33;43m"[39;49m[33;43mError evaluating factor[39;49m[33;43m"[39;49m[43m,[49m
+[32m    584[39m [43m        [49m[38;5;28;43mself[39;49m[43m,[49m
+[32m    585[39m [43m        [49m[43mmemorize_state[49m[43m[[49m[33;43m"[39;49m[33;43meval_env[39;49m[33;43m"[39;49m[43m][49m[43m.[49m[43meval[49m[43m,[49m
+[32m    586[39m [43m        [49m[43mcode[49m[43m,[49m
+[32m    587[39m [43m        [49m[43minner_namespace[49m[43m=[49m[43minner_namespace[49m[43m,[49m
+[32m    588[39m [43m    [49m[43m)[49m
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/compat.py:43[39m, in [36mcall_and_wrap_exc[39m[34m(msg, origin, f, *args, **kwargs)[39m
+[32m     41[39m [38;5;28;01mexcept[39;00m [38;5;167;01mException[39;00m [38;5;28;01mas[39;00m e:
+[32m     42[39m     new_exc = PatsyError([33m"[39m[38;5;132;01m%s[39;00m[33m: [39m[38;5;132;01m%s[39;00m[33m: [39m[38;5;132;01m%s[39;00m[33m"[39m % (msg, e.[34m__class__[39m.[34m__name__[39m, e), origin)
+[32m---> [39m[32m43[39m     [38;5;28;01mraise[39;00m new_exc [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01me[39;00m
+
+[31mPatsyError[39m: Error evaluating factor: NameError: name 'D_km2' is not defined
+    uninsured_pct ~ D_km3 + D_km2 + D_k0 + D_k1 + D_k2 + D_k3 + C(state) + C(year)
+                            ^^^^^
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 88, in wrapper
+    out = await method(self, *args, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 548, in _async_shutdown_kernel
+    await self._async_interrupt_kernel()
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 667, in _async_interrupt_kernel
+    await self._async_signal_kernel(signal.SIGINT)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 689, in _async_signal_kernel
+    await self.provisioner.send_signal(signum)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/provisioning/local_provisioner.py", line 95, in send_signal
+    self.process.send_signal(signum)
+  File "/usr/lib/python3.10/subprocess.py", line 2109, in send_signal
+    os.kill(self.pid, sig)
+PermissionError: [Errno 13] Permission denied
+Traceback (most recent call last):
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 606, in setup_kernel
+    yield
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 103, in preprocess
+    self.preprocess_cell(cell, resources, index)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 124, in preprocess_cell
+    cell = self.execute_cell(cell, index, store_history=True)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# Event study: estimate treatment effect at each time relative to policy
+# Yi,t = alpha_i + lambda_t + sum_k(beta_k * D_i * 1[t=k]) + e
+# k = time relative to treatment (k=-1 is reference period)
+
+df_did["rel_year"] = df_did["year"] - POLICY_YEAR
+df_did["rel_cat"]  = df_did["rel_year"].clip(-3, 3)  # bin at edges
+# Create interaction terms for each relative year
+for k in range(-3, 4):
+    if k != -1:  # omit k=-1 as reference
+        col = f"D_km{k}" if k < 0 else f"D_k{k}"
+        df_did[col] = (df_did["expanded"] * (df_did["rel_cat"]==k)).astype(int)
+
+# Build formula
+def _dk_name(k):
+    return f"D_km{abs(k)}" if k < 0 else f"D_k{k}"
+interaction_terms = [_dk_name(k) for k in range(-3, 4) if k != -1]
+formula = "uninsured_pct ~ " + " + ".join(interaction_terms) + " + C(state) + C(year)"
+model_es = smf.ols(formula, data=df_did).fit(cov_type="cluster",
+                                               cov_kwds={"groups":df_did["state"]})
+
+# Extract event study coefficients
+event_coefs = {}
+for k in range(-3, 4):
+    if k == -1:
+        event_coefs[k] = {"coef":0, "ci_lo":0, "ci_hi":0}
+    else:
+        param = _dk_name(k)
+        coef  = model_es.params[param]
+        ci    = model_es.conf_int().loc[param]
+        event_coefs[k] = {"coef":coef, "ci_lo":ci[0], "ci_hi":ci[1]}
+
+ks   = sorted(event_coefs.keys())
+coefs = [event_coefs[k]["coef"] for k in ks]
+ci_lo = [event_coefs[k]["ci_lo"] for k in ks]
+ci_hi = [event_coefs[k]["ci_hi"] for k in ks]
+
+fig, ax = plt.subplots(figsize=(10,5))
+ax.plot(ks, coefs, "o-", color="#D65F5F", lw=2, ms=8, zorder=3)
+ax.fill_between(ks, ci_lo, ci_hi, alpha=0.2, color="#D65F5F")
+ax.axhline(0, color="black", lw=0.8, ls="--")
+ax.axvline(-0.5, color="gray", ls="--", lw=1.2, label="Policy implementation")
+ax.set_xlabel("Years relative to Medicaid expansion"); ax.set_ylabel("Effect on uninsured rate (pp)")
+ax.set_title("Event Study: Dynamic Treatment Effects (pre-treatment coefficients should be ~0 if parallel trends hold)")
+ax.legend(fontsize=9)
+plt.tight_layout(); plt.savefig("/tmp/mod06/event_study.png",bbox_inches="tight"); plt.show()
+
+pre_trend_test = [(k, event_coefs[k]["coef"]) for k in ks if k < -1]
+print("Pre-treatment event study coefficients (should be near 0):")
+for k, coef in pre_trend_test:
+    print(f"  k={k}: {coef:.3f}  {'OK' if abs(coef)<1 else 'CONCERNING'}")
+
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mNameError[39m                                 Traceback (most recent call last)
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/compat.py:40[39m, in [36mcall_and_wrap_exc[39m[34m(msg, origin, f, *args, **kwargs)[39m
+[32m     39[39m [38;5;28;01mtry[39;00m:
+[32m---> [39m[32m40[39m     [38;5;28;01mreturn[39;00m [43mf[49m[43m([49m[43m*[49m[43margs[49m[43m,[49m[43m [49m[43m*[49m[43m*[49m[43mkwargs[49m[43m)[49m
+[32m     41[39m [38;5;28;01mexcept[39;00m [38;5;167;01mException[39;00m [38;5;28;01mas[39;00m e:
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/eval.py:179[39m, in [36mEvalEnvironment.eval[39m[34m(self, expr, source_name, inner_namespace)[39m
+[32m    178[39m code = [38;5;28mcompile[39m(expr, source_name, [33m"[39m[33meval[39m[33m"[39m, [38;5;28mself[39m.flags, [38;5;28;01mFalse[39;00m)
+[32m--> [39m[32m179[39m [38;5;28;01mreturn[39;00m [38;5;28meval[39m(code, {}, VarLookupDict([inner_namespace] + [38;5;28mself[39m._namespaces))
+
+[36mFile [39m[32m<string>:1[39m
+
+[31mNameError[39m: name 'D_km2' is not defined
+
+The above exception was the direct cause of the following exception:
+
+[31mPatsyError[39m                                Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[4][39m[32m, line 18[39m
+[32m     16[39m interaction_terms = [_dk_name(k) [38;5;28;01mfor[39;00m k [38;5;129;01min[39;00m [38;5;28mrange[39m(-[32m3[39m, [32m4[39m) [38;5;28;01mif[39;00m k != -[32m1[39m]
+[32m     17[39m formula = [33m"[39m[33muninsured_pct ~ [39m[33m"[39m + [33m"[39m[33m + [39m[33m"[39m.join(interaction_terms) + [33m"[39m[33m + C(state) + C(year)[39m[33m"[39m
+[32m---> [39m[32m18[39m model_es = [43msmf[49m[43m.[49m[43mols[49m[43m([49m[43mformula[49m[43m,[49m[43m [49m[43mdata[49m[43m=[49m[43mdf_did[49m[43m)[49m.fit(cov_type=[33m"[39m[33mcluster[39m[33m"[39m,
+[32m     19[39m                                                cov_kwds={[33m"[39m[33mgroups[39m[33m"[39m:df_did[[33m"[39m[33mstate[39m[33m"[39m]})
+[32m     21[39m [38;5;66;03m# Extract event study coefficients[39;00m
+[32m     22[39m event_coefs = {}
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/statsmodels/base/model.py:203[39m, in [36mModel.from_formula[39m[34m(cls, formula, data, subset, drop_cols, *args, **kwargs)[39m
+[32m    200[39m [38;5;28;01mif[39;00m missing == [33m'[39m[33mnone[39m[33m'[39m:  [38;5;66;03m# with patsy it's drop or raise. let's raise.[39;00m
+[32m    201[39m     missing = [33m'[39m[33mraise[39m[33m'[39m
+[32m--> [39m[32m203[39m tmp = [43mhandle_formula_data[49m[43m([49m[43mdata[49m[43m,[49m[43m [49m[38;5;28;43;01mNone[39;49;00m[43m,[49m[43m [49m[43mformula[49m[43m,[49m[43m [49m[43mdepth[49m[43m=[49m[43meval_env[49m[43m,[49m
+[32m    204[39m [43m                          [49m[43mmissing[49m[43m=[49m[43mmissing[49m[43m)[49m
+[32m    205[39m ((endog, exog), missing_idx, design_info) = tmp
+[32m    206[39m max_endog = [38;5;28mcls[39m._formula_max_endog
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/statsmodels/formula/formulatools.py:68[39m, in [36mhandle_formula_data[39m[34m(Y, X, formula, depth, missing)[39m
+[32m     66[39m [38;5;28;01melse[39;00m:
+[32m     67[39m     [38;5;28;01mif[39;00m data_util._is_using_pandas(Y, [38;5;28;01mNone[39;00m):
+[32m---> [39m[32m68[39m         result = [43mdmatrices[49m[43m([49m
+[32m     69[39m [43m            [49m[43mformula[49m[43m,[49m[43m [49m[43mY[49m[43m,[49m[43m [49m[43mdepth[49m[43m,[49m[43m [49m[43mreturn_type[49m[43m=[49m[33;43m"[39;49m[33;43mdataframe[39;49m[33;43m"[39;49m[43m,[49m[43m [49m[43mNA_action[49m[43m=[49m[43mna_action[49m
+[32m     70[39m [43m        [49m[43m)[49m
+[32m     71[39m     [38;5;28;01melse[39;00m:
+[32m     72[39m         result = dmatrices(
+[32m     73[39m             formula, Y, depth, return_type=[33m"[39m[33mdataframe[39m[33m"[39m, NA_action=na_action
+[32m     74[39m         )
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/highlevel.py:317[39m, in [36mdmatrices[39m[34m(formula_like, data, eval_env, NA_action, return_type)[39m
+[32m    307[39m [38;5;250m[39m[33;03m"""Construct two design matrices given a formula_like and data.[39;00m
+[32m    308[39m 
+[32m    309[39m [33;03mThis function is identical to :func:`dmatrix`, except that it requires[39;00m
+[32m   (...)[39m[32m    314[39m [33;03mSee :func:`dmatrix` for details.[39;00m
+[32m    315[39m [33;03m"""[39;00m
+[32m    316[39m eval_env = EvalEnvironment.capture(eval_env, reference=[32m1[39m)
+[32m--> [39m[32m317[39m (lhs, rhs) = [43m_do_highlevel_design[49m[43m([49m
+[32m    318[39m [43m    [49m[43mformula_like[49m[43m,[49m[43m [49m[43mdata[49m[43m,[49m[43m [49m[43meval_env[49m[43m,[49m[43m [49m[43mNA_action[49m[43m,[49m[43m [49m[43mreturn_type[49m
+[32m    319[39m [43m[49m[43m)[49m
+[32m    320[39m [38;5;28;01mif[39;00m lhs.shape[[32m1[39m] == [32m0[39m:
+[32m    321[39m     [38;5;28;01mraise[39;00m PatsyError([33m"[39m[33mmodel is missing required outcome variables[39m[33m"[39m)
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/highlevel.py:162[39m, in [36m_do_highlevel_design[39m[34m(formula_like, data, eval_env, NA_action, return_type)[39m
+[32m    159[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34mdata_iter_maker[39m():
+[32m    160[39m     [38;5;28;01mreturn[39;00m [38;5;28miter[39m([data])
+[32m--> [39m[32m162[39m design_infos = [43m_try_incr_builders[49m[43m([49m
+[32m    163[39m [43m    [49m[43mformula_like[49m[43m,[49m[43m [49m[43mdata_iter_maker[49m[43m,[49m[43m [49m[43meval_env[49m[43m,[49m[43m [49m[43mNA_action[49m
+[32m    164[39m [43m[49m[43m)[49m
+[32m    165[39m [38;5;28;01mif[39;00m design_infos [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
+[32m    166[39m     [38;5;28;01mreturn[39;00m build_design_matrices(
+[32m    167[39m         design_infos, data, NA_action=NA_action, return_type=return_type
+[32m    168[39m     )
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/highlevel.py:56[39m, in [36m_try_incr_builders[39m[34m(formula_like, data_iter_maker, eval_env, NA_action)[39m
+[32m     54[39m [38;5;28;01mif[39;00m [38;5;28misinstance[39m(formula_like, ModelDesc):
+[32m     55[39m     [38;5;28;01massert[39;00m [38;5;28misinstance[39m(eval_env, EvalEnvironment)
+[32m---> [39m[32m56[39m     [38;5;28;01mreturn[39;00m [43mdesign_matrix_builders[49m[43m([49m
+[32m     57[39m [43m        [49m[43m[[49m[43mformula_like[49m[43m.[49m[43mlhs_termlist[49m[43m,[49m[43m [49m[43mformula_like[49m[43m.[49m[43mrhs_termlist[49m[43m][49m[43m,[49m
+[32m     58[39m [43m        [49m[43mdata_iter_maker[49m[43m,[49m
+[32m     59[39m [43m        [49m[43meval_env[49m[43m,[49m
+[32m     60[39m [43m        [49m[43mNA_action[49m[43m,[49m
+[32m     61[39m [43m    [49m[43m)[49m
+[32m     62[39m [38;5;28;01melse[39;00m:
+[32m     63[39m     [38;5;28;01mreturn[39;00m [38;5;28;01mNone[39;00m
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/build.py:746[39m, in [36mdesign_matrix_builders[39m[34m(termlists, data_iter_maker, eval_env, NA_action)[39m
+[32m    743[39m factor_states = _factors_memorize(all_factors, data_iter_maker, eval_env)
+[32m    744[39m [38;5;66;03m# Now all the factors have working eval methods, so we can evaluate them[39;00m
+[32m    745[39m [38;5;66;03m# on some data to find out what type of data they return.[39;00m
+[32m--> [39m[32m746[39m (num_column_counts, cat_levels_contrasts) = [43m_examine_factor_types[49m[43m([49m
+[32m    747[39m [43m    [49m[43mall_factors[49m[43m,[49m[43m [49m[43mfactor_states[49m[43m,[49m[43m [49m[43mdata_iter_maker[49m[43m,[49m[43m [49m[43mNA_action[49m
+[32m    748[39m [43m[49m[43m)[49m
+[32m    749[39m [38;5;66;03m# Now we need the factor infos, which encapsulate the knowledge of[39;00m
+[32m    750[39m [38;5;66;03m# how to turn any given factor into a chunk of data:[39;00m
+[32m    751[39m factor_infos = {}
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/build.py:491[39m, in [36m_examine_factor_types[39m[34m(factors, factor_states, data_iter_maker, NA_action)[39m
+[32m    489[39m [38;5;28;01mfor[39;00m data [38;5;129;01min[39;00m data_iter_maker():
+[32m    490[39m     [38;5;28;01mfor[39;00m factor [38;5;129;01min[39;00m [38;5;28mlist[39m(examine_needed):
+[32m--> [39m[32m491[39m         value = [43mfactor[49m[43m.[49m[43meval[49m[43m([49m[43mfactor_states[49m[43m[[49m[43mfactor[49m[43m][49m[43m,[49m[43m [49m[43mdata[49m[43m)[49m
+[32m    492[39m         [38;5;28;01mif[39;00m factor [38;5;129;01min[39;00m cat_sniffers [38;5;129;01mor[39;00m guess_categorical(value):
+[32m    493[39m             [38;5;28;01mif[39;00m factor [38;5;129;01mnot[39;00m [38;5;129;01min[39;00m cat_sniffers:
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/eval.py:599[39m, in [36mEvalFactor.eval[39m[34m(self, memorize_state, data)[39m
+[32m    598[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34meval[39m([38;5;28mself[39m, memorize_state, data):
+[32m--> [39m[32m599[39m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[43m.[49m[43m_eval[49m[43m([49m[43mmemorize_state[49m[43m[[49m[33;43m"[39;49m[33;43meval_code[39;49m[33;43m"[39;49m[43m][49m[43m,[49m[43m [49m[43mmemorize_state[49m[43m,[49m[43m [49m[43mdata[49m[43m)[49m
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/eval.py:582[39m, in [36mEvalFactor._eval[39m[34m(self, code, memorize_state, data)[39m
+[32m    580[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34m_eval[39m([38;5;28mself[39m, code, memorize_state, data):
+[32m    581[39m     inner_namespace = VarLookupDict([data, memorize_state[[33m"[39m[33mtransforms[39m[33m"[39m]])
+[32m--> [39m[32m582[39m     [38;5;28;01mreturn[39;00m [43mcall_and_wrap_exc[49m[43m([49m
+[32m    583[39m [43m        [49m[33;43m"[39;49m[33;43mError evaluating factor[39;49m[33;43m"[39;49m[43m,[49m
+[32m    584[39m [43m        [49m[38;5;28;43mself[39;49m[43m,[49m
+[32m    585[39m [43m        [49m[43mmemorize_state[49m[43m[[49m[33;43m"[39;49m[33;43meval_env[39;49m[33;43m"[39;49m[43m][49m[43m.[49m[43meval[49m[43m,[49m
+[32m    586[39m [43m        [49m[43mcode[49m[43m,[49m
+[32m    587[39m [43m        [49m[43minner_namespace[49m[43m=[49m[43minner_namespace[49m[43m,[49m
+[32m    588[39m [43m    [49m[43m)[49m
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/patsy/compat.py:43[39m, in [36mcall_and_wrap_exc[39m[34m(msg, origin, f, *args, **kwargs)[39m
+[32m     41[39m [38;5;28;01mexcept[39;00m [38;5;167;01mException[39;00m [38;5;28;01mas[39;00m e:
+[32m     42[39m     new_exc = PatsyError([33m"[39m[38;5;132;01m%s[39;00m[33m: [39m[38;5;132;01m%s[39;00m[33m: [39m[38;5;132;01m%s[39;00m[33m"[39m % (msg, e.[34m__class__[39m.[34m__name__[39m, e), origin)
+[32m---> [39m[32m43[39m     [38;5;28;01mraise[39;00m new_exc [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01me[39;00m
+
+[31mPatsyError[39m: Error evaluating factor: NameError: name 'D_km2' is not defined
+    uninsured_pct ~ D_km3 + D_km2 + D_k0 + D_k1 + D_k2 + D_k3 + C(state) + C(year)
+                            ^^^^^
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/zia207/.local/bin/jupyter-nbconvert", line 6, in <module>
+    sys.exit(main())
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/application.py", line 284, in launch_instance
+    super().launch_instance(argv=argv, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/traitlets/config/application.py", line 1075, in launch_instance
+    app.start()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 420, in start
+    self.convert_notebooks()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 597, in convert_notebooks
+    self.convert_single_notebook(notebook_filename)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 563, in convert_single_notebook
+    output, resources = self.export_single_notebook(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 487, in export_single_notebook
+    output, resources = self.exporter.from_filename(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 390, in from_filename
+    return super().from_filename(filename, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 201, in from_filename
+    return self.from_file(f, resources=resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 396, in from_file
+    return super().from_file(file_stream, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 220, in from_file
+    return self.from_notebook_node(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/html.py", line 286, in from_notebook_node
+    html, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 412, in from_notebook_node
+    nb_copy, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 154, in from_notebook_node
+    nb_copy, resources = self._preprocess(nb_copy, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 353, in _preprocess
+    nbc, resc = preprocessor(nbc, resc)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/base.py", line 48, in __call__
+    return self.preprocess(nb, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 97, in preprocess
+    with self.setup_kernel():
+  File "/usr/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 609, in setup_kernel
+    self._cleanup_kernel()
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 509, in _async_cleanup_kernel
+    await ensure_async(self.km.shutdown_kernel(now=now))
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 214, in ensure_async
+    result = await obj
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 97, in wrapper
+    raise e
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 88, in wrapper
+    out = await method(self, *args, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 548, in _async_shutdown_kernel
+    await self._async_interrupt_kernel()
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 667, in _async_interrupt_kernel
+    await self._async_signal_kernel(signal.SIGINT)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 689, in _async_signal_kernel
+    await self.provisioner.send_signal(signum)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/provisioning/local_provisioner.py", line 95, in send_signal
+    self.process.send_signal(signum)
+  File "/usr/lib/python3.10/subprocess.py", line 2109, in send_signal
+    os.kill(self.pid, sig)
+PermissionError: [Errno 13] Permission denied
+FAIL: MOD06_NB03_DiD_EventStudy.ipynb
+==> 2026-06-24T13:07:21-04:00 Processing MOD06_NB06_GComp_TMLE.ipynb
+[IPKernelApp] WARNING | Parent appears to have exited, shutting down.
+[NbConvertApp] Converting notebook MOD06_NB06_GComp_TMLE.ipynb to html
+[NbConvertApp] ERROR | [Errno 13] Permission denied
+Traceback (most recent call last):
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 606, in setup_kernel
+    yield
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 103, in preprocess
+    self.preprocess_cell(cell, resources, index)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 124, in preprocess_cell
+    cell = self.execute_cell(cell, index, store_history=True)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# Exercise 5 — Subgroup mediation analysis
+for group, group_name in [(df.smoking==0, "Non-smokers"), (df.smoking==1, "Smokers")]:
+    df_sub = df[group].copy()
+    res_sub = mediation_analysis(df_sub, "statin", "ldl_post", "mi",
+                                  [c for c in COVARIATES if c != "smoking"])
+    print(f"Mediation in {group_name} (n={group.sum()}):")
+    print(f"  TE={res_sub['TE']:.4f} | NDE={res_sub['NDE']:.4f} | NIE={res_sub['NIE']:.4f} | "
+          f"Prop mediated={res_sub['prop_mediated']*100:.1f}%")
+
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mValueError[39m                                Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[6][39m[32m, line 4[39m
+[32m      2[39m [38;5;28;01mfor[39;00m group, group_name [38;5;129;01min[39;00m [(df.smoking==[32m0[39m, [33m"[39m[33mNon-smokers[39m[33m"[39m), (df.smoking==[32m1[39m, [33m"[39m[33mSmokers[39m[33m"[39m)]:
+[32m      3[39m     df_sub = df[group].copy()
+[32m----> [39m[32m4[39m     res_sub = [43mmediation_analysis[49m[43m([49m[43mdf_sub[49m[43m,[49m[43m [49m[33;43m"[39;49m[33;43mstatin[39;49m[33;43m"[39;49m[43m,[49m[43m [49m[33;43m"[39;49m[33;43mldl_post[39;49m[33;43m"[39;49m[43m,[49m[43m [49m[33;43m"[39;49m[33;43mmi[39;49m[33;43m"[39;49m[43m,[49m
+[32m      5[39m [43m                                  [49m[43m[[49m[43mc[49m[43m [49m[38;5;28;43;01mfor[39;49;00m[43m [49m[43mc[49m[43m [49m[38;5;129;43;01min[39;49;00m[43m [49m[43mCOVARIATES[49m[43m [49m[38;5;28;43;01mif[39;49;00m[43m [49m[43mc[49m[43m [49m[43m!=[49m[43m [49m[33;43m"[39;49m[33;43msmoking[39;49m[33;43m"[39;49m[43m][49m[43m)[49m
+[32m      6[39m     [38;5;28mprint[39m([33mf[39m[33m"[39m[33mMediation in [39m[38;5;132;01m{[39;00mgroup_name[38;5;132;01m}[39;00m[33m (n=[39m[38;5;132;01m{[39;00mgroup.sum()[38;5;132;01m}[39;00m[33m):[39m[33m"[39m)
+[32m      7[39m     [38;5;28mprint[39m([33mf[39m[33m"[39m[33m  TE=[39m[38;5;132;01m{[39;00mres_sub[[33m'[39m[33mTE[39m[33m'[39m][38;5;132;01m:[39;00m[33m.4f[39m[38;5;132;01m}[39;00m[33m | NDE=[39m[38;5;132;01m{[39;00mres_sub[[33m'[39m[33mNDE[39m[33m'[39m][38;5;132;01m:[39;00m[33m.4f[39m[38;5;132;01m}[39;00m[33m | NIE=[39m[38;5;132;01m{[39;00mres_sub[[33m'[39m[33mNIE[39m[33m'[39m][38;5;132;01m:[39;00m[33m.4f[39m[38;5;132;01m}[39;00m[33m | [39m[33m"[39m
+[32m      8[39m           [33mf[39m[33m"[39m[33mProp mediated=[39m[38;5;132;01m{[39;00mres_sub[[33m'[39m[33mprop_mediated[39m[33m'[39m]*[32m100[39m[38;5;132;01m:[39;00m[33m.1f[39m[38;5;132;01m}[39;00m[33m%[39m[33m"[39m)
+
+[36mCell[39m[36m [39m[32mIn[4][39m[32m, line 38[39m, in [36mmediation_analysis[39m[34m(df, treatment, mediator, outcome, covariates, n_boot)[39m
+[32m     36[39m X1 = pd.concat([X_base, pd.DataFrame({treatment:[[32m1[39m]*N})], axis=[32m1[39m)
+[32m     37[39m X0 = pd.concat([X_base, pd.DataFrame({treatment:[[32m0[39m]*N})], axis=[32m1[39m)
+[32m---> [39m[32m38[39m M_a1 = [43mm_reg[49m[43m.[49m[43mpredict[49m[43m([49m[43mX1[49m[43m)[49m
+[32m     39[39m M_a0 = m_reg.predict(X0)
+[32m     41[39m [38;5;66;03m# E[Y(1, M(1))], E[Y(0, M(0))], E[Y(1, M(0))], E[Y(0, M(1))][39;00m
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/sklearn/linear_model/_base.py:297[39m, in [36mLinearModel.predict[39m[34m(self, X)[39m
+[32m    283[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34mpredict[39m([38;5;28mself[39m, X):
+[32m    284[39m [38;5;250m    [39m[33;03m"""[39;00m
+[32m    285[39m [33;03m    Predict using the linear model.[39;00m
+[32m    286[39m 
+[32m   (...)[39m[32m    295[39m [33;03m        Returns predicted values.[39;00m
+[32m    296[39m [33;03m    """[39;00m
+[32m--> [39m[32m297[39m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[43m.[49m[43m_decision_function[49m[43m([49m[43mX[49m[43m)[49m
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/sklearn/linear_model/_base.py:276[39m, in [36mLinearModel._decision_function[39m[34m(self, X)[39m
+[32m    273[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34m_decision_function[39m([38;5;28mself[39m, X):
+[32m    274[39m     check_is_fitted([38;5;28mself[39m)
+[32m--> [39m[32m276[39m     X = [43mvalidate_data[49m[43m([49m[38;5;28;43mself[39;49m[43m,[49m[43m [49m[43mX[49m[43m,[49m[43m [49m[43maccept_sparse[49m[43m=[49m[43m[[49m[33;43m"[39;49m[33;43mcsr[39;49m[33;43m"[39;49m[43m,[49m[43m [49m[33;43m"[39;49m[33;43mcsc[39;49m[33;43m"[39;49m[43m,[49m[43m [49m[33;43m"[39;49m[33;43mcoo[39;49m[33;43m"[39;49m[43m][49m[43m,[49m[43m [49m[43mreset[49m[43m=[49m[38;5;28;43;01mFalse[39;49;00m[43m)[49m
+[32m    277[39m     coef_ = [38;5;28mself[39m.coef_
+[32m    278[39m     [38;5;28;01mif[39;00m coef_.ndim == [32m1[39m:
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/sklearn/utils/validation.py:2944[39m, in [36mvalidate_data[39m[34m(_estimator, X, y, reset, validate_separately, skip_check_array, **check_params)[39m
+[32m   2942[39m         out = X, y
+[32m   2943[39m [38;5;28;01melif[39;00m [38;5;129;01mnot[39;00m no_val_X [38;5;129;01mand[39;00m no_val_y:
+[32m-> [39m[32m2944[39m     out = [43mcheck_array[49m[43m([49m[43mX[49m[43m,[49m[43m [49m[43minput_name[49m[43m=[49m[33;43m"[39;49m[33;43mX[39;49m[33;43m"[39;49m[43m,[49m[43m [49m[43m*[49m[43m*[49m[43mcheck_params[49m[43m)[49m
+[32m   2945[39m [38;5;28;01melif[39;00m no_val_X [38;5;129;01mand[39;00m [38;5;129;01mnot[39;00m no_val_y:
+[32m   2946[39m     out = _check_y(y, **check_params)
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/sklearn/utils/validation.py:1107[39m, in [36mcheck_array[39m[34m(array, accept_sparse, accept_large_sparse, dtype, order, copy, force_writeable, force_all_finite, ensure_all_finite, ensure_non_negative, ensure_2d, allow_nd, ensure_min_samples, ensure_min_features, estimator, input_name)[39m
+[32m   1101[39m     [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(
+[32m   1102[39m         [33m"[39m[33mFound array with dim [39m[38;5;132;01m%d[39;00m[33m. [39m[38;5;132;01m%s[39;00m[33m expected <= 2.[39m[33m"[39m
+[32m   1103[39m         % (array.ndim, estimator_name)
+[32m   1104[39m     )
+[32m   1106[39m [38;5;28;01mif[39;00m ensure_all_finite:
+[32m-> [39m[32m1107[39m     [43m_assert_all_finite[49m[43m([49m
+[32m   1108[39m [43m        [49m[43marray[49m[43m,[49m
+[32m   1109[39m [43m        [49m[43minput_name[49m[43m=[49m[43minput_name[49m[43m,[49m
+[32m   1110[39m [43m        [49m[43mestimator_name[49m[43m=[49m[43mestimator_name[49m[43m,[49m
+[32m   1111[39m [43m        [49m[43mallow_nan[49m[43m=[49m[43mensure_all_finite[49m[43m [49m[43m==[49m[43m [49m[33;43m"[39;49m[33;43mallow-nan[39;49m[33;43m"[39;49m[43m,[49m
+[32m   1112[39m [43m    [49m[43m)[49m
+[32m   1114[39m [38;5;28;01mif[39;00m copy:
+[32m   1115[39m     [38;5;28;01mif[39;00m _is_numpy_namespace(xp):
+[32m   1116[39m         [38;5;66;03m# only make a copy if `array` and `array_orig` may share memory`[39;00m
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/sklearn/utils/validation.py:120[39m, in [36m_assert_all_finite[39m[34m(X, allow_nan, msg_dtype, estimator_name, input_name)[39m
+[32m    117[39m [38;5;28;01mif[39;00m first_pass_isfinite:
+[32m    118[39m     [38;5;28;01mreturn[39;00m
+[32m--> [39m[32m120[39m [43m_assert_all_finite_element_wise[49m[43m([49m
+[32m    121[39m [43m    [49m[43mX[49m[43m,[49m
+[32m    122[39m [43m    [49m[43mxp[49m[43m=[49m[43mxp[49m[43m,[49m
+[32m    123[39m [43m    [49m[43mallow_nan[49m[43m=[49m[43mallow_nan[49m[43m,[49m
+[32m    124[39m [43m    [49m[43mmsg_dtype[49m[43m=[49m[43mmsg_dtype[49m[43m,[49m
+[32m    125[39m [43m    [49m[43mestimator_name[49m[43m=[49m[43mestimator_name[49m[43m,[49m
+[32m    126[39m [43m    [49m[43minput_name[49m[43m=[49m[43minput_name[49m[43m,[49m
+[32m    127[39m [43m[49m[43m)[49m
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/sklearn/utils/validation.py:169[39m, in [36m_assert_all_finite_element_wise[39m[34m(X, xp, allow_nan, msg_dtype, estimator_name, input_name)[39m
+[32m    152[39m [38;5;28;01mif[39;00m estimator_name [38;5;129;01mand[39;00m input_name == [33m"[39m[33mX[39m[33m"[39m [38;5;129;01mand[39;00m has_nan_error:
+[32m    153[39m     [38;5;66;03m# Improve the error message on how to handle missing values in[39;00m
+[32m    154[39m     [38;5;66;03m# scikit-learn.[39;00m
+[32m    155[39m     msg_err += (
+[32m    156[39m         [33mf[39m[33m"[39m[38;5;130;01m\n[39;00m[38;5;132;01m{[39;00mestimator_name[38;5;132;01m}[39;00m[33m does not accept missing values[39m[33m"[39m
+[32m    157[39m         [33m"[39m[33m encoded as NaN natively. For supervised learning, you might want[39m[33m"[39m
+[32m   (...)[39m[32m    167[39m         [33m"[39m[33m#estimators-that-handle-nan-values[39m[33m"[39m
+[32m    168[39m     )
+[32m--> [39m[32m169[39m [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(msg_err)
+
+[31mValueError[39m: Input X contains NaN.
+LinearRegression does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 88, in wrapper
+    out = await method(self, *args, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 548, in _async_shutdown_kernel
+    await self._async_interrupt_kernel()
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 667, in _async_interrupt_kernel
+    await self._async_signal_kernel(signal.SIGINT)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 689, in _async_signal_kernel
+    await self.provisioner.send_signal(signum)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/provisioning/local_provisioner.py", line 95, in send_signal
+    self.process.send_signal(signum)
+  File "/usr/lib/python3.10/subprocess.py", line 2109, in send_signal
+    os.kill(self.pid, sig)
+PermissionError: [Errno 13] Permission denied
+Traceback (most recent call last):
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 606, in setup_kernel
+    yield
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 103, in preprocess
+    self.preprocess_cell(cell, resources, index)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 124, in preprocess_cell
+    cell = self.execute_cell(cell, index, store_history=True)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# Exercise 5 — Subgroup mediation analysis
+for group, group_name in [(df.smoking==0, "Non-smokers"), (df.smoking==1, "Smokers")]:
+    df_sub = df[group].copy()
+    res_sub = mediation_analysis(df_sub, "statin", "ldl_post", "mi",
+                                  [c for c in COVARIATES if c != "smoking"])
+    print(f"Mediation in {group_name} (n={group.sum()}):")
+    print(f"  TE={res_sub['TE']:.4f} | NDE={res_sub['NDE']:.4f} | NIE={res_sub['NIE']:.4f} | "
+          f"Prop mediated={res_sub['prop_mediated']*100:.1f}%")
+
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mValueError[39m                                Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[6][39m[32m, line 4[39m
+[32m      2[39m [38;5;28;01mfor[39;00m group, group_name [38;5;129;01min[39;00m [(df.smoking==[32m0[39m, [33m"[39m[33mNon-smokers[39m[33m"[39m), (df.smoking==[32m1[39m, [33m"[39m[33mSmokers[39m[33m"[39m)]:
+[32m      3[39m     df_sub = df[group].copy()
+[32m----> [39m[32m4[39m     res_sub = [43mmediation_analysis[49m[43m([49m[43mdf_sub[49m[43m,[49m[43m [49m[33;43m"[39;49m[33;43mstatin[39;49m[33;43m"[39;49m[43m,[49m[43m [49m[33;43m"[39;49m[33;43mldl_post[39;49m[33;43m"[39;49m[43m,[49m[43m [49m[33;43m"[39;49m[33;43mmi[39;49m[33;43m"[39;49m[43m,[49m
+[32m      5[39m [43m                                  [49m[43m[[49m[43mc[49m[43m [49m[38;5;28;43;01mfor[39;49;00m[43m [49m[43mc[49m[43m [49m[38;5;129;43;01min[39;49;00m[43m [49m[43mCOVARIATES[49m[43m [49m[38;5;28;43;01mif[39;49;00m[43m [49m[43mc[49m[43m [49m[43m!=[49m[43m [49m[33;43m"[39;49m[33;43msmoking[39;49m[33;43m"[39;49m[43m][49m[43m)[49m
+[32m      6[39m     [38;5;28mprint[39m([33mf[39m[33m"[39m[33mMediation in [39m[38;5;132;01m{[39;00mgroup_name[38;5;132;01m}[39;00m[33m (n=[39m[38;5;132;01m{[39;00mgroup.sum()[38;5;132;01m}[39;00m[33m):[39m[33m"[39m)
+[32m      7[39m     [38;5;28mprint[39m([33mf[39m[33m"[39m[33m  TE=[39m[38;5;132;01m{[39;00mres_sub[[33m'[39m[33mTE[39m[33m'[39m][38;5;132;01m:[39;00m[33m.4f[39m[38;5;132;01m}[39;00m[33m | NDE=[39m[38;5;132;01m{[39;00mres_sub[[33m'[39m[33mNDE[39m[33m'[39m][38;5;132;01m:[39;00m[33m.4f[39m[38;5;132;01m}[39;00m[33m | NIE=[39m[38;5;132;01m{[39;00mres_sub[[33m'[39m[33mNIE[39m[33m'[39m][38;5;132;01m:[39;00m[33m.4f[39m[38;5;132;01m}[39;00m[33m | [39m[33m"[39m
+[32m      8[39m           [33mf[39m[33m"[39m[33mProp mediated=[39m[38;5;132;01m{[39;00mres_sub[[33m'[39m[33mprop_mediated[39m[33m'[39m]*[32m100[39m[38;5;132;01m:[39;00m[33m.1f[39m[38;5;132;01m}[39;00m[33m%[39m[33m"[39m)
+
+[36mCell[39m[36m [39m[32mIn[4][39m[32m, line 38[39m, in [36mmediation_analysis[39m[34m(df, treatment, mediator, outcome, covariates, n_boot)[39m
+[32m     36[39m X1 = pd.concat([X_base, pd.DataFrame({treatment:[[32m1[39m]*N})], axis=[32m1[39m)
+[32m     37[39m X0 = pd.concat([X_base, pd.DataFrame({treatment:[[32m0[39m]*N})], axis=[32m1[39m)
+[32m---> [39m[32m38[39m M_a1 = [43mm_reg[49m[43m.[49m[43mpredict[49m[43m([49m[43mX1[49m[43m)[49m
+[32m     39[39m M_a0 = m_reg.predict(X0)
+[32m     41[39m [38;5;66;03m# E[Y(1, M(1))], E[Y(0, M(0))], E[Y(1, M(0))], E[Y(0, M(1))][39;00m
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/sklearn/linear_model/_base.py:297[39m, in [36mLinearModel.predict[39m[34m(self, X)[39m
+[32m    283[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34mpredict[39m([38;5;28mself[39m, X):
+[32m    284[39m [38;5;250m    [39m[33;03m"""[39;00m
+[32m    285[39m [33;03m    Predict using the linear model.[39;00m
+[32m    286[39m 
+[32m   (...)[39m[32m    295[39m [33;03m        Returns predicted values.[39;00m
+[32m    296[39m [33;03m    """[39;00m
+[32m--> [39m[32m297[39m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[43m.[49m[43m_decision_function[49m[43m([49m[43mX[49m[43m)[49m
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/sklearn/linear_model/_base.py:276[39m, in [36mLinearModel._decision_function[39m[34m(self, X)[39m
+[32m    273[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34m_decision_function[39m([38;5;28mself[39m, X):
+[32m    274[39m     check_is_fitted([38;5;28mself[39m)
+[32m--> [39m[32m276[39m     X = [43mvalidate_data[49m[43m([49m[38;5;28;43mself[39;49m[43m,[49m[43m [49m[43mX[49m[43m,[49m[43m [49m[43maccept_sparse[49m[43m=[49m[43m[[49m[33;43m"[39;49m[33;43mcsr[39;49m[33;43m"[39;49m[43m,[49m[43m [49m[33;43m"[39;49m[33;43mcsc[39;49m[33;43m"[39;49m[43m,[49m[43m [49m[33;43m"[39;49m[33;43mcoo[39;49m[33;43m"[39;49m[43m][49m[43m,[49m[43m [49m[43mreset[49m[43m=[49m[38;5;28;43;01mFalse[39;49;00m[43m)[49m
+[32m    277[39m     coef_ = [38;5;28mself[39m.coef_
+[32m    278[39m     [38;5;28;01mif[39;00m coef_.ndim == [32m1[39m:
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/sklearn/utils/validation.py:2944[39m, in [36mvalidate_data[39m[34m(_estimator, X, y, reset, validate_separately, skip_check_array, **check_params)[39m
+[32m   2942[39m         out = X, y
+[32m   2943[39m [38;5;28;01melif[39;00m [38;5;129;01mnot[39;00m no_val_X [38;5;129;01mand[39;00m no_val_y:
+[32m-> [39m[32m2944[39m     out = [43mcheck_array[49m[43m([49m[43mX[49m[43m,[49m[43m [49m[43minput_name[49m[43m=[49m[33;43m"[39;49m[33;43mX[39;49m[33;43m"[39;49m[43m,[49m[43m [49m[43m*[49m[43m*[49m[43mcheck_params[49m[43m)[49m
+[32m   2945[39m [38;5;28;01melif[39;00m no_val_X [38;5;129;01mand[39;00m [38;5;129;01mnot[39;00m no_val_y:
+[32m   2946[39m     out = _check_y(y, **check_params)
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/sklearn/utils/validation.py:1107[39m, in [36mcheck_array[39m[34m(array, accept_sparse, accept_large_sparse, dtype, order, copy, force_writeable, force_all_finite, ensure_all_finite, ensure_non_negative, ensure_2d, allow_nd, ensure_min_samples, ensure_min_features, estimator, input_name)[39m
+[32m   1101[39m     [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(
+[32m   1102[39m         [33m"[39m[33mFound array with dim [39m[38;5;132;01m%d[39;00m[33m. [39m[38;5;132;01m%s[39;00m[33m expected <= 2.[39m[33m"[39m
+[32m   1103[39m         % (array.ndim, estimator_name)
+[32m   1104[39m     )
+[32m   1106[39m [38;5;28;01mif[39;00m ensure_all_finite:
+[32m-> [39m[32m1107[39m     [43m_assert_all_finite[49m[43m([49m
+[32m   1108[39m [43m        [49m[43marray[49m[43m,[49m
+[32m   1109[39m [43m        [49m[43minput_name[49m[43m=[49m[43minput_name[49m[43m,[49m
+[32m   1110[39m [43m        [49m[43mestimator_name[49m[43m=[49m[43mestimator_name[49m[43m,[49m
+[32m   1111[39m [43m        [49m[43mallow_nan[49m[43m=[49m[43mensure_all_finite[49m[43m [49m[43m==[49m[43m [49m[33;43m"[39;49m[33;43mallow-nan[39;49m[33;43m"[39;49m[43m,[49m
+[32m   1112[39m [43m    [49m[43m)[49m
+[32m   1114[39m [38;5;28;01mif[39;00m copy:
+[32m   1115[39m     [38;5;28;01mif[39;00m _is_numpy_namespace(xp):
+[32m   1116[39m         [38;5;66;03m# only make a copy if `array` and `array_orig` may share memory`[39;00m
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/sklearn/utils/validation.py:120[39m, in [36m_assert_all_finite[39m[34m(X, allow_nan, msg_dtype, estimator_name, input_name)[39m
+[32m    117[39m [38;5;28;01mif[39;00m first_pass_isfinite:
+[32m    118[39m     [38;5;28;01mreturn[39;00m
+[32m--> [39m[32m120[39m [43m_assert_all_finite_element_wise[49m[43m([49m
+[32m    121[39m [43m    [49m[43mX[49m[43m,[49m
+[32m    122[39m [43m    [49m[43mxp[49m[43m=[49m[43mxp[49m[43m,[49m
+[32m    123[39m [43m    [49m[43mallow_nan[49m[43m=[49m[43mallow_nan[49m[43m,[49m
+[32m    124[39m [43m    [49m[43mmsg_dtype[49m[43m=[49m[43mmsg_dtype[49m[43m,[49m
+[32m    125[39m [43m    [49m[43mestimator_name[49m[43m=[49m[43mestimator_name[49m[43m,[49m
+[32m    126[39m [43m    [49m[43minput_name[49m[43m=[49m[43minput_name[49m[43m,[49m
+[32m    127[39m [43m[49m[43m)[49m
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/sklearn/utils/validation.py:169[39m, in [36m_assert_all_finite_element_wise[39m[34m(X, xp, allow_nan, msg_dtype, estimator_name, input_name)[39m
+[32m    152[39m [38;5;28;01mif[39;00m estimator_name [38;5;129;01mand[39;00m input_name == [33m"[39m[33mX[39m[33m"[39m [38;5;129;01mand[39;00m has_nan_error:
+[32m    153[39m     [38;5;66;03m# Improve the error message on how to handle missing values in[39;00m
+[32m    154[39m     [38;5;66;03m# scikit-learn.[39;00m
+[32m    155[39m     msg_err += (
+[32m    156[39m         [33mf[39m[33m"[39m[38;5;130;01m\n[39;00m[38;5;132;01m{[39;00mestimator_name[38;5;132;01m}[39;00m[33m does not accept missing values[39m[33m"[39m
+[32m    157[39m         [33m"[39m[33m encoded as NaN natively. For supervised learning, you might want[39m[33m"[39m
+[32m   (...)[39m[32m    167[39m         [33m"[39m[33m#estimators-that-handle-nan-values[39m[33m"[39m
+[32m    168[39m     )
+[32m--> [39m[32m169[39m [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(msg_err)
+
+[31mValueError[39m: Input X contains NaN.
+LinearRegression does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/zia207/.local/bin/jupyter-nbconvert", line 6, in <module>
+    sys.exit(main())
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/application.py", line 284, in launch_instance
+    super().launch_instance(argv=argv, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/traitlets/config/application.py", line 1075, in launch_instance
+    app.start()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 420, in start
+    self.convert_notebooks()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 597, in convert_notebooks
+    self.convert_single_notebook(notebook_filename)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 563, in convert_single_notebook
+    output, resources = self.export_single_notebook(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 487, in export_single_notebook
+    output, resources = self.exporter.from_filename(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 390, in from_filename
+    return super().from_filename(filename, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 201, in from_filename
+    return self.from_file(f, resources=resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 396, in from_file
+    return super().from_file(file_stream, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 220, in from_file
+    return self.from_notebook_node(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/html.py", line 286, in from_notebook_node
+    html, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 412, in from_notebook_node
+    nb_copy, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 154, in from_notebook_node
+    nb_copy, resources = self._preprocess(nb_copy, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 353, in _preprocess
+    nbc, resc = preprocessor(nbc, resc)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/base.py", line 48, in __call__
+    return self.preprocess(nb, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 97, in preprocess
+    with self.setup_kernel():
+  File "/usr/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 609, in setup_kernel
+    self._cleanup_kernel()
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 509, in _async_cleanup_kernel
+    await ensure_async(self.km.shutdown_kernel(now=now))
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 214, in ensure_async
+    result = await obj
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 97, in wrapper
+    raise e
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 88, in wrapper
+    out = await method(self, *args, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 548, in _async_shutdown_kernel
+    await self._async_interrupt_kernel()
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 667, in _async_interrupt_kernel
+    await self._async_signal_kernel(signal.SIGINT)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 689, in _async_signal_kernel
+    await self.provisioner.send_signal(signum)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/provisioning/local_provisioner.py", line 95, in send_signal
+    self.process.send_signal(signum)
+  File "/usr/lib/python3.10/subprocess.py", line 2109, in send_signal
+    os.kill(self.pid, sig)
+PermissionError: [Errno 13] Permission denied
+FAIL: MOD06_NB06_GComp_TMLE.ipynb
+==> 2026-06-24T13:13:58-04:00 Processing MOD07_NB02_Spatial_Autocorrelation.ipynb
+[IPKernelApp] WARNING | Parent appears to have exited, shutting down.
+[NbConvertApp] Converting notebook MOD07_NB02_Spatial_Autocorrelation.ipynb to html
+[NbConvertApp] ERROR | [Errno 13] Permission denied
+Traceback (most recent call last):
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 88, in wrapper
+    out = await method(self, *args, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 548, in _async_shutdown_kernel
+    await self._async_interrupt_kernel()
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 667, in _async_interrupt_kernel
+    await self._async_signal_kernel(signal.SIGINT)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 689, in _async_signal_kernel
+    await self.provisioner.send_signal(signum)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/provisioning/local_provisioner.py", line 95, in send_signal
+    self.process.send_signal(signum)
+  File "/usr/lib/python3.10/subprocess.py", line 2109, in send_signal
+    os.kill(self.pid, sig)
+PermissionError: [Errno 13] Permission denied
+Traceback (most recent call last):
+  File "/home/zia207/.local/bin/jupyter-nbconvert", line 6, in <module>
+    sys.exit(main())
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/application.py", line 284, in launch_instance
+    super().launch_instance(argv=argv, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/traitlets/config/application.py", line 1075, in launch_instance
+    app.start()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 420, in start
+    self.convert_notebooks()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 597, in convert_notebooks
+    self.convert_single_notebook(notebook_filename)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 563, in convert_single_notebook
+    output, resources = self.export_single_notebook(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 487, in export_single_notebook
+    output, resources = self.exporter.from_filename(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 390, in from_filename
+    return super().from_filename(filename, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 201, in from_filename
+    return self.from_file(f, resources=resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 396, in from_file
+    return super().from_file(file_stream, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 220, in from_file
+    return self.from_notebook_node(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/html.py", line 286, in from_notebook_node
+    html, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 412, in from_notebook_node
+    nb_copy, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 154, in from_notebook_node
+    nb_copy, resources = self._preprocess(nb_copy, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 353, in _preprocess
+    nbc, resc = preprocessor(nbc, resc)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/base.py", line 48, in __call__
+    return self.preprocess(nb, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 97, in preprocess
+    with self.setup_kernel():
+  File "/usr/lib/python3.10/contextlib.py", line 142, in __exit__
+    next(self.gen)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 609, in setup_kernel
+    self._cleanup_kernel()
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 509, in _async_cleanup_kernel
+    await ensure_async(self.km.shutdown_kernel(now=now))
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 214, in ensure_async
+    result = await obj
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 97, in wrapper
+    raise e
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 88, in wrapper
+    out = await method(self, *args, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 548, in _async_shutdown_kernel
+    await self._async_interrupt_kernel()
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 667, in _async_interrupt_kernel
+    await self._async_signal_kernel(signal.SIGINT)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 689, in _async_signal_kernel
+    await self.provisioner.send_signal(signum)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/provisioning/local_provisioner.py", line 95, in send_signal
+    self.process.send_signal(signum)
+  File "/usr/lib/python3.10/subprocess.py", line 2109, in send_signal
+    os.kill(self.pid, sig)
+PermissionError: [Errno 13] Permission denied
+FAIL: MOD07_NB02_Spatial_Autocorrelation.ipynb
+==> 2026-06-24T13:14:05-04:00 Processing MOD07_NB03_Spatial_Regression_GWR.ipynb
+[IPKernelApp] WARNING | Parent appears to have exited, shutting down.
+[NbConvertApp] Converting notebook MOD07_NB03_Spatial_Regression_GWR.ipynb to html
+[NbConvertApp] ERROR | [Errno 13] Permission denied
+Traceback (most recent call last):
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 88, in wrapper
+    out = await method(self, *args, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 548, in _async_shutdown_kernel
+    await self._async_interrupt_kernel()
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 667, in _async_interrupt_kernel
+    await self._async_signal_kernel(signal.SIGINT)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 689, in _async_signal_kernel
+    await self.provisioner.send_signal(signum)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/provisioning/local_provisioner.py", line 95, in send_signal
+    self.process.send_signal(signum)
+  File "/usr/lib/python3.10/subprocess.py", line 2109, in send_signal
+    os.kill(self.pid, sig)
+PermissionError: [Errno 13] Permission denied
+Traceback (most recent call last):
+  File "/home/zia207/.local/bin/jupyter-nbconvert", line 6, in <module>
+    sys.exit(main())
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/application.py", line 284, in launch_instance
+    super().launch_instance(argv=argv, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/traitlets/config/application.py", line 1075, in launch_instance
+    app.start()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 420, in start
+    self.convert_notebooks()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 597, in convert_notebooks
+    self.convert_single_notebook(notebook_filename)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 563, in convert_single_notebook
+    output, resources = self.export_single_notebook(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 487, in export_single_notebook
+    output, resources = self.exporter.from_filename(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 390, in from_filename
+    return super().from_filename(filename, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 201, in from_filename
+    return self.from_file(f, resources=resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 396, in from_file
+    return super().from_file(file_stream, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 220, in from_file
+    return self.from_notebook_node(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/html.py", line 286, in from_notebook_node
+    html, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 412, in from_notebook_node
+    nb_copy, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 154, in from_notebook_node
+    nb_copy, resources = self._preprocess(nb_copy, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 353, in _preprocess
+    nbc, resc = preprocessor(nbc, resc)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/base.py", line 48, in __call__
+    return self.preprocess(nb, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 97, in preprocess
+    with self.setup_kernel():
+  File "/usr/lib/python3.10/contextlib.py", line 142, in __exit__
+    next(self.gen)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 609, in setup_kernel
+    self._cleanup_kernel()
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 509, in _async_cleanup_kernel
+    await ensure_async(self.km.shutdown_kernel(now=now))
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 214, in ensure_async
+    result = await obj
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 97, in wrapper
+    raise e
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 88, in wrapper
+    out = await method(self, *args, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 548, in _async_shutdown_kernel
+    await self._async_interrupt_kernel()
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 667, in _async_interrupt_kernel
+    await self._async_signal_kernel(signal.SIGINT)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 689, in _async_signal_kernel
+    await self.provisioner.send_signal(signum)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/provisioning/local_provisioner.py", line 95, in send_signal
+    self.process.send_signal(signum)
+  File "/usr/lib/python3.10/subprocess.py", line 2109, in send_signal
+    os.kill(self.pid, sig)
+PermissionError: [Errno 13] Permission denied
+FAIL: MOD07_NB03_Spatial_Regression_GWR.ipynb
+==> 2026-06-24T13:14:12-04:00 Processing MOD07_NB06_Environmental_Epidemiology.ipynb
+[IPKernelApp] WARNING | Parent appears to have exited, shutting down.
+[NbConvertApp] Converting notebook MOD07_NB06_Environmental_Epidemiology.ipynb to html
+[NbConvertApp] ERROR | [Errno 13] Permission denied
+Traceback (most recent call last):
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 88, in wrapper
+    out = await method(self, *args, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 548, in _async_shutdown_kernel
+    await self._async_interrupt_kernel()
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 667, in _async_interrupt_kernel
+    await self._async_signal_kernel(signal.SIGINT)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 689, in _async_signal_kernel
+    await self.provisioner.send_signal(signum)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/provisioning/local_provisioner.py", line 95, in send_signal
+    self.process.send_signal(signum)
+  File "/usr/lib/python3.10/subprocess.py", line 2109, in send_signal
+    os.kill(self.pid, sig)
+PermissionError: [Errno 13] Permission denied
+Traceback (most recent call last):
+  File "/home/zia207/.local/bin/jupyter-nbconvert", line 6, in <module>
+    sys.exit(main())
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/application.py", line 284, in launch_instance
+    super().launch_instance(argv=argv, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/traitlets/config/application.py", line 1075, in launch_instance
+    app.start()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 420, in start
+    self.convert_notebooks()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 597, in convert_notebooks
+    self.convert_single_notebook(notebook_filename)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 563, in convert_single_notebook
+    output, resources = self.export_single_notebook(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 487, in export_single_notebook
+    output, resources = self.exporter.from_filename(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 390, in from_filename
+    return super().from_filename(filename, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 201, in from_filename
+    return self.from_file(f, resources=resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 396, in from_file
+    return super().from_file(file_stream, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 220, in from_file
+    return self.from_notebook_node(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/html.py", line 286, in from_notebook_node
+    html, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 412, in from_notebook_node
+    nb_copy, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 154, in from_notebook_node
+    nb_copy, resources = self._preprocess(nb_copy, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 353, in _preprocess
+    nbc, resc = preprocessor(nbc, resc)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/base.py", line 48, in __call__
+    return self.preprocess(nb, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 97, in preprocess
+    with self.setup_kernel():
+  File "/usr/lib/python3.10/contextlib.py", line 142, in __exit__
+    next(self.gen)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 609, in setup_kernel
+    self._cleanup_kernel()
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 509, in _async_cleanup_kernel
+    await ensure_async(self.km.shutdown_kernel(now=now))
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 214, in ensure_async
+    result = await obj
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 97, in wrapper
+    raise e
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 88, in wrapper
+    out = await method(self, *args, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 548, in _async_shutdown_kernel
+    await self._async_interrupt_kernel()
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 667, in _async_interrupt_kernel
+    await self._async_signal_kernel(signal.SIGINT)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 689, in _async_signal_kernel
+    await self.provisioner.send_signal(signum)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/provisioning/local_provisioner.py", line 95, in send_signal
+    self.process.send_signal(signum)
+  File "/usr/lib/python3.10/subprocess.py", line 2109, in send_signal
+    os.kill(self.pid, sig)
+PermissionError: [Errno 13] Permission denied
+FAIL: MOD07_NB06_Environmental_Epidemiology.ipynb
+==> 2026-06-24T13:14:20-04:00 Processing MOD07_NB08_Capstone_Spatial_Atlas.ipynb
+[IPKernelApp] WARNING | Parent appears to have exited, shutting down.
+[NbConvertApp] Converting notebook MOD07_NB08_Capstone_Spatial_Atlas.ipynb to html
+[NbConvertApp] ERROR | [Errno 13] Permission denied
+Traceback (most recent call last):
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 88, in wrapper
+    out = await method(self, *args, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 548, in _async_shutdown_kernel
+    await self._async_interrupt_kernel()
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 667, in _async_interrupt_kernel
+    await self._async_signal_kernel(signal.SIGINT)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 689, in _async_signal_kernel
+    await self.provisioner.send_signal(signum)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/provisioning/local_provisioner.py", line 95, in send_signal
+    self.process.send_signal(signum)
+  File "/usr/lib/python3.10/subprocess.py", line 2109, in send_signal
+    os.kill(self.pid, sig)
+PermissionError: [Errno 13] Permission denied
+Traceback (most recent call last):
+  File "/home/zia207/.local/bin/jupyter-nbconvert", line 6, in <module>
+    sys.exit(main())
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/application.py", line 284, in launch_instance
+    super().launch_instance(argv=argv, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/traitlets/config/application.py", line 1075, in launch_instance
+    app.start()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 420, in start
+    self.convert_notebooks()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 597, in convert_notebooks
+    self.convert_single_notebook(notebook_filename)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 563, in convert_single_notebook
+    output, resources = self.export_single_notebook(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 487, in export_single_notebook
+    output, resources = self.exporter.from_filename(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 390, in from_filename
+    return super().from_filename(filename, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 201, in from_filename
+    return self.from_file(f, resources=resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 396, in from_file
+    return super().from_file(file_stream, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 220, in from_file
+    return self.from_notebook_node(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/html.py", line 286, in from_notebook_node
+    html, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 412, in from_notebook_node
+    nb_copy, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 154, in from_notebook_node
+    nb_copy, resources = self._preprocess(nb_copy, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 353, in _preprocess
+    nbc, resc = preprocessor(nbc, resc)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/base.py", line 48, in __call__
+    return self.preprocess(nb, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 97, in preprocess
+    with self.setup_kernel():
+  File "/usr/lib/python3.10/contextlib.py", line 142, in __exit__
+    next(self.gen)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 609, in setup_kernel
+    self._cleanup_kernel()
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 509, in _async_cleanup_kernel
+    await ensure_async(self.km.shutdown_kernel(now=now))
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 214, in ensure_async
+    result = await obj
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 97, in wrapper
+    raise e
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 88, in wrapper
+    out = await method(self, *args, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 548, in _async_shutdown_kernel
+    await self._async_interrupt_kernel()
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 667, in _async_interrupt_kernel
+    await self._async_signal_kernel(signal.SIGINT)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 689, in _async_signal_kernel
+    await self.provisioner.send_signal(signum)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/provisioning/local_provisioner.py", line 95, in send_signal
+    self.process.send_signal(signum)
+  File "/usr/lib/python3.10/subprocess.py", line 2109, in send_signal
+    os.kill(self.pid, sig)
+PermissionError: [Errno 13] Permission denied
+FAIL: MOD07_NB08_Capstone_Spatial_Atlas.ipynb
+==> 2026-06-24T13:14:52-04:00 Processing MOD08_NB08_Capstone_Deployment.ipynb
+[IPKernelApp] WARNING | Parent appears to have exited, shutting down.
+[NbConvertApp] Converting notebook MOD08_NB08_Capstone_Deployment.ipynb to html
+[NbConvertApp] ERROR | [Errno 13] Permission denied
+Traceback (most recent call last):
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 88, in wrapper
+    out = await method(self, *args, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 548, in _async_shutdown_kernel
+    await self._async_interrupt_kernel()
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 667, in _async_interrupt_kernel
+    await self._async_signal_kernel(signal.SIGINT)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 689, in _async_signal_kernel
+    await self.provisioner.send_signal(signum)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/provisioning/local_provisioner.py", line 95, in send_signal
+    self.process.send_signal(signum)
+  File "/usr/lib/python3.10/subprocess.py", line 2109, in send_signal
+    os.kill(self.pid, sig)
+PermissionError: [Errno 13] Permission denied
+Traceback (most recent call last):
+  File "/home/zia207/.local/bin/jupyter-nbconvert", line 6, in <module>
+    sys.exit(main())
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/application.py", line 284, in launch_instance
+    super().launch_instance(argv=argv, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/traitlets/config/application.py", line 1075, in launch_instance
+    app.start()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 420, in start
+    self.convert_notebooks()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 597, in convert_notebooks
+    self.convert_single_notebook(notebook_filename)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 563, in convert_single_notebook
+    output, resources = self.export_single_notebook(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 487, in export_single_notebook
+    output, resources = self.exporter.from_filename(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 390, in from_filename
+    return super().from_filename(filename, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 201, in from_filename
+    return self.from_file(f, resources=resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 396, in from_file
+    return super().from_file(file_stream, resources, **kw)  # type:ignore[return-value]
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 220, in from_file
+    return self.from_notebook_node(
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/html.py", line 286, in from_notebook_node
+    html, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/templateexporter.py", line 412, in from_notebook_node
+    nb_copy, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 154, in from_notebook_node
+    nb_copy, resources = self._preprocess(nb_copy, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 353, in _preprocess
+    nbc, resc = preprocessor(nbc, resc)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/base.py", line 48, in __call__
+    return self.preprocess(nb, resources)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 97, in preprocess
+    with self.setup_kernel():
+  File "/usr/lib/python3.10/contextlib.py", line 142, in __exit__
+    next(self.gen)
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 609, in setup_kernel
+    self._cleanup_kernel()
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/zia207/.local/lib/python3.10/site-packages/nbclient/client.py", line 509, in _async_cleanup_kernel
+    await ensure_async(self.km.shutdown_kernel(now=now))
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 214, in ensure_async
+    result = await obj
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 97, in wrapper
+    raise e
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 88, in wrapper
+    out = await method(self, *args, **kwargs)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 548, in _async_shutdown_kernel
+    await self._async_interrupt_kernel()
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 667, in _async_interrupt_kernel
+    await self._async_signal_kernel(signal.SIGINT)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 689, in _async_signal_kernel
+    await self.provisioner.send_signal(signum)
+  File "/home/zia207/.local/lib/python3.10/site-packages/jupyter_client/provisioning/local_provisioner.py", line 95, in send_signal
+    self.process.send_signal(signum)
+  File "/usr/lib/python3.10/subprocess.py", line 2109, in send_signal
+    os.kill(self.pid, sig)
+PermissionError: [Errno 13] Permission denied
+FAIL: MOD08_NB08_Capstone_Deployment.ipynb
+==> Done: 0 succeeded, 15 failed
+[IPKernelApp] WARNING | Parent appears to have exited, shutting down.

@@ -1,0 +1,396 @@
+==> 2026-06-24T13:16:19-04:00 Processing MOD03_NB01_Hypothesis_Testing.ipynb
+[NbConvertApp] Converting notebook MOD03_NB01_Hypothesis_Testing.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 1 image(s).
+[NbConvertApp] Writing 507849 bytes to docs/MOD03_NB01_Hypothesis_Testing.html
+OK: MOD03_NB01_Hypothesis_Testing.ipynb
+==> 2026-06-24T13:16:27-04:00 Processing MOD03_NB03_Survival_Analysis.ipynb
+[NbConvertApp] Converting notebook MOD03_NB03_Survival_Analysis.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 7 image(s).
+[NbConvertApp] Writing 921414 bytes to docs/MOD03_NB03_Survival_Analysis.html
+OK: MOD03_NB03_Survival_Analysis.ipynb
+==> 2026-06-24T13:16:37-04:00 Processing MOD03_NB04_Linear_Regression.ipynb
+[NbConvertApp] Converting notebook MOD03_NB04_Linear_Regression.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 2 image(s).
+[NbConvertApp] Writing 846350 bytes to docs/MOD03_NB04_Linear_Regression.html
+OK: MOD03_NB04_Linear_Regression.ipynb
+==> 2026-06-24T13:16:46-04:00 Processing MOD03_NB06_Count_Regression.ipynb
+[NbConvertApp] Converting notebook MOD03_NB06_Count_Regression.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 2 image(s).
+[NbConvertApp] Writing 529192 bytes to docs/MOD03_NB06_Count_Regression.html
+OK: MOD03_NB06_Count_Regression.ipynb
+==> 2026-06-24T13:16:54-04:00 Processing MOD03_NB07_Confounding_EffectModification.ipynb
+[NbConvertApp] Converting notebook MOD03_NB07_Confounding_EffectModification.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 2 image(s).
+[NbConvertApp] Writing 539925 bytes to docs/MOD03_NB07_Confounding_EffectModification.html
+OK: MOD03_NB07_Confounding_EffectModification.ipynb
+==> 2026-06-24T13:17:02-04:00 Processing MOD04_NB04_Clinical_Model_Evaluation.ipynb
+[NbConvertApp] Converting notebook MOD04_NB04_Clinical_Model_Evaluation.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 3 image(s).
+[NbConvertApp] Writing 787276 bytes to docs/MOD04_NB04_Clinical_Model_Evaluation.html
+OK: MOD04_NB04_Clinical_Model_Evaluation.ipynb
+==> 2026-06-24T13:17:19-04:00 Processing MOD04_NB07_Clinical_Prediction_Models.ipynb
+[NbConvertApp] Converting notebook MOD04_NB07_Clinical_Prediction_Models.ipynb to html
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbconvert/__main__.py", line 5, in <module>
+    main()
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/jupyter_core/application.py", line 284, in launch_instance
+    super().launch_instance(argv=argv, **kwargs)
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/traitlets/config/application.py", line 1075, in launch_instance
+    app.start()
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbconvert/nbconvertapp.py", line 420, in start
+    self.convert_notebooks()
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbconvert/nbconvertapp.py", line 597, in convert_notebooks
+    self.convert_single_notebook(notebook_filename)
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbconvert/nbconvertapp.py", line 563, in convert_single_notebook
+    output, resources = self.export_single_notebook(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbconvert/nbconvertapp.py", line 487, in export_single_notebook
+    output, resources = self.exporter.from_filename(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbconvert/exporters/templateexporter.py", line 390, in from_filename
+    return super().from_filename(filename, resources, **kw)  # type:ignore[return-value]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbconvert/exporters/exporter.py", line 201, in from_filename
+    return self.from_file(f, resources=resources, **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbconvert/exporters/templateexporter.py", line 396, in from_file
+    return super().from_file(file_stream, resources, **kw)  # type:ignore[return-value]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbconvert/exporters/exporter.py", line 220, in from_file
+    return self.from_notebook_node(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbconvert/exporters/html.py", line 286, in from_notebook_node
+    html, resources = super().from_notebook_node(nb, resources, **kw)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbconvert/exporters/templateexporter.py", line 412, in from_notebook_node
+    nb_copy, resources = super().from_notebook_node(nb, resources, **kw)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbconvert/exporters/exporter.py", line 154, in from_notebook_node
+    nb_copy, resources = self._preprocess(nb_copy, resources)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbconvert/exporters/exporter.py", line 353, in _preprocess
+    nbc, resc = preprocessor(nbc, resc)
+                ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbconvert/preprocessors/base.py", line 48, in __call__
+    return self.preprocess(nb, resources)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbconvert/preprocessors/execute.py", line 103, in preprocess
+    self.preprocess_cell(cell, resources, index)
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbconvert/preprocessors/execute.py", line 124, in preprocess_cell
+    cell = self.execute_cell(cell, index, store_history=True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# Exercise 5 — patient dashboard
+def patient_risk_dashboard(patient_row, pre_s, pre_l, pre_r, gb_sepsis, gbr, gb_re, platt):
+    """Return sepsis alert, expected LOS, readmission tier for one patient."""
+    Xs = pre_s.transform(patient_row[SEPSIS_FEATURES].values.reshape(1,-1))
+    Xl = pre_l.transform(patient_row[LOS_FEATURES].values.reshape(1,-1))
+    Xr = pre_r.transform(patient_row[RE_FEATURES].values.reshape(1,-1))
+    p_sepsis = gb_sepsis.predict_proba(Xs)[0,1]
+    p_los    = gbr.predict(Xl)[0]
+    p_re_raw = gb_re.predict_proba(Xr)[0,1]
+    p_re_cal = platt.predict_proba([[p_re_raw]])[0,1]
+    tier = "Low" if p_re_cal<0.10 else "Moderate" if p_re_cal<0.20 else "High" if p_re_cal<0.35 else "Very high"
+    return {"sepsis_alert":p_sepsis>=thr_highsens,"sepsis_prob":round(p_sepsis,3),
+            "expected_los":round(p_los,1),"readmit_prob":round(p_re_cal,3),"readmit_tier":tier}
+
+sample_pt=df.iloc[100]
+dashboard=patient_risk_dashboard(sample_pt,pre_s,pre_l,pre_r,gb_sepsis,gbr,gb_re,platt)
+print("Patient Risk Dashboard")
+print(f"  Sepsis alert    : {'⚠ YES' if dashboard['sepsis_alert'] else '✓ No'} (prob={dashboard['sepsis_prob']:.3f})")
+print(f"  Expected ICU LOS: {dashboard['expected_los']} days")
+print(f"  30d readmission : {dashboard['readmit_prob']:.1%} — {dashboard['readmit_tier']} risk")
+
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mValueError[39m                                Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[7][39m[32m, line 16[39m
+[32m     12[39m     [38;5;28;01mreturn[39;00m {[33m"[39m[33msepsis_alert[39m[33m"[39m:p_sepsis>=thr_highsens,[33m"[39m[33msepsis_prob[39m[33m"[39m:[38;5;28mround[39m(p_sepsis,[32m3[39m),
+[32m     13[39m             [33m"[39m[33mexpected_los[39m[33m"[39m:[38;5;28mround[39m(p_los,[32m1[39m),[33m"[39m[33mreadmit_prob[39m[33m"[39m:[38;5;28mround[39m(p_re_cal,[32m3[39m),[33m"[39m[33mreadmit_tier[39m[33m"[39m:tier}
+[32m     15[39m sample_pt=df.iloc[[32m100[39m]
+[32m---> [39m[32m16[39m dashboard=[43mpatient_risk_dashboard[49m[43m([49m[43msample_pt[49m[43m,[49m[43mpre_s[49m[43m,[49m[43mpre_l[49m[43m,[49m[43mpre_r[49m[43m,[49m[43mgb_sepsis[49m[43m,[49m[43mgbr[49m[43m,[49m[43mgb_re[49m[43m,[49m[43mplatt[49m[43m)[49m
+[32m     17[39m [38;5;28mprint[39m([33m"[39m[33mPatient Risk Dashboard[39m[33m"[39m)
+[32m     18[39m [38;5;28mprint[39m([33mf[39m[33m"[39m[33m  Sepsis alert    : [39m[38;5;132;01m{[39;00m[33m'[39m[33m⚠ YES[39m[33m'[39m[38;5;250m [39m[38;5;28;01mif[39;00m[38;5;250m [39mdashboard[[33m'[39m[33msepsis_alert[39m[33m'[39m][38;5;250m [39m[38;5;28;01melse[39;00m[38;5;250m [39m[33m'[39m[33m✓ No[39m[33m'[39m[38;5;132;01m}[39;00m[33m (prob=[39m[38;5;132;01m{[39;00mdashboard[[33m'[39m[33msepsis_prob[39m[33m'[39m][38;5;132;01m:[39;00m[33m.3f[39m[38;5;132;01m}[39;00m[33m)[39m[33m"[39m)
+
+[36mCell[39m[36m [39m[32mIn[7][39m[32m, line 4[39m, in [36mpatient_risk_dashboard[39m[34m(patient_row, pre_s, pre_l, pre_r, gb_sepsis, gbr, gb_re, platt)[39m
+[32m      2[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34mpatient_risk_dashboard[39m(patient_row, pre_s, pre_l, pre_r, gb_sepsis, gbr, gb_re, platt):
+[32m      3[39m [38;5;250m    [39m[33;03m"""Return sepsis alert, expected LOS, readmission tier for one patient."""[39;00m
+[32m----> [39m[32m4[39m     Xs = [43mpre_s[49m[43m.[49m[43mtransform[49m[43m([49m[43mpatient_row[49m[43m[[49m[43mSEPSIS_FEATURES[49m[43m][49m[43m.[49m[43mvalues[49m[43m.[49m[43mreshape[49m[43m([49m[32;43m1[39;49m[43m,[49m[43m-[49m[32;43m1[39;49m[43m)[49m[43m)[49m
+[32m      5[39m     Xl = pre_l.transform(patient_row[LOS_FEATURES].values.reshape([32m1[39m,-[32m1[39m))
+[32m      6[39m     Xr = pre_r.transform(patient_row[RE_FEATURES].values.reshape([32m1[39m,-[32m1[39m))
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/sklearn/utils/_set_output.py:319[39m, in [36m_wrap_method_output.<locals>.wrapped[39m[34m(self, X, *args, **kwargs)[39m
+[32m    317[39m [38;5;129m@wraps[39m(f)
+[32m    318[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34mwrapped[39m([38;5;28mself[39m, X, *args, **kwargs):
+[32m--> [39m[32m319[39m     data_to_wrap = [43mf[49m[43m([49m[38;5;28;43mself[39;49m[43m,[49m[43m [49m[43mX[49m[43m,[49m[43m [49m[43m*[49m[43margs[49m[43m,[49m[43m [49m[43m*[49m[43m*[49m[43mkwargs[49m[43m)[49m
+[32m    320[39m     [38;5;28;01mif[39;00m [38;5;28misinstance[39m(data_to_wrap, [38;5;28mtuple[39m):
+[32m    321[39m         [38;5;66;03m# only wrap the first output for cross decomposition[39;00m
+[32m    322[39m         return_tuple = (
+[32m    323[39m             _wrap_data_with_container(method, data_to_wrap[[32m0[39m], X, [38;5;28mself[39m),
+[32m    324[39m             *data_to_wrap[[32m1[39m:],
+[32m    325[39m         )
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/sklearn/compose/_column_transformer.py:1101[39m, in [36mColumnTransformer.transform[39m[34m(self, X, **params)[39m
+[32m   1098[39m [38;5;28;01melse[39;00m:
+[32m   1099[39m     routed_params = [38;5;28mself[39m._get_empty_routing()
+[32m-> [39m[32m1101[39m Xs = [38;5;28;43mself[39;49m[43m.[49m[43m_call_func_on_transformers[49m[43m([49m
+[32m   1102[39m [43m    [49m[43mX[49m[43m,[49m
+[32m   1103[39m [43m    [49m[38;5;28;43;01mNone[39;49;00m[43m,[49m
+[32m   1104[39m [43m    [49m[43m_transform_one[49m[43m,[49m
+[32m   1105[39m [43m    [49m[43mcolumn_as_labels[49m[43m=[49m[43mfit_dataframe_and_transform_dataframe[49m[43m,[49m
+[32m   1106[39m [43m    [49m[43mrouted_params[49m[43m=[49m[43mrouted_params[49m[43m,[49m
+[32m   1107[39m [43m[49m[43m)[49m
+[32m   1108[39m [38;5;28mself[39m._validate_output(Xs)
+[32m   1110[39m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m Xs:
+[32m   1111[39m     [38;5;66;03m# All transformers are None[39;00m
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/sklearn/compose/_column_transformer.py:902[39m, in [36mColumnTransformer._call_func_on_transformers[39m[34m(self, X, y, func, column_as_labels, routed_params)[39m
+[32m    897[39m         [38;5;28;01melse[39;00m:  [38;5;66;03m# func is _transform_one[39;00m
+[32m    898[39m             extra_args = {}
+[32m    899[39m         jobs.append(
+[32m    900[39m             delayed(func)(
+[32m    901[39m                 transformer=clone(trans) [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m fitted [38;5;28;01melse[39;00m trans,
+[32m--> [39m[32m902[39m                 X=[43m_safe_indexing[49m[43m([49m[43mX[49m[43m,[49m[43m [49m[43mcolumns[49m[43m,[49m[43m [49m[43maxis[49m[43m=[49m[32;43m1[39;49m[43m)[49m,
+[32m    903[39m                 y=y,
+[32m    904[39m                 weight=weight,
+[32m    905[39m                 **extra_args,
+[32m    906[39m                 params=routed_params[name],
+[32m    907[39m             )
+[32m    908[39m         )
+[32m    910[39m     [38;5;28;01mreturn[39;00m Parallel(n_jobs=[38;5;28mself[39m.n_jobs)(jobs)
+[32m    912[39m [38;5;28;01mexcept[39;00m [38;5;167;01mValueError[39;00m [38;5;28;01mas[39;00m e:
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/sklearn/utils/_indexing.py:259[39m, in [36m_safe_indexing[39m[34m(X, indices, axis)[39m
+[32m    248[39m     [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(
+[32m    249[39m         [33m"[39m[33m'[39m[33mX[39m[33m'[39m[33m should be a 2D NumPy array, 2D sparse matrix or [39m[33m"[39m
+[32m    250[39m         [33m"[39m[33mdataframe when indexing the columns (i.e. [39m[33m'[39m[33maxis=1[39m[33m'[39m[33m). [39m[33m"[39m
+[32m    251[39m         [33m"[39m[33mGot [39m[38;5;132;01m{}[39;00m[33m instead with [39m[38;5;132;01m{}[39;00m[33m dimension(s).[39m[33m"[39m.format([38;5;28mtype[39m(X), [38;5;28mlen[39m(X.shape))
+[32m    252[39m     )
+[32m    254[39m [38;5;28;01mif[39;00m (
+[32m    255[39m     axis == [32m1[39m
+[32m    256[39m     [38;5;129;01mand[39;00m indices_dtype == [33m"[39m[33mstr[39m[33m"[39m
+[32m    257[39m     [38;5;129;01mand[39;00m [38;5;129;01mnot[39;00m (_is_pandas_df(X) [38;5;129;01mor[39;00m _use_interchange_protocol(X))
+[32m    258[39m ):
+[32m--> [39m[32m259[39m     [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(
+[32m    260[39m         [33m"[39m[33mSpecifying the columns using strings is only supported for dataframes.[39m[33m"[39m
+[32m    261[39m     )
+[32m    263[39m [38;5;28;01mif[39;00m [38;5;28mhasattr[39m(X, [33m"[39m[33miloc[39m[33m"[39m):
+[32m    264[39m     [38;5;66;03m# TODO: we should probably use _is_pandas_df_or_series(X) instead but this[39;00m
+[32m    265[39m     [38;5;66;03m# would require updating some tests such as test_train_test_split_mock_pandas.[39;00m
+[32m    266[39m     [38;5;28;01mreturn[39;00m _pandas_indexing(X, indices, indices_dtype, axis=axis)
+
+[31mValueError[39m: Specifying the columns using strings is only supported for dataframes.
+
+FAIL: MOD04_NB07_Clinical_Prediction_Models.ipynb
+==> 2026-06-24T13:17:31-04:00 Processing MOD05_NB08_Capstone_Clinical_NLP.ipynb
+[NbConvertApp] Converting notebook MOD05_NB08_Capstone_Clinical_NLP.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 1 image(s).
+[NbConvertApp] Writing 635321 bytes to docs/MOD05_NB08_Capstone_Clinical_NLP.html
+OK: MOD05_NB08_Capstone_Clinical_NLP.ipynb
+==> 2026-06-24T13:17:41-04:00 Processing MOD06_NB03_DiD_EventStudy.ipynb
+[NbConvertApp] Converting notebook MOD06_NB03_DiD_EventStudy.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 3 image(s).
+[NbConvertApp] Writing 656624 bytes to docs/MOD06_NB03_DiD_EventStudy.html
+OK: MOD06_NB03_DiD_EventStudy.ipynb
+==> 2026-06-24T13:17:50-04:00 Processing MOD06_NB06_GComp_TMLE.ipynb
+[NbConvertApp] Converting notebook MOD06_NB06_GComp_TMLE.ipynb to html
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbconvert/__main__.py", line 5, in <module>
+    main()
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/jupyter_core/application.py", line 284, in launch_instance
+    super().launch_instance(argv=argv, **kwargs)
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/traitlets/config/application.py", line 1075, in launch_instance
+    app.start()
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbconvert/nbconvertapp.py", line 420, in start
+    self.convert_notebooks()
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbconvert/nbconvertapp.py", line 597, in convert_notebooks
+    self.convert_single_notebook(notebook_filename)
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbconvert/nbconvertapp.py", line 563, in convert_single_notebook
+    output, resources = self.export_single_notebook(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbconvert/nbconvertapp.py", line 487, in export_single_notebook
+    output, resources = self.exporter.from_filename(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbconvert/exporters/templateexporter.py", line 390, in from_filename
+    return super().from_filename(filename, resources, **kw)  # type:ignore[return-value]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbconvert/exporters/exporter.py", line 201, in from_filename
+    return self.from_file(f, resources=resources, **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbconvert/exporters/templateexporter.py", line 396, in from_file
+    return super().from_file(file_stream, resources, **kw)  # type:ignore[return-value]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbconvert/exporters/exporter.py", line 220, in from_file
+    return self.from_notebook_node(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbconvert/exporters/html.py", line 286, in from_notebook_node
+    html, resources = super().from_notebook_node(nb, resources, **kw)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbconvert/exporters/templateexporter.py", line 412, in from_notebook_node
+    nb_copy, resources = super().from_notebook_node(nb, resources, **kw)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbconvert/exporters/exporter.py", line 154, in from_notebook_node
+    nb_copy, resources = self._preprocess(nb_copy, resources)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbconvert/exporters/exporter.py", line 353, in _preprocess
+    nbc, resc = preprocessor(nbc, resc)
+                ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbconvert/preprocessors/base.py", line 48, in __call__
+    return self.preprocess(nb, resources)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbconvert/preprocessors/execute.py", line 103, in preprocess
+    self.preprocess_cell(cell, resources, index)
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbconvert/preprocessors/execute.py", line 124, in preprocess_cell
+    cell = self.execute_cell(cell, index, store_history=True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/zia207/.pyenv/versions/3.11.14/lib/python3.11/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# Exercise 5 — Subgroup mediation analysis
+for group, group_name in [(df.smoking==0, "Non-smokers"), (df.smoking==1, "Smokers")]:
+    df_sub = df[group].copy()
+    res_sub = mediation_analysis(df_sub, "statin", "ldl_post", "mi",
+                                  [c for c in COVARIATES if c != "smoking"])
+    print(f"Mediation in {group_name} (n={group.sum()}):")
+    print(f"  TE={res_sub['TE']:.4f} | NDE={res_sub['NDE']:.4f} | NIE={res_sub['NIE']:.4f} | "
+          f"Prop mediated={res_sub['prop_mediated']*100:.1f}%")
+
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mValueError[39m                                Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[6][39m[32m, line 4[39m
+[32m      2[39m [38;5;28;01mfor[39;00m group, group_name [38;5;129;01min[39;00m [(df.smoking==[32m0[39m, [33m"[39m[33mNon-smokers[39m[33m"[39m), (df.smoking==[32m1[39m, [33m"[39m[33mSmokers[39m[33m"[39m)]:
+[32m      3[39m     df_sub = df[group].copy()
+[32m----> [39m[32m4[39m     res_sub = [43mmediation_analysis[49m[43m([49m[43mdf_sub[49m[43m,[49m[43m [49m[33;43m"[39;49m[33;43mstatin[39;49m[33;43m"[39;49m[43m,[49m[43m [49m[33;43m"[39;49m[33;43mldl_post[39;49m[33;43m"[39;49m[43m,[49m[43m [49m[33;43m"[39;49m[33;43mmi[39;49m[33;43m"[39;49m[43m,[49m
+[32m      5[39m [43m                                  [49m[43m[[49m[43mc[49m[43m [49m[38;5;28;43;01mfor[39;49;00m[43m [49m[43mc[49m[43m [49m[38;5;129;43;01min[39;49;00m[43m [49m[43mCOVARIATES[49m[43m [49m[38;5;28;43;01mif[39;49;00m[43m [49m[43mc[49m[43m [49m[43m!=[49m[43m [49m[33;43m"[39;49m[33;43msmoking[39;49m[33;43m"[39;49m[43m][49m[43m)[49m
+[32m      6[39m     [38;5;28mprint[39m([33mf[39m[33m"[39m[33mMediation in [39m[38;5;132;01m{[39;00mgroup_name[38;5;132;01m}[39;00m[33m (n=[39m[38;5;132;01m{[39;00mgroup.sum()[38;5;132;01m}[39;00m[33m):[39m[33m"[39m)
+[32m      7[39m     [38;5;28mprint[39m([33mf[39m[33m"[39m[33m  TE=[39m[38;5;132;01m{[39;00mres_sub[[33m'[39m[33mTE[39m[33m'[39m][38;5;132;01m:[39;00m[33m.4f[39m[38;5;132;01m}[39;00m[33m | NDE=[39m[38;5;132;01m{[39;00mres_sub[[33m'[39m[33mNDE[39m[33m'[39m][38;5;132;01m:[39;00m[33m.4f[39m[38;5;132;01m}[39;00m[33m | NIE=[39m[38;5;132;01m{[39;00mres_sub[[33m'[39m[33mNIE[39m[33m'[39m][38;5;132;01m:[39;00m[33m.4f[39m[38;5;132;01m}[39;00m[33m | [39m[33m"[39m
+[32m      8[39m           [33mf[39m[33m"[39m[33mProp mediated=[39m[38;5;132;01m{[39;00mres_sub[[33m'[39m[33mprop_mediated[39m[33m'[39m]*[32m100[39m[38;5;132;01m:[39;00m[33m.1f[39m[38;5;132;01m}[39;00m[33m%[39m[33m"[39m)
+
+[36mCell[39m[36m [39m[32mIn[4][39m[32m, line 39[39m, in [36mmediation_analysis[39m[34m(df, treatment, mediator, outcome, covariates, n_boot)[39m
+[32m     37[39m X1 = pd.concat([X_base, pd.DataFrame({treatment:[[32m1[39m]*n})], axis=[32m1[39m)
+[32m     38[39m X0 = pd.concat([X_base, pd.DataFrame({treatment:[[32m0[39m]*n})], axis=[32m1[39m)
+[32m---> [39m[32m39[39m M_a1 = [43mm_reg[49m[43m.[49m[43mpredict[49m[43m([49m[43mX1[49m[43m)[49m
+[32m     40[39m M_a0 = m_reg.predict(X0)
+[32m     42[39m [38;5;66;03m# E[Y(1, M(1))], E[Y(0, M(0))], E[Y(1, M(0))], E[Y(0, M(1))][39;00m
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/sklearn/linear_model/_base.py:297[39m, in [36mLinearModel.predict[39m[34m(self, X)[39m
+[32m    283[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34mpredict[39m([38;5;28mself[39m, X):
+[32m    284[39m [38;5;250m    [39m[33;03m"""[39;00m
+[32m    285[39m [33;03m    Predict using the linear model.[39;00m
+[32m    286[39m 
+[32m   (...)[39m[32m    295[39m [33;03m        Returns predicted values.[39;00m
+[32m    296[39m [33;03m    """[39;00m
+[32m--> [39m[32m297[39m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[43m.[49m[43m_decision_function[49m[43m([49m[43mX[49m[43m)[49m
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/sklearn/linear_model/_base.py:276[39m, in [36mLinearModel._decision_function[39m[34m(self, X)[39m
+[32m    273[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34m_decision_function[39m([38;5;28mself[39m, X):
+[32m    274[39m     check_is_fitted([38;5;28mself[39m)
+[32m--> [39m[32m276[39m     X = [43mvalidate_data[49m[43m([49m[38;5;28;43mself[39;49m[43m,[49m[43m [49m[43mX[49m[43m,[49m[43m [49m[43maccept_sparse[49m[43m=[49m[43m[[49m[33;43m"[39;49m[33;43mcsr[39;49m[33;43m"[39;49m[43m,[49m[43m [49m[33;43m"[39;49m[33;43mcsc[39;49m[33;43m"[39;49m[43m,[49m[43m [49m[33;43m"[39;49m[33;43mcoo[39;49m[33;43m"[39;49m[43m][49m[43m,[49m[43m [49m[43mreset[49m[43m=[49m[38;5;28;43;01mFalse[39;49;00m[43m)[49m
+[32m    277[39m     coef_ = [38;5;28mself[39m.coef_
+[32m    278[39m     [38;5;28;01mif[39;00m coef_.ndim == [32m1[39m:
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/sklearn/utils/validation.py:2944[39m, in [36mvalidate_data[39m[34m(_estimator, X, y, reset, validate_separately, skip_check_array, **check_params)[39m
+[32m   2942[39m         out = X, y
+[32m   2943[39m [38;5;28;01melif[39;00m [38;5;129;01mnot[39;00m no_val_X [38;5;129;01mand[39;00m no_val_y:
+[32m-> [39m[32m2944[39m     out = [43mcheck_array[49m[43m([49m[43mX[49m[43m,[49m[43m [49m[43minput_name[49m[43m=[49m[33;43m"[39;49m[33;43mX[39;49m[33;43m"[39;49m[43m,[49m[43m [49m[43m*[49m[43m*[49m[43mcheck_params[49m[43m)[49m
+[32m   2945[39m [38;5;28;01melif[39;00m no_val_X [38;5;129;01mand[39;00m [38;5;129;01mnot[39;00m no_val_y:
+[32m   2946[39m     out = _check_y(y, **check_params)
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/sklearn/utils/validation.py:1107[39m, in [36mcheck_array[39m[34m(array, accept_sparse, accept_large_sparse, dtype, order, copy, force_writeable, force_all_finite, ensure_all_finite, ensure_non_negative, ensure_2d, allow_nd, ensure_min_samples, ensure_min_features, estimator, input_name)[39m
+[32m   1101[39m     [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(
+[32m   1102[39m         [33m"[39m[33mFound array with dim [39m[38;5;132;01m%d[39;00m[33m. [39m[38;5;132;01m%s[39;00m[33m expected <= 2.[39m[33m"[39m
+[32m   1103[39m         % (array.ndim, estimator_name)
+[32m   1104[39m     )
+[32m   1106[39m [38;5;28;01mif[39;00m ensure_all_finite:
+[32m-> [39m[32m1107[39m     [43m_assert_all_finite[49m[43m([49m
+[32m   1108[39m [43m        [49m[43marray[49m[43m,[49m
+[32m   1109[39m [43m        [49m[43minput_name[49m[43m=[49m[43minput_name[49m[43m,[49m
+[32m   1110[39m [43m        [49m[43mestimator_name[49m[43m=[49m[43mestimator_name[49m[43m,[49m
+[32m   1111[39m [43m        [49m[43mallow_nan[49m[43m=[49m[43mensure_all_finite[49m[43m [49m[43m==[49m[43m [49m[33;43m"[39;49m[33;43mallow-nan[39;49m[33;43m"[39;49m[43m,[49m
+[32m   1112[39m [43m    [49m[43m)[49m
+[32m   1114[39m [38;5;28;01mif[39;00m copy:
+[32m   1115[39m     [38;5;28;01mif[39;00m _is_numpy_namespace(xp):
+[32m   1116[39m         [38;5;66;03m# only make a copy if `array` and `array_orig` may share memory`[39;00m
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/sklearn/utils/validation.py:120[39m, in [36m_assert_all_finite[39m[34m(X, allow_nan, msg_dtype, estimator_name, input_name)[39m
+[32m    117[39m [38;5;28;01mif[39;00m first_pass_isfinite:
+[32m    118[39m     [38;5;28;01mreturn[39;00m
+[32m--> [39m[32m120[39m [43m_assert_all_finite_element_wise[49m[43m([49m
+[32m    121[39m [43m    [49m[43mX[49m[43m,[49m
+[32m    122[39m [43m    [49m[43mxp[49m[43m=[49m[43mxp[49m[43m,[49m
+[32m    123[39m [43m    [49m[43mallow_nan[49m[43m=[49m[43mallow_nan[49m[43m,[49m
+[32m    124[39m [43m    [49m[43mmsg_dtype[49m[43m=[49m[43mmsg_dtype[49m[43m,[49m
+[32m    125[39m [43m    [49m[43mestimator_name[49m[43m=[49m[43mestimator_name[49m[43m,[49m
+[32m    126[39m [43m    [49m[43minput_name[49m[43m=[49m[43minput_name[49m[43m,[49m
+[32m    127[39m [43m[49m[43m)[49m
+
+[36mFile [39m[32m~/.pyenv/versions/3.11.14/lib/python3.11/site-packages/sklearn/utils/validation.py:169[39m, in [36m_assert_all_finite_element_wise[39m[34m(X, xp, allow_nan, msg_dtype, estimator_name, input_name)[39m
+[32m    152[39m [38;5;28;01mif[39;00m estimator_name [38;5;129;01mand[39;00m input_name == [33m"[39m[33mX[39m[33m"[39m [38;5;129;01mand[39;00m has_nan_error:
+[32m    153[39m     [38;5;66;03m# Improve the error message on how to handle missing values in[39;00m
+[32m    154[39m     [38;5;66;03m# scikit-learn.[39;00m
+[32m    155[39m     msg_err += (
+[32m    156[39m         [33mf[39m[33m"[39m[38;5;130;01m\n[39;00m[38;5;132;01m{[39;00mestimator_name[38;5;132;01m}[39;00m[33m does not accept missing values[39m[33m"[39m
+[32m    157[39m         [33m"[39m[33m encoded as NaN natively. For supervised learning, you might want[39m[33m"[39m
+[32m   (...)[39m[32m    167[39m         [33m"[39m[33m#estimators-that-handle-nan-values[39m[33m"[39m
+[32m    168[39m     )
+[32m--> [39m[32m169[39m [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(msg_err)
+
+[31mValueError[39m: Input X contains NaN.
+LinearRegression does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+
+FAIL: MOD06_NB06_GComp_TMLE.ipynb
+==> 2026-06-24T13:24:21-04:00 Processing MOD07_NB02_Spatial_Autocorrelation.ipynb
+[NbConvertApp] Converting notebook MOD07_NB02_Spatial_Autocorrelation.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 3 image(s).
+[NbConvertApp] Writing 866249 bytes to docs/MOD07_NB02_Spatial_Autocorrelation.html
+OK: MOD07_NB02_Spatial_Autocorrelation.ipynb
+==> 2026-06-24T13:24:30-04:00 Processing MOD07_NB03_Spatial_Regression_GWR.ipynb
+[NbConvertApp] Converting notebook MOD07_NB03_Spatial_Regression_GWR.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 1 image(s).
+[NbConvertApp] Writing 816459 bytes to docs/MOD07_NB03_Spatial_Regression_GWR.html
+OK: MOD07_NB03_Spatial_Regression_GWR.ipynb
+==> 2026-06-24T13:24:38-04:00 Processing MOD07_NB06_Environmental_Epidemiology.ipynb
+[NbConvertApp] Converting notebook MOD07_NB06_Environmental_Epidemiology.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 3 image(s).
+[NbConvertApp] Writing 1118649 bytes to docs/MOD07_NB06_Environmental_Epidemiology.html
+OK: MOD07_NB06_Environmental_Epidemiology.ipynb
+==> 2026-06-24T13:24:48-04:00 Processing MOD07_NB08_Capstone_Spatial_Atlas.ipynb
+[NbConvertApp] Converting notebook MOD07_NB08_Capstone_Spatial_Atlas.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 1 image(s).
+[NbConvertApp] Writing 1233430 bytes to docs/MOD07_NB08_Capstone_Spatial_Atlas.html
+OK: MOD07_NB08_Capstone_Spatial_Atlas.ipynb
+==> 2026-06-24T13:25:20-04:00 Processing MOD08_NB08_Capstone_Deployment.ipynb
+[NbConvertApp] Converting notebook MOD08_NB08_Capstone_Deployment.ipynb to html
+[NbConvertApp] WARNING | Alternative text is missing on 1 image(s).
+[NbConvertApp] Writing 779703 bytes to docs/MOD08_NB08_Capstone_Deployment.html
+OK: MOD08_NB08_Capstone_Deployment.ipynb
+==> Done: 13 succeeded, 2 failed

@@ -1,0 +1,19 @@
+/*-- scss:defaults --*/
+$primary: #2c3e50;
+$navbar-bg: #2c3e50;
+$link-color: #0d6e8a;
+$sidebar-bg: #f8f9fa;
+$sidebar-fg: #2c3e50;
+
+/*-- scss:rules --*/
+.sidebar-logo {
+  max-width: 180px;
+}
+
+.quarto-title-banner {
+  margin-bottom: 1rem;
+}
+
+.navbar-title {
+  font-weight: 600;
+}

@@ -1,0 +1,200 @@
+project:
+  type: website
+  output-dir: docs
+  render:
+    - index.qmd
+    - "MOD*.ipynb"
+
+website:
+  title: "Health Analytics with Python"
+  site-url: https://zia207.github.io/Health-Analytics-with-Python/
+  description: "From raw EHR data to production-ready clinical models — 8 modules, 60 notebooks."
+  repo-url: https://github.com/zia207/Health-Analytics-with-Python
+  repo-actions: [edit, issue]
+  page-navigation: true
+  search:
+    location: navbar
+    type: overlay
+  navbar:
+    background: primary
+    pinned: true
+    left:
+      - href: index.qmd
+        text: Home
+    right:
+      - icon: github
+        href: https://github.com/zia207/Health-Analytics-with-Python
+      - icon: linkedin
+        href: https://www.linkedin.com/in/zia-ahmed207
+      - text: "zia207@gmail.com"
+        href: mailto:zia207@gmail.com
+  sidebar:
+    logo: Images/chapter_logo_health_analytices.png
+    style: docked
+    search: true
+    collapse-level: 1
+    contents:
+      - section: "**Health Analytics with Python**"
+        contents:
+          - index.qmd
+          - href: MOD00_NTRO_HealthPy_Tutorial_Series.ipynb
+            text: Series Overview
+      - section: "**Module 01 — Python Foundations** (Track A)"
+        contents:
+          - href: MOD01_NB01_Python_Foundations_Health_Data.ipynb
+            text: NB-01 · Python Foundations for Health Data
+          - href: MOD01_NB02_Descriptive_Statistics_Health_Metrics.ipynb
+            text: "NB-02 \u00b7 Descriptive Statistics & Health Metrics"
+          - href: MOD01_NB03_Health_Data_Ecosystem_Codes.ipynb
+            text: "NB-03 \u00b7 Health Data Ecosystem & Codes"
+      - section: "**Module 02 — Exploratory Data Analysis** (Track A)"
+        contents:
+          - href: MOD02_NB01_Data_Loading_Profiling.ipynb
+            text: "Data Loading & Automated Profiling"
+          - href: MOD02_NB02_Descriptive_Statistics.ipynb
+            text: Descriptive Statistics for Clinical Variables
+          - href: MOD02_NB03_Clinical_Visualisation.ipynb
+            text: Visualising Clinical Distributions
+          - href: MOD02_NB04_TimeSeries_Admissions.ipynb
+            text: "Time-Series of Admissions & Clinical Events"
+          - href: MOD02_NB05_Missingness_Imputation.ipynb
+            text: "Missingness Analysis & Imputation"
+          - href: MOD02_NB06_Comorbidity_Heatmap.ipynb
+            text: Comorbidity Co-occurrence Heatmap
+          - href: MOD02_NB07_Geospatial_Disparities.ipynb
+            text: Geospatial Health Disparities Map
+          - href: MOD02_NB08_Capstone_Readmission_EDA.ipynb
+            text: Capstone · End-to-End EDA on Readmission Risk
+      - section: "**Module 03 — Statistical Inference** (Track A)"
+        contents:
+          - href: MOD03_NB01_Hypothesis_Testing.ipynb
+            text: Hypothesis Testing for Health Outcomes
+          - href: MOD03_NB02_RR_OR_CI.ipynb
+            text: "Relative Risk, Odds Ratios & Confidence Intervals"
+          - href: MOD03_NB03_Survival_Analysis.ipynb
+            text: "Survival Analysis (Kaplan-Meier & Log-Rank)"
+          - href: MOD03_NB04_Linear_Regression.ipynb
+            text: Linear Regression for Continuous Outcomes
+          - href: MOD03_NB05_Logistic_Regression.ipynb
+            text: Logistic Regression for Binary Outcomes
+          - href: MOD03_NB06_Count_Regression.ipynb
+            text: "Poisson & Negative Binomial Regression"
+          - href: MOD03_NB07_Confounding_EffectModification.ipynb
+            text: "Confounding & Effect Modification"
+          - href: MOD03_NB08_Capstone_Inference.ipynb
+            text: Capstone · Multivariable Inference Pipeline
+      - section: "**Module 04 — Machine Learning** (Track A)"
+        contents:
+          - href: MOD04_NB01_Pipeline_Splits.ipynb
+            text: "ML Pipeline Setup & Train/Test Splits"
+          - href: MOD04_NB02_DecisionTree_RandomForest.ipynb
+            text: "Decision Trees & Random Forest"
+          - href: MOD04_NB03_XGBoost_LightGBM.ipynb
+            text: "XGBoost & LightGBM"
+          - href: MOD04_NB04_Clinical_Model_Evaluation.ipynb
+            text: Clinical Model Evaluation
+          - href: MOD04_NB05_Hyperparameter_Tuning.ipynb
+            text: "Hyperparameter Tuning & Cross-Validation"
+          - href: MOD04_NB06_SHAP_Explainability.ipynb
+            text: SHAP Explainability
+          - href: MOD04_NB07_Clinical_Prediction_Models.ipynb
+            text: Three Clinical Prediction Models
+          - href: MOD04_NB08_Capstone_ML_Pipeline.ipynb
+            text: Capstone · End-to-End Clinical ML Pipeline
+      - section: "**Module 05 — NLP for Clinical Text** (Track A)"
+        contents:
+          - href: MOD05_NB01_Clinical_Text_Preprocessing.ipynb
+            text: Clinical Text Preprocessing
+          - href: MOD05_NB02_Clinical_NER.ipynb
+            text: Clinical Named Entity Recognition
+          - href: MOD05_NB03_TF_IDF_Classification.ipynb
+            text: "TF-IDF & Clinical Text Classification"
+          - href: MOD05_NB04_Word_Embeddings.ipynb
+            text: "Word Embeddings & Word2Vec"
+          - href: MOD05_NB05_Clinical_BERT.ipynb
+            text: "Clinical BERT (BioBERT & ClinicalBERT)"
+          - href: MOD05_NB06_ICD_Coding_Medications.ipynb
+            text: "ICD Coding & Medication Extraction"
+          - href: MOD05_NB07_Summarisation_ZeroShot.ipynb
+            text: "Summarisation & Zero-Shot NLP"
+          - href: MOD05_NB08_Capstone_Clinical_NLP.ipynb
+            text: Capstone · End-to-End Clinical NLP Pipeline
+      - section: "**Module 06 — Causal Inference** (Track B)"
+        contents:
+          - href: MOD06_NB01_DAGs_Confounding.ipynb
+            text: "DAGs, Confounding & Identification"
+          - href: MOD06_NB02_Propensity_Scores.ipynb
+            text: Propensity Score Methods
+          - href: MOD06_NB03_DiD_EventStudy.ipynb
+            text: "Difference-in-Differences & Event Studies"
+          - href: MOD06_NB04_ITS_SyntheticControl.ipynb
+            text: "Interrupted Time Series & Synthetic Control"
+          - href: MOD06_NB05_IV_RDD.ipynb
+            text: "Instrumental Variables & RDD"
+          - href: MOD06_NB06_GComp_TMLE.ipynb
+            text: "G-Computation, TMLE & Mediation"
+          - href: MOD06_NB07_Sensitivity_Reporting.ipynb
+            text: "Sensitivity Analysis & Reporting"
+          - href: MOD06_NB08_Capstone_Causal_Pipeline.ipynb
+            text: Capstone · Causal Inference Pipeline
+      - section: "**Module 07 — Geospatial Epidemiology** (Track B)"
+        contents:
+          - href: MOD07_NB01_Spatial_Data_Choropleth.ipynb
+            text: "Spatial Data & Choropleth Mapping"
+          - href: MOD07_NB02_Spatial_Autocorrelation.ipynb
+            text: "Spatial Autocorrelation & Moran's I"
+          - href: MOD07_NB03_Spatial_Regression_GWR.ipynb
+            text: "Spatial Regression: Lag, Error & GWR"
+          - href: MOD07_NB04_Disease_Mapping_Bayes.ipynb
+            text: "Disease Mapping & Bayesian Smoothing"
+          - href: MOD07_NB05_Cluster_Detection.ipynb
+            text: Spatial Cluster Detection
+          - href: MOD07_NB06_Environmental_Epidemiology.ipynb
+            text: Environmental Epidemiology
+          - href: MOD07_NB07_Health_Service_Access.ipynb
+            text: "Health Service Area & Access Metrics"
+          - href: MOD07_NB08_Capstone_Spatial_Atlas.ipynb
+            text: Capstone · Spatial Health Inequity Atlas
+      - section: "**Module 08 — Reproducible Research & Deployment** (Track B)"
+        contents:
+          - href: MOD08_NB01_Reproducible_Foundations.ipynb
+            text: Reproducible Research Foundations
+          - href: MOD08_NB02_Quarto_Reports.ipynb
+            text: Quarto Documents for Health Reports
+          - href: MOD08_NB03_Streamlit_Dashboards.ipynb
+            text: Streamlit Dashboards
+          - href: MOD08_NB04_MLflow_Tracking.ipynb
+            text: "MLflow Model Tracking & Registry"
+          - href: MOD08_NB05_FastAPI_Serving.ipynb
+            text: FastAPI for Clinical Model Serving
+          - href: MOD08_NB06_Testing_CICD.ipynb
+            text: "Testing, CI/CD & Code Quality"
+          - href: MOD08_NB07_ModelCards_Governance.ipynb
+            text: "Model Cards & Clinical AI Governance"
+          - href: MOD08_NB08_Capstone_Deployment.ipynb
+            text: Capstone · Full Deployment Pipeline
+  page-footer:
+    left: "© CC-By Zia Ahmed, Upatta Analytics, 2026"
+    right: "Built with [Quarto](https://quarto.org/)"
+
+format:
+  html:
+    theme:
+      - cosmo
+      - _quarto.scss
+    toc: true
+    toc-depth: 3
+    code-copy: true
+    code-overflow: wrap
+    smooth-scroll: true
+    grid:
+      sidebar-width: 300px
+      body-width: 900px
+      margin-width: 200px
+
+execute:
+  enabled: false
+  freeze: auto
+
+resources:
+  - Images/**
