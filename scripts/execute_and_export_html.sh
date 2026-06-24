@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
-# Execute all MOD*.ipynb notebooks and export HTML with code + outputs to docs/
+# Execute all MOD*.ipynb notebooks in-place so Quarto can render outputs.
 set -uo pipefail
 cd "$(dirname "$0")/.."
 
-PYTHON=/home/zia207/.pyenv/versions/3.11.14/bin/python3
+PYTHON="${PYTHON:-python3}"
 LOG=scripts/nbconvert_final.log
 TIMEOUT=1200
-mkdir -p docs
 
 : > "$LOG"
 ok=0
@@ -14,12 +13,12 @@ fail=0
 failed=()
 
 for nb in MOD*.ipynb; do
-  echo "==> $(date -Iseconds) Processing $nb" | tee -a "$LOG"
+  echo "==> $(date -Iseconds) Executing $nb" | tee -a "$LOG"
   if "$PYTHON" -m jupyter nbconvert \
       --execute \
-      --to html \
+      --to notebook \
+      --inplace \
       --ExecutePreprocessor.timeout="$TIMEOUT" \
-      --output-dir docs \
       "$nb" >> "$LOG" 2>&1; then
     echo "OK: $nb" | tee -a "$LOG"
     ok=$((ok + 1))

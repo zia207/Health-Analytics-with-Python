@@ -9,6 +9,11 @@ python3 scripts/prepare_quarto_notebooks.py
 echo "==> Generating _quarto.yml sidebar..."
 python3 scripts/generate_quarto_yml.py
 
+if [[ "${SKIP_EXECUTE:-}" != "1" ]]; then
+  echo "==> Executing notebooks in-place (set SKIP_EXECUTE=1 to skip)..."
+  bash scripts/execute_and_export_html.sh
+fi
+
 echo "==> Rendering Quarto website to docs/..."
 quarto render
 

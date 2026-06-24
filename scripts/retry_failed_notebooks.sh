@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
-# Re-run previously failed notebooks.
+# Re-run previously failed notebooks in-place.
 set -uo pipefail
 cd "$(dirname "$0")/.."
 
-PYTHON=/home/zia207/.pyenv/versions/3.11.14/bin/python3
+PYTHON="${PYTHON:-python3}"
 LOG=scripts/nbconvert_retry.log
 TIMEOUT=1200
-mkdir -p docs
 
 FAILED=(
   MOD02_NB01_Data_Loading_Profiling.ipynb
@@ -48,9 +47,9 @@ for nb in "${FAILED[@]}"; do
   echo "==> $(date -Iseconds) Processing $nb" | tee -a "$LOG"
   if "$PYTHON" -m jupyter nbconvert \
       --execute \
-      --to html \
+      --to notebook \
+      --inplace \
       --ExecutePreprocessor.timeout="$TIMEOUT" \
-      --output-dir docs \
       "$nb" >> "$LOG" 2>&1; then
     echo "OK: $nb" | tee -a "$LOG"
     ok=$((ok + 1))
