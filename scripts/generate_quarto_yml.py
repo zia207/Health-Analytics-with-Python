@@ -152,6 +152,7 @@ website:
     type: overlay
   navbar:
     background: primary
+    foreground: light
     pinned: true
     left:
       - href: index.qmd

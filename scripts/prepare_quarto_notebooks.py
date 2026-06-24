@@ -96,6 +96,14 @@ def prepare_first_cell(text: str, title: str, subtitle: str | None) -> str:
     if "<div style=" in text:
         return fix_horizontal_rules(text)
 
+    text = text.replace(
+        "![](/Health-Analytics-with-Python/Images/banner_health_analytics.png)",
+        "![](Images/banner_health_analytics.png)",
+    ).replace(
+        "![](./Health-Analytics-with-Python/Images/banner_health_analytics.png)",
+        "![](Images/banner_health_analytics.png)",
+    )
+
     lines = text.splitlines()
     kept: list[str] = []
     for line in lines:
