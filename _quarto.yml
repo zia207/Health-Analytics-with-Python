@@ -8,7 +8,7 @@ project:
 website:
   title: "Health Analytics with Python"
   site-url: https://zia207.github.io/Health-Analytics-with-Python/
-  description: "From raw EHR data to production-ready clinical models — 8 modules, 60 notebooks."
+  description: "From raw EHR data to production-ready clinical models — 8 modules, 61 notebooks."
   repo-url: https://github.com/zia207/Health-Analytics-with-Python
   repo-actions: [edit, issue]
   page-navigation: true
@@ -40,7 +40,7 @@ website:
           - index.qmd
           - href: MOD00_NTRO_HealthPy_Tutorial_Series.ipynb
             text: Series Overview
-      - section: "**Module 01 — Python Foundations** (Track A)"
+      - section: "**Module 01 - Python Foundations** (Track A)"
         contents:
           - href: MOD01_NB01_Python_Foundations_Health_Data.ipynb
             text: NB-01 · Python Foundations for Health Data
@@ -48,7 +48,7 @@ website:
             text: "NB-02 \u00b7 Descriptive Statistics & Health Metrics"
           - href: MOD01_NB03_Health_Data_Ecosystem_Codes.ipynb
             text: "NB-03 \u00b7 Health Data Ecosystem & Codes"
-      - section: "**Module 02 — Exploratory Data Analysis** (Track A)"
+      - section: "**Module 02 - Exploratory Data Analysis** (Track A)"
         contents:
           - href: MOD02_NB01_Data_Loading_Profiling.ipynb
             text: "Data Loading & Automated Profiling"
@@ -66,7 +66,7 @@ website:
             text: Geospatial Health Disparities Map
           - href: MOD02_NB08_Capstone_Readmission_EDA.ipynb
             text: Capstone · End-to-End EDA on Readmission Risk
-      - section: "**Module 03 — Statistical Inference** (Track A)"
+      - section: "**Module 03 - Statistical Inference** (Track A)"
         contents:
           - href: MOD03_NB01_Hypothesis_Testing.ipynb
             text: Hypothesis Testing for Health Outcomes
@@ -84,7 +84,7 @@ website:
             text: "Confounding & Effect Modification"
           - href: MOD03_NB08_Capstone_Inference.ipynb
             text: Capstone · Multivariable Inference Pipeline
-      - section: "**Module 04 — Machine Learning** (Track A)"
+      - section: "**Module 04 - Machine Learning** (Track A)"
         contents:
           - href: MOD04_NB01_Pipeline_Splits.ipynb
             text: "ML Pipeline Setup & Train/Test Splits"
@@ -102,7 +102,7 @@ website:
             text: Three Clinical Prediction Models
           - href: MOD04_NB08_Capstone_ML_Pipeline.ipynb
             text: Capstone · End-to-End Clinical ML Pipeline
-      - section: "**Module 05 — NLP for Clinical Text** (Track A)"
+      - section: "**Module 05 - NLP for Clinical Text** (Track A)"
         contents:
           - href: MOD05_NB01_Clinical_Text_Preprocessing.ipynb
             text: Clinical Text Preprocessing
@@ -120,7 +120,7 @@ website:
             text: "Summarisation & Zero-Shot NLP"
           - href: MOD05_NB08_Capstone_Clinical_NLP.ipynb
             text: Capstone · End-to-End Clinical NLP Pipeline
-      - section: "**Module 06 — Causal Inference** (Track B)"
+      - section: "**Module 06 - Causal Inference** (Track B)"
         contents:
           - href: MOD06_NB01_DAGs_Confounding.ipynb
             text: "DAGs, Confounding & Identification"
@@ -138,7 +138,7 @@ website:
             text: "Sensitivity Analysis & Reporting"
           - href: MOD06_NB08_Capstone_Causal_Pipeline.ipynb
             text: Capstone · Causal Inference Pipeline
-      - section: "**Module 07 — Geospatial Epidemiology** (Track B)"
+      - section: "**Module 07 - Geospatial Epidemiology** (Track B)"
         contents:
           - href: MOD07_NB01_Spatial_Data_Choropleth.ipynb
             text: "Spatial Data & Choropleth Mapping"
@@ -156,7 +156,9 @@ website:
             text: "Health Service Area & Access Metrics"
           - href: MOD07_NB08_Capstone_Spatial_Atlas.ipynb
             text: Capstone · Spatial Health Inequity Atlas
-      - section: "**Module 08 — Reproducible Research & Deployment** (Track B)"
+          - href: MOD07_NB09_Spatial_ML_LBC_Northeast.ipynb
+            text: "NB-09 · Spatial ML - LBC Mortality (Northeast)"
+      - section: "**Module 08 - Reproducible Research & Deployment** (Track B)"
         contents:
           - href: MOD08_NB01_Reproducible_Foundations.ipynb
             text: Reproducible Research Foundations

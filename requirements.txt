@@ -41,6 +41,11 @@ missingno
 geopandas
 shapely
 folium
+libpysal
+esda
+spreg
+mgwr
+mapclassify
 
 # ── NLP & Text Mining ────────────────────────────────────────
 nltk
