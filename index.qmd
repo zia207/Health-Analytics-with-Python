@@ -9,7 +9,7 @@ Welcome to **Health Analytics with Python** — a comprehensive tutorial series 
 
 Python has become the language of choice for health data scientists because of its rich ecosystem spanning statistics, machine learning, natural language processing, geospatial analysis, and production deployment. This series takes you from foundational EHR data handling through statistical inference, machine learning, clinical NLP, causal inference, geospatial epidemiology, and production deployment.
 
-**Modules:** 8 modules · 60 notebooks · ~450 code cells  
+**Modules:** 8 modules · 61 notebooks · ~450 code cells  
 **Level:** Intermediate to Advanced · Healthcare data science background assumed  
 **Language:** Python 3.10+ · Colab-compatible  
 **Dataset:** Synthetic (MIMIC-III inspired) · seed = 42 throughout  
@@ -39,6 +39,7 @@ Each module contains multiple notebooks following a consistent arc: **Concepts �
 1. Browse notebooks using the **sidebar** on the left — modules are organised by track.
 2. Clone the [GitHub repository](https://github.com/zia207/Health-Analytics-with-Python) to run notebooks locally or in Google Colab.
 3. Start with the [Series Overview](MOD00_NTRO_HealthPy_Tutorial_Series.ipynb) notebook for the full module guide.
+4. **Module 07 applied case study:** [NB-09 · Spatial ML — LBC Mortality (Northeast)](MOD07_NB09_Spatial_ML_LBC_Northeast.ipynb) — real county data, hot-spot analysis, GWR, and GW-RF.
 
 ```bash
 git clone https://github.com/zia207/Health-Analytics-with-Python.git

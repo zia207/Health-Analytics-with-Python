@@ -155,9 +155,9 @@ website:
           - href: MOD07_NB07_Health_Service_Access.ipynb
             text: "Health Service Area & Access Metrics"
           - href: MOD07_NB08_Capstone_Spatial_Atlas.ipynb
-            text: Capstone · Spatial Health Inequity Atlas
+            text: Capstone - Spatial Health Inequity Atlas
           - href: MOD07_NB09_Spatial_ML_LBC_Northeast.ipynb
-            text: "NB-09 · Spatial ML - LBC Mortality (Northeast)"
+            text: "Spatial ML - LBC Mortality (Northeast)"
       - section: "**Module 08 - Reproducible Research & Deployment** (Track B)"
         contents:
           - href: MOD08_NB01_Reproducible_Foundations.ipynb

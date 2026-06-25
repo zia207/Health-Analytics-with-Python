@@ -392,7 +392,7 @@
     "crumbs": [
       "Home",
       "**Module 07 - Geospatial Epidemiology** (Track B)",
-      "NB-09 · Spatial ML - LBC Mortality (Northeast)"
+      "Spatial ML - LBC Mortality (Northeast)"
     ]
   },
   {
@@ -404,7 +404,7 @@
     "crumbs": [
       "Home",
       "**Module 07 - Geospatial Epidemiology** (Track B)",
-      "NB-09 · Spatial ML - LBC Mortality (Northeast)"
+      "Spatial ML - LBC Mortality (Northeast)"
     ]
   },
   {
@@ -416,7 +416,7 @@
     "crumbs": [
       "Home",
       "**Module 07 - Geospatial Epidemiology** (Track B)",
-      "NB-09 · Spatial ML - LBC Mortality (Northeast)"
+      "Spatial ML - LBC Mortality (Northeast)"
     ]
   },
   {
@@ -428,7 +428,7 @@
     "crumbs": [
       "Home",
       "**Module 07 - Geospatial Epidemiology** (Track B)",
-      "NB-09 · Spatial ML - LBC Mortality (Northeast)"
+      "Spatial ML - LBC Mortality (Northeast)"
     ]
   },
   {
@@ -440,7 +440,7 @@
     "crumbs": [
       "Home",
       "**Module 07 - Geospatial Epidemiology** (Track B)",
-      "NB-09 · Spatial ML - LBC Mortality (Northeast)"
+      "Spatial ML - LBC Mortality (Northeast)"
     ]
   },
   {
@@ -452,7 +452,7 @@
     "crumbs": [
       "Home",
       "**Module 07 - Geospatial Epidemiology** (Track B)",
-      "NB-09 · Spatial ML - LBC Mortality (Northeast)"
+      "Spatial ML - LBC Mortality (Northeast)"
     ]
   },
   {
@@ -464,7 +464,7 @@
     "crumbs": [
       "Home",
       "**Module 07 - Geospatial Epidemiology** (Track B)",
-      "NB-09 · Spatial ML - LBC Mortality (Northeast)"
+      "Spatial ML - LBC Mortality (Northeast)"
     ]
   },
   {
@@ -476,7 +476,7 @@
     "crumbs": [
       "Home",
       "**Module 07 - Geospatial Epidemiology** (Track B)",
-      "NB-09 · Spatial ML - LBC Mortality (Northeast)"
+      "Spatial ML - LBC Mortality (Northeast)"
     ]
   },
   {
@@ -488,7 +488,7 @@
     "crumbs": [
       "Home",
       "**Module 07 - Geospatial Epidemiology** (Track B)",
-      "NB-09 · Spatial ML - LBC Mortality (Northeast)"
+      "Spatial ML - LBC Mortality (Northeast)"
     ]
   },
   {
@@ -500,7 +500,7 @@
     "crumbs": [
       "Home",
       "**Module 07 - Geospatial Epidemiology** (Track B)",
-      "NB-09 · Spatial ML - LBC Mortality (Northeast)"
+      "Spatial ML - LBC Mortality (Northeast)"
     ]
   },
   {
@@ -512,7 +512,7 @@
     "crumbs": [
       "Home",
       "**Module 07 - Geospatial Epidemiology** (Track B)",
-      "NB-09 · Spatial ML - LBC Mortality (Northeast)"
+      "Spatial ML - LBC Mortality (Northeast)"
     ]
   },
   {
@@ -2776,7 +2776,7 @@
     "href": "index.html",
     "title": "Health Analytics with Python",
     "section": "",
-    "text": "Welcome to Health Analytics with Python — a comprehensive tutorial series for health informatics professionals, clinical data scientists, epidemiologists, and graduate students who want to apply Python rigorously to healthcare problems.\nPython has become the language of choice for health data scientists because of its rich ecosystem spanning statistics, machine learning, natural language processing, geospatial analysis, and production deployment. This series takes you from foundational EHR data handling through statistical inference, machine learning, clinical NLP, causal inference, geospatial epidemiology, and production deployment.\nModules: 8 modules · 60 notebooks · ~450 code cells\nLevel: Intermediate to Advanced · Healthcare data science background assumed\nLanguage: Python 3.10+ · Colab-compatible\nDataset: Synthetic (MIMIC-III inspired) · seed = 42 throughout\nAuthor: Dr. Zia U. Ahmed · Upatta Analytics",
+    "text": "Welcome to Health Analytics with Python — a comprehensive tutorial series for health informatics professionals, clinical data scientists, epidemiologists, and graduate students who want to apply Python rigorously to healthcare problems.\nPython has become the language of choice for health data scientists because of its rich ecosystem spanning statistics, machine learning, natural language processing, geospatial analysis, and production deployment. This series takes you from foundational EHR data handling through statistical inference, machine learning, clinical NLP, causal inference, geospatial epidemiology, and production deployment.\nModules: 8 modules · 61 notebooks · ~450 code cells\nLevel: Intermediate to Advanced · Healthcare data science background assumed\nLanguage: Python 3.10+ · Colab-compatible\nDataset: Synthetic (MIMIC-III inspired) · seed = 42 throughout\nAuthor: Dr. Zia U. Ahmed · Upatta Analytics",
     "crumbs": [
       "Home",
       "**Health Analytics with Python**",
@@ -2812,7 +2812,7 @@
     "href": "index.html#getting-started",
     "title": "Health Analytics with Python",
     "section": "Getting Started",
-    "text": "Getting Started\n\nBrowse notebooks using the sidebar on the left — modules are organised by track.\nClone the GitHub repository to run notebooks locally or in Google Colab.\nStart with the Series Overview notebook for the full module guide.\n\ngit clone https://github.com/zia207/Health-Analytics-with-Python.git\ncd Health-Analytics-with-Python\npip install -r requirements.txt\njupyter lab",
+    "text": "Getting Started\n\nBrowse notebooks using the sidebar on the left — modules are organised by track.\nClone the GitHub repository to run notebooks locally or in Google Colab.\nStart with the Series Overview notebook for the full module guide.\nModule 07 applied case study: NB-09 · Spatial ML — LBC Mortality (Northeast) — real county data, hot-spot analysis, GWR, and GW-RF.\n\ngit clone https://github.com/zia207/Health-Analytics-with-Python.git\ncd Health-Analytics-with-Python\npip install -r requirements.txt\njupyter lab",
     "crumbs": [
       "Home",
       "**Health Analytics with Python**",
