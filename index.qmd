@@ -9,7 +9,7 @@ Welcome to **Health Analytics with Python** — a comprehensive tutorial series 
 
 Python has become the language of choice for health data scientists because of its rich ecosystem spanning statistics, machine learning, natural language processing, geospatial analysis, and production deployment. This series takes you from foundational EHR data handling through statistical inference, machine learning, clinical NLP, causal inference, geospatial epidemiology, and production deployment.
 
-**Modules:** 8 modules · 61 notebooks · ~450 code cells  
+**Modules:** 8 modules · 62 notebooks · ~450 code cells  
 **Level:** Intermediate to Advanced · Healthcare data science background assumed  
 **Language:** Python 3.10+ · Colab-compatible  
 **Dataset:** Synthetic (MIMIC-III inspired) · seed = 42 throughout  

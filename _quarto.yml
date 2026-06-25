@@ -8,7 +8,7 @@ project:
 website:
   title: "Health Analytics with Python"
   site-url: https://zia207.github.io/Health-Analytics-with-Python/
-  description: "From raw EHR data to production-ready clinical models — 8 modules, 61 notebooks."
+  description: "From raw EHR data to production-ready clinical models — 8 modules, 62 notebooks."
   repo-url: https://github.com/zia207/Health-Analytics-with-Python
   repo-actions: [edit, issue]
   page-navigation: true
