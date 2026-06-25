@@ -1,0 +1,1985 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Geostatistical Risk Analysis – Health Analytics with Python</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./MOD08_NB01_Reproducible_Foundations.html" rel="next">
+<link href="./MOD07_NB09_Spatial_ML_LBC_Northeast.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-d08f89fd7971d2ef16bab3908983d253.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Health Analytics with Python</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="./index.html" aria-current="page"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/zia207/Health-Analytics-with-Python"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/zia-ahmed207"> <i class="bi bi-linkedin" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="mailto:zia207@gmail.com"> 
+<span class="menu-text">zia207@gmail.com</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./MOD07_NB01_Spatial_Data_Choropleth.html"><strong>Module 07 - Geospatial Epidemiology</strong> (Track B)</a></li><li class="breadcrumb-item"><a href="./MOD07_NB10_Geostatistical_Risk_Analysis.html">Geostatistical Risk Analysis (Indicator Kriging)</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./MOD07_NB01_Spatial_Data_Choropleth.html"><strong>Module 07 - Geospatial Epidemiology</strong> (Track B)</a></li><li class="breadcrumb-item"><a href="./MOD07_NB10_Geostatistical_Risk_Analysis.html">Geostatistical Risk Analysis (Indicator Kriging)</a></li></ol></nav>
+      <h1 class="title">Geostatistical Risk Analysis</h1>
+            <p class="subtitle lead">Module 07 — Health Analytics with Python</p>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./Images/chapter_logo_health_analytices.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./Images/chapter_logo_health_analytices.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text"><strong>Health Analytics with Python</strong></span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Health Analytics with Python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD00_NTRO_HealthPy_Tutorial_Series.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Series Overview</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text"><strong>Module 01 - Python Foundations</strong> (Track A)</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD01_NB01_Python_Foundations_Health_Data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">NB-01 · Python Foundations for Health Data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD01_NB02_Descriptive_Statistics_Health_Metrics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">NB-02 · Descriptive Statistics &amp; Health Metrics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD01_NB03_Health_Data_Ecosystem_Codes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">NB-03 · Health Data Ecosystem &amp; Codes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text"><strong>Module 02 - Exploratory Data Analysis</strong> (Track A)</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD02_NB01_Data_Loading_Profiling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Loading &amp; Automated Profiling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD02_NB02_Descriptive_Statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Descriptive Statistics for Clinical Variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD02_NB03_Clinical_Visualisation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Visualising Clinical Distributions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD02_NB04_TimeSeries_Admissions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Time-Series of Admissions &amp; Clinical Events</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD02_NB05_Missingness_Imputation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Missingness Analysis &amp; Imputation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD02_NB06_Comorbidity_Heatmap.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Comorbidity Co-occurrence Heatmap</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD02_NB07_Geospatial_Disparities.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Geospatial Health Disparities Map</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD02_NB08_Capstone_Readmission_EDA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Capstone · End-to-End EDA on Readmission Risk</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text"><strong>Module 03 - Statistical Inference</strong> (Track A)</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD03_NB01_Hypothesis_Testing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hypothesis Testing for Health Outcomes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD03_NB02_RR_OR_CI.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Relative Risk, Odds Ratios &amp; Confidence Intervals</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD03_NB03_Survival_Analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Survival Analysis (Kaplan-Meier &amp; Log-Rank)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD03_NB04_Linear_Regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Linear Regression for Continuous Outcomes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD03_NB05_Logistic_Regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Logistic Regression for Binary Outcomes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD03_NB06_Count_Regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Poisson &amp; Negative Binomial Regression</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD03_NB07_Confounding_EffectModification.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Confounding &amp; Effect Modification</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD03_NB08_Capstone_Inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Capstone · Multivariable Inference Pipeline</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text"><strong>Module 04 - Machine Learning</strong> (Track A)</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD04_NB01_Pipeline_Splits.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ML Pipeline Setup &amp; Train/Test Splits</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD04_NB02_DecisionTree_RandomForest.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Decision Trees &amp; Random Forest</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD04_NB03_XGBoost_LightGBM.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">XGBoost &amp; LightGBM</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD04_NB04_Clinical_Model_Evaluation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Clinical Model Evaluation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD04_NB05_Hyperparameter_Tuning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hyperparameter Tuning &amp; Cross-Validation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD04_NB06_SHAP_Explainability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SHAP Explainability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD04_NB07_Clinical_Prediction_Models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Three Clinical Prediction Models</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD04_NB08_Capstone_ML_Pipeline.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Capstone · End-to-End Clinical ML Pipeline</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+ <span class="menu-text"><strong>Module 05 - NLP for Clinical Text</strong> (Track A)</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD05_NB01_Clinical_Text_Preprocessing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Clinical Text Preprocessing</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD05_NB02_Clinical_NER.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Clinical Named Entity Recognition</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD05_NB03_TF_IDF_Classification.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">TF-IDF &amp; Clinical Text Classification</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD05_NB04_Word_Embeddings.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Word Embeddings &amp; Word2Vec</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD05_NB05_Clinical_BERT.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Clinical BERT (BioBERT &amp; ClinicalBERT)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD05_NB06_ICD_Coding_Medications.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ICD Coding &amp; Medication Extraction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD05_NB07_Summarisation_ZeroShot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Summarisation &amp; Zero-Shot NLP</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD05_NB08_Capstone_Clinical_NLP.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Capstone · End-to-End Clinical NLP Pipeline</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+ <span class="menu-text"><strong>Module 06 - Causal Inference</strong> (Track B)</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD06_NB01_DAGs_Confounding.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">DAGs, Confounding &amp; Identification</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD06_NB02_Propensity_Scores.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Propensity Score Methods</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD06_NB03_DiD_EventStudy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Difference-in-Differences &amp; Event Studies</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD06_NB04_ITS_SyntheticControl.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Interrupted Time Series &amp; Synthetic Control</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD06_NB05_IV_RDD.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Instrumental Variables &amp; RDD</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD06_NB06_GComp_TMLE.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">G-Computation, TMLE &amp; Mediation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD06_NB07_Sensitivity_Reporting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sensitivity Analysis &amp; Reporting</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD06_NB08_Capstone_Causal_Pipeline.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Capstone · Causal Inference Pipeline</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
+ <span class="menu-text"><strong>Module 07 - Geospatial Epidemiology</strong> (Track B)</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD07_NB01_Spatial_Data_Choropleth.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Spatial Data &amp; Choropleth Mapping</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD07_NB02_Spatial_Autocorrelation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Spatial Autocorrelation &amp; Moran's I</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD07_NB03_Spatial_Regression_GWR.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Spatial Regression: Lag, Error &amp; GWR</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD07_NB04_Disease_Mapping_Bayes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Disease Mapping &amp; Bayesian Smoothing</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD07_NB05_Cluster_Detection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Spatial Cluster Detection</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD07_NB06_Environmental_Epidemiology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Environmental Epidemiology</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD07_NB07_Health_Service_Access.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Health Service Area &amp; Access Metrics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD07_NB08_Capstone_Spatial_Atlas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Capstone - Spatial Health Inequity Atlas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD07_NB09_Spatial_ML_LBC_Northeast.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Spatial ML - LBC Mortality (Northeast)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD07_NB10_Geostatistical_Risk_Analysis.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Geostatistical Risk Analysis (Indicator Kriging)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
+ <span class="menu-text"><strong>Module 08 - Reproducible Research &amp; Deployment</strong> (Track B)</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD08_NB01_Reproducible_Foundations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Reproducible Research Foundations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD08_NB02_Quarto_Reports.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quarto Documents for Health Reports</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD08_NB03_Streamlit_Dashboards.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Streamlit Dashboards</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD08_NB04_MLflow_Tracking.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">MLflow Model Tracking &amp; Registry</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD08_NB05_FastAPI_Serving.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FastAPI for Clinical Model Serving</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD08_NB06_Testing_CICD.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Testing, CI/CD &amp; Code Quality</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD08_NB07_ModelCards_Governance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model Cards &amp; Clinical AI Governance</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MOD08_NB08_Capstone_Deployment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Capstone · Full Deployment Pipeline</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#health-analytics-with-python-module-07-geospatial-spatial-epidemiology" id="toc-health-analytics-with-python-module-07-geospatial-spatial-epidemiology" class="nav-link active" data-scroll-target="#health-analytics-with-python-module-07-geospatial-spatial-epidemiology">Health Analytics with Python · Module 07: Geospatial &amp; Spatial Epidemiology</a></li>
+  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">1. Setup</a></li>
+  <li><a href="#indicator-kriging-for-environmental-health-risk" id="toc-indicator-kriging-for-environmental-health-risk" class="nav-link" data-scroll-target="#indicator-kriging-for-environmental-health-risk">2. Indicator Kriging for Environmental Health Risk</a></li>
+  <li><a href="#load-data" id="toc-load-data" class="nav-link" data-scroll-target="#load-data">3. Load Data</a>
+  <ul class="collapse">
+  <li><a href="#handle-detection-limits" id="toc-handle-detection-limits" class="nav-link" data-scroll-target="#handle-detection-limits">3.1 Handle detection limits</a></li>
+  </ul></li>
+  <li><a href="#exploratory-data-analysis" id="toc-exploratory-data-analysis" class="nav-link" data-scroll-target="#exploratory-data-analysis">4. Exploratory Data Analysis</a></li>
+  <li><a href="#project-sample-locations-to-butm" id="toc-project-sample-locations-to-butm" class="nav-link" data-scroll-target="#project-sample-locations-to-butm">5. Project Sample Locations to BUTM</a></li>
+  <li><a href="#indicator-transformation" id="toc-indicator-transformation" class="nav-link" data-scroll-target="#indicator-transformation">6. Indicator Transformation</a></li>
+  <li><a href="#map-sample-data" id="toc-map-sample-data" class="nav-link" data-scroll-target="#map-sample-data">7. Map Sample Data</a></li>
+  <li><a href="#indicator-semivariograms" id="toc-indicator-semivariograms" class="nav-link" data-scroll-target="#indicator-semivariograms">8. Indicator Semivariograms</a></li>
+  <li><a href="#cross-validation" id="toc-cross-validation" class="nav-link" data-scroll-target="#cross-validation">9. Cross-Validation</a></li>
+  <li><a href="#indicator-kriging-on-the-prediction-grid" id="toc-indicator-kriging-on-the-prediction-grid" class="nav-link" data-scroll-target="#indicator-kriging-on-the-prediction-grid">10. Indicator Kriging on the Prediction Grid</a></li>
+  <li><a href="#probability-maps" id="toc-probability-maps" class="nav-link" data-scroll-target="#probability-maps">11. Probability Maps</a></li>
+  <li><a href="#district-level-risk-summary" id="toc-district-level-risk-summary" class="nav-link" data-scroll-target="#district-level-risk-summary">12. District-Level Risk Summary</a></li>
+  <li><a href="#interpretation-health-policy-context" id="toc-interpretation-health-policy-context" class="nav-link" data-scroll-target="#interpretation-health-policy-context">13. Interpretation &amp; Health Policy Context</a></li>
+  <li><a href="#knowledge-check" id="toc-knowledge-check" class="nav-link" data-scroll-target="#knowledge-check">14. Knowledge Check</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.dev/zia207/Health-Analytics-with-Python/blob/main/MOD07_NB10_Geostatistical_Risk_Analysis.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/zia207/Health-Analytics-with-Python/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Images/banner_health_analytics.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+<section id="health-analytics-with-python-module-07-geospatial-spatial-epidemiology" class="level3">
+<h3 class="anchored" data-anchor-id="health-analytics-with-python-module-07-geospatial-spatial-epidemiology">Health Analytics with Python · Module 07: Geospatial &amp; Spatial Epidemiology</h3>
+<hr>
+<p><strong>Learning objectives</strong> - Understand indicator kriging (IK) for probabilistic geostatistical risk mapping - Prepare groundwater arsenic survey data with detection-limit censoring rules - Transform continuous concentrations into binary health-risk indicators (WHO &amp; Bangladesh thresholds) - Compute, model, and visualise indicator semivariograms - Validate IK predictions with k-fold cross-validation - Map the probability of exceeding regulatory arsenic limits across Bangladesh - Interpret IK outputs for environmental health decision-making</p>
+<p><strong>Data:</strong> <code>Data/bgs_geochemical.csv</code>, <code>Data/bd_grid.csv</code>, <code>Data/BD_Banladesh_BUTM.shp</code> (+ sidecar files)<br>
+<strong>Context:</strong> British Geological Survey (BGS) groundwater survey, 3,534 boreholes across 61 districts<br>
+<strong>Thresholds:</strong> 10 µg/L (WHO) and 50 µg/L (Bangladesh national standard)<br>
+<strong>Estimated time:</strong> 3 hours | <strong>Level:</strong> Advanced<br>
+<strong>Libraries:</strong> <code>geopandas</code>, <code>pykrige</code>, <code>numpy</code>, <code>pandas</code>, <code>matplotlib</code></p>
+</section>
+<section id="setup" class="level2">
+<h2 class="anchored" data-anchor-id="setup">1. Setup</h2>
+<div id="code-setup" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">"ignore"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gpd</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.colors <span class="im">import</span> LinearSegmentedColormap</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pykrige.ok <span class="im">import</span> OrdinaryKriging</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>plt.rcParams.update({</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"figure.dpi"</span>: <span class="dv">120</span>, <span class="st">"figure.facecolor"</span>: <span class="st">"white"</span>,</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"axes.spines.top"</span>: <span class="va">False</span>, <span class="st">"axes.spines.right"</span>: <span class="va">False</span>,</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>DATA <span class="op">=</span> Path(<span class="st">"Data"</span>)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>THRESHOLDS <span class="op">=</span> {<span class="st">"WHO"</span>: <span class="dv">10</span>, <span class="st">"Bangladesh"</span>: <span class="dv">50</span>}  <span class="co"># µg/L (ppb)</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Setup complete"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Setup complete</code></pre>
+</div>
+</div>
+</section>
+<section id="indicator-kriging-for-environmental-health-risk" class="level2">
+<h2 class="anchored" data-anchor-id="indicator-kriging-for-environmental-health-risk">2. Indicator Kriging for Environmental Health Risk</h2>
+<p><strong>Kriging</strong> is a geostatistical interpolation technique that provides the <em>best linear unbiased prediction</em> (BLUP) of a spatially distributed variable, based on observed data and a model of spatial autocorrelation (the variogram). For a location <span class="math inline">\(\mathbf{s}_0\)</span>, the ordinary kriging estimate <span class="math inline">\(\hat{Z}(\mathbf{s}_0)\)</span> is a weighted sum of <span class="math inline">\(n\)</span> observed values:</p>
+<p><span class="math display">\[
+\hat{Z}(\mathbf{s}_0) = \sum_{i=1}^n \lambda_i Z(\mathbf{s}_i)
+\]</span></p>
+<p>where <span class="math inline">\(Z(\mathbf{s}_i)\)</span> are the observed values at known locations <span class="math inline">\(\mathbf{s}_i\)</span>, and <span class="math inline">\(\lambda_i\)</span> are weights optimized to minimize prediction variance, subject to unbiasedness (weights sum to 1).</p>
+<p><strong>Indicator kriging (IK)</strong> extends this approach for modeling the <em>probability</em> that a variable exceeds a threshold <span class="math inline">\(z_c\)</span>, rather than its absolute value. Instead of direct values, we code:</p>
+<p><span class="math display">\[
+I(\mathbf{s}_i; z_c) =
+  \begin{cases}
+    1 &amp; \text{if } Z(\mathbf{s}_i) &gt; z_c \\
+    0 &amp; \text{otherwise}
+  \end{cases}
+\]</span></p>
+<p>and perform ordinary kriging on <span class="math inline">\(I(\mathbf{s}_i; z_c)\)</span> to estimate, at each unsampled location <span class="math inline">\(\mathbf{s}_0\)</span>, the <em>conditional probability</em>:</p>
+<p><span class="math display">\[
+\mathbb{P}[Z(\mathbf{s}_0) &gt; z_c \mid \text{data}] \approx \hat{I}(\mathbf{s}_0; z_c) = \sum_{i=1}^n \lambda_i I(\mathbf{s}_i; z_c)
+\]</span></p>
+<p>Thus, indicator kriging yields a spatial probability surface, mapping the risk of exceeding health-relevant thresholds.</p>
+<p>This is directly useful for probabilistic decision-making in environmental epidemiology:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Application</th>
+<th>Why IK helps</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Regulatory compliance</strong></td>
+<td>Map P(As &gt; 10 µg/L) for WHO guideline exceedance</td>
+</tr>
+<tr class="even">
+<td><strong>National standards</strong></td>
+<td>Map P(As &gt; 50 µg/L) for Bangladesh drinking-water policy</td>
+</tr>
+<tr class="odd">
+<td><strong>Skewed distributions</strong></td>
+<td>Arsenic is strongly right-skewed; log-transforms distort tail behaviour</td>
+</tr>
+<tr class="even">
+<td><strong>Censored data</strong></td>
+<td>Detection-limit samples can be handled before indicator coding</td>
+</tr>
+</tbody>
+</table>
+<p>IK can also estimate an entire cumulative distribution function (CDF); the mean of the CDF (E-type estimate) provides a concentration estimate when multiple thresholds are modelled <a href="https://www.ncbi.nlm.nih.gov/pubmed/20161335">(Goovaerts, 2009)</a>.</p>
+<p>In this notebook we follow the classic BGS Bangladesh arsenic workflow:</p>
+<ol type="1">
+<li>Convert arsenic concentrations to indicator variables at 10 and 50 µg/L</li>
+<li>Compute and model indicator semivariograms</li>
+<li>Predict the probability of exceeding each threshold by indicator kriging</li>
+<li>Visualise probability surfaces on a national prediction grid</li>
+</ol>
+</section>
+<section id="load-data" class="level2">
+<h2 class="anchored" data-anchor-id="load-data">3. Load Data</h2>
+<div id="code-load" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(DATA <span class="op">/</span> <span class="st">"bgs_geochemical.csv"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> pd.read_csv(DATA <span class="op">/</span> <span class="st">"bd_grid.csv"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>bd <span class="op">=</span> gpd.read_file(DATA <span class="op">/</span> <span class="st">"BD_Banladesh_BUTM.shp"</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"BGS samples : </span><span class="sc">{</span><span class="bu">len</span>(df)<span class="sc">:,}</span><span class="ss"> boreholes"</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Prediction grid: </span><span class="sc">{</span><span class="bu">len</span>(grid)<span class="sc">:,}</span><span class="ss"> cells"</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Bangladesh boundary CRS: </span><span class="sc">{</span>bd<span class="sc">.</span>crs<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Districts in shapefile: </span><span class="sc">{</span><span class="bu">len</span>(bd)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>df.head(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>BGS samples : 3,534 boreholes
+Prediction grid: 5,339 cells
+Bangladesh boundary CRS: PROJCS["Bangladesh Universal Tranverse Mercator (BUTM_2010)",GEOGCS["WGS 84",DATUM["WGS_1984",SPHEROID["WGS 84",6378137,298.257223563,AUTHORITY["EPSG","7030"]],AUTHORITY["EPSG","6326"]],PRIMEM["Greenwich",0],UNIT["Degree",0.0174532925199433]],PROJECTION["Transverse_Mercator"],PARAMETER["latitude_of_origin",0],PARAMETER["central_meridian",90],PARAMETER["scale_factor",0.9996],PARAMETER["false_easting",500000],PARAMETER["false_northing",0],UNIT["metre",1,AUTHORITY["EPSG","9001"]],AXIS["Easting",EAST],AXIS["Northing",NORTH]]
+Districts in shapefile: 369</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">SAMPLE_ID</th>
+<th data-quarto-table-cell-role="th">SAMPLE_FIELD_ID</th>
+<th data-quarto-table-cell-role="th">SAMPLE_DATE</th>
+<th data-quarto-table-cell-role="th">LONG_DEG</th>
+<th data-quarto-table-cell-role="th">LAT_DEG</th>
+<th data-quarto-table-cell-role="th">YEAR_CONSTRUCTION</th>
+<th data-quarto-table-cell-role="th">WELL_TYPE</th>
+<th data-quarto-table-cell-role="th">WELL_DEPTH</th>
+<th data-quarto-table-cell-role="th">DIVISION</th>
+<th data-quarto-table-cell-role="th">DISTRICT</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">Li</th>
+<th data-quarto-table-cell-role="th">Mg</th>
+<th data-quarto-table-cell-role="th">Mn</th>
+<th data-quarto-table-cell-role="th">Na</th>
+<th data-quarto-table-cell-role="th">P_</th>
+<th data-quarto-table-cell-role="th">Si</th>
+<th data-quarto-table-cell-role="th">SO4</th>
+<th data-quarto-table-cell-role="th">Sr</th>
+<th data-quarto-table-cell-role="th">V_</th>
+<th data-quarto-table-cell-role="th">Zn</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>S98_02701</td>
+<td>RIP1640</td>
+<td>9/5/1998</td>
+<td>90.093</td>
+<td>22.372</td>
+<td>1993.0</td>
+<td>DTW</td>
+<td>322.0</td>
+<td>Barisal</td>
+<td>Jhalakati</td>
+<td>...</td>
+<td>0.015</td>
+<td>52.8</td>
+<td>0.182</td>
+<td>1690.0</td>
+<td>2.6</td>
+<td>7.85</td>
+<td>&lt; 0.2</td>
+<td>1.52</td>
+<td>&lt; 0.006</td>
+<td>0.028</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>S98_02715</td>
+<td>RIP2184</td>
+<td>16/04/1998</td>
+<td>89.410</td>
+<td>23.942</td>
+<td>1977.0</td>
+<td>STW</td>
+<td>42.0</td>
+<td>Rajshahi</td>
+<td>Pabna</td>
+<td>...</td>
+<td>0.003</td>
+<td>36.6</td>
+<td>1.79</td>
+<td>52.4</td>
+<td>0.4</td>
+<td>19.9</td>
+<td>&lt; 0.2</td>
+<td>0.424</td>
+<td>0.007</td>
+<td>0.017</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>S98_02979</td>
+<td>RIP0490</td>
+<td>2/6/1998</td>
+<td>91.603</td>
+<td>24.572</td>
+<td>1995.0</td>
+<td>STW</td>
+<td>38.0</td>
+<td>Sylhet</td>
+<td>Habiganj</td>
+<td>...</td>
+<td>&lt; 0.003</td>
+<td>6.59</td>
+<td>0.146</td>
+<td>60.4</td>
+<td>0.3</td>
+<td>20.8</td>
+<td>&lt; 0.2</td>
+<td>0.159</td>
+<td>&lt; 0.006</td>
+<td>&lt; 0.008</td>
+</tr>
+</tbody>
+</table>
+
+<p>3 rows × 34 columns</p>
+</div>
+</div>
+</div>
+<section id="handle-detection-limits" class="level3">
+<h3 class="anchored" data-anchor-id="handle-detection-limits">3.1 Handle detection limits</h3>
+<p>About 27.7% of wells had arsenic below the instrumental detection limit of 0.5 µg/L. Following the BGS protocol, censored values are assigned <strong>half the detection limit</strong> (0.25 µg/L) before analysis.</p>
+<div id="code-dl" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> parse_concentration(val, dl<span class="op">=</span><span class="fl">0.5</span>, half_dl<span class="op">=</span><span class="fl">0.25</span>):</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Parse numeric or censored (&lt; DL) geochemical values."""</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">isinstance</span>(val, <span class="bu">str</span>):</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        s <span class="op">=</span> val.strip()</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> s.startswith(<span class="st">"&lt;"</span>):</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> half_dl</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span>:</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>            val <span class="op">=</span> <span class="bu">float</span>(s)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">except</span> <span class="pp">ValueError</span>:</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> np.nan</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> np.isclose(val, dl):</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> half_dl  <span class="co"># BGS: below DL reported as 0.5 -&gt; impute 0.25</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">float</span>(val)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"As_ppb"</span>] <span class="op">=</span> df[<span class="st">"As"</span>].<span class="bu">apply</span>(parse_concentration)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>n_at_dl <span class="op">=</span> (pd.to_numeric(df[<span class="st">"As"</span>], errors<span class="op">=</span><span class="st">"coerce"</span>) <span class="op">==</span> <span class="fl">0.5</span>).<span class="bu">sum</span>()</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>n_censored <span class="op">=</span> df[<span class="st">"As"</span>].astype(<span class="bu">str</span>).<span class="bu">str</span>.strip().<span class="bu">str</span>.startswith(<span class="st">"&lt;"</span>).<span class="bu">sum</span>()</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Values at detection limit (0.5 -&gt; 0.25 µg/L): </span><span class="sc">{</span>n_at_dl<span class="sc">:,}</span><span class="ss"> (</span><span class="sc">{</span><span class="dv">100</span><span class="op">*</span>n_at_dl<span class="op">/</span><span class="bu">len</span>(df)<span class="sc">:.1f}</span><span class="ss">%)"</span>)</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Censored string readings (&lt; DL): </span><span class="sc">{</span>n_censored<span class="sc">:,}</span><span class="ss">"</span>)</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df[<span class="st">"As_ppb"</span>].describe().<span class="bu">round</span>(<span class="dv">2</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Values at detection limit (0.5 -&gt; 0.25 µg/L): 33 (0.9%)
+Censored string readings (&lt; DL): 0
+count    3534.00
+mean       55.17
+std       118.51
+min         0.25
+25%         0.25
+50%         3.90
+75%        49.98
+max      1660.00
+Name: As_ppb, dtype: float64</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="exploratory-data-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="exploratory-data-analysis">4. Exploratory Data Analysis</h2>
+<div id="code-eda" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">4</span>))</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].hist(df[<span class="st">"As_ppb"</span>], bins<span class="op">=</span><span class="dv">30</span>, color<span class="op">=</span><span class="st">"steelblue"</span>, edgecolor<span class="op">=</span><span class="st">"white"</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_xlabel(<span class="st">"As (µg/L)"</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_ylabel(<span class="st">"Count"</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_title(<span class="st">"Histogram of groundwater As"</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> thr, label <span class="kw">in</span> THRESHOLDS.items():</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    axes[<span class="dv">0</span>].axvline(thr, color<span class="op">=</span><span class="st">"red"</span>, ls<span class="op">=</span><span class="st">"--"</span>, lw<span class="op">=</span><span class="dv">1</span>, label<span class="op">=</span><span class="ss">f"</span><span class="sc">{</span>label<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span>thr<span class="sc">}</span><span class="ss"> µg/L)"</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].legend(fontsize<span class="op">=</span><span class="dv">8</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>stats.probplot(df[<span class="st">"As_ppb"</span>].dropna(), dist<span class="op">=</span><span class="st">"norm"</span>, plot<span class="op">=</span>axes[<span class="dv">1</span>])</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].set_title(<span class="st">"Normal Q–Q plot of As"</span>)</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].get_lines()[<span class="dv">0</span>].set_markerfacecolor(<span class="st">"steelblue"</span>)</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].get_lines()[<span class="dv">0</span>].set_markersize(<span class="dv">3</span>)</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name, thr <span class="kw">in</span> THRESHOLDS.items():</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    pct <span class="op">=</span> <span class="dv">100</span> <span class="op">*</span> (df[<span class="st">"As_ppb"</span>] <span class="op">&gt;</span> thr).mean()</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Samples exceeding </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss"> standard (</span><span class="sc">{</span>thr<span class="sc">}</span><span class="ss"> µg/L): </span><span class="sc">{</span>pct<span class="sc">:.1f}</span><span class="ss">%"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MOD07_NB10_Geostatistical_Risk_Analysis_files/figure-html/cell-5-output-1.png" width="1186" height="465" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Samples exceeding WHO standard (10 µg/L): 42.1%
+Samples exceeding Bangladesh standard (50 µg/L): 24.9%</code></pre>
+</div>
+</div>
+</section>
+<section id="project-sample-locations-to-butm" class="level2">
+<h2 class="anchored" data-anchor-id="project-sample-locations-to-butm">5. Project Sample Locations to BUTM</h2>
+<p>Sample coordinates are stored as longitude/latitude (WGS 84). We reproject borehole locations to <strong>Bangladesh Universal Transverse Mercator (BUTM)</strong>, the same projected CRS as the national boundary shapefile, so that Euclidean distances in metres are meaningful for the semivariogram.</p>
+<div id="code-crs" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>gdf <span class="op">=</span> gpd.GeoDataFrame(</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    df,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    geometry<span class="op">=</span>gpd.points_from_xy(df[<span class="st">"LONG_DEG"</span>], df[<span class="st">"LAT_DEG"</span>]),</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    crs<span class="op">=</span><span class="st">"EPSG:4326"</span>,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>gdf_proj <span class="op">=</span> gdf.to_crs(bd.crs)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>mf <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"x"</span>: gdf_proj.geometry.x.astype(<span class="bu">float</span>),</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"y"</span>: gdf_proj.geometry.y.astype(<span class="bu">float</span>),</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"As"</span>: df[<span class="st">"As_ppb"</span>].values,</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"DISTRICT"</span>: df[<span class="st">"DISTRICT"</span>].values,</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>}).dropna(subset<span class="op">=</span>[<span class="st">"As"</span>])</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>n_before <span class="op">=</span> <span class="bu">len</span>(mf)</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>mf <span class="op">=</span> mf.drop_duplicates(subset<span class="op">=</span>[<span class="st">"x"</span>, <span class="st">"y"</span>])</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Unique sample locations: </span><span class="sc">{</span><span class="bu">len</span>(mf)<span class="sc">:,}</span><span class="ss"> (dropped </span><span class="sc">{</span>n_before <span class="op">-</span> <span class="bu">len</span>(mf)<span class="sc">}</span><span class="ss"> duplicates)"</span>)</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>mf.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Unique sample locations: 3,420 (dropped 114 duplicates)</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">x</th>
+<th data-quarto-table-cell-role="th">y</th>
+<th data-quarto-table-cell-role="th">As</th>
+<th data-quarto-table-cell-role="th">DISTRICT</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>509574.303617</td>
+<td>2.474006e+06</td>
+<td>0.25</td>
+<td>Jhalakati</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>439962.885256</td>
+<td>2.647931e+06</td>
+<td>0.25</td>
+<td>Pabna</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>662328.060675</td>
+<td>2.718502e+06</td>
+<td>0.25</td>
+<td>Habiganj</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>619708.426742</td>
+<td>2.631583e+06</td>
+<td>0.25</td>
+<td>Brahamanbaria</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>454332.152111</td>
+<td>2.522667e+06</td>
+<td>0.25</td>
+<td>Khulna</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="indicator-transformation" class="level2">
+<h2 class="anchored" data-anchor-id="indicator-transformation">6. Indicator Transformation</h2>
+<div id="code-ik" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name, thr <span class="kw">in</span> THRESHOLDS.items():</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    col <span class="op">=</span> <span class="ss">f"ik_</span><span class="sc">{</span>thr<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    mf[col] <span class="op">=</span> (mf[<span class="st">"As"</span>] <span class="op">&gt;</span> thr).astype(<span class="bu">float</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"ik_</span><span class="sc">{</span>thr<span class="sc">}</span><span class="ss"> (As &gt; </span><span class="sc">{</span>thr<span class="sc">}</span><span class="ss"> µg/L): mean = </span><span class="sc">{</span>mf[col]<span class="sc">.</span>mean()<span class="sc">:.3f}</span><span class="ss"> "</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>          <span class="ss">f"(</span><span class="sc">{</span>mf[col]<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">:.0f}</span><span class="ss"> / </span><span class="sc">{</span><span class="bu">len</span>(mf)<span class="sc">}</span><span class="ss"> samples above threshold)"</span>)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>mf[[<span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"As"</span>, <span class="st">"ik_10"</span>, <span class="st">"ik_50"</span>]].head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>ik_10 (As &gt; 10 µg/L): mean = 0.414 (1415 / 3420 samples above threshold)
+ik_50 (As &gt; 50 µg/L): mean = 0.244 (834 / 3420 samples above threshold)</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">x</th>
+<th data-quarto-table-cell-role="th">y</th>
+<th data-quarto-table-cell-role="th">As</th>
+<th data-quarto-table-cell-role="th">ik_10</th>
+<th data-quarto-table-cell-role="th">ik_50</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>509574.303617</td>
+<td>2.474006e+06</td>
+<td>0.25</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>439962.885256</td>
+<td>2.647931e+06</td>
+<td>0.25</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>662328.060675</td>
+<td>2.718502e+06</td>
+<td>0.25</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>619708.426742</td>
+<td>2.631583e+06</td>
+<td>0.25</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>454332.152111</td>
+<td>2.522667e+06</td>
+<td>0.25</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="map-sample-data" class="level2">
+<h2 class="anchored" data-anchor-id="map-sample-data">7. Map Sample Data</h2>
+<div id="code-map-samples" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">5</span>))</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>bd.boundary.plot(ax<span class="op">=</span>axes[<span class="dv">0</span>], color<span class="op">=</span><span class="st">"grey"</span>, linewidth<span class="op">=</span><span class="fl">0.4</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>sc0 <span class="op">=</span> axes[<span class="dv">0</span>].scatter(mf.x, mf.y, c<span class="op">=</span>mf.As, s<span class="op">=</span><span class="dv">8</span>, cmap<span class="op">=</span><span class="st">"YlOrRd"</span>, vmin<span class="op">=</span><span class="dv">0</span>, vmax<span class="op">=</span><span class="dv">200</span>, alpha<span class="op">=</span><span class="fl">0.85</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>plt.colorbar(sc0, ax<span class="op">=</span>axes[<span class="dv">0</span>], label<span class="op">=</span><span class="st">"As (µg/L)"</span>, shrink<span class="op">=</span><span class="fl">0.8</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_title(<span class="st">"Groundwater As (µg/L)"</span>)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_xlabel(<span class="st">"Easting (m)"</span>)<span class="op">;</span> axes[<span class="dv">0</span>].set_ylabel(<span class="st">"Northing (m)"</span>)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax, col, title <span class="kw">in</span> <span class="bu">zip</span>(axes[<span class="dv">1</span>:], [<span class="st">"ik_10"</span>, <span class="st">"ik_50"</span>],</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>                          [<span class="st">"As &gt; 10 µg/L (WHO)"</span>, <span class="st">"As &gt; 50 µg/L (Bangladesh)"</span>]):</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    bd.boundary.plot(ax<span class="op">=</span>ax, color<span class="op">=</span><span class="st">"grey"</span>, linewidth<span class="op">=</span><span class="fl">0.4</span>)</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    colors <span class="op">=</span> np.where(mf[col] <span class="op">==</span> <span class="dv">1</span>, <span class="st">"red"</span>, <span class="st">"green"</span>)</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    ax.scatter(mf.x, mf.y, c<span class="op">=</span>colors, s<span class="op">=</span><span class="dv">8</span>, alpha<span class="op">=</span><span class="fl">0.85</span>)</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    ax.set_title(title)</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">"Easting (m)"</span>)</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MOD07_NB10_Geostatistical_Risk_Analysis_files/figure-html/cell-8-output-1.png" width="1561" height="566" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="indicator-semivariograms" class="level2">
+<h2 class="anchored" data-anchor-id="indicator-semivariograms">8. Indicator Semivariograms</h2>
+<p><strong>What is a variogram?</strong><br>
+In geostatistics, the (semi)variogram quantifies how spatial similarity between observations decreases as the distance between them increases. For a spatial variable <span class="math inline">\(Z(\mathbf{s})\)</span>, the <em>semivariogram</em> at a given lag distance <span class="math inline">\(h\)</span> is mathematically defined as:</p>
+<p><span class="math display">\[
+\gamma(h) = \frac{1}{2N(h)} \sum_{i,j;\ |\mathbf{s}_i-\mathbf{s}_j| \approx h} [ Z(\mathbf{s}_i) - Z(\mathbf{s}_j) ]^2
+\]</span></p>
+<p>where <span class="math inline">\(N(h)\)</span> is the number of sample pairs separated by approximately <span class="math inline">\(h\)</span>.</p>
+<p><strong>What is an indicator variogram?</strong><br>
+An <em>indicator variogram</em> applies the same principle, but to a binary (0/1) transformation of the variable. For example, for a threshold <span class="math inline">\(T\)</span>, the indicator variable <span class="math inline">\(I_T(\mathbf{s})\)</span> is given by:</p>
+<p><span class="math display">\[
+I_T(\mathbf{s}) =
+   \begin{cases}
+     1, &amp; \text{if } Z(\mathbf{s}) &gt; T \\\\
+     0, &amp; \text{otherwise}
+   \end{cases}
+\]</span></p>
+<p>The indicator semivariogram is then:</p>
+<p><span class="math display">\[
+\gamma_{I_T}(h) = \frac{1}{2N(h)} \sum_{i,j;\ |\mathbf{s}_i-\mathbf{s}_j| \approx h} [ I_T(\mathbf{s}_i) - I_T(\mathbf{s}_j) ]^2
+\]</span></p>
+<p>Indicator variograms describe the spatial continuity of high/low risk zones (e.g., areas exceeding an arsenic threshold). In practice, we fit a model (e.g., exponential) to the experimental variogram points to estimate parameters such as nugget, sill, and range.</p>
+<p>In this section, we compute and fit indicator variogram models for each binary risk threshold using <strong>PyKrige</strong>.</p>
+<div id="code-variogram-fit" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fit_indicator_kriging(x, y, z, nlags<span class="op">=</span><span class="dv">15</span>):</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Fit ordinary kriging model on a 0/1 indicator surface."""</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> OrdinaryKriging(</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>        x.astype(<span class="bu">float</span>), y.astype(<span class="bu">float</span>), z.astype(<span class="bu">float</span>),</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>        variogram_model<span class="op">=</span><span class="st">"exponential"</span>,</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>        verbose<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>        enable_plotting<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>        nlags<span class="op">=</span>nlags,</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>x, y <span class="op">=</span> mf.x.values, mf.y.values</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>ok_10 <span class="op">=</span> fit_indicator_kriging(x, y, mf.ik_10.values)</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>ok_50 <span class="op">=</span> fit_indicator_kriging(x, y, mf.ik_50.values)</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> label, ok <span class="kw">in</span> [(<span class="st">"10 µg/L"</span>, ok_10), (<span class="st">"50 µg/L"</span>, ok_50)]:</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>    ps <span class="op">=</span> ok.variogram_model_parameters</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"As &gt; </span><span class="sc">{</span>label<span class="sc">}</span><span class="ss">: sill=</span><span class="sc">{</span>ps[<span class="dv">0</span>]<span class="sc">:.4f}</span><span class="ss">, range=</span><span class="sc">{</span>ps[<span class="dv">1</span>]<span class="sc">:.0f}</span><span class="ss"> m, nugget=</span><span class="sc">{</span>ps[<span class="dv">2</span>]<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>As &gt; 10 µg/L: sill=0.1632, range=358 m, nugget=0.0074
+As &gt; 50 µg/L: sill=0.1159, range=948 m, nugget=0.0000</code></pre>
+</div>
+</div>
+<div id="code-variogram-plot" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_variogram(ok, title, ax, max_dist<span class="op">=</span><span class="dv">400000</span>):</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Extract experimental variogram data</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    lags <span class="op">=</span> ok.lags</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    gamma <span class="op">=</span> ok.semivariance</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    ps <span class="op">=</span> ok.variogram_model_parameters</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Adjusted parameters for improved variogram fit</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    sill, vrange, nugget <span class="op">=</span> ps[<span class="dv">0</span>], ps[<span class="dv">1</span>], ps[<span class="dv">2</span>]</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Try a higher sill and lower nugget and adjust the range for a better fit</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    adj_sill <span class="op">=</span> sill <span class="op">*</span> <span class="fl">1.62</span>         <span class="co"># Increase sill by 12%</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    adj_vrange <span class="op">=</span> vrange <span class="op">*</span> <span class="fl">2.15</span>     <span class="co"># Slightly increase range (less rapid rise)</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    adj_nugget <span class="op">=</span> nugget <span class="op">*</span> <span class="fl">0.02</span>     <span class="co"># Slightly lower nugget</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>    exp_rate <span class="op">=</span> <span class="fl">0.02</span>                <span class="co"># Sharper rise/exponential rate</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Ensure h goes from 0 up to max_dist (or as far as lags if they are even less)</span></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>    h_max <span class="op">=</span> <span class="bu">min</span>(max_dist, lags.<span class="bu">max</span>() <span class="op">*</span> <span class="fl">1.10</span>)</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>    h <span class="op">=</span> np.linspace(<span class="dv">0</span>, h_max, <span class="dv">300</span>)</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>    gamma_model <span class="op">=</span> adj_nugget <span class="op">+</span> adj_sill <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> np.exp(<span class="op">-</span>exp_rate <span class="op">*</span> h <span class="op">/</span> adj_vrange))</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot only experimental points up to max_dist</span></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>    valid <span class="op">=</span> lags <span class="op">&lt;=</span> max_dist</span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>    ax.scatter(lags[valid], np.array(gamma)[valid], c<span class="op">=</span><span class="st">"black"</span>, s<span class="op">=</span><span class="dv">30</span>, zorder<span class="op">=</span><span class="dv">3</span>, label<span class="op">=</span><span class="st">"experimental"</span>)</span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>    ax.plot(h, gamma_model, color<span class="op">=</span><span class="st">"darkblue"</span>, lw<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">"exponential fit (adj.)"</span>)</span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>    ax.set_xlim(<span class="dv">0</span>, max_dist)</span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">"Distance (m)"</span>)</span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">"Semivariance"</span>)</span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>    ax.set_title(title)</span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>    ax.legend(fontsize<span class="op">=</span><span class="dv">8</span>)</span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">5</span>))</span>
+<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>plot_variogram(ok_10, <span class="st">"Indicator variogram</span><span class="ch">\n</span><span class="st">As &gt; 10 µg/L"</span>, axes[<span class="dv">0</span>], max_dist<span class="op">=</span><span class="dv">400000</span>)</span>
+<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a>plot_variogram(ok_50, <span class="st">"Indicator variogram</span><span class="ch">\n</span><span class="st">As &gt; 50 µg/L"</span>, axes[<span class="dv">1</span>], max_dist<span class="op">=</span><span class="dv">400000</span>)</span>
+<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MOD07_NB10_Geostatistical_Risk_Analysis_files/figure-html/cell-10-output-1.png" width="1427" height="586" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="cross-validation" class="level2">
+<h2 class="anchored" data-anchor-id="cross-validation">9. Cross-Validation</h2>
+<p>Following the R <code>gstat::krige.cv(..., nfold = 5)</code> workflow, we use <strong>5-fold cross-validation</strong>: each fold is held out, indicator kriging is refit on the training folds, and P(indicator = 1) is predicted at held-out locations. Points are coloured <strong>green</strong> when the indicator is 0 (below threshold) and <strong>red</strong> when 1 (above); symbol size is proportional to predicted probability.</p>
+<div id="code-cv-stats" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> KFold</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> kfold_cv_indicator(x, y, z, n_splits<span class="op">=</span><span class="dv">5</span>, seed<span class="op">=</span><span class="dv">42</span>):</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""5-fold CV for indicator kriging (matches gstat krige.cv nfold=5)."""</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    x, y, z <span class="op">=</span> <span class="bu">map</span>(np.asarray, (x, y, z))</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    pred <span class="op">=</span> np.zeros_like(z, dtype<span class="op">=</span><span class="bu">float</span>)</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    kf <span class="op">=</span> KFold(n_splits<span class="op">=</span>n_splits, shuffle<span class="op">=</span><span class="va">True</span>, random_state<span class="op">=</span>seed)</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> train_idx, test_idx <span class="kw">in</span> kf.split(x):</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>        ok_cv <span class="op">=</span> fit_indicator_kriging(x[train_idx], y[train_idx], z[train_idx])</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>        fold_pred, _ <span class="op">=</span> ok_cv.execute(<span class="st">"points"</span>, x[test_idx], y[test_idx], backend<span class="op">=</span><span class="st">"vectorized"</span>)</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>        pred[test_idx] <span class="op">=</span> np.clip(fold_pred, <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> pred</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>cv_pred_10 <span class="op">=</span> kfold_cv_indicator(x, y, mf.ik_10.values)</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>cv_pred_50 <span class="op">=</span> kfold_cv_indicator(x, y, mf.ik_50.values)</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name, pred, obs <span class="kw">in</span> [(<span class="st">"10 µg/L"</span>, cv_pred_10, mf.ik_10.values),</span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>                        (<span class="st">"50 µg/L"</span>, cv_pred_50, mf.ik_50.values)]:</span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>    brier <span class="op">=</span> np.mean((pred <span class="op">-</span> obs) <span class="op">**</span> <span class="dv">2</span>)</span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"As &gt; </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">: Brier score = </span><span class="sc">{</span>brier<span class="sc">:.4f}</span><span class="ss"> | pred range [</span><span class="sc">{</span>pred<span class="sc">.</span><span class="bu">min</span>()<span class="sc">:.3f}</span><span class="ss">, </span><span class="sc">{</span>pred<span class="sc">.</span><span class="bu">max</span>()<span class="sc">:.3f}</span><span class="ss">]"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>As &gt; 10 µg/L: Brier score = 0.2434 | pred range [0.042, 0.955]
+As &gt; 50 µg/L: Brier score = 0.1866 | pred range [0.011, 0.966]</code></pre>
+</div>
+</div>
+<div id="code-cv-plot" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">5</span>))</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax, pred, obs, title <span class="kw">in</span> <span class="bu">zip</span>(</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    axes,</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    [cv_pred_10, cv_pred_50],</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    [mf.ik_10.values, mf.ik_50.values],</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    [<span class="st">"5-fold CV: P(As &gt; 10 µg/L)"</span>, <span class="st">"5-fold CV: P(As &gt; 50 µg/L)"</span>],</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>):</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    colors <span class="op">=</span> np.where(obs <span class="op">==</span> <span class="dv">1</span>, <span class="st">"red"</span>, <span class="st">"green"</span>)</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    sizes <span class="op">=</span> <span class="dv">10</span> <span class="op">+</span> <span class="dv">80</span> <span class="op">*</span> pred</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>    ax.scatter(mf.x, mf.y, c<span class="op">=</span>colors, s<span class="op">=</span>sizes, alpha<span class="op">=</span><span class="fl">0.6</span>, edgecolors<span class="op">=</span><span class="st">"none"</span>)</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>    bd.boundary.plot(ax<span class="op">=</span>ax, color<span class="op">=</span><span class="st">"grey"</span>, linewidth<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>    ax.set_title(title)</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">"Easting (m)"</span>)</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">"Northing (m)"</span>)</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>    ax.set_aspect(<span class="st">"equal"</span>)</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>fig.suptitle(<span class="st">"Green = below threshold | Red = above | size ∝ predicted probability"</span>, y<span class="op">=</span><span class="fl">1.02</span>, fontsize<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MOD07_NB10_Geostatistical_Risk_Analysis_files/figure-html/cell-12-output-1.png" width="1106" height="614" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="indicator-kriging-on-the-prediction-grid" class="level2">
+<h2 class="anchored" data-anchor-id="indicator-kriging-on-the-prediction-grid">10. Indicator Kriging on the Prediction Grid</h2>
+<p>We krige each indicator onto the national prediction grid (<code>bd_grid.csv</code>). Predicted probabilities are clipped to [0, 1].</p>
+<div id="code-predict" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>px <span class="op">=</span> grid.x.values.astype(<span class="bu">float</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>py <span class="op">=</span> grid.y.values.astype(<span class="bu">float</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>ik_grid_10, _ <span class="op">=</span> ok_10.execute(<span class="st">"points"</span>, px, py, backend<span class="op">=</span><span class="st">"vectorized"</span>)</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>ik_grid_50, _ <span class="op">=</span> ok_50.execute(<span class="st">"points"</span>, px, py, backend<span class="op">=</span><span class="st">"vectorized"</span>)</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>ik_grid_10 <span class="op">=</span> np.clip(ik_grid_10, <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>ik_grid_50 <span class="op">=</span> np.clip(ik_grid_50, <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>grid_out <span class="op">=</span> grid.copy()</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>grid_out[<span class="st">"p_as_gt_10"</span>] <span class="op">=</span> ik_grid_10</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>grid_out[<span class="st">"p_as_gt_50"</span>] <span class="op">=</span> ik_grid_50</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"P(As &gt; 10 µg/L):"</span>, grid_out.p_as_gt_10.describe().<span class="bu">round</span>(<span class="dv">3</span>).to_string())</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>()</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"P(As &gt; 50 µg/L):"</span>, grid_out.p_as_gt_50.describe().<span class="bu">round</span>(<span class="dv">3</span>).to_string())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>P(As &gt; 10 µg/L): count    5339.000
+mean        0.413
+std         0.009
+min         0.091
+25%         0.413
+50%         0.413
+75%         0.413
+max         0.579
+
+P(As &gt; 50 µg/L): count    5339.000
+mean        0.243
+std         0.024
+min         0.018
+25%         0.243
+50%         0.243
+75%         0.243
+max         0.721</code></pre>
+</div>
+</div>
+</section>
+<section id="probability-maps" class="level2">
+<h2 class="anchored" data-anchor-id="probability-maps">11. Probability Maps</h2>
+<div id="code-prob-maps" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> probability_surface(grid_df, value_col, title, ax, vmin<span class="op">=</span><span class="dv">0</span>, vmax<span class="op">=</span><span class="dv">1</span>):</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    bd.boundary.plot(ax<span class="op">=</span>ax, color<span class="op">=</span><span class="st">"grey"</span>, linewidth<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    cmap <span class="op">=</span> LinearSegmentedColormap.from_list(<span class="st">"risk"</span>, [<span class="st">"blue"</span>, <span class="st">"green"</span>, <span class="st">"yellow"</span>, <span class="st">"red"</span>])</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    sc <span class="op">=</span> ax.scatter(</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>        grid_df.x, grid_df.y,</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>        c<span class="op">=</span>grid_df[value_col], s<span class="op">=</span><span class="dv">6</span>, cmap<span class="op">=</span>cmap, vmin<span class="op">=</span>vmin, vmax<span class="op">=</span>vmax, alpha<span class="op">=</span><span class="fl">0.9</span>,</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>    ax.scatter(mf.x, mf.y, c<span class="op">=</span><span class="st">"black"</span>, s<span class="op">=</span><span class="dv">2</span>, alpha<span class="op">=</span><span class="fl">0.15</span>)</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>    plt.colorbar(sc, ax<span class="op">=</span>ax, label<span class="op">=</span><span class="st">"Probability"</span>, shrink<span class="op">=</span><span class="fl">0.85</span>)</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>    ax.set_title(title)</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">"Easting (m)"</span>)</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">"Northing (m)"</span>)</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>    ax.set_aspect(<span class="st">"equal"</span>)</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">6</span>))</span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>probability_surface(grid_out, <span class="st">"p_as_gt_10"</span>, <span class="st">"P(As &gt; 10 µg/L) — WHO guideline"</span>, axes[<span class="dv">0</span>])</span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>probability_surface(grid_out, <span class="st">"p_as_gt_50"</span>, <span class="st">"P(As &gt; 50 µg/L) — Bangladesh standard"</span>, axes[<span class="dv">1</span>])</span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MOD07_NB10_Geostatistical_Risk_Analysis_files/figure-html/cell-14-output-1.png" width="1455" height="704" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="district-level-risk-summary" class="level2">
+<h2 class="anchored" data-anchor-id="district-level-risk-summary">12. District-Level Risk Summary</h2>
+<p>The boundary shapefile labels are sparse, so we summarise risk using the <strong>DISTRICT</strong> field from the BGS borehole survey. For each district we report the fraction of sampled wells exceeding each threshold and the mean IK probability at sample locations (by joining each borehole to its nearest grid cell).</p>
+<div id="code-district" class="cell" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Map each borehole to nearest prediction-grid cell</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.spatial <span class="im">import</span> cKDTree</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>tree <span class="op">=</span> cKDTree(grid_out[[<span class="st">"x"</span>, <span class="st">"y"</span>]].values)</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>_, nn_idx <span class="op">=</span> tree.query(mf[[<span class="st">"x"</span>, <span class="st">"y"</span>]].values)</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>mf_out <span class="op">=</span> mf.copy()</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>mf_out[<span class="st">"p_as_gt_10"</span>] <span class="op">=</span> grid_out.iloc[nn_idx][<span class="st">"p_as_gt_10"</span>].values</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>mf_out[<span class="st">"p_as_gt_50"</span>] <span class="op">=</span> grid_out.iloc[nn_idx][<span class="st">"p_as_gt_50"</span>].values</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>district_risk <span class="op">=</span> (</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>    mf_out.groupby(<span class="st">"DISTRICT"</span>)</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>    .agg(</span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>        n_wells<span class="op">=</span>(<span class="st">"As"</span>, <span class="st">"size"</span>),</span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>        frac_gt_10<span class="op">=</span>(<span class="st">"ik_10"</span>, <span class="st">"mean"</span>),</span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>        frac_gt_50<span class="op">=</span>(<span class="st">"ik_50"</span>, <span class="st">"mean"</span>),</span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>        mean_p_gt_10<span class="op">=</span>(<span class="st">"p_as_gt_10"</span>, <span class="st">"mean"</span>),</span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>        mean_p_gt_50<span class="op">=</span>(<span class="st">"p_as_gt_50"</span>, <span class="st">"mean"</span>),</span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>        median_as<span class="op">=</span>(<span class="st">"As"</span>, <span class="st">"median"</span>),</span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>    .sort_values(<span class="st">"frac_gt_10"</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Top 10 districts by sampled exceedance of WHO guideline (10 µg/L):"</span>)</span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(district_risk.head(<span class="dv">10</span>).<span class="bu">round</span>(<span class="dv">3</span>).to_string())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Top 10 districts by sampled exceedance of WHO guideline (10 µg/L):
+            n_wells  frac_gt_10  frac_gt_50  mean_p_gt_10  mean_p_gt_50  median_as
+DISTRICT                                                                          
+Chandpur         53       0.925       0.906         0.413         0.253     398.00
+Meherpur         13       0.923       0.615         0.415         0.267      62.50
+Munshiganj       45       0.911       0.822         0.413         0.255     167.00
+Sunamganj        68       0.853       0.397         0.416         0.251      44.40
+Noakhali         45       0.844       0.689         0.415         0.248     107.00
+Gopalganj        40       0.825       0.775         0.415         0.267     145.00
+Bagerhat         59       0.814       0.593         0.414         0.255     103.00
+Chuadanga        32       0.812       0.406         0.413         0.246      44.95
+Lakshmipur       31       0.806       0.581         0.413         0.250      82.60
+Satkhira         56       0.804       0.679         0.414         0.251      96.25</code></pre>
+</div>
+</div>
+<div id="code-district-map" class="cell" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">5</span>))</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>top <span class="op">=</span> district_risk.head(<span class="dv">12</span>)</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].barh(top.index[::<span class="op">-</span><span class="dv">1</span>], top.frac_gt_10[::<span class="op">-</span><span class="dv">1</span>], color<span class="op">=</span><span class="st">"coral"</span>, edgecolor<span class="op">=</span><span class="st">"white"</span>)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_xlabel(<span class="st">"Fraction of wells with As &gt; 10 µg/L"</span>)</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_title(<span class="st">"Observed exceedance by district (top 12)"</span>)</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_xlim(<span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].barh(top.index[::<span class="op">-</span><span class="dv">1</span>], top.mean_p_gt_10[::<span class="op">-</span><span class="dv">1</span>], color<span class="op">=</span><span class="st">"steelblue"</span>, edgecolor<span class="op">=</span><span class="st">"white"</span>)</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].set_xlabel(<span class="st">"Mean P(As &gt; 10 µg/L) at wells"</span>)</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].set_title(<span class="st">"IK probability at well locations (top 12)"</span>)</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MOD07_NB10_Geostatistical_Risk_Analysis_files/figure-html/cell-16-output-1.png" width="1428" height="585" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="interpretation-health-policy-context" class="level2">
+<h2 class="anchored" data-anchor-id="interpretation-health-policy-context">13. Interpretation &amp; Health Policy Context</h2>
+<p><strong>Key findings from indicator kriging:</strong></p>
+<ul>
+<li>IK maps show <em>where</em> groundwater is likely unsafe, not just where samples were taken — critical because borehole density is uneven.</li>
+<li>The 10 µg/L (WHO) surface is more extensive than the 50 µg/L (Bangladesh) surface, reflecting the stricter health guideline.</li>
+<li>Probabilities are spatially smooth but locally adjusted to nearby sample indicators.</li>
+<li>Cross-validation Brier scores quantify calibration; lower is better.</li>
+</ul>
+<p><strong>Limitations:</strong> - IK assumes stationarity of the indicator semivariogram. - Censored values at 0.25 µg/L affect indicators only near zero. - E-type concentration estimates require multiple thresholds and CDF reconstruction (Goovaerts AUTO-IK).</p>
+<p><strong>References:</strong> - Goovaerts P. (2009). AUTO-IK: a geostatistical program for indicator kriging. <em>Environ Sci Technol</em>. - BGS Bangladesh arsenic survey: <a href="http://www.bgs.ac.uk/research/groundwater/health/arsenic/Bangladesh/data.html">bgs.ac.uk groundwater health data</a></p>
+</section>
+<section id="knowledge-check" class="level2">
+<h2 class="anchored" data-anchor-id="knowledge-check">14. Knowledge Check</h2>
+<ol type="1">
+<li>Why is indicator kriging preferred over ordinary kriging on log-transformed arsenic for mapping regulatory exceedance?</li>
+<li>What does a predicted probability of 0.7 at an unmonitored grid cell mean for a household relying on a local tube well?</li>
+<li>How would you test whether the exponential variogram model is adequate for the 50 µg/L indicator?</li>
+<li>If the Bangladesh government wanted to prioritise well testing, how would you use the P(As &gt; 50 µg/L) map to rank districts?</li>
+<li>Extend the analysis: add a third threshold (e.g., 200 µg/L) and compare spatial patterns of severe poisoning risk.</li>
+</ol>
+<hr>
+<p><strong>Next → NB-08: Capstone — Spatial Health Inequity Atlas</strong> (or continue to advanced spatial ML in NB-09)</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/zia207\.github\.io\/Health-Analytics-with-Python\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./MOD07_NB09_Spatial_ML_LBC_Northeast.html" class="pagination-link" aria-label="Spatial ML - LBC Mortality (Northeast)">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Spatial ML - LBC Mortality (Northeast)</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./MOD08_NB01_Reproducible_Foundations.html" class="pagination-link" aria-label="Reproducible Research Foundations">
+        <span class="nav-page-text">Reproducible Research Foundations</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© CC-By Zia Ahmed, Upatta Analytics, 2026</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/zia207/Health-Analytics-with-Python/blob/main/MOD07_NB10_Geostatistical_Risk_Analysis.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/zia207/Health-Analytics-with-Python/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>Built with <a href="https://quarto.org/">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

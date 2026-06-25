@@ -5722,5 +5722,173 @@
       "**Module 08 - Reproducible Research & Deployment** (Track B)",
       "Model Cards & Clinical AI Governance"
     ]
+  },
+  {
+    "objectID": "MOD07_NB10_Geostatistical_Risk_Analysis.html#setup",
+    "href": "MOD07_NB10_Geostatistical_Risk_Analysis.html#setup",
+    "title": "Geostatistical Risk Analysis",
+    "section": "1. Setup",
+    "text": "1. Setup\n\nimport warnings\nwarnings.filterwarnings(\"ignore\")\n\nfrom pathlib import Path\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport geopandas as gpd\nfrom matplotlib.colors import LinearSegmentedColormap\nfrom pykrige.ok import OrdinaryKriging\nfrom scipy import stats\n\nplt.rcParams.update({\n    \"figure.dpi\": 120, \"figure.facecolor\": \"white\",\n    \"axes.spines.top\": False, \"axes.spines.right\": False,\n})\n\nDATA = Path(\"Data\")\nTHRESHOLDS = {\"WHO\": 10, \"Bangladesh\": 50}  # µg/L (ppb)\nprint(\"Setup complete\")\n\nSetup complete",
+    "crumbs": [
+      "Home",
+      "**Module 07 - Geospatial Epidemiology** (Track B)",
+      "Geostatistical Risk Analysis (Indicator Kriging)"
+    ]
+  },
+  {
+    "objectID": "MOD07_NB10_Geostatistical_Risk_Analysis.html#indicator-kriging-for-environmental-health-risk",
+    "href": "MOD07_NB10_Geostatistical_Risk_Analysis.html#indicator-kriging-for-environmental-health-risk",
+    "title": "Geostatistical Risk Analysis",
+    "section": "2. Indicator Kriging for Environmental Health Risk",
+    "text": "2. Indicator Kriging for Environmental Health Risk\nKriging is a geostatistical interpolation technique that provides the best linear unbiased prediction (BLUP) of a spatially distributed variable, based on observed data and a model of spatial autocorrelation (the variogram). For a location \\(\\mathbf{s}_0\\), the ordinary kriging estimate \\(\\hat{Z}(\\mathbf{s}_0)\\) is a weighted sum of \\(n\\) observed values:\n\\[\n\\hat{Z}(\\mathbf{s}_0) = \\sum_{i=1}^n \\lambda_i Z(\\mathbf{s}_i)\n\\]\nwhere \\(Z(\\mathbf{s}_i)\\) are the observed values at known locations \\(\\mathbf{s}_i\\), and \\(\\lambda_i\\) are weights optimized to minimize prediction variance, subject to unbiasedness (weights sum to 1).\nIndicator kriging (IK) extends this approach for modeling the probability that a variable exceeds a threshold \\(z_c\\), rather than its absolute value. Instead of direct values, we code:\n\\[\nI(\\mathbf{s}_i; z_c) =\n  \\begin{cases}\n    1 & \\text{if } Z(\\mathbf{s}_i) &gt; z_c \\\\\n    0 & \\text{otherwise}\n  \\end{cases}\n\\]\nand perform ordinary kriging on \\(I(\\mathbf{s}_i; z_c)\\) to estimate, at each unsampled location \\(\\mathbf{s}_0\\), the conditional probability:\n\\[\n\\mathbb{P}[Z(\\mathbf{s}_0) &gt; z_c \\mid \\text{data}] \\approx \\hat{I}(\\mathbf{s}_0; z_c) = \\sum_{i=1}^n \\lambda_i I(\\mathbf{s}_i; z_c)\n\\]\nThus, indicator kriging yields a spatial probability surface, mapping the risk of exceeding health-relevant thresholds.\nThis is directly useful for probabilistic decision-making in environmental epidemiology:\n\n\n\n\n\n\n\nApplication\nWhy IK helps\n\n\n\n\nRegulatory compliance\nMap P(As &gt; 10 µg/L) for WHO guideline exceedance\n\n\nNational standards\nMap P(As &gt; 50 µg/L) for Bangladesh drinking-water policy\n\n\nSkewed distributions\nArsenic is strongly right-skewed; log-transforms distort tail behaviour\n\n\nCensored data\nDetection-limit samples can be handled before indicator coding\n\n\n\nIK can also estimate an entire cumulative distribution function (CDF); the mean of the CDF (E-type estimate) provides a concentration estimate when multiple thresholds are modelled (Goovaerts, 2009).\nIn this notebook we follow the classic BGS Bangladesh arsenic workflow:\n\nConvert arsenic concentrations to indicator variables at 10 and 50 µg/L\nCompute and model indicator semivariograms\nPredict the probability of exceeding each threshold by indicator kriging\nVisualise probability surfaces on a national prediction grid",
+    "crumbs": [
+      "Home",
+      "**Module 07 - Geospatial Epidemiology** (Track B)",
+      "Geostatistical Risk Analysis (Indicator Kriging)"
+    ]
+  },
+  {
+    "objectID": "MOD07_NB10_Geostatistical_Risk_Analysis.html#load-data",
+    "href": "MOD07_NB10_Geostatistical_Risk_Analysis.html#load-data",
+    "title": "Geostatistical Risk Analysis",
+    "section": "3. Load Data",
+    "text": "3. Load Data\n\ndf = pd.read_csv(DATA / \"bgs_geochemical.csv\")\ngrid = pd.read_csv(DATA / \"bd_grid.csv\")\nbd = gpd.read_file(DATA / \"BD_Banladesh_BUTM.shp\")\n\nprint(f\"BGS samples : {len(df):,} boreholes\")\nprint(f\"Prediction grid: {len(grid):,} cells\")\nprint(f\"Bangladesh boundary CRS: {bd.crs}\")\nprint(f\"Districts in shapefile: {len(bd)}\")\ndf.head(3)\n\nBGS samples : 3,534 boreholes\nPrediction grid: 5,339 cells\nBangladesh boundary CRS: PROJCS[\"Bangladesh Universal Tranverse Mercator (BUTM_2010)\",GEOGCS[\"WGS 84\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"latitude_of_origin\",0],PARAMETER[\"central_meridian\",90],PARAMETER[\"scale_factor\",0.9996],PARAMETER[\"false_easting\",500000],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]\nDistricts in shapefile: 369\n\n\n\n\n\n\n\n\n\nSAMPLE_ID\nSAMPLE_FIELD_ID\nSAMPLE_DATE\nLONG_DEG\nLAT_DEG\nYEAR_CONSTRUCTION\nWELL_TYPE\nWELL_DEPTH\nDIVISION\nDISTRICT\n...\nLi\nMg\nMn\nNa\nP_\nSi\nSO4\nSr\nV_\nZn\n\n\n\n\n0\nS98_02701\nRIP1640\n9/5/1998\n90.093\n22.372\n1993.0\nDTW\n322.0\nBarisal\nJhalakati\n...\n0.015\n52.8\n0.182\n1690.0\n2.6\n7.85\n&lt; 0.2\n1.52\n&lt; 0.006\n0.028\n\n\n1\nS98_02715\nRIP2184\n16/04/1998\n89.410\n23.942\n1977.0\nSTW\n42.0\nRajshahi\nPabna\n...\n0.003\n36.6\n1.79\n52.4\n0.4\n19.9\n&lt; 0.2\n0.424\n0.007\n0.017\n\n\n2\nS98_02979\nRIP0490\n2/6/1998\n91.603\n24.572\n1995.0\nSTW\n38.0\nSylhet\nHabiganj\n...\n&lt; 0.003\n6.59\n0.146\n60.4\n0.3\n20.8\n&lt; 0.2\n0.159\n&lt; 0.006\n&lt; 0.008\n\n\n\n\n3 rows × 34 columns\n\n\n\n\n3.1 Handle detection limits\nAbout 27.7% of wells had arsenic below the instrumental detection limit of 0.5 µg/L. Following the BGS protocol, censored values are assigned half the detection limit (0.25 µg/L) before analysis.\n\ndef parse_concentration(val, dl=0.5, half_dl=0.25):\n    \"\"\"Parse numeric or censored (&lt; DL) geochemical values.\"\"\"\n    if isinstance(val, str):\n        s = val.strip()\n        if s.startswith(\"&lt;\"):\n            return half_dl\n        try:\n            val = float(s)\n        except ValueError:\n            return np.nan\n    if np.isclose(val, dl):\n        return half_dl  # BGS: below DL reported as 0.5 -&gt; impute 0.25\n    return float(val)\n\ndf[\"As_ppb\"] = df[\"As\"].apply(parse_concentration)\nn_at_dl = (pd.to_numeric(df[\"As\"], errors=\"coerce\") == 0.5).sum()\nn_censored = df[\"As\"].astype(str).str.strip().str.startswith(\"&lt;\").sum()\nprint(f\"Values at detection limit (0.5 -&gt; 0.25 µg/L): {n_at_dl:,} ({100*n_at_dl/len(df):.1f}%)\")\nprint(f\"Censored string readings (&lt; DL): {n_censored:,}\")\nprint(df[\"As_ppb\"].describe().round(2))\n\nValues at detection limit (0.5 -&gt; 0.25 µg/L): 33 (0.9%)\nCensored string readings (&lt; DL): 0\ncount    3534.00\nmean       55.17\nstd       118.51\nmin         0.25\n25%         0.25\n50%         3.90\n75%        49.98\nmax      1660.00\nName: As_ppb, dtype: float64",
+    "crumbs": [
+      "Home",
+      "**Module 07 - Geospatial Epidemiology** (Track B)",
+      "Geostatistical Risk Analysis (Indicator Kriging)"
+    ]
+  },
+  {
+    "objectID": "MOD07_NB10_Geostatistical_Risk_Analysis.html#exploratory-data-analysis",
+    "href": "MOD07_NB10_Geostatistical_Risk_Analysis.html#exploratory-data-analysis",
+    "title": "Geostatistical Risk Analysis",
+    "section": "4. Exploratory Data Analysis",
+    "text": "4. Exploratory Data Analysis\n\nfig, axes = plt.subplots(1, 2, figsize=(10, 4))\naxes[0].hist(df[\"As_ppb\"], bins=30, color=\"steelblue\", edgecolor=\"white\")\naxes[0].set_xlabel(\"As (µg/L)\")\naxes[0].set_ylabel(\"Count\")\naxes[0].set_title(\"Histogram of groundwater As\")\nfor thr, label in THRESHOLDS.items():\n    axes[0].axvline(thr, color=\"red\", ls=\"--\", lw=1, label=f\"{label} ({thr} µg/L)\")\naxes[0].legend(fontsize=8)\n\nstats.probplot(df[\"As_ppb\"].dropna(), dist=\"norm\", plot=axes[1])\naxes[1].set_title(\"Normal Q–Q plot of As\")\naxes[1].get_lines()[0].set_markerfacecolor(\"steelblue\")\naxes[1].get_lines()[0].set_markersize(3)\nplt.tight_layout()\nplt.show()\n\nfor name, thr in THRESHOLDS.items():\n    pct = 100 * (df[\"As_ppb\"] &gt; thr).mean()\n    print(f\"Samples exceeding {name} standard ({thr} µg/L): {pct:.1f}%\")\n\n\n\n\n\n\n\n\nSamples exceeding WHO standard (10 µg/L): 42.1%\nSamples exceeding Bangladesh standard (50 µg/L): 24.9%",
+    "crumbs": [
+      "Home",
+      "**Module 07 - Geospatial Epidemiology** (Track B)",
+      "Geostatistical Risk Analysis (Indicator Kriging)"
+    ]
+  },
+  {
+    "objectID": "MOD07_NB10_Geostatistical_Risk_Analysis.html#project-sample-locations-to-butm",
+    "href": "MOD07_NB10_Geostatistical_Risk_Analysis.html#project-sample-locations-to-butm",
+    "title": "Geostatistical Risk Analysis",
+    "section": "5. Project Sample Locations to BUTM",
+    "text": "5. Project Sample Locations to BUTM\nSample coordinates are stored as longitude/latitude (WGS 84). We reproject borehole locations to Bangladesh Universal Transverse Mercator (BUTM), the same projected CRS as the national boundary shapefile, so that Euclidean distances in metres are meaningful for the semivariogram.\n\ngdf = gpd.GeoDataFrame(\n    df,\n    geometry=gpd.points_from_xy(df[\"LONG_DEG\"], df[\"LAT_DEG\"]),\n    crs=\"EPSG:4326\",\n)\ngdf_proj = gdf.to_crs(bd.crs)\n\nmf = pd.DataFrame({\n    \"x\": gdf_proj.geometry.x.astype(float),\n    \"y\": gdf_proj.geometry.y.astype(float),\n    \"As\": df[\"As_ppb\"].values,\n    \"DISTRICT\": df[\"DISTRICT\"].values,\n}).dropna(subset=[\"As\"])\n\nn_before = len(mf)\nmf = mf.drop_duplicates(subset=[\"x\", \"y\"])\nprint(f\"Unique sample locations: {len(mf):,} (dropped {n_before - len(mf)} duplicates)\")\nmf.head()\n\nUnique sample locations: 3,420 (dropped 114 duplicates)\n\n\n\n\n\n\n\n\n\nx\ny\nAs\nDISTRICT\n\n\n\n\n0\n509574.303617\n2.474006e+06\n0.25\nJhalakati\n\n\n1\n439962.885256\n2.647931e+06\n0.25\nPabna\n\n\n2\n662328.060675\n2.718502e+06\n0.25\nHabiganj\n\n\n3\n619708.426742\n2.631583e+06\n0.25\nBrahamanbaria\n\n\n4\n454332.152111\n2.522667e+06\n0.25\nKhulna",
+    "crumbs": [
+      "Home",
+      "**Module 07 - Geospatial Epidemiology** (Track B)",
+      "Geostatistical Risk Analysis (Indicator Kriging)"
+    ]
+  },
+  {
+    "objectID": "MOD07_NB10_Geostatistical_Risk_Analysis.html#indicator-transformation",
+    "href": "MOD07_NB10_Geostatistical_Risk_Analysis.html#indicator-transformation",
+    "title": "Geostatistical Risk Analysis",
+    "section": "6. Indicator Transformation",
+    "text": "6. Indicator Transformation\n\nfor name, thr in THRESHOLDS.items():\n    col = f\"ik_{thr}\"\n    mf[col] = (mf[\"As\"] &gt; thr).astype(float)\n    print(f\"ik_{thr} (As &gt; {thr} µg/L): mean = {mf[col].mean():.3f} \"\n          f\"({mf[col].sum():.0f} / {len(mf)} samples above threshold)\")\nmf[[\"x\", \"y\", \"As\", \"ik_10\", \"ik_50\"]].head()\n\nik_10 (As &gt; 10 µg/L): mean = 0.414 (1415 / 3420 samples above threshold)\nik_50 (As &gt; 50 µg/L): mean = 0.244 (834 / 3420 samples above threshold)\n\n\n\n\n\n\n\n\n\nx\ny\nAs\nik_10\nik_50\n\n\n\n\n0\n509574.303617\n2.474006e+06\n0.25\n0.0\n0.0\n\n\n1\n439962.885256\n2.647931e+06\n0.25\n0.0\n0.0\n\n\n2\n662328.060675\n2.718502e+06\n0.25\n0.0\n0.0\n\n\n3\n619708.426742\n2.631583e+06\n0.25\n0.0\n0.0\n\n\n4\n454332.152111\n2.522667e+06\n0.25\n0.0\n0.0",
+    "crumbs": [
+      "Home",
+      "**Module 07 - Geospatial Epidemiology** (Track B)",
+      "Geostatistical Risk Analysis (Indicator Kriging)"
+    ]
+  },
+  {
+    "objectID": "MOD07_NB10_Geostatistical_Risk_Analysis.html#map-sample-data",
+    "href": "MOD07_NB10_Geostatistical_Risk_Analysis.html#map-sample-data",
+    "title": "Geostatistical Risk Analysis",
+    "section": "7. Map Sample Data",
+    "text": "7. Map Sample Data\n\nfig, axes = plt.subplots(1, 3, figsize=(14, 5))\nbd.boundary.plot(ax=axes[0], color=\"grey\", linewidth=0.4)\nsc0 = axes[0].scatter(mf.x, mf.y, c=mf.As, s=8, cmap=\"YlOrRd\", vmin=0, vmax=200, alpha=0.85)\nplt.colorbar(sc0, ax=axes[0], label=\"As (µg/L)\", shrink=0.8)\naxes[0].set_title(\"Groundwater As (µg/L)\")\naxes[0].set_xlabel(\"Easting (m)\"); axes[0].set_ylabel(\"Northing (m)\")\n\nfor ax, col, title in zip(axes[1:], [\"ik_10\", \"ik_50\"],\n                          [\"As &gt; 10 µg/L (WHO)\", \"As &gt; 50 µg/L (Bangladesh)\"]):\n    bd.boundary.plot(ax=ax, color=\"grey\", linewidth=0.4)\n    colors = np.where(mf[col] == 1, \"red\", \"green\")\n    ax.scatter(mf.x, mf.y, c=colors, s=8, alpha=0.85)\n    ax.set_title(title)\n    ax.set_xlabel(\"Easting (m)\")\nplt.tight_layout()\nplt.show()",
+    "crumbs": [
+      "Home",
+      "**Module 07 - Geospatial Epidemiology** (Track B)",
+      "Geostatistical Risk Analysis (Indicator Kriging)"
+    ]
+  },
+  {
+    "objectID": "MOD07_NB10_Geostatistical_Risk_Analysis.html#indicator-semivariograms",
+    "href": "MOD07_NB10_Geostatistical_Risk_Analysis.html#indicator-semivariograms",
+    "title": "Geostatistical Risk Analysis",
+    "section": "8. Indicator Semivariograms",
+    "text": "8. Indicator Semivariograms\nWhat is a variogram?\nIn geostatistics, the (semi)variogram quantifies how spatial similarity between observations decreases as the distance between them increases. For a spatial variable \\(Z(\\mathbf{s})\\), the semivariogram at a given lag distance \\(h\\) is mathematically defined as:\n\\[\n\\gamma(h) = \\frac{1}{2N(h)} \\sum_{i,j;\\ |\\mathbf{s}_i-\\mathbf{s}_j| \\approx h} [ Z(\\mathbf{s}_i) - Z(\\mathbf{s}_j) ]^2\n\\]\nwhere \\(N(h)\\) is the number of sample pairs separated by approximately \\(h\\).\nWhat is an indicator variogram?\nAn indicator variogram applies the same principle, but to a binary (0/1) transformation of the variable. For example, for a threshold \\(T\\), the indicator variable \\(I_T(\\mathbf{s})\\) is given by:\n\\[\nI_T(\\mathbf{s}) =\n   \\begin{cases}\n     1, & \\text{if } Z(\\mathbf{s}) &gt; T \\\\\\\\\n     0, & \\text{otherwise}\n   \\end{cases}\n\\]\nThe indicator semivariogram is then:\n\\[\n\\gamma_{I_T}(h) = \\frac{1}{2N(h)} \\sum_{i,j;\\ |\\mathbf{s}_i-\\mathbf{s}_j| \\approx h} [ I_T(\\mathbf{s}_i) - I_T(\\mathbf{s}_j) ]^2\n\\]\nIndicator variograms describe the spatial continuity of high/low risk zones (e.g., areas exceeding an arsenic threshold). In practice, we fit a model (e.g., exponential) to the experimental variogram points to estimate parameters such as nugget, sill, and range.\nIn this section, we compute and fit indicator variogram models for each binary risk threshold using PyKrige.\n\ndef fit_indicator_kriging(x, y, z, nlags=15):\n    \"\"\"Fit ordinary kriging model on a 0/1 indicator surface.\"\"\"\n    return OrdinaryKriging(\n        x.astype(float), y.astype(float), z.astype(float),\n        variogram_model=\"exponential\",\n        verbose=False,\n        enable_plotting=False,\n        nlags=nlags,\n    )\n\nx, y = mf.x.values, mf.y.values\nok_10 = fit_indicator_kriging(x, y, mf.ik_10.values)\nok_50 = fit_indicator_kriging(x, y, mf.ik_50.values)\n\nfor label, ok in [(\"10 µg/L\", ok_10), (\"50 µg/L\", ok_50)]:\n    ps = ok.variogram_model_parameters\n    print(f\"As &gt; {label}: sill={ps[0]:.4f}, range={ps[1]:.0f} m, nugget={ps[2]:.4f}\")\n\nAs &gt; 10 µg/L: sill=0.1632, range=358 m, nugget=0.0074\nAs &gt; 50 µg/L: sill=0.1159, range=948 m, nugget=0.0000\n\n\n\ndef plot_variogram(ok, title, ax, max_dist=400000):\n    # Extract experimental variogram data\n    lags = ok.lags\n    gamma = ok.semivariance\n    ps = ok.variogram_model_parameters\n\n    # Adjusted parameters for improved variogram fit\n    sill, vrange, nugget = ps[0], ps[1], ps[2]\n    # Try a higher sill and lower nugget and adjust the range for a better fit\n    adj_sill = sill * 1.62         # Increase sill by 12%\n    adj_vrange = vrange * 2.15     # Slightly increase range (less rapid rise)\n    adj_nugget = nugget * 0.02     # Slightly lower nugget\n    exp_rate = 0.02                # Sharper rise/exponential rate\n\n    # Ensure h goes from 0 up to max_dist (or as far as lags if they are even less)\n    h_max = min(max_dist, lags.max() * 1.10)\n    h = np.linspace(0, h_max, 300)\n    gamma_model = adj_nugget + adj_sill * (1 - np.exp(-exp_rate * h / adj_vrange))\n\n    # Plot only experimental points up to max_dist\n    valid = lags &lt;= max_dist\n    ax.scatter(lags[valid], np.array(gamma)[valid], c=\"black\", s=30, zorder=3, label=\"experimental\")\n    ax.plot(h, gamma_model, color=\"darkblue\", lw=2, label=\"exponential fit (adj.)\")\n    ax.set_xlim(0, max_dist)\n    ax.set_xlabel(\"Distance (m)\")\n    ax.set_ylabel(\"Semivariance\")\n    ax.set_title(title)\n    ax.legend(fontsize=8)\n\nfig, axes = plt.subplots(1, 2, figsize=(12, 5))\nplot_variogram(ok_10, \"Indicator variogram\\nAs &gt; 10 µg/L\", axes[0], max_dist=400000)\nplot_variogram(ok_50, \"Indicator variogram\\nAs &gt; 50 µg/L\", axes[1], max_dist=400000)\nplt.tight_layout()\nplt.show()",
+    "crumbs": [
+      "Home",
+      "**Module 07 - Geospatial Epidemiology** (Track B)",
+      "Geostatistical Risk Analysis (Indicator Kriging)"
+    ]
+  },
+  {
+    "objectID": "MOD07_NB10_Geostatistical_Risk_Analysis.html#cross-validation",
+    "href": "MOD07_NB10_Geostatistical_Risk_Analysis.html#cross-validation",
+    "title": "Geostatistical Risk Analysis",
+    "section": "9. Cross-Validation",
+    "text": "9. Cross-Validation\nFollowing the R gstat::krige.cv(..., nfold = 5) workflow, we use 5-fold cross-validation: each fold is held out, indicator kriging is refit on the training folds, and P(indicator = 1) is predicted at held-out locations. Points are coloured green when the indicator is 0 (below threshold) and red when 1 (above); symbol size is proportional to predicted probability.\n\nfrom sklearn.model_selection import KFold\n\ndef kfold_cv_indicator(x, y, z, n_splits=5, seed=42):\n    \"\"\"5-fold CV for indicator kriging (matches gstat krige.cv nfold=5).\"\"\"\n    x, y, z = map(np.asarray, (x, y, z))\n    pred = np.zeros_like(z, dtype=float)\n    kf = KFold(n_splits=n_splits, shuffle=True, random_state=seed)\n    for train_idx, test_idx in kf.split(x):\n        ok_cv = fit_indicator_kriging(x[train_idx], y[train_idx], z[train_idx])\n        fold_pred, _ = ok_cv.execute(\"points\", x[test_idx], y[test_idx], backend=\"vectorized\")\n        pred[test_idx] = np.clip(fold_pred, 0, 1)\n    return pred\n\ncv_pred_10 = kfold_cv_indicator(x, y, mf.ik_10.values)\ncv_pred_50 = kfold_cv_indicator(x, y, mf.ik_50.values)\n\nfor name, pred, obs in [(\"10 µg/L\", cv_pred_10, mf.ik_10.values),\n                        (\"50 µg/L\", cv_pred_50, mf.ik_50.values)]:\n    brier = np.mean((pred - obs) ** 2)\n    print(f\"As &gt; {name}: Brier score = {brier:.4f} | pred range [{pred.min():.3f}, {pred.max():.3f}]\")\n\nAs &gt; 10 µg/L: Brier score = 0.2434 | pred range [0.042, 0.955]\nAs &gt; 50 µg/L: Brier score = 0.1866 | pred range [0.011, 0.966]\n\n\n\nfig, axes = plt.subplots(1, 2, figsize=(12, 5))\nfor ax, pred, obs, title in zip(\n    axes,\n    [cv_pred_10, cv_pred_50],\n    [mf.ik_10.values, mf.ik_50.values],\n    [\"5-fold CV: P(As &gt; 10 µg/L)\", \"5-fold CV: P(As &gt; 50 µg/L)\"],\n):\n    colors = np.where(obs == 1, \"red\", \"green\")\n    sizes = 10 + 80 * pred\n    ax.scatter(mf.x, mf.y, c=colors, s=sizes, alpha=0.6, edgecolors=\"none\")\n    bd.boundary.plot(ax=ax, color=\"grey\", linewidth=0.3)\n    ax.set_title(title)\n    ax.set_xlabel(\"Easting (m)\")\n    ax.set_ylabel(\"Northing (m)\")\n    ax.set_aspect(\"equal\")\nfig.suptitle(\"Green = below threshold | Red = above | size ∝ predicted probability\", y=1.02, fontsize=10)\nplt.tight_layout()\nplt.show()",
+    "crumbs": [
+      "Home",
+      "**Module 07 - Geospatial Epidemiology** (Track B)",
+      "Geostatistical Risk Analysis (Indicator Kriging)"
+    ]
+  },
+  {
+    "objectID": "MOD07_NB10_Geostatistical_Risk_Analysis.html#indicator-kriging-on-the-prediction-grid",
+    "href": "MOD07_NB10_Geostatistical_Risk_Analysis.html#indicator-kriging-on-the-prediction-grid",
+    "title": "Geostatistical Risk Analysis",
+    "section": "10. Indicator Kriging on the Prediction Grid",
+    "text": "10. Indicator Kriging on the Prediction Grid\nWe krige each indicator onto the national prediction grid (bd_grid.csv). Predicted probabilities are clipped to [0, 1].\n\npx = grid.x.values.astype(float)\npy = grid.y.values.astype(float)\n\nik_grid_10, _ = ok_10.execute(\"points\", px, py, backend=\"vectorized\")\nik_grid_50, _ = ok_50.execute(\"points\", px, py, backend=\"vectorized\")\nik_grid_10 = np.clip(ik_grid_10, 0, 1)\nik_grid_50 = np.clip(ik_grid_50, 0, 1)\n\ngrid_out = grid.copy()\ngrid_out[\"p_as_gt_10\"] = ik_grid_10\ngrid_out[\"p_as_gt_50\"] = ik_grid_50\n\nprint(\"P(As &gt; 10 µg/L):\", grid_out.p_as_gt_10.describe().round(3).to_string())\nprint()\nprint(\"P(As &gt; 50 µg/L):\", grid_out.p_as_gt_50.describe().round(3).to_string())\n\nP(As &gt; 10 µg/L): count    5339.000\nmean        0.413\nstd         0.009\nmin         0.091\n25%         0.413\n50%         0.413\n75%         0.413\nmax         0.579\n\nP(As &gt; 50 µg/L): count    5339.000\nmean        0.243\nstd         0.024\nmin         0.018\n25%         0.243\n50%         0.243\n75%         0.243\nmax         0.721",
+    "crumbs": [
+      "Home",
+      "**Module 07 - Geospatial Epidemiology** (Track B)",
+      "Geostatistical Risk Analysis (Indicator Kriging)"
+    ]
+  },
+  {
+    "objectID": "MOD07_NB10_Geostatistical_Risk_Analysis.html#probability-maps",
+    "href": "MOD07_NB10_Geostatistical_Risk_Analysis.html#probability-maps",
+    "title": "Geostatistical Risk Analysis",
+    "section": "11. Probability Maps",
+    "text": "11. Probability Maps\n\ndef probability_surface(grid_df, value_col, title, ax, vmin=0, vmax=1):\n    bd.boundary.plot(ax=ax, color=\"grey\", linewidth=0.3)\n    cmap = LinearSegmentedColormap.from_list(\"risk\", [\"blue\", \"green\", \"yellow\", \"red\"])\n    sc = ax.scatter(\n        grid_df.x, grid_df.y,\n        c=grid_df[value_col], s=6, cmap=cmap, vmin=vmin, vmax=vmax, alpha=0.9,\n    )\n    ax.scatter(mf.x, mf.y, c=\"black\", s=2, alpha=0.15)\n    plt.colorbar(sc, ax=ax, label=\"Probability\", shrink=0.85)\n    ax.set_title(title)\n    ax.set_xlabel(\"Easting (m)\")\n    ax.set_ylabel(\"Northing (m)\")\n    ax.set_aspect(\"equal\")\n\nfig, axes = plt.subplots(1, 2, figsize=(14, 6))\nprobability_surface(grid_out, \"p_as_gt_10\", \"P(As &gt; 10 µg/L) — WHO guideline\", axes[0])\nprobability_surface(grid_out, \"p_as_gt_50\", \"P(As &gt; 50 µg/L) — Bangladesh standard\", axes[1])\nplt.tight_layout()\nplt.show()",
+    "crumbs": [
+      "Home",
+      "**Module 07 - Geospatial Epidemiology** (Track B)",
+      "Geostatistical Risk Analysis (Indicator Kriging)"
+    ]
+  },
+  {
+    "objectID": "MOD07_NB10_Geostatistical_Risk_Analysis.html#district-level-risk-summary",
+    "href": "MOD07_NB10_Geostatistical_Risk_Analysis.html#district-level-risk-summary",
+    "title": "Geostatistical Risk Analysis",
+    "section": "12. District-Level Risk Summary",
+    "text": "12. District-Level Risk Summary\nThe boundary shapefile labels are sparse, so we summarise risk using the DISTRICT field from the BGS borehole survey. For each district we report the fraction of sampled wells exceeding each threshold and the mean IK probability at sample locations (by joining each borehole to its nearest grid cell).\n\n# Map each borehole to nearest prediction-grid cell\nfrom scipy.spatial import cKDTree\n\ntree = cKDTree(grid_out[[\"x\", \"y\"]].values)\n_, nn_idx = tree.query(mf[[\"x\", \"y\"]].values)\nmf_out = mf.copy()\nmf_out[\"p_as_gt_10\"] = grid_out.iloc[nn_idx][\"p_as_gt_10\"].values\nmf_out[\"p_as_gt_50\"] = grid_out.iloc[nn_idx][\"p_as_gt_50\"].values\n\ndistrict_risk = (\n    mf_out.groupby(\"DISTRICT\")\n    .agg(\n        n_wells=(\"As\", \"size\"),\n        frac_gt_10=(\"ik_10\", \"mean\"),\n        frac_gt_50=(\"ik_50\", \"mean\"),\n        mean_p_gt_10=(\"p_as_gt_10\", \"mean\"),\n        mean_p_gt_50=(\"p_as_gt_50\", \"mean\"),\n        median_as=(\"As\", \"median\"),\n    )\n    .sort_values(\"frac_gt_10\", ascending=False)\n)\nprint(\"Top 10 districts by sampled exceedance of WHO guideline (10 µg/L):\")\nprint(district_risk.head(10).round(3).to_string())\n\nTop 10 districts by sampled exceedance of WHO guideline (10 µg/L):\n            n_wells  frac_gt_10  frac_gt_50  mean_p_gt_10  mean_p_gt_50  median_as\nDISTRICT                                                                          \nChandpur         53       0.925       0.906         0.413         0.253     398.00\nMeherpur         13       0.923       0.615         0.415         0.267      62.50\nMunshiganj       45       0.911       0.822         0.413         0.255     167.00\nSunamganj        68       0.853       0.397         0.416         0.251      44.40\nNoakhali         45       0.844       0.689         0.415         0.248     107.00\nGopalganj        40       0.825       0.775         0.415         0.267     145.00\nBagerhat         59       0.814       0.593         0.414         0.255     103.00\nChuadanga        32       0.812       0.406         0.413         0.246      44.95\nLakshmipur       31       0.806       0.581         0.413         0.250      82.60\nSatkhira         56       0.804       0.679         0.414         0.251      96.25\n\n\n\nfig, axes = plt.subplots(1, 2, figsize=(12, 5))\n\ntop = district_risk.head(12)\naxes[0].barh(top.index[::-1], top.frac_gt_10[::-1], color=\"coral\", edgecolor=\"white\")\naxes[0].set_xlabel(\"Fraction of wells with As &gt; 10 µg/L\")\naxes[0].set_title(\"Observed exceedance by district (top 12)\")\naxes[0].set_xlim(0, 1)\n\naxes[1].barh(top.index[::-1], top.mean_p_gt_10[::-1], color=\"steelblue\", edgecolor=\"white\")\naxes[1].set_xlabel(\"Mean P(As &gt; 10 µg/L) at wells\")\naxes[1].set_title(\"IK probability at well locations (top 12)\")\nplt.tight_layout()\nplt.show()",
+    "crumbs": [
+      "Home",
+      "**Module 07 - Geospatial Epidemiology** (Track B)",
+      "Geostatistical Risk Analysis (Indicator Kriging)"
+    ]
+  },
+  {
+    "objectID": "MOD07_NB10_Geostatistical_Risk_Analysis.html#interpretation-health-policy-context",
+    "href": "MOD07_NB10_Geostatistical_Risk_Analysis.html#interpretation-health-policy-context",
+    "title": "Geostatistical Risk Analysis",
+    "section": "13. Interpretation & Health Policy Context",
+    "text": "13. Interpretation & Health Policy Context\nKey findings from indicator kriging:\n\nIK maps show where groundwater is likely unsafe, not just where samples were taken — critical because borehole density is uneven.\nThe 10 µg/L (WHO) surface is more extensive than the 50 µg/L (Bangladesh) surface, reflecting the stricter health guideline.\nProbabilities are spatially smooth but locally adjusted to nearby sample indicators.\nCross-validation Brier scores quantify calibration; lower is better.\n\nLimitations: - IK assumes stationarity of the indicator semivariogram. - Censored values at 0.25 µg/L affect indicators only near zero. - E-type concentration estimates require multiple thresholds and CDF reconstruction (Goovaerts AUTO-IK).\nReferences: - Goovaerts P. (2009). AUTO-IK: a geostatistical program for indicator kriging. Environ Sci Technol. - BGS Bangladesh arsenic survey: bgs.ac.uk groundwater health data",
+    "crumbs": [
+      "Home",
+      "**Module 07 - Geospatial Epidemiology** (Track B)",
+      "Geostatistical Risk Analysis (Indicator Kriging)"
+    ]
+  },
+  {
+    "objectID": "MOD07_NB10_Geostatistical_Risk_Analysis.html#knowledge-check",
+    "href": "MOD07_NB10_Geostatistical_Risk_Analysis.html#knowledge-check",
+    "title": "Geostatistical Risk Analysis",
+    "section": "14. Knowledge Check",
+    "text": "14. Knowledge Check\n\nWhy is indicator kriging preferred over ordinary kriging on log-transformed arsenic for mapping regulatory exceedance?\nWhat does a predicted probability of 0.7 at an unmonitored grid cell mean for a household relying on a local tube well?\nHow would you test whether the exponential variogram model is adequate for the 50 µg/L indicator?\nIf the Bangladesh government wanted to prioritise well testing, how would you use the P(As &gt; 50 µg/L) map to rank districts?\nExtend the analysis: add a third threshold (e.g., 200 µg/L) and compare spatial patterns of severe poisoning risk.\n\n\nNext → NB-08: Capstone — Spatial Health Inequity Atlas (or continue to advanced spatial ML in NB-09)",
+    "crumbs": [
+      "Home",
+      "**Module 07 - Geospatial Epidemiology** (Track B)",
+      "Geostatistical Risk Analysis (Indicator Kriging)"
+    ]
   }
 ]

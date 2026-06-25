@@ -158,6 +158,8 @@ website:
             text: Capstone - Spatial Health Inequity Atlas
           - href: MOD07_NB09_Spatial_ML_LBC_Northeast.ipynb
             text: "Spatial ML - LBC Mortality (Northeast)"
+          - href: MOD07_NB10_Geostatistical_Risk_Analysis.ipynb
+            text: "Geostatistical Risk Analysis (Indicator Kriging)"
       - section: "**Module 08 - Reproducible Research & Deployment** (Track B)"
         contents:
           - href: MOD08_NB01_Reproducible_Foundations.ipynb
